@@ -10,6 +10,7 @@ runtime! basic.vim
 runtime! commentary.vim
 runtime! completion.vim
 runtime! lightline.vim
+runtime! multi-cursors.vim
 runtime! snippets.vim
 
 runtime! colorscheme.vim
