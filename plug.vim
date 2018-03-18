@@ -1,5 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Color schemes {{{
+  Plug 'joshdick/onedark.vim'
+" }}}
+
 " UI -- User interface additions {{{
   " Fancy start page with recent files, etc
   Plug 'mhinz/vim-startify'
