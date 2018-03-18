@@ -11,9 +11,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Dim inactive window to make it more ovbious where the focus is
   Plug 'blueyed/vim-diminactive'
 
-  " Show git diff via Vim sign column.
-  Plug 'airblade/vim-gitgutter'
-
   " Show trailing whitespace in red
   Plug 'bronson/vim-trailing-whitespace'
 
@@ -86,6 +83,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Speed up Vim by updating folds only when called-for.
   Plug 'Konfekt/FastFold'
+" }}}
+
+" Git -- Tools for using git and github {{{
+  " Awesome git wrapper
+  Plug 'tpope/vim-fugitive'
+
+  " Show git diff via Vim sign column.
+  Plug 'airblade/vim-gitgutter'
+
+  " Github extension for fugitive
+  Plug 'tpope/vim-rhubarb'
 " }}}
 
 call plug#end()
