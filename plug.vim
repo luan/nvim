@@ -116,6 +116,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'honza/vim-snippets'
 " }}}
 
+" Linting / Formatting {{{
+  " Asynchronous Lint Engine
+  Plug 'w0rp/ale'
+
+  " Provide easy code formatting in Vim by integrating existing code formatters.
+  Plug 'Chiel92/vim-autoformat'
+" }}}
+
 call plug#end()
 
 augroup config#plug
