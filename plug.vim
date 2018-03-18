@@ -46,6 +46,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Simplifies the transition between multiline and single-line code
   Plug 'AndrewRadev/splitjoin.vim'
 
+  " :Join command
+  Plug 'sk1418/Join'
+
   " quoting/parenthesizing made simple; e.g. ysiw) to wrap word in parens
   Plug 'tpope/vim-surround'
 
