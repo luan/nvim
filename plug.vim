@@ -99,7 +99,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-rhubarb'
 " }}}
 
-" Autocomplete {{{
+" Autocomplete / Snippets {{{
   " Fast, Extensible, Async Completion Framework for Neovim
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/ncm-clang' " C/C++
@@ -110,6 +110,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Shougo/neco-syntax'
   Plug 'Shougo/neco-vim'
   Plug 'roxma/ncm-rct-complete' " Ruby
+
+  "UltiSnips - The ultimate snippet solution for Vim
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 " }}}
 
 call plug#end()

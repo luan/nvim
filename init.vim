@@ -7,8 +7,9 @@ scriptencoding utf-8
 runtime! plug.vim
 runtime! basic.vim
 
-runtime! lightline.vim
 runtime! commentary.vim
 runtime! completion.vim
+runtime! lightline.vim
+runtime! snippets.vim
 
 runtime! colorscheme.vim
