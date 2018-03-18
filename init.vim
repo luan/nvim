@@ -7,9 +7,12 @@ scriptencoding utf-8
 runtime! plug.vim
 runtime! basic.vim
 
+runtime! autoformat.vim
+runtime! autopairs.vim
 runtime! commentary.vim
 runtime! completion.vim
 runtime! lightline.vim
+runtime! lint.vim
 runtime! multi-cursors.vim
 runtime! snippets.vim
 
