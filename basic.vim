@@ -1,5 +1,6 @@
 scriptencoding utf-8
 
+set autoread              " reload changes from disk
 set autowriteall          " Writes on make/shell commands
 set ignorecase            " Case insensitive search
 set smartcase             " ... but case sensitive when uc present
@@ -26,8 +27,6 @@ set termguicolors         " Enable true colors in terminal
 set completeopt=menu,noinsert,noselect
 set viewoptions=cursor,folds,slash,unix
 set fileformats=unix,dos,mac
-
-set whichwrap+=<,>,h,l  " Allow backspace and cursor keys to cross line boundaries
 
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -57,3 +56,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap <silent> <esc> :noh<cr>
+
+augroup config#basic
+  autocmd!
+  autocmd FocusGained * :checktime
+augroup END
+
