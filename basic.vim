@@ -59,6 +59,9 @@ nnoremap <silent> <esc> :noh<cr>
 
 augroup config#basic
   autocmd!
+  " Reload file on focus
   autocmd FocusGained * :checktime
+  " Don't format when adding lines with o/O
+  autocmd BufNewFile,BufEnter * set formatoptions-=o
 augroup END
 
