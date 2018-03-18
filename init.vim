@@ -9,5 +9,6 @@ runtime! basic.vim
 
 runtime! lightline.vim
 runtime! commentary.vim
+runtime! completion.vim
 
 runtime! colorscheme.vim
