@@ -89,3 +89,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 " }}}
 
 call plug#end()
+
+augroup config#plug
+  autocmd!
+  autocmd VimEnter *
+        \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+        \|   PlugInstall --sync | q
+        \| endif
+augroup END
+
