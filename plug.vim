@@ -57,5 +57,35 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
   Plug 'maxbrunsfeld/vim-emacs-bindings'
+
+  " Plugin to move lines and selections up and down
+  Plug 'matze/vim-move'
 " }}}
+
+" General -- Helpful generic tools with no dependencies {{{
+  " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
+  Plug 'tpope/vim-sleuth'
+
+  " easily search for, substitute, and abbreviate multiple variants of a word
+  Plug 'tpope/vim-abolish'
+
+  " pairs of handy bracket mappings; e.g. [<Space> and ]<Space> add newlines before and after the cursor line
+  Plug 'tpope/vim-unimpaired'
+
+  " Vim sugar for the UNIX shell commands that need it the most; e.g. :Find, :Wall
+  Plug 'tpope/vim-eunuch'
+
+  " Make Vim persist editing state without fuss
+  Plug 'kopischke/vim-stay'
+
+  " Make Vim handle line and column numbers in file names with a minimum of fuss
+  Plug 'kopischke/vim-fetch'
+
+  " The ultimate undo history visualizer for VIM
+  Plug 'mbbill/undotree'
+
+  " Speed up Vim by updating folds only when called-for.
+  Plug 'Konfekt/FastFold'
+" }}}
+
 call plug#end()
