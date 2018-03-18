@@ -3,13 +3,12 @@ scriptencoding utf-8
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
-      \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+      \   'right': [['lineinfo'], ['percent'], ['linter_warnings', 'linter_errors', 'linter_ok']]
       \ },
       \ 'component': {
       \   'lineinfo': ' %3l:%-2v',
       \ },
       \ 'component_function': {
-      \   'readonly': 'LightlineReadonly',
       \   'fugitive': 'LightlineFugitive',
       \   'filename': 'LightlineFilename'
       \ },
@@ -19,7 +18,6 @@ let g:lightline = {
       \   'linter_ok': 'LightlineLinterOK'
       \ },
       \ 'component_type': {
-      \   'readonly': 'error',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'ok'

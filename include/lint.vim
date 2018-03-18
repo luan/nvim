@@ -1,8 +1,5 @@
 scriptencoding utf-8
 
-nmap <silent> <M-n> <Plug>(ale_previous_wrap)
-nmap <silent> <M-p> <Plug>(ale_next_wrap)
-
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '➤'
 let g:ale_sign_info = '➟'

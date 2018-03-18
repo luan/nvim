@@ -51,25 +51,8 @@ set foldlevelstart=99
 " Mimic behavior from D, C
 nnoremap Y y$
 
-nnoremap <expr> <CR> empty(&buftype) ? ':w<CR>' : '<CR>'
-
 vnoremap < <gv
 vnoremap > >gv
-
-nnoremap <silent> <esc> :noh<cr>
-
-" Replace in visual mode without copying
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-
-function! s:Replace()
-    let s:restore_reg = @"
-    return "p@=RestoreRegister()\<cr>"
-endfunction
-
-vnoremap <silent> <expr> p <sid>Replace()
 
 augroup config#basic
   autocmd!
