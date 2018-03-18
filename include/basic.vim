@@ -1,5 +1,7 @@
 scriptencoding utf-8
 
+set shell=/bin/bash
+
 set autoread              " reload changes from disk
 set autowriteall          " Writes on make/shell commands
 set ignorecase            " Case insensitive search
