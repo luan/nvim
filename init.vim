@@ -8,3 +8,5 @@ runtime! plug.vim
 runtime! basic.vim
 
 runtime! lightline.vim
+
+runtime! colorscheme.vim
