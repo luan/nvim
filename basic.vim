@@ -23,6 +23,7 @@ set pumheight=20          " Avoid the pop up menu occupying the whole screen
 set wildmode=list:longest " Use emacs-style tab completion in command mode
 set iskeyword+=$,@,-      " Add extra characters that are valid parts of variables
 set termguicolors         " Enable true colors in terminal
+set lazyredraw            " Wait until actions are done to re-render text
 
 set completeopt=menu,noinsert,noselect
 set viewoptions=cursor,folds,slash,unix
@@ -56,6 +57,19 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap <silent> <esc> :noh<cr>
+
+" Replace in visual mode without copying
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+
+function! s:Replace()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
+vnoremap <silent> <expr> p <sid>Replace()
 
 augroup config#basic
   autocmd!
