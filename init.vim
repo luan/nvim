@@ -7,3 +7,4 @@ scriptencoding utf-8
 runtime! plug.vim
 runtime! basic.vim
 
+runtime! lightline.vim
