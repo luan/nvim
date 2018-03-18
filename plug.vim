@@ -99,6 +99,19 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-rhubarb'
 " }}}
 
+" Autocomplete {{{
+  " Fast, Extensible, Async Completion Framework for Neovim
+  Plug 'roxma/nvim-completion-manager'
+  Plug 'roxma/ncm-clang' " C/C++
+  Plug 'roxma/nvim-cm-racer' " Rust
+  Plug 'roxma/nvim-cm-tern', {'do': 'npm install'} " Javascript
+  Plug 'calebeby/ncm-css' " CSS
+  Plug 'rhysd/github-complete.vim' "GitHub
+  Plug 'Shougo/neco-syntax'
+  Plug 'Shougo/neco-vim'
+  Plug 'roxma/ncm-rct-complete' " Ruby
+" }}}
+
 call plug#end()
 
 augroup config#plug
