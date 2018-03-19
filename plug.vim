@@ -1,7 +1,10 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+function! ConfigUpdated(info)
+  echom 'Neovim config updated! Restart Neovim to ensure you are running all the latest.'
+endfunction
 " Plug can manage this config but we don't need it to load it
-Plug 'luan/nvim', { 'dir': '.', 'on': [] }
+Plug 'luan/nvim', { 'dir': '.', 'on': [], 'do': function('ConfigUpdated') }
 
 " Color schemes {
 Plug 'joshdick/onedark.vim'
