@@ -1,10 +1,10 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Color schemes {{{
+" Color schemes {
   Plug 'joshdick/onedark.vim'
-" }}}
+" }
 
-" UI -- User interface additions {{{
+" UI -- User interface additions {
   " Fancy start page with recent files, etc
   Plug 'mhinz/vim-startify'
 
@@ -19,9 +19,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Lightweight status line
   Plug 'itchyny/lightline.vim'
-" }}}
+" }
 
-" Editing -- Text manipulation helpers {{{
+" Editing -- Text manipulation helpers {
   " (Un-)comment code
   Plug 'tpope/vim-commentary'
 
@@ -60,9 +60,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Plugin to move lines and selections up and down
   Plug 'matze/vim-move'
-" }}}
+" }
 
-" General -- Helpful generic tools with no dependencies {{{
+" General -- Helpful generic tools with no dependencies {
   " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
   Plug 'tpope/vim-sleuth'
 
@@ -86,9 +86,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Speed up Vim by updating folds only when called-for.
   Plug 'Konfekt/FastFold'
-" }}}
 
-" Git -- Tools for using git and github {{{
+  " Sane buffer/window deletion.
+  Plug 'mhinz/vim-sayonara'
+
+  " Distraction-free writing in Vim
+  Plug 'junegunn/goyo.vim'
+
+  " All the world's indeed a stage and we are merely players
+  Plug 'junegunn/limelight.vim'
+" }
+
+" Git -- Tools for using git and github {
   " Awesome git wrapper
   Plug 'tpope/vim-fugitive'
 
@@ -97,9 +106,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Github extension for fugitive
   Plug 'tpope/vim-rhubarb'
-" }}}
+" }
 
-" Autocomplete / Snippets {{{
+" Autocomplete / Snippets {
   " Fast, Extensible, Async Completion Framework for Neovim
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/ncm-clang' " C/C++
@@ -114,26 +123,26 @@ call plug#begin('~/.local/share/nvim/plugged')
   "UltiSnips - The ultimate snippet solution for Vim
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-" }}}
+" }
 
-" Linting / Formatting {{{
+" Linting / Formatting {
   " Asynchronous Lint Engine
   Plug 'w0rp/ale'
 
   " Provide easy code formatting in Vim by integrating existing code formatters.
   Plug 'Chiel92/vim-autoformat'
-" }}}
+" }
 
-" Navigation -- Fuzzy find, searching, etc {{{
+" Navigation -- Fuzzy find, searching, etc {
   let g:fzf_command_prefix = 'FZF'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
 
   " Helps you win at grep.
   Plug 'mhinz/vim-grepper'
-" }}}
+" }
 
-" Text objects {{{
+" Text objects {
   " allows you to configure % to match more than just single characters
   Plug 'vim-scripts/matchit.zip'
 
@@ -160,7 +169,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Text objects for foldings
   Plug 'kana/vim-textobj-fold'
-" }}}
+" }
 
 call plug#end()
 

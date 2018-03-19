@@ -21,3 +21,6 @@ nnoremap <expr> <CR> empty(&buftype) ? ':w<CR>' : '<CR>'
 
 " Escape to clear search
 nnoremap <silent> <esc> :noh<cr>
+
+" Close and delete buffer
+nnoremap <silent> <M-q> :Sayonara<cr>
