@@ -29,11 +29,11 @@ function! LightlineModified()
   return &filetype =~# 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 function! LightlineFilename()
-  return ('' !=? LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ (&filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-        \  &filetype ==# 'unite' ? unite#get_status_string() :
-        \  &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-        \ '' !=# expand('%:t') ? expand('%:t') : '[No Name]') .
+  let l:fname = expand('%')
+  return  l:fname ==# '__Tagbar__' ? g:lightline.fname :
+        \ l:fname =~# '__Gundo\|NERD_tree' ? '' :
+        \ ('' !=# LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' !=# l:fname ? l:fname : '[No Name]') .
         \ ('' !=# LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 function! LightlineReadonly()
