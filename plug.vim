@@ -63,6 +63,9 @@ Plug 'matze/vim-move'
 " }
 
 " General -- Helpful generic tools with no dependencies {
+" project configuration via 'projections'
+Plug 'tpope/vim-projectionist'
+
 " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
 Plug 'tpope/vim-sleuth'
 
