@@ -1,4 +1,4 @@
-# Luan's Neovim Distribution (alpha)
+# Luan's Neovim distribution (alpha)
 
 This Vim distribution is a re-write of
 [luan/vimfiles](https://github.com/luan/vimfiles) with the goal of break free
