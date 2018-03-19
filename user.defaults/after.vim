@@ -5,5 +5,7 @@
 " let g:gitgutter_signs = 0 " No git gutter signs
 " let g:SignatureEnabledAtStartup = 0 " Do not show marks
 " nmap s :MultipleCursorsFind
+" colorscheme hybrid
+" let g:lightline['colorscheme'] = 'wombat'
 " ...
 
