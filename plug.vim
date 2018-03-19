@@ -269,6 +269,9 @@ Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-fold'
 " }
 
+" Load user plugins
+runtime! user/plug.vim
+
 call plug#end()
 
 if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
