@@ -98,6 +98,9 @@ Plug 'junegunn/goyo.vim'
 
 " All the world's indeed a stage and we are merely players
 Plug 'junegunn/limelight.vim'
+
+" Enhancing in-buffer search experience
+Plug 'junegunn/vim-slash'
 " }
 
 " Git -- Tools for using git and github {
