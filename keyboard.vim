@@ -21,3 +21,10 @@ nnoremap <expr> <CR> empty(&buftype) ? ':w<CR>' : '<CR>'
 
 " Close and delete buffer
 nnoremap <silent> <M-q> :Sayonara<cr>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(LiveEasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(LiveEasyAlign)
+
