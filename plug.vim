@@ -9,7 +9,7 @@ function! ConfigUpdated(info)
   echom 'Neovim config updated! Restart Neovim to ensure you are running all the latest.'
 endfunction
 " Plug can manage this config but we don't need it to load it
-Plug 'luan/nvim', { 'dir': '.', 'on': [], 'do': function('ConfigUpdated') }
+Plug 'luan/nvim', { 'as': 'distribution', 'dir': '.', 'on': [], 'do': function('ConfigUpdated') }
 
 " Color schemes {
 Plug 'flazz/vim-colorschemes'
