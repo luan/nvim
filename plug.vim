@@ -1,5 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Plug can manage this config but we don't need it to load it
+Plug 'luan/nvim', { 'dir': '.', 'on': [] }
+
 " Color schemes {
 Plug 'joshdick/onedark.vim'
 " }
