@@ -50,3 +50,26 @@ git clone https://github.com/luan/nvim ~/.config/
 ```
 
 Plugins will be automatically downloaded and setup as necessary.
+
+## Updating
+
+This distribution uses [vim-plug](https://github.com/junegunn/vim-plug) to
+manage plugins, it also uses vim-plug to manage itself. So you can run
+`:PlugUpdate` anytime to update all plugins and the distribution itself.
+Whenever updating, if anything has changed, it is recommended that you restart
+all instances of Neovim to reload plugins and configurations.
+
+## Customizing
+
+In the config directory there's a special folder that is git ignored, that is
+`$XDG_CONFIG_HOME/nvim/user`, it is created on first boot based on the
+`user.defaults` on in this repo. The three hooks are:
+
+* `user/before.vim`: Runs before everything, useful to set globals that change
+  plugin behavior
+* `user/plug.vim`: Runs during plugin setup, you can add your own choices of
+  plugins here. More on adding plugins
+  [here](https://github.com/junegunn/vim-plug)
+* `user/after.vim`: Runs at the end, useful to override and map your own key
+  bindings and configure your custom plugins. This is also where you'd change
+  the colorscheme
