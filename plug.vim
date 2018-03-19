@@ -60,6 +60,9 @@ Plug 'maxbrunsfeld/vim-emacs-bindings'
 
 " Plugin to move lines and selections up and down
 Plug 'matze/vim-move'
+
+" A Vim alignment plugin
+Plug 'junegunn/vim-easy-align'
 " }
 
 " General -- Helpful generic tools with no dependencies {
