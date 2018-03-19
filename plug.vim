@@ -124,6 +124,15 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Chiel92/vim-autoformat'
 " }}}
 
+" Navigation -- Fuzzy find, searching, etc {{{
+  let g:fzf_command_prefix = 'FZF'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+
+  " Helps you win at grep.
+  Plug 'mhinz/vim-grepper'
+" }}}
+
 call plug#end()
 
 augroup config#plug
