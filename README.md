@@ -73,3 +73,8 @@ In the config directory there's a special folder that is git ignored, that is
 * `user/after.vim`: Runs at the end, useful to override and map your own key
   bindings and configure your custom plugins. This is also where you'd change
   the colorscheme
+
+It is recommended that you track your user settings on a separate repo and
+symlink them in here, see [my dotfiles
+repo](https://github.com/luan/dotfiles/tree/master/nvim/.config/nvim/user) for
+an example.
