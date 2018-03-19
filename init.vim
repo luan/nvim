@@ -6,5 +6,6 @@ scriptencoding utf-8
 
 runtime! plug.vim
 runtime! include/*.vim
+runtime! lang/*.vim
 runtime! keyboard.vim
 runtime! colorscheme.vim
