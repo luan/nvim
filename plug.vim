@@ -7,6 +7,9 @@ endfunction
 Plug 'luan/nvim', { 'dir': '.', 'on': [], 'do': function('ConfigUpdated') }
 
 " Color schemes {
+Plug 'flazz/vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 " }
 
@@ -268,11 +271,7 @@ Plug 'kana/vim-textobj-fold'
 
 call plug#end()
 
-augroup config#plug
-  autocmd!
-  autocmd VimEnter *
-        \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-        \|   PlugInstall --sync | q
-        \| endif
-augroup END
+if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  PlugInstall --sync | q
+endif
 
