@@ -142,6 +142,86 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'mhinz/vim-grepper'
 " }
 
+" Language configuration {
+" Testing {
+Plug 'janko-m/vim-test'
+" }
+
+" C {
+Plug 'arakashic/chromatica.nvim'
+" }
+
+" Ruby {
+Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'rake'] }
+Plug 'keith/rspec.vim'
+Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rake'] }
+Plug 'tpope/vim-cucumber', { 'for': ['cucumber'] }
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'rake'] }
+Plug 'tpope/vim-rake', { 'for': ['ruby', 'rake'] }
+" }
+
+" Clojure {
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-salve', { 'for': 'clojure' }
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+" }
+
+" Go {
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" }
+
+" Markdown {
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'shime/vim-livedown', { 'for': 'markdown' }
+" }
+
+" JavaScript {
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+" }
+
+" TypeScript {
+Plug 'leafgarland/typescript-vim'
+" }
+
+" Vue {
+Plug 'posva/vim-vue', { 'for': 'vue' }
+" }
+
+" CSS / HTML {
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gregsexton/MatchTag'
+Plug 'iloginow/vim-stylus'
+" }
+
+" Elm {
+Plug 'elmcast/elm-vim', { 'for': 'elm' }
+" }
+
+" Rust {
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" }
+
+" Misc {
+Plug 'PProvost/vim-ps1'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'chr4/nginx.vim'
+Plug 'dag/vim-fish'
+Plug 'hashivim/vim-terraform'
+Plug 'keith/tmux.vim'
+Plug 'kurayama/systemd-vim-syntax'
+Plug 'peterhoeg/vim-qml'
+Plug 'uarun/vim-protobuf'
+" }
+" }
+
 " Text objects {
   " allows you to configure % to match more than just single characters
   Plug 'vim-scripts/matchit.zip'
