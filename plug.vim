@@ -133,6 +133,35 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'mhinz/vim-grepper'
 " }}}
 
+" Text objects {{{
+  " allows you to configure % to match more than just single characters
+  Plug 'vim-scripts/matchit.zip'
+
+  " Create your own text objects
+  Plug 'kana/vim-textobj-user'
+
+  " Underscore text-object for Vim
+  Plug 'lucapette/vim-textobj-underscore'
+
+  " custom text object for selecting ruby blocks
+  Plug 'nelstrom/vim-textobj-rubyblock'
+
+  " A convenient text object for last pasted text
+  Plug 'saaguero/vim-textobj-pastedtext'
+
+  "Text objects for functions
+  Plug 'kana/vim-textobj-function'
+
+  " A Vim text object for ERB blocks.
+  Plug 'whatyouhide/vim-textobj-erb'
+
+  " Vim plugin that provides additional text objects
+  Plug 'wellle/targets.vim'
+
+  " Text objects for foldings
+  Plug 'kana/vim-textobj-fold'
+" }}}
+
 call plug#end()
 
 augroup config#plug
