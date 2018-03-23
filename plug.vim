@@ -33,6 +33,9 @@ Plug 'kshenoy/vim-signature'
 
 " Lightweight status line
 Plug 'itchyny/lightline.vim'
+
+" Visual guide for keybindings
+Plug 'hecal3/vim-leader-guide'
 " }
 
 " Editing -- Text manipulation helpers {
@@ -115,6 +118,15 @@ Plug 'junegunn/goyo.vim'
 
 " All the world's indeed a stage and we are merely players
 Plug 'junegunn/limelight.vim'
+
+" interact with tmux
+Plug 'benmills/vimux'
+
+" asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
+
+" Wrapper of some vim/neovim's :terminal functions
+Plug 'kassio/neoterm'
 " }
 
 " Git -- Tools for using git and github {
