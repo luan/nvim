@@ -31,3 +31,40 @@ xmap ga <Plug>(LiveEasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(LiveEasyAlign)
 
+" Terminal
+tnoremap <Esc> <C-\><C-n>
+
+" Leader is <Space>
+let g:mapleader=' '
+let g:maplocalleader = ','
+
+let g:lmap =  {}
+
+" Disable plugin mappings
+let g:swoopUseDefaultKeyMap = 0
+let g:gitgutter_map_keys = 0
+
+nnoremap <Plug>(open-vimrc) :e $MYVIMRC<CR>
+nmap <leader>vi <Plug>(open-vimrc)
+
+function! s:leaderGuideDisplay()
+	let g:leaderGuide#displayname =
+				\ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
+	let g:leaderGuide#displayname =
+				\ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
+	let g:leaderGuide#displayname =
+				\ substitute(g:leaderGuide#displayname, '^:', '', '')
+endfunction
+let g:leaderGuide_displayfunc = [function('s:leaderGuideDisplay')]
+
+call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+
+let g:lmap.t = { 'name': 'Testing' }
+nnoremap <leader>tt :TestNearest<CR>
+nnoremap <leader>t. :TestLast<CR>
+nnoremap <leader>tf :TestFile<CR>
+nnoremap <leader>ts :TestSuite<CR>
+nnoremap <leader>tg :TestVisit<CR>
+

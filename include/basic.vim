@@ -1,7 +1,5 @@
 scriptencoding utf-8
 
-set shell=/bin/bash
-
 " General
 set autoread              " reload changes from disk
 set autowriteall          " Writes on make/shell commands
@@ -18,6 +16,8 @@ set showmatch             " Show matching brackets/parentthesis
 set splitright            " Vertical splits to the right
 set termguicolors         " Enable true colors in terminal
 set updatetime=100        " Update swap file and CursorHold delay
+set timeoutlen=700        " Timeout for keybindings
+set ttimeoutlen=0         " Timeout for completing commands
 
 set ignorecase            " Case insensitive search
 set smartcase             " ... but case sensitive when uc present
