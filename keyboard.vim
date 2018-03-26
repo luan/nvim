@@ -44,9 +44,6 @@ let g:lmap =  {}
 let g:swoopUseDefaultKeyMap = 0
 let g:gitgutter_map_keys = 0
 
-nnoremap <Plug>(open-vimrc) :e $MYVIMRC<CR>
-nmap <leader>vi <Plug>(open-vimrc)
-
 function! s:leaderGuideDisplay()
 	let g:leaderGuide#displayname =
 				\ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
