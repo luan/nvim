@@ -55,6 +55,9 @@ call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
+let g:lmap[' '] = { 'name': 'General' }
+nnoremap <leader><leader>c :FZFCommands<CR>
+
 let g:lmap.t = { 'name': 'Testing' }
 nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>t. :TestLast<CR>
@@ -62,4 +65,21 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>ts :TestSuite<CR>
 nnoremap <leader>tg :TestVisit<CR>
 
+let g:lmap.f = { 'name': 'Files' }
+nnoremap <leader>ff :FZFFiles<CR>
+nnoremap <leader>fo :FZFBuffers<CR>
+nnoremap <leader>fm :FZFHistory<CR>
+nnoremap <Plug>(open-alternate) :e#<CR>
+nmap     <leader>f. <Plug>(open-alternate)
+
 let g:lmap.h = { 'name': 'Hunks' }
+let g:lmap.g = { 'name': 'Git' }
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :FZFCommits<CR>
+nnoremap <leader>gk :FZFBCommits<CR>
+nnoremap <leader>gb :Gblame<CR>
+
+nnoremap <leader>sg :Grepper<CR>
+nnoremap <leader>sf :FZFRg 
+nnoremap <leader>st :FZFTags<CR>
+
