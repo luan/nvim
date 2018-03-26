@@ -31,9 +31,6 @@ xmap ga <Plug>(LiveEasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(LiveEasyAlign)
 
-" Terminal
-tnoremap <Esc> <C-\><C-n>
-
 " Leader is <Space>
 let g:mapleader=' '
 let g:maplocalleader = ','
