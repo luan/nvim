@@ -39,7 +39,7 @@ let g:lmap =  {}
 
 " Disable plugin mappings
 let g:swoopUseDefaultKeyMap = 0
-let g:gitgutter_map_keys = 0
+let g:gitgutter_map_keys = 1
 
 function! s:leaderGuideDisplay()
 	let g:leaderGuide#displayname =
@@ -62,3 +62,4 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>ts :TestSuite<CR>
 nnoremap <leader>tg :TestVisit<CR>
 
+let g:lmap.h = { 'name': 'Hunks' }
