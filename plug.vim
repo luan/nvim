@@ -80,6 +80,9 @@ Plug 'matze/vim-move'
 
 " A Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
+
+" use CTRL-A/CTRL-X to increment dates, times, and more
+Plug 'tpope/vim-speeddating'
 " }
 
 " General -- Helpful generic tools with no dependencies {
@@ -127,6 +130,9 @@ Plug 'tpope/vim-dispatch'
 
 " Wrapper of some vim/neovim's :terminal functions
 Plug 'kassio/neoterm'
+
+" Tame the quickfix window
+Plug 'romainl/vim-qf'
 " }
 
 " Git -- Tools for using git and github {
@@ -184,7 +190,6 @@ Plug 'arakashic/chromatica.nvim'
 " }
 
 " Ruby {
-Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby', 'rake'] }
 Plug 'keith/rspec.vim'
 Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rake'] }
 Plug 'tpope/vim-cucumber', { 'for': ['cucumber'] }
