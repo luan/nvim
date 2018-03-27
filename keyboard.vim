@@ -79,7 +79,9 @@ nnoremap <leader>gc :FZFCommits<CR>
 nnoremap <leader>gk :FZFBCommits<CR>
 nnoremap <leader>gb :Gblame<CR>
 
+let g:lmap.s = { 'name': 'Search' }
 nnoremap <leader>sg :Grepper<CR>
 nnoremap <leader>sf :FZFRg 
 nnoremap <leader>st :FZFTags<CR>
+nnoremap <leader>sl :FZFLines<CR>
 
