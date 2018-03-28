@@ -178,6 +178,9 @@ Plug 'junegunn/fzf.vim'
 
 " Helps you win at grep.
 Plug 'mhinz/vim-grepper'
+
+" - for netrw current directory
+Plug 'tpope/vim-vinegar'
 " }
 
 " Language configuration {
