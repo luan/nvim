@@ -59,29 +59,31 @@ let g:lmap[' '] = { 'name': 'General' }
 nnoremap <leader><leader>c :FZFCommands<CR>
 
 let g:lmap.t = { 'name': 'Testing' }
-nnoremap <leader>tt :TestNearest<CR>
-nnoremap <leader>t. :TestLast<CR>
-nnoremap <leader>tf :TestFile<CR>
-nnoremap <leader>ts :TestSuite<CR>
-nnoremap <leader>tg :TestVisit<CR>
+nnoremap <silent> <leader>tt :TestNearest<CR>
+nnoremap <silent> <leader>t. :TestLast<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tg :TestVisit<CR>
 
 let g:lmap.f = { 'name': 'Files' }
-nnoremap <leader>ff :FZFFiles<CR>
-nnoremap <leader>fo :FZFBuffers<CR>
-nnoremap <leader>fm :FZFHistory<CR>
-nnoremap <Plug>(open-alternate) :e#<CR>
-nmap     <leader>f. <Plug>(open-alternate)
+nnoremap <silent> <leader>ff :FZFFiles<CR>
+nnoremap <silent> <leader>fo :FZFBuffers<CR>
+nnoremap <silent> <leader>fm :FZFHistory<CR>
+nnoremap <silent> <Plug>(open-alternate) :e#<CR>
+nmap     <silent> <leader>f. <Plug>(open-alternate)
 
 let g:lmap.h = { 'name': 'Hunks' }
 let g:lmap.g = { 'name': 'Git' }
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :FZFCommits<CR>
-nnoremap <leader>gk :FZFBCommits<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gc :FZFCommits<CR>
+nnoremap <silent> <leader>gk :FZFBCommits<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
 
 let g:lmap.s = { 'name': 'Search' }
-nnoremap <leader>sg :Grepper<CR>
+nnoremap <silent> <leader>sg :Grepper<CR>
 nnoremap <leader>sf :FZFRg 
-nnoremap <leader>st :FZFTags<CR>
-nnoremap <leader>sl :FZFLines<CR>
+nnoremap <silent> <leader>st :FZFTags<CR>
+nnoremap <silent> <leader>sl :FZFLines<CR>
+
+nnoremap <silent> <c-p> :FZFFiles<CR>
 
