@@ -9,8 +9,8 @@ inoremap <silent> <M-n> <ESC>:call AutoPairsJump()<CR>a
 inoremap <silent> <M-e> <C-R>=AutoPairsFastWrap()<CR>
 
 " ALE
-nmap <silent> <M-n> <Plug>(ale_previous_wrap)
-nmap <silent> <M-p> <Plug>(ale_next_wrap)
+nmap <silent> <M-p> <Plug>(ale_previous_wrap)
+nmap <silent> <M-n> <Plug>(ale_next_wrap)
 
 " Eanble completion with tab/shift-tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
