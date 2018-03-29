@@ -22,7 +22,7 @@ Plug 'joshdick/onedark.vim'
 " Fancy start page with recent files, etc
 Plug 'mhinz/vim-startify'
 
-" Dim inactive window to make it more ovbious where the focus is
+" Dim inactive window to make it more obvious where the focus is
 Plug 'blueyed/vim-diminactive'
 
 " Show trailing whitespace in red
