@@ -8,10 +8,10 @@ if !isdirectory(expand('<sfile>:h') . '/user')
   silent! execute '!cp -a ' . expand('<sfile>:h') . '/user.defaults ' . expand('<sfile>:h') . '/user'
 endif
 
-runtime! user/before.vim
-runtime! plug.vim
+runtime user/before.vim
+runtime plug.vim
 runtime! include/*.vim
 runtime! lang/*.vim
-runtime! keyboard.vim
-runtime! user/after.vim
-runtime! colorscheme.vim
+runtime keyboard.vim
+runtime user/after.vim
+runtime colorscheme.vim
