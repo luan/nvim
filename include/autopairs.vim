@@ -2,7 +2,12 @@ let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsMoveCharacter = ''
+let g:AutoPairsMapCR = 0
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 
-inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
-inoremap <buffer> <silent> <M-p> <ESC>:call AutoPairsJump()<CR>a
+augroup config#autopairs
+  autocmd!
+  autocmd BufEnter *
+        \ inoremap <script> <buffer> <silent> <CR> <CR><C-R>=AutoPairsReturn()<CR>
+augroup END
+

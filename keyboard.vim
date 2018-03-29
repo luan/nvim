@@ -3,6 +3,11 @@ let g:UltiSnipsExpandTrigger='<c-j>'
 let g:UltiSnipsJumpForwardTrigger='<c-f>'
 let g:UltiSnipsJumpBackwardTrigger='<c-b>'
 
+" AutoPairs
+inoremap <silent> <expr> <M-p> AutoPairsToggle()
+inoremap <silent> <M-n> <ESC>:call AutoPairsJump()<CR>a
+inoremap <silent> <M-e> <C-R>=AutoPairsFastWrap()<CR>
+
 " ALE
 nmap <silent> <M-n> <Plug>(ale_previous_wrap)
 nmap <silent> <M-p> <Plug>(ale_next_wrap)

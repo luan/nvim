@@ -83,6 +83,9 @@ Plug 'junegunn/vim-easy-align'
 
 " use CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'tpope/vim-speeddating'
+
+" Easy text exchange operator for Vim
+Plug 'tommcdo/vim-exchange'
 " }
 
 " General -- Helpful generic tools with no dependencies {
