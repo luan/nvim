@@ -49,7 +49,7 @@ Plug 'pelodelfuego/vim-swoop'
 Plug 'terryma/vim-expand-region'
 
 " Automatically close pairs such as () or []
-Plug 'jiangmiao/auto-pairs'
+Plug 'dropofwill/auto-pairs'
 
 " Automatically add 'end' when opening a block
 Plug 'tpope/vim-endwise'
