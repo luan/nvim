@@ -40,6 +40,9 @@ nmap ga <Plug>(LiveEasyAlign)
 let g:mapleader=' '
 let g:maplocalleader = ','
 
+" Copy to system clipboard
+vnoremap Y "+y
+
 let g:lmap =  {}
 
 " Disable plugin mappings
