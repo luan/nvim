@@ -9,7 +9,7 @@ let g:AutoPairsOnlyBeforeClose=1
 let g:AutoPairsBalanceImmediately=1
 let g:AutoPairsNeverJumpLines=1
 
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 
 augroup config#autopairs
   autocmd!
