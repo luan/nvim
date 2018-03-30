@@ -47,15 +47,6 @@ the following snippet:
 let g:startify_disable_at_vimenter = 0
 ```
 
-### [`blueyed/vim-diminactive`](https://github.com/blueyed/vim-diminactive)
-
-Dim inactive window to make it more obvious where the focus is. This can be
-disabled with the following snippet:
-
-```vim
-autocmd VimEnter * :DimInactiveOff
-```
-
 ### [`bronson/vim-trailing-whitespace`](https://github.com/bronson/vim-trailing-whitespace)
 
 Show trailing whitespace in red. Can only be disabled by preventing loading of
