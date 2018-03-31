@@ -53,6 +53,14 @@ Plugins will be automatically downloaded and setup as necessary.
 
 ## Updating
 
+The distribution auto-updates daily (or after a reboot of the system), if you
+have trouble with auto-updating or want to disable it for other reason add the
+following to you `user/before.vim`:
+
+```
+let g:skip_autoupdate = 1
+```
+
 This distribution uses [vim-plug](https://github.com/junegunn/vim-plug) to
 manage plugins, it also uses vim-plug to manage itself. So you can run
 `:PlugUpdate` anytime to update all plugins and the distribution itself.
