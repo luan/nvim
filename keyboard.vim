@@ -6,7 +6,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-b>'
 " AutoPairs
 inoremap <silent> <expr> <M-p> AutoPairsToggle()
 inoremap <silent> <M-n> <ESC>:call AutoPairsJump()<CR>a
-inoremap <silent> <M-e> <C-R>=AutoPairsFastWrap()<CR>
 
 " ALE
 nmap <silent> <M-p> <Plug>(ale_previous_wrap)
