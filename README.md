@@ -2,7 +2,7 @@
 
 This Vim distribution is a re-write of
 [luan/vimfiles](https://github.com/luan/vimfiles) with the goal of break free
-from the original [vim](https://www.vim.org) focus on supporting
+from the original [vim](https://www.vim.org) and focus on supporting
 [Neovim](https://neovim.io).  Neovim is a faster moving project that is much
 more approachable for contributions.
 
