@@ -102,3 +102,105 @@ with:
 ```vim
 unmap <leader>
 ```
+
+## Editing - Text manipulation
+
+Plug-ins providing commands or helpers that directly impact how you edit text
+passively or actively.
+
+### [`tpope/vim-commentary`](https://github.com/tpope/vim-commentary)
+
+(Un-)comment code. Default binding is the operator `gc`, allowing you to do
+`gc<motion>`, see documentation for more details. We have a local binding at
+`<c-_>` (or Control-/) to toggle comments on the current line or
+visual selection.
+
+### [`terryma/vim-multiple-cursors`](https://github.com/terryma/vim-multiple-cursors)
+
+Provides multiple cursor functionality like the one in Atom or Sublime. Activate
+with `<c-n>` in either normal or visual mode for current word or selection
+respectively. Then:
+
+* `<c-n>`: find next occurrence and create cursor
+* `<c-p>`: go back to previous cursor (removing current)
+* `<c-x>`: skip current occurrence. Like `<c-n>` but without creating a cursor
+  for the current.
+
+Or use `:MultipleCursorsFind` to create cursors from a search.
+
+### [`pelodelfuego/vim-swoop`](https://github.com/pelodelfuego/vim-swoop)
+
+Visual context when bulk editing buffers. Start with `:Swoop` for current buffer
+only or `:Swoop!` for all open buffers. First line in the newly opened window is
+a search pattern (that can also be passed as argument to the `:Swoop[!]`
+commands). Editing on the swoop buffer will propagate to the real files
+automatically.
+
+### [`terryma/vim-expand-region`](https://github.com/terryma/vim-expand-region)
+
+Select regions incrementally. Simply hit `+` to expand your selection or `_` to
+reduce it.
+
+### [`dropofwill/auto-pairs`](https://github.com/dropofwill/auto-pairs)
+
+Automatically close pairs such as () or [] on insert mode. While on insert mode:
+
+* `<a-p>`: toggles auto-pairs no or off
+* `<a-n>`: jumps out of the current pair
+
+You can completely disable the plug-in with the following snipped on your
+`before.vim`:
+
+```vim
+let g:AutoPairsLoaded = 1
+```
+
+### [`tpope/vim-endwise`](https://github.com/tpope/vim-endwise)
+
+Automatically add 'end' when opening a block.
+
+### [`machakann/vim-swap`](https://github.com/machakann/vim-swap)
+
+Move parameters around (delimited by a separator such as ,). `gs` To enter
+"swap-mode" or `g>`/`g<` to move parameters around in normal mode.
+
+### [`AndrewRadev/splitjoin.vim`](https://github.com/AndrewRadev/splitjoin.vim)
+
+Simplifies the transition between multi-line and single-line code. `gS` splits
+and `gJ` joins.
+
+### [`sk1418/Join`](https://github.com/sk1418/Join)
+
+`:Join` command. Allows you to join lines with a separator, for example `:J ',
+'` will join lines with a `, ` in between them.
+
+### [`tpope/vim-surround`](https://github.com/tpope/vim-surround)
+
+Quoting/parenthesizing made simple; e.g. ysiw) to wrap word in parens.
+
+### [`tpope/vim-repeat`](https://github.com/tpope/vim-repeat)
+
+Enable repeating supported plug-in maps with [`.`](https://github.com/.)
+
+### [`maxbrunsfeld/vim-emacs-bindings`](https://github.com/maxbrunsfeld/vim-emacs-bindings)
+
+Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
+
+### [`matze/vim-move`](https://github.com/matze/vim-move)
+
+Plugin to move lines and selections up and down. `<a-k>`/`<a-j>`.
+
+### [`junegunn/vim-easy-align`](https://github.com/junegunn/vim-easy-align)
+
+A Vim alignment plug-in. See readme for examples. `ga` gets you in "align mode".
+
+### [`tpope/vim-speeddating`](https://github.com/tpope/vim-speeddating)
+
+Use CTRL-A/CTRL-X to increment dates, times, and more.
+
+### [`tommcdo/vim-exchange`](https://github.com/tommcdo/vim-exchange)
+
+Easy text exchange operator for Vim. `cx<motion>` in normal mode or `X` in
+visual mode. Running again after making a selection (which will be visually
+highlighted) will swap the two regions.
+
