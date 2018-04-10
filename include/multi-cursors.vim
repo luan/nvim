@@ -13,3 +13,5 @@ augroup config#multi-cursors
    \ | highlight link multiple_cursors_visual Visual
 augroup END
 
+let g:multi_cursor_select_all_word_key = '<A-m>'
+let g:multi_cursor_select_all_key      = 'g<A-m>'
