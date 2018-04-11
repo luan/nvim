@@ -6,6 +6,41 @@ the plug-in's github page or by accessing its help (usually at `:h
 <plugin-name>`). Most user configuration should be put in your `user/after.vim`
 unless otherwise stated on the docs for the plug-in or here.
 
+<!--ts-->
+   * [Plug-ins](#plug-ins)
+      * [Color schemes](#color-schemes)
+         * [flazz/vim-colorschemes](#flazzvim-colorschemes)
+         * [rafi/awesome-vim-colorschemes](#rafiawesome-vim-colorschemes)
+         * [chriskempson/base16-vim](#chriskempsonbase16-vim)
+         * [joshdick/onedark.vim](#joshdickonedarkvim)
+      * [UI - User interface additions](#ui---user-interface-additions)
+         * [mhinz/vim-startify](#mhinzvim-startify)
+         * [bronson/vim-trailing-whitespace](#bronsonvim-trailing-whitespace)
+         * [kshenoy/vim-signature](#kshenoyvim-signature)
+         * [itchyny/lightline.vim](#itchynylightlinevim)
+         * [hecal3/vim-leader-guide](#hecal3vim-leader-guide)
+      * [Editing - Text manipulation](#editing---text-manipulation)
+         * [tpope/vim-commentary](#tpopevim-commentary)
+         * [terryma/vim-multiple-cursors](#terrymavim-multiple-cursors)
+         * [pelodelfuego/vim-swoop](#pelodelfuegovim-swoop)
+         * [terryma/vim-expand-region](#terrymavim-expand-region)
+         * [dropofwill/auto-pairs](#dropofwillauto-pairs)
+         * [tpope/vim-endwise](#tpopevim-endwise)
+         * [machakann/vim-swap](#machakannvim-swap)
+         * [AndrewRadev/splitjoin.vim](#andrewradevsplitjoinvim)
+         * [sk1418/Join](#sk1418join)
+         * [tpope/vim-surround](#tpopevim-surround)
+         * [tpope/vim-repeat](#tpopevim-repeat)
+         * [maxbrunsfeld/vim-emacs-bindings](#maxbrunsfeldvim-emacs-bindings)
+         * [matze/vim-move](#matzevim-move)
+         * [junegunn/vim-easy-align](#junegunnvim-easy-align)
+         * [tpope/vim-speeddating](#tpopevim-speeddating)
+         * [tommcdo/vim-exchange](#tommcdovim-exchange)
+
+<!-- Added by: luan, at: 2018-04-11T07:28-07:00 -->
+
+<!--te-->
+
 ## Color schemes
 
 These merely add color schemes (a.k.a. themes) for us to chose from. We'll have
