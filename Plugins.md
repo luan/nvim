@@ -6,6 +6,9 @@ the plug-in's github page or by accessing its help (usually at `:h
 <plugin-name>`). Most user configuration should be put in your `user/after.vim`
 unless otherwise stated on the docs for the plug-in or here.
 
+Table of Contents
+=================
+
 <!--ts-->
    * [Plug-ins](#plug-ins)
       * [Color schemes](#color-schemes)
