@@ -76,7 +76,7 @@ let g:lmap.f = { 'name': 'Files' }
 nnoremap <silent> <leader>ff :FZFFiles<CR>
 nnoremap <silent> <leader>fo :FZFBuffers<CR>
 nnoremap <silent> <leader>fm :FZFHistory<CR>
-nnoremap <silent> <Plug>(open-alternate) :e#<CR>
+nnoremap <silent> <Plug>(open-alternate) <c-^>
 nmap     <silent> <leader>f. <Plug>(open-alternate)
 
 let g:lmap.h = { 'name': 'Hunks' }
