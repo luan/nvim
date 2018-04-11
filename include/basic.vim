@@ -19,6 +19,7 @@ set updatetime=100        " Update swap file and CursorHold delay
 set timeoutlen=700        " Timeout for keybindings
 set ttimeoutlen=0         " Timeout for completing commands
 
+
 set ignorecase            " Case insensitive search
 set smartcase             " ... but case sensitive when uc present
 
@@ -63,6 +64,9 @@ set foldmarker={,}
 set foldlevel=0
 set foldmethod=marker
 set foldlevelstart=99
+
+" netrw
+let g:netrw_altfile = 1   " <Ctrl-^> should go to the last file, not to netrw.
 
 " Mimic behavior from D, C
 nnoremap Y y$
