@@ -47,7 +47,7 @@ the following snippet:
 let g:startify_disable_at_vimenter = 0
 ```
 
-![vim-startify](https://raw.githubusercontent.com/mhinz/vim-startify/master/images/startify-logo.png)
+![vim-startify](https://github.com/mhinz/vim-startify/blob/master/images/startify-menu.png)
 
 ### [`bronson/vim-trailing-whitespace`](https://github.com/bronson/vim-trailing-whitespace)
 
