@@ -47,6 +47,8 @@ the following snippet:
 let g:startify_disable_at_vimenter = 0
 ```
 
+![vim-startify](https://raw.githubusercontent.com/mhinz/vim-startify/master/images/startify-logo.png)
+
 ### [`bronson/vim-trailing-whitespace`](https://github.com/bronson/vim-trailing-whitespace)
 
 Show trailing whitespace in red. Can only be disabled by preventing loading of
@@ -63,6 +65,8 @@ Shows marks on the gutter. Disable with:
 ```vim
 let g:SignatureEnabledAtStartup = 0
 ```
+
+![vim-signature](https://github.com/kshenoy/vim-signature/raw/images/screens/vim-signature_mark_jumps.gif?raw=true)
 
 ### [`itchyny/lightline.vim`](https://github.com/itchyny/lightline.vim)
 
@@ -93,6 +97,8 @@ let g:lightline.enable = {
 
 More advanced configuration is documented in `:h lightline`
 
+![lightline](https://raw.githubusercontent.com/wiki/itchyny/lightline.vim/image/powerline.png)
+
 ### [`hecal3/vim-leader-guide`](https://github.com/hecal3/vim-leader-guide)
 
 Shows a guide to key mappings. This is meant to make our custom key mappings
@@ -102,6 +108,8 @@ with:
 ```vim
 unmap <leader>
 ```
+
+![vim-leader-guide](https://cloud.githubusercontent.com/assets/11238697/14471215/bbc54a40-00ed-11e6-9eb2-8b6fb247589f.png)
 
 ## Editing - Text manipulation
 
