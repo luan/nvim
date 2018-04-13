@@ -2,7 +2,6 @@ function! s:goyo_enter()
   silent !i3-msg fullscreen || true
   silent !tmux set status off || true
   silent !tmux list-panes -F \#F | grep -q Z || tmux resize-pane -Z || true
-  set noshowmode
   set noshowcmd
   set scrolloff=999
   set nolazyredraw
@@ -14,7 +13,6 @@ function! s:goyo_leave()
   silent !i3-msg fullscreen || true
   silent !tmux set status on || true
   silent !tmux list-panes -F \#F | grep -q Z && tmux resize-pane -Z || true
-  set showmode
   set showcmd
   set scrolloff=5
   execute 'GitGutterEnable'
