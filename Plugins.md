@@ -1,3 +1,5 @@
+<!-- vim: set foldmethod=marker -->
+
 # Plug-ins
 
 This lists, justifies and briefly documents each plug-in included in this
@@ -44,7 +46,7 @@ Table of Contents
 
 <!--te-->
 
-## Color schemes
+## Color schemes<!--{-->
 
 These merely add color schemes (a.k.a. themes) for us to chose from. We'll have
 a default configured on `colorscheme.vim` but users can easily swap them on
@@ -68,8 +70,9 @@ A great collection of schemes ported as 16 color palettes for great portability.
 
 Atom's text editor color scheme ported to vim (currently the default scheme of
 the distribution).
+<!--}-->
 
-## UI - User interface additions
+## UI - User interface additions<!--{-->
 
 Plug-ins that add UI elements, these should require no to little interaction to
 activate and are ideally disable-able.
@@ -148,8 +151,9 @@ unmap <leader>
 ```
 
 ![vim-leader-guide](https://cloud.githubusercontent.com/assets/11238697/14471215/bbc54a40-00ed-11e6-9eb2-8b6fb247589f.png)
+<!--}-->
 
-## Editing - Text manipulation
+## Editing - Text manipulation<!--{-->
 
 Plug-ins providing commands or helpers that directly impact how you edit text
 passively or actively.
@@ -291,4 +295,96 @@ Use CTRL-A/CTRL-X to increment dates, times, and more.
 Easy text exchange operator for Vim. `cx<motion>` in normal mode or `X` in
 visual mode. Running again after making a selection (which will be visually
 highlighted) will swap the two regions.
+<!--}-->
 
+## General -- Helpful generic tools with no dependencies<!--{-->
+
+### [`tpope/vim-projectionist`](https://github.com/tpope/vim-projectionist)
+
+Project configuration via 'projections'. 
+
+### [`tpope/vim-sleuth`](https://github.com/tpope/vim-sleuth)
+
+Automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the
+current file.
+
+### [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)
+
+Easily search for, substitute, and abbreviate multiple variants of a word.
+`:Subvert`, `:Abolish` and coercion.
+
+`:Subert`: case-aware search/replace
+
+This will replace `blog` with `post` or `Blog` with `Post`:
+```
+:Subvert/blog{,s}/post{,s}/g
+```
+
+Coercion: change casing of text, from the docs:
+
+> Want to turn `fooBar` into `foo_bar`?  Press `crs` (coerce to snake\_case).
+> MixedCase (`crm`), camelCase (`crc`), snake\_case (`crs`), UPPER\_CASE
+> (`cru`), dash-case (`cr-`), dot.case (`cr.`), space case (`cr<space>`), and
+> Title Case (`crt`) are all just 3 keystrokes away.  These commands support
+> [repeat.vim](https://github.com/tpope/vim-repeat).
+
+### [`tpope/vim-unimpaired`](https://github.com/tpope/vim-unimpaired)
+
+Pairs of handy bracket mappings; e.g. [<Space> and ]<Space> add newlines before
+and after the cursor line. See docs for more commands or `:help unimpaired`
+
+### [`tpope/vim-eunuch`](https://github.com/tpope/vim-eunuch)
+
+Vim sugar for the UNIX shell commands that need it the most; e.g. `:Find`, `:Wall`
+
+### [`kopischke/vim-stay`](https://github.com/kopischke/vim-stay)
+
+Make Vim persist editing state without fuss.
+
+### [`kopischke/vim-fetch`](https://github.com/kopischke/vim-fetch)
+
+Make Vim handle line and column numbers in file names with a minimum of fuss.
+
+### [`mbbill/undotree`](https://github.com/mbbill/undotree)
+
+The ultimate undo history visualizer for VIM. Activate with `:UndotreeToggle`
+
+### [`Konfekt/FastFold`](https://github.com/Konfekt/FastFold)
+
+Speed up Vim by updating folds only when called-for.
+
+### [`mhinz/vim-sayonara`](https://github.com/mhinz/vim-sayonara)
+
+Sane buffer/window deletion. Kill a buffer with `<M-q>`.
+
+### [`junegunn/goyo.vim`](https://github.com/junegunn/goyo.vim)
+
+Distraction-free writing in Vim. Activate with `:Goyo`.
+
+### [`junegunn/limelight.vim`](https://github.com/junegunn/limelight.vim)
+
+All the world's indeed a stage and we are merely players.
+
+### [`benmills/vimux`](https://github.com/benmills/vimux)
+
+Interact with tmux. Used by vim-test or usable on its own. See docs for details
+or `:help vimux`.
+
+### [`tpope/vim-dispatch`](https://github.com/tpope/vim-dispatch)
+
+Asynchronous build and test dispatcher. Used by vim-test or usable on its own.
+See docs for details or `:help dispatch`.
+
+### [`kassio/neoterm`](https://github.com/kassio/neoterm)
+
+Wrapper of some vim/neovim's :terminal functions.
+
+### [`romainl/vim-qf`](https://github.com/romainl/vim-qf)
+
+Tame the quickfix window. `:Reject` to filter out lines, `:Keep` to filter in
+and `:Restore` to revert to the original contents.
+
+### [`romainl/vim-cool`](https://github.com/romainl/vim-cool)
+
+A very simple plugin that makes hlsearch more useful.
+<!--}-->
