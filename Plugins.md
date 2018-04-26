@@ -13,6 +13,7 @@ Table of Contents
 
 <!--ts-->
    * [Plug-ins](#plug-ins)
+   * [Table of Contents](#table-of-contents)
       * [Color schemes](#color-schemes)
          * [flazz/vim-colorschemes](#flazzvim-colorschemes)
          * [rafi/awesome-vim-colorschemes](#rafiawesome-vim-colorschemes)
@@ -41,8 +42,26 @@ Table of Contents
          * [junegunn/vim-easy-align](#junegunnvim-easy-align)
          * [tpope/vim-speeddating](#tpopevim-speeddating)
          * [tommcdo/vim-exchange](#tommcdovim-exchange)
+      * [General -- Helpful generic tools with no dependencies](#general----helpful-generic-tools-with-no-dependencies)
+         * [tpope/vim-projectionist](#tpopevim-projectionist)
+         * [tpope/vim-sleuth](#tpopevim-sleuth)
+         * [tpope/vim-abolish](#tpopevim-abolish)
+         * [tpope/vim-unimpaired](#tpopevim-unimpaired)
+         * [tpope/vim-eunuch](#tpopevim-eunuch)
+         * [kopischke/vim-stay](#kopischkevim-stay)
+         * [kopischke/vim-fetch](#kopischkevim-fetch)
+         * [mbbill/undotree](#mbbillundotree)
+         * [Konfekt/FastFold](#konfektfastfold)
+         * [mhinz/vim-sayonara](#mhinzvim-sayonara)
+         * [junegunn/goyo.vim](#junegunngoyovim)
+         * [junegunn/limelight.vim](#junegunnlimelightvim)
+         * [benmills/vimux](#benmillsvimux)
+         * [tpope/vim-dispatch](#tpopevim-dispatch)
+         * [kassio/neoterm](#kassioneoterm)
+         * [romainl/vim-qf](#romainlvim-qf)
+         * [romainl/vim-cool](#romainlvim-cool)
 
-<!-- Added by: luan, at: 2018-04-11T07:28-07:00 -->
+<!-- Added by: luan, at: 2018-04-26T07:32-07:00 -->
 
 <!--te-->
 
