@@ -380,14 +380,20 @@ Sane buffer/window deletion. Kill a buffer with `<M-q>`.
 
 Distraction-free writing in Vim. Activate with `:Goyo`.
 
+![goyo.vim](https://camo.githubusercontent.com/58569256e607d63a1c6c930d64d80b8d93e8e8c1/68747470733a2f2f7261772e6769746875622e636f6d2f6a756e6567756e6e2f692f6d61737465722f676f796f2e706e67)
+
 ### [`junegunn/limelight.vim`](https://github.com/junegunn/limelight.vim)
 
 All the world's indeed a stage and we are merely players.
+
+![limelight.vim](https://camo.githubusercontent.com/fa4e9321be0b4a565ae84a66bae36e97545c101b/68747470733a2f2f7261772e6769746875622e636f6d2f6a756e6567756e6e2f692f6d61737465722f6c696d656c696768742e676966)
 
 ### [`benmills/vimux`](https://github.com/benmills/vimux)
 
 Interact with tmux. Used by vim-test or usable on its own. See docs for details
 or `:help vimux`.
+
+![vimux](https://camo.githubusercontent.com/5eee3e926a72a57ee65e1760350a7040b31c3b0a/68747470733a2f2f7777772e627261696e747265657061796d656e74732e636f6d2f626c6f672f636f6e74656e742f696d616765732f626c6f672f76696d7578332e706e67)
 
 ### [`tpope/vim-dispatch`](https://github.com/tpope/vim-dispatch)
 
@@ -402,6 +408,8 @@ Wrapper of some vim/neovim's :terminal functions.
 
 Tame the quickfix window. `:Reject` to filter out lines, `:Keep` to filter in
 and `:Restore` to revert to the original contents.
+
+![vim-qf](https://camo.githubusercontent.com/f141b57c21397b8245afd4cf4448c749f2e971a7/68747470733a2f2f726f6d61696e6c2e6769746875622e696f2f76696d2d71662f66696c7465722e676966)
 
 ### [`romainl/vim-cool`](https://github.com/romainl/vim-cool)
 
