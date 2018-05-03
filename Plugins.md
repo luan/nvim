@@ -364,9 +364,13 @@ Make Vim persist editing state without fuss.
 
 Make Vim handle line and column numbers in file names with a minimum of fuss.
 
+![vim-fetch](https://github.com/kopischke/vim-fetch/raw/master/img/vim-fetch.gif)
+
 ### [`mbbill/undotree`](https://github.com/mbbill/undotree)
 
 The ultimate undo history visualizer for VIM. Activate with `:UndotreeToggle`
+
+![undotree](https://camo.githubusercontent.com/56430626a5444ea2f0249d71f9288775277c7f5d/68747470733a2f2f73697465732e676f6f676c652e636f6d2f736974652f6d6262696c6c2f756e646f747265655f6e65772e706e67)
 
 ### [`Konfekt/FastFold`](https://github.com/Konfekt/FastFold)
 
@@ -403,6 +407,8 @@ See docs for details or `:help dispatch`.
 ### [`kassio/neoterm`](https://github.com/kassio/neoterm)
 
 Wrapper of some vim/neovim's :terminal functions.
+
+![neoterm](https://cloud.githubusercontent.com/assets/120483/8921869/fe459572-34b1-11e5-93c9-c3b6f3b44719.gif)
 
 ### [`romainl/vim-qf`](https://github.com/romainl/vim-qf)
 
