@@ -21,7 +21,10 @@ omap <c-_>  <Plug>Commentary
 nmap <c-_>  <Plug>CommentaryLine
 
 " Save with enter
-nnoremap <expr> <CR> empty(&buftype) ? ':w<CR>' : '<CR>'
+function! keyboard#should_save_on_enter()
+	return bufname('%') !=# 'swoopBuf' && empty(&buftype)
+endfunction
+nnoremap <expr> <CR> keyboard#should_save_on_enter() ? ':w<CR>' : '<CR>'
 
 " Escape to clear search
 nnoremap <silent> <esc> :noh<cr>
