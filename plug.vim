@@ -151,15 +151,15 @@ Plug 'tpope/vim-rhubarb'
 
 " Autocomplete / Snippets {
 " Fast, Extensible, Async Completion Framework for Neovim
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-clang' " C/C++
-Plug 'roxma/nvim-cm-racer' " Rust
-Plug 'roxma/nvim-cm-tern', {'do': 'npm install'} " Javascript
-Plug 'calebeby/ncm-css' " CSS
-Plug 'rhysd/github-complete.vim' "GitHub
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+
+Plug 'zchee/deoplete-clang' " C/C++
+Plug 'zchee/deoplete-go' " Golang
+Plug 'sebastianmarkow/deoplete-rust' " Rust
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " Javascript
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim'
-Plug 'roxma/ncm-rct-complete' " Ruby
 
 "UltiSnips - The ultimate snippet solution for Vim
 Plug 'SirVer/ultisnips'
