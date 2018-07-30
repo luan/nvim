@@ -59,7 +59,6 @@ Table of Contents
          * [tpope/vim-dispatch](#tpopevim-dispatch)
          * [kassio/neoterm](#kassioneoterm)
          * [romainl/vim-qf](#romainlvim-qf)
-         * [romainl/vim-cool](#romainlvim-cool)
 
 <!-- Added by: luan, at: 2018-04-26T07:32-07:00 -->
 
@@ -416,8 +415,4 @@ Tame the quickfix window. `:Reject` to filter out lines, `:Keep` to filter in
 and `:Restore` to revert to the original contents.
 
 ![vim-qf](https://camo.githubusercontent.com/f141b57c21397b8245afd4cf4448c749f2e971a7/68747470733a2f2f726f6d61696e6c2e6769746875622e696f2f76696d2d71662f66696c7465722e676966)
-
-### [`romainl/vim-cool`](https://github.com/romainl/vim-cool)
-
-A very simple plugin that makes hlsearch more useful.
 <!--}-->

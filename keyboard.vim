@@ -45,6 +45,9 @@ let g:maplocalleader = ','
 " Copy to system clipboard
 vnoremap Y "+y
 
+" Disable search highlight
+nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+
 let g:lmap =  {}
 
 " Disable plugin mappings
