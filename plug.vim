@@ -133,9 +133,6 @@ Plug 'kassio/neoterm'
 
 " Tame the quickfix window
 Plug 'romainl/vim-qf'
-
-" A very simple plugin that makes hlsearch more useful.
-Plug 'romainl/vim-cool'
 " }
 
 " Git -- Tools for using git and github {
