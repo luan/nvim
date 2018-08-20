@@ -1,8 +1,10 @@
 function! Multiple_cursors_before()
+  call ncm2#disable_for_buffer()
   silent! noremap <buffer> <CR> <CR>
 endfunction
 
 function! Multiple_cursors_after()
+  call ncm2#enable_for_buffer()
   silent! unmap <buffer> <CR>
 endfunction
 
