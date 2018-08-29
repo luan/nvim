@@ -169,7 +169,6 @@ Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-markdown-subscope'
 Plug 'ncm2/ncm2-rst-subscope'
 Plug 'ncm2/ncm2-match-highlight'
-Plug 'ncm2/ncm2-highprio-pop'
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
