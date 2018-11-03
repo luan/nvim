@@ -30,6 +30,8 @@ Plug 'kshenoy/vim-signature'
 
 " Lightweight status line
 Plug 'itchyny/lightline.vim'
+" ALE indicator for the lightline vim plugin
+Plug 'maximbaz/lightline-ale'
 
 " Visual guide for keybindings
 Plug 'hecal3/vim-leader-guide'
