@@ -16,3 +16,22 @@ augroup config#fzf
         \| autocmd BufLeave <buffer> set laststatus=2 ruler
 augroup END
 
+let g:fzf_layout = { 'down': '~20%' }
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Comment'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'PreProc'],
+  \ 'fg+':     ['fg', 'Visual'],
+  \ 'bg+':     ['bg', 'Visual'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Number'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Constant'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
