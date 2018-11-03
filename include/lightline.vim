@@ -3,7 +3,7 @@ scriptencoding utf-8
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
-      \   'right': [['lineinfo'], ['percent'], ['linter_warnings', 'linter_errors', 'linter_ok']]
+      \   'right': [['lineinfo'], ['percent'], ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
       \ },
       \ 'component': {
       \   'lineinfo': ' %3l:%-2v',
@@ -13,14 +13,16 @@ let g:lightline = {
       \   'filename': 'LightlineFilename'
       \ },
       \ 'component_expand': {
-      \   'linter_warnings': 'LightlineLinterWarnings',
-      \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK'
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
       \ },
       \ 'component_type': {
+      \   'linter_checking': 'left',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
-      \   'linter_ok': 'ok'
+      \   'linter_ok': 'left',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
@@ -47,29 +49,8 @@ function! LightlineFugitive()
   return ''
 endfunction
 
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ▲', l:all_non_errors)
-endfunction
-
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', l:all_errors)
-endfunction
-
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓' : ''
-endfunction
-
-augroup config#lightline
-  autocmd!
-  autocmd User ALELint call lightline#update()
-augroup END
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071 "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_ok = "\uf00c"
 
