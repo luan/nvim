@@ -17,3 +17,7 @@ runtime! lang/*.vim
 runtime keyboard.vim
 runtime user/after.vim
 runtime colorscheme.vim
+
+" Allow project specific configuration
+set exrc
+set secure
