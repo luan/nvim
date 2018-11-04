@@ -169,7 +169,6 @@ Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-markdown-subscope'
-Plug 'ncm2/ncm2-rst-subscope'
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
