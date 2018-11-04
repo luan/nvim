@@ -36,11 +36,11 @@ some things have changed.
 
 This config is exclusive to [Neovim](https://neovim.io), so you need to [install
 it](https://github.com/neovim/neovim/wiki/Installing-Neovim) on your system
-first. You also need python and the [python client for
-Neovim](https://github.com/neovim/python-client) installed. Those are well
-documented processes and are platform dependent. At the moment I don't intend to
-provide an all-in-one installer as part of this config as we used to have on
-luan/vimfiles.
+first. You also need python and the [python 3 client for
+Neovim](https://github.com/neovim/python-client) installed(python 3 is
+important). Those are well documented processes and are platform dependent. At
+the moment I don't intend to provide an all-in-one installer as part of this
+config as we used to have on luan/vimfiles.
 
 Once you have that setup, all you have to do is clone this config in the right
 spot:
