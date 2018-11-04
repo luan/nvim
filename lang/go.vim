@@ -19,6 +19,7 @@ let g:go_snippet_engine = 'ultisnips'
 
 let g:go_bin_path = $HOME . '/.local/share/nvim/go/bin'
 let $PATH .= ':' . g:go_bin_path
+call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
 
