@@ -1,15 +1,4 @@
 let s:is_win = has('win32') || has('win64')
-if s:is_win || exists('g:skip_autoupdate')
-  finish
-endif
-let g:skip_autoupdate = 1
-let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
-let s:update_timer_file = '/tmp/luan_vim_update_timer'
-
-if getftime(s:update_timer_file) > (localtime() - 60 * 60 * 24)
-  " We checked update on this boot cycle and in the last 24 hours, skip
-  finish
-end
 
 function! s:chsh()
   let l:prev = [&shell, &shellcmdflag, &shellredir]
@@ -37,6 +26,18 @@ function! s:system(cmd)
   endtry
 endfunction
 
+function! update#localVersion()
+  return s:system('git rev-parse @')
+endfunction
+
+function! update#remoteVersion()
+  return s:system('git rev-parse "@{u}"')
+endfunction
+
+function! update#autoUpdateEnabled()
+  return !exists('g:skip_autoupdate') || g:skip_autoupdate != 1
+endfunction
+
 function! s:update()
   let l:update_job = s:jobstart('git remote update')
   if jobwait([l:update_job], 5000)[0] != 0
@@ -45,8 +46,8 @@ function! s:update()
     return
   endif
 
-  let l:local = s:system('git rev-parse @')
-  let l:remote = s:system('git rev-parse "@{u}"')
+  let l:local = update#localversion()
+  let l:remote = update#remoteversion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
   if l:local == l:remote
@@ -63,5 +64,20 @@ function! s:update()
 	  \ 'moving them to your user settings.'
   endif
 endfunction
+
+function! update#lastchecked()
+  return getftime(s:update_timer_file)
+endfunction
+
+if s:is_win || !update#autoUpdateEnabled()
+  finish
+endif
+let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
+let s:update_timer_file = '/tmp/luan_vim_update_timer'
+
+if update#lastchecked() > (localtime() - 60 * 60 * 24)
+  " We checked update on this boot cycle and in the last 24 hours, skip
+  finish
+end
 
 call s:update()
