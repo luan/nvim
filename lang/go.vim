@@ -28,14 +28,22 @@ let g:ale_go_gometalinter_options =
       \ '--exclude="should have comment" ' .
       \ '--exclude="error return value not checked \(defer"'
 
+let s:projections = {
+      \ '*.go': {'type': 'go', 'alternate': '{}_test.go'},
+      \ '*_test.go': {'type': 'go', 'alternate': '{}.go'},
+      \ }
+
+function! s:ProjectionistDetect() abort
+  if &filetype ==# 'go'
+    let l:projections = deepcopy(s:projections)
+    call projectionist#append(getcwd(), l:projections)
+  endif
+endfunction
+
 augroup config#go
   autocmd!
-  autocmd Filetype go
-        \ command! -bang A call go#alternate#Switch(<bang>0, 'edit') |
-        \ command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit') |
-        \ command! -bang AS call go#alternate#Switch(<bang>0, 'split') |
-        \ compiler go
-  autocmd! BufEnter *.go
-        \ setlocal foldmethod=syntax shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
+  autocmd User ProjectionistDetect call s:ProjectionistDetect()
+  autocmd Filetype go compiler go
+  autocmd BufEnter *.go setlocal foldmethod=syntax shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 augroup END
 
