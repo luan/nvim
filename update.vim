@@ -39,6 +39,7 @@ function! update#autoUpdateEnabled()
 endfunction
 
 function! s:update()
+  echo 'Updating nvim config...'
   let l:update_job = s:jobstart('git remote update')
   if jobwait([l:update_job], 5000)[0] != 0
     echoerr 'Timed out updating vim distribution. Check your internet connection.'
@@ -46,8 +47,8 @@ function! s:update()
     return
   endif
 
-  let l:local = update#localversion()
-  let l:remote = update#remoteversion()
+  let l:local = update#localVersion()
+  let l:remote = update#remoteVersion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
   if l:local == l:remote
@@ -63,6 +64,8 @@ function! s:update()
     echom 'Local changes detected. If these are user preferences, consider'
 	  \ 'moving them to your user settings.'
   endif
+
+  let g:update_plugins = 1
 endfunction
 
 function! update#lastchecked()

@@ -315,5 +315,8 @@ call plug#end()
 
 if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   PlugInstall --sync | q
+elseif exists('g:update_plugins') && g:update_plugins
+	echo 'Updating plugins...'
+  PlugUpdate --sync | q
 endif
 
