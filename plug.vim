@@ -175,8 +175,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ncm2/ncm2-vim-lsp'
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
 "UltiSnips - The ultimate snippet solution for Vim
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
