@@ -13,6 +13,8 @@ let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 
+let g:go_list_type = 'quickfix'
+
 let g:go_snippet_engine = 'ultisnips'
 
 let g:go_bin_path = $HOME . '/.local/share/nvim/go/bin'

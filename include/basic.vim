@@ -18,7 +18,7 @@ set termguicolors         " Enable true colors in terminal
 set updatetime=100        " Update swap file and CursorHold delay
 set timeoutlen=700        " Timeout for keybindings
 set ttimeoutlen=0         " Timeout for completing commands
-
+set cscopequickfix=s-,c-,d-,i-,t-,e-,a-,g- "
 
 set ignorecase            " Case insensitive search
 set smartcase             " ... but case sensitive when uc present

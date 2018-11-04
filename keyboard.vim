@@ -101,5 +101,15 @@ nnoremap <leader>sf :FZFRg
 nnoremap <silent> <leader>st :FZFTags<CR>
 nnoremap <silent> <leader>sl :FZFLines<CR>
 
+let g:lmap.c = { 'name': 'Cscope' }
+let g:lmap.c.s = ['cs find s <cword>', 'Cscope Symbol']
+let g:lmap.c.g = ['cs find g <cword>', 'Cscope Definition']
+let g:lmap.c.c = ['cs find c <cword>', 'Cscope Callers']
+let g:lmap.c.d = ['cs find d <cword>', 'Cscope Callees']
+let g:lmap.c.a = ['cs find a <cword>', 'Cscope Assignments']
+let g:lmap.c.z = ['!sh -xc ''starscope -e cscope -e ctags -x "*.go" -x "*.js"''', 'Cscope Build Database']
+let g:lmap.c.o = ['cs add cscope.out', 'Cscope Open Database']
+
+
 nnoremap <silent> <c-p> :FZFFiles<CR>
 
