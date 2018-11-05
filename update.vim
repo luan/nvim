@@ -57,6 +57,13 @@ function! s:update()
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
     call writefile([''], s:update_timer_file)
+
+    let g:update_plugins = 1
+    runtime plug.vim
+    echo '###################################################################################'
+    echo "| nvim config has been updated. Please re-open nvim to apply changes. Quitting... |"
+    echo '##################################################################################'
+    quit
   elseif l:remote == l:base
     echom 'Local commits detected. You may want to push / send a PR / move your'
 	  \ 'changes to user settings?'
@@ -64,8 +71,6 @@ function! s:update()
     echom 'Local changes detected. If these are user preferences, consider'
 	  \ 'moving them to your user settings.'
   endif
-
-  let g:update_plugins = 1
 endfunction
 
 function! update#lastchecked()
