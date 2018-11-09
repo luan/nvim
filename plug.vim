@@ -272,6 +272,7 @@ Plug 'keith/tmux.vim'
 Plug 'kurayama/systemd-vim-syntax'
 Plug 'peterhoeg/vim-qml'
 Plug 'uarun/vim-protobuf'
+Plug 'junegunn/vader.vim'
 " }
 " }
 
