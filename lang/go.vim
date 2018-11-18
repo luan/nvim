@@ -49,3 +49,7 @@ augroup config#go
   autocmd Filetype go compiler go
   autocmd BufEnter *.go setlocal foldmethod=syntax shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 augroup END
+
+if executable('go-langserver')
+  call lsp#add_server('go', ['clangd'])
+endif
