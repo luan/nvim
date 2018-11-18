@@ -156,6 +156,11 @@ Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim'
 Plug 'wellle/tmux-complete.vim'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 "UltiSnips - The ultimate snippet solution for Vim
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

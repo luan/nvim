@@ -110,5 +110,15 @@ let g:lmap.c.o = ['cs add cscope.out',                                          
 
 let g:lmap.e = { 'name': 'Emmet (HTML toolkit)' }
 
+let g:lmap.l = { 'name': 'Language Server' }
+let g:lmap.l.d = [':call LanguageClient#textDocument_definition()',     'Defninition']
+let g:lmap.l.r = [':call LanguageClient#textDocument_rename()',         'Rename']
+let g:lmap.l.f = [':call LanguageClient#textDocument_formatting()',     'Format']
+let g:lmap.l.t = [':call LanguageClient#textDocument_typeDefinition()', 'Type Definition']
+let g:lmap.l.x = [':call LanguageClient#textDocument_references()',     'References']
+let g:lmap.l.h = [':call LanguageClient#textDocument_hover()',          'Preview Details']
+let g:lmap.l.s = [':call LanguageClient_textDocument_documentSymbol()', 'Document Symbols']
+let g:lmap.l.m = [':call LanguageClient_contextMenu()',                 'Show Menu']
+
 nnoremap <silent> <c-p> :FZFFiles<CR>
 
