@@ -9,14 +9,6 @@ augroup config#vue
   autocmd BufReadPost *.vue syntax sync fromstart
   autocmd FileType vue syntax sync fromstart
   autocmd BufEnter *.vue set filetype=vue
-
-  if executable('vls')
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'vls',
-          \ 'cmd': function('VlsCmd'),
-          \ 'whitelist': ['vue'],
-          \ })
-  endif
 augroup END
 let g:vue_disable_pre_processors = 1
 

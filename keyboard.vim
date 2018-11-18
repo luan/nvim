@@ -1,14 +1,8 @@
 " UltiSnips
-let g:UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+let g:UltiSnipsExpandTrigger = '<c-j>'
 let g:UltiSnipsJumpForwardTrigger = '<c-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
-
-inoremap <silent> <expr> <c-j> ncm2_ultisnips#expand_or("\<C-R>=UltiSnips#ExpandSnippet()\<CR>", 'n')
-
-" AutoPairs
-inoremap <silent> <expr> <M-p> AutoPairsToggle()
-inoremap <silent> <M-n> <ESC>:call AutoPairsJump()<CR>a
 
 " ALE
 nmap <silent> <M-p> <Plug>(ale_previous_wrap)

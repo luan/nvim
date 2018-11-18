@@ -147,27 +147,14 @@ Plug 'tpope/vim-rhubarb'
 " }
 
 " Autocomplete / Snippets {
-" Fast, Extensible, Async Completion Framework for Neovim
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-
-Plug 'ncm2/ncm2-go'
-Plug 'ncm2/ncm2-racer'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/ncm2-html-subscope'
-Plug 'ncm2/ncm2-markdown-subscope'
-
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ncm2/ncm2-vim-lsp'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete-clangx' " C/C++
+Plug 'zchee/deoplete-go' " Golang
+Plug 'racer-rust/vim-racer' " Rust
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " Javascript
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim'
+Plug 'wellle/tmux-complete.vim'
 
 "UltiSnips - The ultimate snippet solution for Vim
 Plug 'SirVer/ultisnips'
