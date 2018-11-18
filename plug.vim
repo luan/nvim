@@ -1,6 +1,6 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -296,9 +296,9 @@ runtime! user/plug.vim
 call plug#end()
 
 if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  PlugInstall --sync | q
+  PlugInstall! --sync | q
 elseif exists('g:update_plugins') && g:update_plugins
-	echo 'Updating plugins...'
-  PlugUpdate --sync | q
+  echo 'Updating plugins...'
+  PlugUpdate! --sync | q
 endif
 

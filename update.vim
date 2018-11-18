@@ -43,7 +43,7 @@ function! s:update()
   let l:update_job = s:jobstart('git remote update')
   if jobwait([l:update_job], 5000)[0] != 0
     echoerr 'Timed out updating vim distribution. Check your internet connection.'
-	  \ '(Vim will start normally with previous configuration)'
+    \ '(Vim will start normally with previous configuration)'
     return
   endif
 
@@ -61,15 +61,15 @@ function! s:update()
     let g:update_plugins = 1
     runtime plug.vim
     echo '###################################################################################'
-    echo "| nvim config has been updated. Please re-open nvim to apply changes. Quitting... |"
+    echo '| nvim config has been updated. Please re-open nvim to apply changes. Quitting... |'
     echo '##################################################################################'
     quit
   elseif l:remote == l:base
     echom 'Local commits detected. You may want to push / send a PR / move your'
-	  \ 'changes to user settings?'
+    \ 'changes to user settings?'
   else
     echom 'Local changes detected. If these are user preferences, consider'
-	  \ 'moving them to your user settings.'
+    \ 'moving them to your user settings.'
   endif
 endfunction
 
