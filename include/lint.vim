@@ -26,8 +26,8 @@ let g:ale_linters = {
 \   'go': ['go build', 'gofmt', 'gometalinter'],
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
+\   'ruby': ['rubocop', 'ruby'],
 \}
 
 " Enable completion where available.
 let g:ale_completion_enabled = 0
-
