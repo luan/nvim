@@ -1,10 +1,10 @@
 function! Multiple_cursors_before()
-  call ncm2#disable_for_buffer()
+  let g:deoplete#disable_auto_complete = 1
   silent! noremap <buffer> <CR> <CR>
 endfunction
 
 function! Multiple_cursors_after()
-  call ncm2#enable_for_buffer()
+  let g:deoplete#disable_auto_complete = 0
   silent! unmap <buffer> <CR>
 endfunction
 

@@ -29,7 +29,8 @@ set mousehide             " Hide the mouse cursor while typing
 
 " Completion
 set pumheight=20          " Avoid the pop up menu occupying the whole screen
-set completeopt=menu,noinsert,noselect
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
 
 " Indentation
 set expandtab             " Tabs are spaces, not tabs

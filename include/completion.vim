@@ -1,6 +1,3 @@
-augroup config#completion
-  autocmd!
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-augroup END
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 
-call ncm2#override_source('bufword', {'on_completed': 0})
