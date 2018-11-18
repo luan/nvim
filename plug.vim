@@ -161,6 +161,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+Plug 'Shougo/echodoc.vim'
+
 "UltiSnips - The ultimate snippet solution for Vim
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
