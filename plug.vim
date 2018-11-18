@@ -1,6 +1,6 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -12,8 +12,6 @@ endfunction
 Plug 'luan/nvim', { 'as': 'distribution', 'dir': $HOME . '/.config/nvim', 'do': function('ConfigUpdated') }
 
 " Color schemes {
-Plug 'flazz/vim-colorschemes'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 " }

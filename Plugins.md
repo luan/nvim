@@ -15,8 +15,6 @@ Table of Contents
    * [Plug-ins](#plug-ins)
    * [Table of Contents](#table-of-contents)
       * [Color schemes](#color-schemes)
-         * [flazz/vim-colorschemes](#flazzvim-colorschemes)
-         * [rafi/awesome-vim-colorschemes](#rafiawesome-vim-colorschemes)
          * [chriskempson/base16-vim](#chriskempsonbase16-vim)
          * [joshdick/onedark.vim](#joshdickonedarkvim)
       * [UI - User interface additions](#ui---user-interface-additions)
@@ -69,16 +67,6 @@ Table of Contents
 These merely add color schemes (a.k.a. themes) for us to chose from. We'll have
 a default configured on `colorscheme.vim` but users can easily swap them on
 their local configurations.
-
-### [`flazz/vim-colorschemes`](https://github.com/flazz/vim-colorschemes)
-
-A large package of color schemes for you to chose from.
-[List](https://github.com/flazz/vim-colorschemes/tree/master/colors).
-
-### [`rafi/awesome-vim-colorschemes`](https://github.com/rafi/awesome-vim-colorschemes)
-
-Another package of color schemes, slightly better documented on its
-[README](https://github.com/rafi/awesome-vim-colorschemes/tree/master/README.md).
 
 ### [`chriskempson/base16-vim`](https://github.com/chriskempson/base16-vim)
 

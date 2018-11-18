@@ -1,4 +1,5 @@
 if !exists('g:colors_name')
-  colorscheme onedark
-  let g:lightline.colorscheme = 'onedark'
+	let g:lightline.colorscheme = 'onedark'
+	set background=dark
+	colorscheme onedark
 endif
