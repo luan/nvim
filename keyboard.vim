@@ -19,7 +19,7 @@ nmap <c-_>  <Plug>CommentaryLine
 
 " Save with enter
 function! keyboard#should_save_on_enter()
-	return bufname('%') !=# 'swoopBuf' && empty(&buftype)
+  return bufname('%') !=# 'swoopBuf' && empty(&buftype)
 endfunction
 nnoremap <expr> <CR> keyboard#should_save_on_enter() ? ':w<CR>' : '<CR>'
 
@@ -52,12 +52,12 @@ let g:swoopUseDefaultKeyMap = 0
 let g:gitgutter_map_keys = 1
 
 function! s:leaderGuideDisplay()
-	let g:leaderGuide#displayname =
-				\ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
-	let g:leaderGuide#displayname =
-				\ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
-	let g:leaderGuide#displayname =
-				\ substitute(g:leaderGuide#displayname, '^:', '', '')
+  let g:leaderGuide#displayname =
+        \ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
+  let g:leaderGuide#displayname =
+        \ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
+  let g:leaderGuide#displayname =
+        \ substitute(g:leaderGuide#displayname, '^:', '', '')
 endfunction
 let g:leaderGuide_displayfunc = [function('s:leaderGuideDisplay')]
 
