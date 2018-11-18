@@ -12,6 +12,12 @@ if has('nvim-0.3.2')
       let g:ale_virtualtext_cursor = 1
       let g:ale_virtualtext_prefix = '▬▶  '
       let g:ale_set_balloons = 1
+
+      highlight link ALEVirtualTextError ErrorMsg
+      highlight link ALEVirtualTextStyleError ALEVirtualTextError
+      highlight link ALEVirtualTextWarning WarningMsg
+      highlight link ALEVirtualTextInfo ALEVirtualTextWarning
+      highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
     endif
   endtry
 endif
