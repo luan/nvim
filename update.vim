@@ -1,4 +1,6 @@
 let s:is_win = has('win32') || has('win64')
+let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
+let s:update_timer_file = '/tmp/luan_vim_update_timer'
 
 function! s:chsh()
   let l:prev = [&shell, &shellcmdflag, &shellredir]
@@ -80,8 +82,6 @@ endfunction
 if s:is_win || !update#autoUpdateEnabled()
   finish
 endif
-let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
-let s:update_timer_file = '/tmp/luan_vim_update_timer'
 
 if update#lastchecked() > (localtime() - 60 * 60 * 24)
   " We checked update on this boot cycle and in the last 24 hours, skip
