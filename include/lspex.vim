@@ -1,4 +1,4 @@
-function! lsp#add_server(language, cmd)
+function! lspex#add_server(language, cmd)
   if !exists('g:LanguageClient_serverCommands')
     let g:LanguageClient_serverCommands = {}
   endif

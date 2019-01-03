@@ -51,5 +51,5 @@ augroup config#go
 augroup END
 
 if executable('go-langserver')
-  call lsp#add_server('go', ['clangd'])
+  call lspex#add_server('go', ['clangd'])
 endif
