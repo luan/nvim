@@ -217,6 +217,11 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " }
 
+" Elixir {
+Plug 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+" }
+
 " Markdown {
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
