@@ -6,4 +6,4 @@ augroup END
 if !executable('solargraph') && executable('gem')
   call jobstart('gem install solargraph')
 endif
-call lsp#add_server('ruby', ['solargraph', 'stdio'])
+call lspex#add_server('ruby', ['solargraph', 'stdio'])

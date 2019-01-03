@@ -11,7 +11,7 @@ augroup config#vue
   autocmd BufEnter *.vue set filetype=vue
 
   if executable('vls')
-    autocmd User lsp_setup lsp#add_server('vue', [vls])
+    autocmd User lsp_setup lspex#add_server('vue', [vls])
   endif
 augroup END
 let g:vue_disable_pre_processors = 1
