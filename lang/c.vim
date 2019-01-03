@@ -20,6 +20,6 @@ augroup config#c
 augroup END
 
 if executable('clangd')
-  call lspex#addserver('c', ['clangd'])
-  call lspex#addserver('cpp', ['clangd'])
+  call lspex#add_server('c', ['clangd'])
+  call lspex#add_server('cpp', ['clangd'])
 endif
