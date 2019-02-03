@@ -8,11 +8,11 @@ function! s:chsh()
   return l:prev
 endfunction
 
-function! s:jobstart(cmd)
+function! s:jobstart(cmd, options)
   try
     let [l:sh, l:shellcmdflag, l:shrd] = s:chsh()
     let l:cmd = printf('cd %s && %s', shellescape(s:dir), a:cmd)
-    return jobstart(l:cmd)
+    return jobstart(l:cmd, a:options)
   finally
     let [&shell, &shellcmdflag, &shellredir] = [l:sh, l:shellcmdflag, l:shrd]
   endtry
@@ -40,39 +40,35 @@ function! update#autoUpdateEnabled()
   return !exists('g:skip_autoupdate') || g:skip_autoupdate != 1
 endfunction
 
-function! s:update()
-  echo 'Updating nvim config...'
-  let l:update_job = s:jobstart('git remote update')
-  if jobwait([l:update_job], 5000)[0] != 0
-    echoerr 'Timed out updating vim distribution. Check your internet connection.'
-    \ '(Vim will start normally with previous configuration)'
-    return
-  endif
-
+function! s:remote_updated(...)
   let l:local = update#localVersion()
   let l:remote = update#remoteVersion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
   if l:local == l:remote
     call writefile([''], s:update_timer_file)
-    silent! echom 'Vim distribution is up-to-date.'
+    echohl WarningMsg | echomsg 'Vim distribution is up-to-date.' | echohl None
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
     call writefile([''], s:update_timer_file)
 
     let g:update_plugins = 1
     runtime plug.vim
-    echo '###################################################################################'
-    echo '| nvim config has been updated. Please re-open nvim to apply changes. Quitting... |'
-    echo '##################################################################################'
-    quit
+    echohl ErrorMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
   elseif l:remote == l:base
-    echom 'Local commits detected. You may want to push / send a PR / move your'
+    echoerr 'Local commits detected. You may want to push / send a PR / move your'
     \ 'changes to user settings?'
   else
-    echom 'Local changes detected. If these are user preferences, consider'
+    echoerr 'Local changes detected. If these are user preferences, consider'
     \ 'moving them to your user settings.'
   endif
+endfunction
+
+function! s:update()
+  echohl Special | echomsg 'Updating nvim config...' | echohl None
+  let l:update_job = s:jobstart('git remote update', {
+        \ 'on_exit': function('s:remote_updated')
+        \ })
 endfunction
 
 function! update#lastchecked()
@@ -88,4 +84,4 @@ if update#lastchecked() > (localtime() - 60 * 60 * 24)
   finish
 end
 
-call s:update()
+autocmd VimEnter * call s:update()
