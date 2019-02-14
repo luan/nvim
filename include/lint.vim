@@ -5,10 +5,9 @@ let g:ale_sign_warning = '➤'
 let g:ale_sign_info = '➟'
 
 if has('nvim-0.3.2')
-  let g:ale_echo_cursor = 0
-  let g:ale_virtualtext_cursor = 1
+  let g:ale_echo_cursor = 1
+  let g:ale_virtualtext_cursor = 0
   let g:ale_virtualtext_prefix = '▬▶  '
-  let g:ale_set_balloons = 1
 
   highlight link ALEVirtualTextError ErrorMsg
   highlight link ALEVirtualTextStyleError ALEVirtualTextError
