@@ -1,12 +1,12 @@
 function! Multiple_cursors_before()
-  let g:deoplete#disable_auto_complete = 1
+  call deoplete#disable()
   silent! noremap <buffer> <CR> <CR>
   silent! vnoremap <buffer> <Space> <nop>
   silent! nnoremap <buffer> <Space> <nop>
 endfunction
 
 function! Multiple_cursors_after()
-  let g:deoplete#disable_auto_complete = 0
+  call deoplete#enable()
   silent! unmap <buffer> <CR>
   silent! vunmap <buffer> <Space>
   silent! nunmap <buffer> <Space>
