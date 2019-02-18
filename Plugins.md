@@ -203,20 +203,6 @@ reduce it.
 
 ![vim-expand-region](https://camo.githubusercontent.com/64655fb5626161f9245df9b562ff8584fc61067f/68747470733a2f2f7261772e6769746875622e636f6d2f74657272796d612f76696d2d657870616e642d726567696f6e2f6d61737465722f657870616e642d726567696f6e2e676966)
 
-### [`dropofwill/auto-pairs`](https://github.com/dropofwill/auto-pairs)
-
-Automatically close pairs such as () or [] on insert mode. While on insert mode:
-
-* `<a-p>`: toggles auto-pairs no or off
-* `<a-n>`: jumps out of the current pair
-
-You can completely disable the plug-in with the following snipped on your
-`before.vim`:
-
-```vim
-let g:AutoPairsLoaded = 1
-```
-
 ### [`tpope/vim-endwise`](https://github.com/tpope/vim-endwise)
 
 Automatically add 'end' when opening a block.
