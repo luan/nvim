@@ -51,6 +51,9 @@ Plug 'terryma/vim-expand-region'
 " Automatically add 'end' when opening a block
 Plug 'tpope/vim-endwise'
 
+" Closes brackets (on <cr>)
+Plug 'rstacruz/vim-closer'
+
 " Move parameters around (delimited by a separator such as ,)
 Plug 'machakann/vim-swap'
 
@@ -144,24 +147,33 @@ Plug 'tpope/vim-rhubarb'
 " }
 
 " Autocomplete / Snippets {
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/deoplete-clangx' " C/C++
-Plug 'zchee/deoplete-go' " Golang
-Plug 'racer-rust/vim-racer' " Rust
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " Javascript
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neco-vim'
-Plug 'wellle/tmux-complete.vim'
+if executable('yarn')
+  " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode
+  Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install()} }
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+  " View and search LSP symbols, tags in Vim
+  Plug 'liuchengxu/vista.vim'
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete-clangx' " C/C++
+  Plug 'zchee/deoplete-go' " Golang
+  Plug 'racer-rust/vim-racer' " Rust
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " Javascript
+  Plug 'Shougo/neco-syntax'
+  Plug 'Shougo/neco-vim'
+  Plug 'wellle/tmux-complete.vim'
 
-Plug 'Shougo/echodoc.vim'
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
-"UltiSnips - The ultimate snippet solution for Vim
-Plug 'SirVer/ultisnips'
+  Plug 'Shougo/echodoc.vim'
+
+  " UltiSnips - The ultimate snippet solution for Vim
+  Plug 'SirVer/ultisnips'
+endif
+
 Plug 'honza/vim-snippets'
 " }
 

@@ -18,8 +18,3 @@ augroup config#c
   autocmd User ProjectionistDetect call s:ProjectionistDetect()
   au FileType cpp setlocal foldmethod=syntax
 augroup END
-
-if executable('clangd')
-  call lspex#add_server('c', ['clangd'])
-  call lspex#add_server('cpp', ['clangd'])
-endif

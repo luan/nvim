@@ -22,6 +22,7 @@ let $PATH = g:go_bin_path . ':' . $PATH
 call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
+let g:go_def_mode='gopls'
 
 let g:ale_go_gometalinter_options =
       \ '--tests ' .
@@ -49,7 +50,3 @@ augroup config#go
   autocmd Filetype go compiler go
   autocmd BufEnter *.go setlocal foldmethod=syntax shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 augroup END
-
-if executable('go-langserver')
-  call lspex#add_server('go', ['clangd'])
-endif

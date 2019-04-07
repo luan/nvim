@@ -1,8 +1,21 @@
-" UltiSnips
-let g:UltiSnipsExpandTrigger = '<c-j>'
-let g:UltiSnipsJumpForwardTrigger = '<c-f>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
-let g:UltiSnipsRemoveSelectModeMappings = 0
+if executable('yarn')
+  " coc.nvim
+  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  vmap <C-j> <Plug>(coc-snippets-select)
+  let g:coc_snippet_next = '<c-j>'
+  let g:coc_snippet_prev = '<c-k>'
+  inoremap <silent><expr> <M-space> coc#refresh()
+
+  " coc.nvim diagnostics
+  nmap <silent> [v <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]v <Plug>(coc-diagnostic-next)
+else
+  " UltiSnips
+  let g:UltiSnipsExpandTrigger = '<c-j>'
+  let g:UltiSnipsJumpForwardTrigger = '<c-f>'
+  let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
+  let g:UltiSnipsRemoveSelectModeMappings = 0
+endif
 
 " ALE
 nmap <silent> <M-p> <Plug>(ale_previous_wrap)
@@ -16,6 +29,15 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 xmap <c-_>  <Plug>Commentary
 omap <c-_>  <Plug>Commentary
 nmap <c-_>  <Plug>CommentaryLine
+
+" Mimic behavior from D, C
+nnoremap Y y$
+
+vnoremap > >gv
+vnoremap < <gv
+
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " Save with enter
 function! keyboard#should_save_on_enter()
@@ -111,14 +133,24 @@ let g:lmap.c.o = ['cs add cscope.out',                                          
 let g:lmap.e = { 'name': 'Emmet (HTML toolkit)' }
 
 let g:lmap.l = { 'name': 'Language Server' }
-let g:lmap.l.d = [':call LanguageClient#textDocument_definition()',     'Defninition']
-let g:lmap.l.r = [':call LanguageClient#textDocument_rename()',         'Rename']
-let g:lmap.l.f = [':call LanguageClient#textDocument_formatting()',     'Format']
-let g:lmap.l.t = [':call LanguageClient#textDocument_typeDefinition()', 'Type Definition']
-let g:lmap.l.x = [':call LanguageClient#textDocument_references()',     'References']
-let g:lmap.l.h = [':call LanguageClient#textDocument_hover()',          'Preview Details']
-let g:lmap.l.s = [':call LanguageClient_textDocument_documentSymbol()', 'Document Symbols']
-let g:lmap.l.m = [':call LanguageClient_contextMenu()',                 'Show Menu']
+
+let g:lmap.l.k =  [':call CocAction("doHover")',        'Hover']
+
+let g:lmap.l.s =  [':Vista finder coc',                 'Symbols']
+let g:lmap.l.t =  [':Vista coc',                        'Tag Bar']
+let g:lmap.l.ct = [':Vista!',                           'Close Tag Bar']
+
+nmap <silent> <leader>la <Plug>(coc-codeaction)
+vmap <silent> <leader>la <Plug>(coc-codeaction-selected)
+
+nmap <silent> <leader>l= <Plug>(coc-format)
+vmap <silent> <leader>l= <Plug>(coc-format-selected)
+
+nmap <silent> <leader>lr <Plug>(coc-rename)
+nmap <silent> <leader>lf <Plug>(coc-fix-current)
+
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
 
 nnoremap <silent> <c-p> :FZFFiles<CR>
 
