@@ -69,12 +69,6 @@ set foldlevelstart=99
 " netrw
 let g:netrw_altfile = 1   " <Ctrl-^> should go to the last file, not to netrw.
 
-" Mimic behavior from D, C
-nnoremap Y y$
-
-vnoremap < <gv
-vnoremap > >gv
-
 augroup config#basic
   autocmd!
   " Reload file on focus

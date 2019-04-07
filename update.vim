@@ -39,6 +39,26 @@ function! update#autoUpdateEnabled()
   return !exists('g:skip_autoupdate') || g:skip_autoupdate != 1
 endfunction
 
+function! update#installLanguageServers()
+  if executable('go')
+    call jobstart('go get -u golang.org/x/tools/cmd/gopls')
+  endif
+
+  if executable('gem')
+    call jobstart('gem install solargraph')
+  endif
+
+  if executable('npm')
+    call jobstart('npm i -g bash-language-server')
+  endif
+
+  if executable('rustup')
+    call jobstart('rustup component add rls rust-analysis rust-src')
+  endif
+endfunction
+
+call update#installLanguageServers()
+
 function! s:remote_updated(id, status, type)
   if a:status != 0
     echohl ErrorMsg | echomsg 'Error fetching remote Nvim config. Are you connected to the internet?' | echohl None
@@ -53,6 +73,9 @@ function! s:remote_updated(id, status, type)
     return
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
+
+    " should probably figure out a better way to do this
+    call update#installLanguageServers()
 
     let g:update_plugins = 1
     runtime plug.vim
