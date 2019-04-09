@@ -28,6 +28,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 let s:languageserver = {}
 
 call coc#config('coc.preferences.formatOnSaveFiletypes', [ "go", "json" ])
+call coc#config('yaml.validate', 0)
 
 if executable('ccls')
   let s:languageserver["ccls"] = {
