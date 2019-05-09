@@ -40,10 +40,6 @@ function! update#autoUpdateEnabled()
 endfunction
 
 function! update#installLanguageServers()
-  if executable('go')
-    call jobstart('go get -u golang.org/x/tools/cmd/gopls')
-  endif
-
   if executable('gem')
     call jobstart('gem install solargraph')
   endif
@@ -56,8 +52,6 @@ function! update#installLanguageServers()
     call jobstart('rustup component add rls rust-analysis rust-src')
   endif
 endfunction
-
-call update#installLanguageServers()
 
 function! s:remote_updated(id, status, type)
   if a:status != 0
