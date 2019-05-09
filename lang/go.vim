@@ -24,6 +24,10 @@ call mkdir(g:go_bin_path, 'p', 0755)
 let g:go_auto_type_info = 0
 let g:go_def_mode='gopls'
 
+if exists('g:update_plugins') && g:update_plugins && executable('go')
+  autocmd VimEnter * GoUpdateBinaries
+endif
+
 let g:ale_go_gometalinter_options =
       \ '--tests ' .
       \ '--fast ' .
