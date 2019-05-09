@@ -153,25 +153,6 @@ if executable('yarn')
 
   " View and search LSP symbols, tags in Vim
   Plug 'liuchengxu/vista.vim'
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'Shougo/deoplete-clangx' " C/C++
-  Plug 'zchee/deoplete-go' " Golang
-  Plug 'racer-rust/vim-racer' " Rust
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " Javascript
-  Plug 'Shougo/neco-syntax'
-  Plug 'Shougo/neco-vim'
-  Plug 'wellle/tmux-complete.vim'
-
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
-  Plug 'Shougo/echodoc.vim'
-
-  " UltiSnips - The ultimate snippet solution for Vim
-  Plug 'SirVer/ultisnips'
 endif
 
 Plug 'honza/vim-snippets'
