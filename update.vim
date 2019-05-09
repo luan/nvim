@@ -1,6 +1,26 @@
 let s:is_win = has('win32') || has('win64')
 let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
 
+function! s:missingDependency(command)
+  if !executable(a:command)
+    echohl WarningMsg
+    echomsg 'nvim config dependency `' . a:command . '` not installed and is requred.'
+    echohl None
+    return 1
+  endif
+  return 0
+endfunction
+
+function! s:checkDependencies()
+  if s:missingDependency('curl') ||
+        \ s:missingDependency('npm') ||
+        \ s:missingDependency('yarn')
+    echoerr 'Missing dependencies detected. Please refer to the README for more information on how to install them.'
+  endif
+endfunction
+
+call s:checkDependencies()
+
 function! s:chsh()
   let l:prev = [&shell, &shellcmdflag, &shellredir]
   set shell=sh shellredir=>%s\ 2>&1
