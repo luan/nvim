@@ -42,6 +42,16 @@ important). Those are well documented processes and are platform dependent. At
 the moment I don't intend to provide an all-in-one installer as part of this
 config as we used to have on luan/vimfiles.
 
+**Dependencies**: For better experience and full features we'll need a few extra
+things installed in your system:
+
+  * [`curl`](https://curl.haxx.se/): used to install the plugin manager
+  * [`npm`](https://www.npmjs.com/): used to install JS tools and some language
+    server binaries.
+  * [`yarn`](https://yarnpkg.com/en/): used to install
+    [`coc.nvim`](https://github.com/neoclide/coc.nvim) extensions for better and
+    fancier autocomplete and language features.
+
 Once you have that setup, all you have to do is clone this config in the right
 spot:
 
