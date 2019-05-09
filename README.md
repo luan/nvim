@@ -45,7 +45,7 @@ config as we used to have on luan/vimfiles.
 **Dependencies**: For better experience and full features we'll need a few extra
 things installed in your system:
 
-  * [`curl`](https://curl.haxx.se/): used to install the plugin manager
+  * [`curl`](https://curl.haxx.se/) (**required!**): used to install the plugin manager.
   * [`npm`](https://www.npmjs.com/): used to install JS tools and some language
     server binaries.
   * [`yarn`](https://yarnpkg.com/en/): used to install
