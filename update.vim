@@ -59,11 +59,18 @@ function! s:remote_updated(id, status, type)
     return
   endif
 
+  call s:system('git update-index -q --refresh')
+  call s:system('git diff-index --quiet HEAD --')
+
+  let l:has_local_changes = v:shell_error
   let l:local = update#localVersion()
   let l:remote = update#remoteVersion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
-  if l:local == l:remote
+  if l:has_local_changes
+    echoerr 'Local changes detected. If these are user preferences, consider'
+    \ 'moving them to your user settings.'
+  elseif l:local == l:remote
     return
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
@@ -77,9 +84,6 @@ function! s:remote_updated(id, status, type)
   elseif l:remote == l:base
     echoerr 'Local commits detected. You may want to push / send a PR / move your'
     \ 'changes to user settings?'
-  else
-    echoerr 'Local changes detected. If these are user preferences, consider'
-    \ 'moving them to your user settings.'
   endif
 endfunction
 
