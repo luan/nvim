@@ -1,16 +1,10 @@
 function! Multiple_cursors_before()
-  if !executable('yarn')
-    call deoplete#disable()
-  endif
   silent! noremap <buffer> <CR> <CR>
   silent! vnoremap <buffer> <Space> <nop>
   silent! nnoremap <buffer> <Space> <nop>
 endfunction
 
 function! Multiple_cursors_after()
-  if !executable('yarn')
-    call deoplete#disable()
-  endif
   silent! unmap <buffer> <CR>
   silent! vunmap <buffer> <Space>
   silent! nunmap <buffer> <Space>
