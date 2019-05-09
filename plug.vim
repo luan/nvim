@@ -154,6 +154,7 @@ if executable('yarn')
   " View and search LSP symbols, tags in Vim
   Plug 'liuchengxu/vista.vim'
 else
+  echohl WarningMsg | echomsg '`yarn` not installed. coc.nvim is our new integration with language-servers for super awesome features and requires it. See https://yarnpkg.com/en/docs/install for how to install it on your OS. Falling back to old ways...' | echohl None
   Plug 'Shougo/deoplete.nvim'
   Plug 'Shougo/deoplete-clangx' " C/C++
   Plug 'zchee/deoplete-go' " Golang
