@@ -100,6 +100,7 @@ function! s:remote_updated(id, status, type)
 
     let g:update_plugins = 1
     runtime plug.vim
+    autocmd VimEnter * UpdateRemotePlugins
     echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
   elseif l:remote == l:base
     echoerr 'Local commits detected. You may want to push / send a PR / move your'
