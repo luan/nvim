@@ -63,7 +63,7 @@ Plugins will be automatically downloaded and setup as necessary.
 
 ## Updating
 
-The distribution auto-updates daily (or after a reboot of the system), if you
+The distribution auto-updates when starting up if there are new changed, if you
 have trouble with auto-updating or want to disable it for other reason add the
 following to you `user/before.vim`:
 
