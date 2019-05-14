@@ -4,7 +4,7 @@ let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
 function! s:missingDependency(command)
   if !executable(a:command)
     echohl WarningMsg
-    echomsg 'nvim config dependency `' . a:command . '` not installed and is requred.'
+    echomsg 'nvim config dependency `' . a:command . '` not installed and is required.'
     echohl None
     return 1
   endif
