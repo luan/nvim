@@ -16,8 +16,10 @@ if has('nvim-0.3.2')
   highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
 endif
 
+let g:ale_go_langserver_executable = 'gopls'
+
 let g:ale_linters = {
-\   'go': ['go build', 'gofmt', 'gometalinter'],
+\   'go': ['go build', 'gofmt', 'gometalinter', 'gopls'],
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop', 'ruby'],
