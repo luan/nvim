@@ -19,7 +19,7 @@ endif
 let g:ale_go_langserver_executable = 'gopls'
 
 let g:ale_linters = {
-\   'go': ['go build', 'gofmt', 'gometalinter', 'gopls'],
+\   'go': ['go build', 'gofmt', 'gometalinter', 'gopls', 'golangci-lint'],
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop', 'ruby'],
