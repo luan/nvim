@@ -8,7 +8,7 @@ augroup config#autoformat
   autocmd!
   " Autoformat on save
   autocmd BufWrite *.c,*.h,*.cpp,*.hpp :Autoformat
-  autocmd BufWrite *.go :Autoformat
+  " autocmd BufWrite *.go :Autoformat
   autocmd BufWrite *.js :Autoformat
   autocmd BufWrite *.vue :Autoformat
   autocmd BufWrite *.rs :Autoformat
