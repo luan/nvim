@@ -25,5 +25,9 @@ let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
 \}
 
+" This gets around typecheck errors for types defined in other files in the
+" same package
+let g:ale_go_golangci_lint_package = 1
+
 " Enable completion where available.
 let g:ale_completion_enabled = 0
