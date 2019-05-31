@@ -88,8 +88,9 @@ function! s:remote_updated(id, status, type)
   let l:base = s:system('git merge-base @ "@{u}"')
 
   if l:has_local_changes
-    echoerr 'Local changes detected. If these are user preferences, consider'
-    \ 'moving them to your user settings.'
+    echohl ErrorMsg | echomsg 'Local changes detected. If these are user preferences, consider'
+    \ 'moving them to your user settings.' | echohl None
+    return
   elseif l:local == l:remote
     return
   elseif l:local == l:base
@@ -103,8 +104,8 @@ function! s:remote_updated(id, status, type)
     autocmd VimEnter * UpdateRemotePlugins
     echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
   elseif l:remote == l:base
-    echoerr 'Local commits detected. You may want to push / send a PR / move your'
-    \ 'changes to user settings?'
+    echohl ErrorMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your' | echohl None
+    return
   endif
 endfunction
 

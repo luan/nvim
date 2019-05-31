@@ -180,7 +180,7 @@ Plug 'tpope/vim-vinegar'
 
 " Language configuration {
 " Testing {
-Plug 'janko-m/vim-test'
+Plug 'janko/vim-test'
 " }
 
 " C {
