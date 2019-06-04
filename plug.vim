@@ -40,7 +40,8 @@ Plug 'hecal3/vim-leader-guide'
 Plug 'tpope/vim-commentary'
 
 " Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 
 " Visual context when bulk editing buffers
 Plug 'pelodelfuego/vim-swoop'
