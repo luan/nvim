@@ -133,6 +133,9 @@ Plug 'kassio/neoterm'
 
 " Tame the quickfix window
 Plug 'romainl/vim-qf'
+
+" Secure modeline: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+Plug 'ciaranm/securemodelines'
 " }
 
 " Git -- Tools for using git and github {
