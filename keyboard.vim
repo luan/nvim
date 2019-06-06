@@ -49,6 +49,12 @@ nnoremap <expr> <CR> keyboard#should_save_on_enter() ? ':w<CR>' : '<CR>'
 let g:user_emmet_leader_key='<leader>e'
 let g:user_emmet_mode='nv'              " only enable normal and visual mode functions
 
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " Escape to clear search
 nnoremap <silent> <esc> :noh<cr>
 
