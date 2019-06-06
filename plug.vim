@@ -162,12 +162,9 @@ endif
 Plug 'honza/vim-snippets'
 " }
 
-" Linting / Formatting {
+" Linting {
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
-
-" Provide easy code formatting in Vim by integrating existing code formatters.
-Plug 'Chiel92/vim-autoformat'
 " }
 
 " Navigation -- Fuzzy find, searching, etc {
