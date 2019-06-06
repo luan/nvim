@@ -1,4 +1,4 @@
-let g:go_fmt_autosave = 1
+let g:go_fmt_autosave = 0
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
 
@@ -21,8 +21,12 @@ let $PATH = g:go_bin_path . ':' . $PATH
 call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+
+" [Issue #18]Temporarily disabled until gopls is stable enough and all merged
+" into the main repo. guru is more reliable for now.
+
+" let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
 
 if exists('g:update_plugins') && g:update_plugins && executable('go')
   autocmd VimEnter * GoUpdateBinaries

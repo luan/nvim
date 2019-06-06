@@ -71,6 +71,10 @@ function! update#installLanguageServers()
   if executable('rustup')
     call jobstart('rustup component add rls rust-analysis rust-src')
   endif
+
+  if executable('go')
+    call jobstart('go get -u github.com/sourcegraph/go-langserver')
+  endif
 endfunction
 
 function! s:remote_updated(id, status, type)
