@@ -175,6 +175,9 @@ Plug 'junegunn/fzf.vim'
 " Helps you win at grep.
 Plug 'mhinz/vim-grepper'
 
+" An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
+Plug 'dyng/ctrlsf.vim'
+
 " - for netrw current directory
 Plug 'tpope/vim-vinegar'
 " }
