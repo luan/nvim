@@ -77,11 +77,25 @@ autocmd InsertEnter,WinLeave * set nocursorline
 " netrw
 let g:netrw_altfile = 1   " <Ctrl-^> should go to the last file, not to netrw.
 
+function! SaveIfUnsaved()
+  if &modified
+    :w
+  endif
+endfunction
+
 augroup config#basic
   autocmd!
-  " Reload file on focus
-  autocmd FocusGained * :checktime
   " Don't format when adding lines with o/O
   autocmd BufNewFile,BufEnter * set formatoptions-=o
-augroup END
 
+  " Reload file on focus
+  autocmd FocusGained * :checktime
+
+  " Read the file on focus/buffer enter
+  au FocusGained,BufEnter * :silent! !
+
+  " Autosave?
+  if exists('g:autosave') && g:autosave ==# 1
+    autocmd CursorHold * nested call SaveIfUnsaved()
+  endif
+augroup END

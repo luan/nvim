@@ -40,7 +40,7 @@ vnoremap <S-Tab> <gv
 function! keyboard#should_save_on_enter()
   return bufname('%') !=# 'swoopBuf' && empty(&buftype)
 endfunction
-nnoremap <expr> <CR> keyboard#should_save_on_enter() ? ':w<CR>' : '<CR>'
+nnoremap <silent> <expr> <CR> keyboard#should_save_on_enter() ? ':call SaveIfUnsaved()<CR>' : '<CR>'
 
 " Emmet
 let g:user_emmet_leader_key='<leader>e'
