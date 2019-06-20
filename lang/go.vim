@@ -22,11 +22,8 @@ call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
 
-" [Issue #18]Temporarily disabled until gopls is stable enough and all merged
-" into the main repo. guru is more reliable for now.
-
-" let g:go_def_mode='gopls'
-" let g:go_info_mode='gopls'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 if exists('g:update_plugins') && g:update_plugins && executable('go')
   autocmd VimEnter * GoUpdateBinaries

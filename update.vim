@@ -80,8 +80,12 @@ function! update#installLanguageServers()
   endif
 
   if executable('go')
-    echo 'Installing go-langserver [go]...'
-    call s:system('go get -u github.com/sourcegraph/go-langserver')
+    " [Issue #18]
+    " UPDATE 2019-6-19: go-langserver seems to be slower and worse in a lot of
+    " cases; fork of gopls is behaving better. This is an awkard situation but
+    " trying to make the best of it.
+    echo 'Installing gopls [go]...'
+    call s:system('cd $TMPDIR && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
     echon ' Done.'
   endif
 endfunction
@@ -128,6 +132,7 @@ function! s:update()
         \ })
 endfunction
 
+command ConfigInstallLanguageServers call update#installLanguageServers()
 command ConfigUpdate call s:update()
 
 if s:is_win || !update#autoUpdateEnabled()

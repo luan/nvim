@@ -23,7 +23,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 let s:languageserver = {}
 
@@ -43,31 +43,13 @@ if executable('ccls')
         \ }
 endif
 
-if executable('go-langserver')
+if executable('gopls')
   let s:languageserver["golang"] = {
-        \   "command": "go-langserver",
-        \   "filetypes": ["go"],
-        \   "initializationOptions": {
-        \     "formatTool": "goimports",
-        \     "gocodeCompletionEnabled": v:true,
-        \     "diagnosticsEnabled": v:false,
-        \     "funcSnippetEnabled": v:true,
-        \     "lintTool": "none"
-        \   }
+        \   "command": "gopls",
+        \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        \   "filetypes": ["go"]
         \ }
 endif
-
-" [Issue #18] Temporarily disabled until gopls is stable enough and all merged
-" into the main repo. go-langserver is more reliable for now.
-
-" if executable('gopls')
-"   let s:languageserver["golang"] = {
-"         \   "command": "gopls",
-"         \   "args": [],
-"         \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-"         \   "filetypes": ["go"]
-"         \ }
-" endif
 
 if executable('bash-language-server')
   let s:languageserver["bash"] = {
