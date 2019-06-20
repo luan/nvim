@@ -26,14 +26,9 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" This is noise as heck: see https://github.com/neoclide/coc.nvim/issues/888
 autocmd BufWritePre *.go :OR
 
 let s:languageserver = {}
-
-call coc#config('coc.preferences.formatOnSaveFiletypes', [ "go", "json", "c", "cpp", "javascript", "typescript"])
-call coc#config('yaml.validate', 0)
 
 if executable('ccls')
   let s:languageserver["ccls"] = {
