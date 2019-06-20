@@ -5,7 +5,6 @@ endif
 let g:coc_global_extensions = [
       \   'coc-css',
       \   'coc-emmet',
-      \   'coc-gocode',
       \   'coc-highlight',
       \   'coc-html',
       \   'coc-json',
