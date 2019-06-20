@@ -32,6 +32,8 @@ set mousehide             " Hide the mouse cursor while typing
 " Completion
 set pumheight=20          " Avoid the pop up menu occupying the whole screen
 set completeopt=noinsert,menuone,noselect
+set complete-=i           " disable scanning included files
+set complete-=t           " disable searching tags
 set shortmess+=c
 
 " Indentation
@@ -67,6 +69,10 @@ set foldmarker={,}
 set foldlevel=0
 set foldmethod=marker
 set foldlevelstart=99
+
+" Cursor line
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
 
 " netrw
 let g:netrw_altfile = 1   " <Ctrl-^> should go to the last file, not to netrw.
