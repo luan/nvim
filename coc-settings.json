@@ -9,5 +9,11 @@
     "javascript",
     "typescript"
   ],
+  "solargraph.hover": true,
+  "solargraph.formatting": true,
+  "solargraph.completion": true,
+  "solargraph.useBundler": true,
+  "solargraph.rename": true,
+  "solargraph.diagnostics": true,
   "yaml.validate": false
 }
