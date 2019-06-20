@@ -19,7 +19,7 @@ endif
 let g:ale_go_langserver_executable = 'gopls'
 
 let g:ale_linters = {
-\   'go': ['go build', 'gofmt', 'golangci-lint'],
+\   'go': ['go build', 'gofmt', 'golangci-lint', 'gopls'],
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop', 'ruby'],
@@ -28,6 +28,9 @@ let g:ale_linters = {
 " This gets around typecheck errors for types defined in other files in the
 " same package
 let g:ale_go_golangci_lint_package = 1
+if filereadable('.golangci.json')
+  let g:ale_go_golangci_lint_options = ''
+endif
 
 " Enable completion where available.
 let g:ale_completion_enabled = 0
