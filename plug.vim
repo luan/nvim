@@ -306,3 +306,12 @@ elseif exists('g:update_plugins') && g:update_plugins
   PlugUpdate --sync | q
 endif
 
+function! plug#reset_all_plugins(confirm)
+  if a:confirm ==# 1
+    call system('rm -rf ~/.local/share/nvim/plugged')
+  else
+    echoerr 'Refusing to delete plugins with confirmation, re-run the command with !'
+  endif
+endfunction
+
+command! -bang ConfigResetAllPluginsReallyDoIt call plug#reset_all_plugins(<bang>0)

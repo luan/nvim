@@ -96,3 +96,22 @@ It is recommended that you track your user settings on a separate repo and
 symlink them in here, see [my dotfiles
 repo](https://github.com/luan/dotfiles/tree/master/nvim/.config/nvim/user) for
 an example.
+
+## Troubleshooting
+
+In the even things behave incorrectly or the config becomes unstable in general,
+regular vim debugging methods apply. Check `:checkhealth` for clues on what's
+wrong with your setup.
+
+Make sure language servers are installed for your language;
+`:ConfigInstallLanguageServers` installs a few that aren't automatically managed
+by other plugins.
+
+Lastly, `:ConfigUpdate` runs the auto-update and you can also `:ConfigUpdate!`
+to update *and* force run the post-update hooks.
+
+Sometimes plugin authors make backwards incompatible changes or push changes in
+ways that confuse [vim-plug](https://github.com/junegunn/vim-plug). A simple way
+to reset your plugin installation and start over is to remove them from the
+load path in `~/.local/share/nvim/plugged` which can be run with
+`:ConfigResetAllPluginsReallyDoIt!`.
