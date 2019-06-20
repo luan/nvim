@@ -174,6 +174,9 @@ Plug 'dyng/ctrlsf.vim'
 
 " - for netrw current directory
 Plug 'tpope/vim-vinegar'
+
+" Improved incremental searching
+Plug 'haya14busa/incsearch.vim'
 " }
 
 " Language configuration {
