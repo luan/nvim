@@ -91,9 +91,12 @@ function! update#installLanguageServers()
 endfunction
 
 function! s:update_hook()
-  call update#installLanguageServers()
   let g:update_plugins = 1
   runtime plug.vim
+  call update#installLanguageServers()
+  if executable('go')
+    GoUpdateBinaries
+  endif
   echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
 endfunction
 

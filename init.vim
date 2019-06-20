@@ -9,8 +9,8 @@ if !isdirectory(expand('<sfile>:h') . '/user')
   silent! execute '!cp -a ' . expand('<sfile>:h') . '/user.defaults ' . expand('<sfile>:h') . '/user'
 endif
 
-runtime user/before.vim
-runtime update.vim " Auto-update (once every 24 hours)
+" runtime user/before.vim
+runtime update.vim " Auto-update
 runtime plug.vim
 runtime! include/*.vim
 runtime! lang/*.vim
