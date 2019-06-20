@@ -47,7 +47,8 @@ if executable('gopls')
   let s:languageserver["golang"] = {
         \   "command": "gopls",
         \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        \   "filetypes": ["go"]
+        \   "filetypes": ["go"],
+        \   "disableDiagnostics": v:true
         \ }
 endif
 
