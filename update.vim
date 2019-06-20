@@ -119,8 +119,10 @@ function! s:update()
         \ })
 endfunction
 
+command ConfigUpdate call s:update()
+
 if s:is_win || !update#autoUpdateEnabled()
   finish
 endif
 
-autocmd VimEnter * call s:update()
+autocmd VimEnter * :ConfigUpdate
