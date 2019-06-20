@@ -16,10 +16,7 @@ if has('nvim-0.3.2')
   highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
 endif
 
-" [Issue #18] Temporarily disabled until gopls is stable enough and all merged
-" into the main repo. Just using the regular linters is more stable for now.
-
-" let g:ale_go_langserver_executable = 'gopls'
+let g:ale_go_langserver_executable = 'gopls'
 
 let g:ale_linters = {
 \   'go': ['go build', 'gofmt', 'golangci-lint'],
