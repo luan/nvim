@@ -1,5 +1,8 @@
+" Full redraw finxing syntax highlight bugs
+nnoremap <silent> <c-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+" coc.nvim
 if executable('yarn')
-  " coc.nvim
   imap <C-j> <Plug>(coc-snippets-expand-jump)
   vmap <C-j> <Plug>(coc-snippets-select)
   let g:coc_snippet_next = '<c-j>'
@@ -9,12 +12,6 @@ if executable('yarn')
   " coc.nvim diagnostics
   nmap <silent> [v <Plug>(coc-diagnostic-prev)
   nmap <silent> ]v <Plug>(coc-diagnostic-next)
-else
-  " UltiSnips
-  let g:UltiSnipsExpandTrigger = '<c-j>'
-  let g:UltiSnipsJumpForwardTrigger = '<c-f>'
-  let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
-  let g:UltiSnipsRemoveSelectModeMappings = 0
 endif
 
 " ALE
