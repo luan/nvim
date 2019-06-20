@@ -60,20 +60,29 @@ function! update#autoUpdateEnabled()
 endfunction
 
 function! update#installLanguageServers()
+  echo 'Installing language servers...'
   if executable('gem')
-    call jobstart('gem install solargraph')
+    echo 'Installing solargraph [ruby]...'
+    call s:system('gem install solargraph')
+    echon ' Done.'
   endif
 
   if executable('npm')
-    call jobstart('npm i -g bash-language-server')
+    echo 'Installing bash-language-server [bash]...'
+    call s:system('npm i -g bash-language-server')
+    echon ' Done.'
   endif
 
   if executable('rustup')
-    call jobstart('rustup component add rls rust-analysis rust-src')
+    echo 'Installing rls [rust]...'
+    call s:system('rustup component add rls rust-analysis rust-src')
+    echon ' Done.'
   endif
 
   if executable('go')
-    call jobstart('go get -u github.com/sourcegraph/go-langserver')
+    echo 'Installing go-langserver [go]...'
+    call s:system('go get -u github.com/sourcegraph/go-langserver')
+    echon ' Done.'
   endif
 endfunction
 
