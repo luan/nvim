@@ -128,7 +128,8 @@ function! s:remote_updated(id, status, type)
     call s:system('git merge ' . l:remote)
     call s:update_hook()
   elseif l:remote == l:base
-    echohl ErrorMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your' | echohl None
+    echohl ErrorMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your'
+          \ 'changes to user settings?' | echohl None
     return
   endif
 endfunction
