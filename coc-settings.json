@@ -1,0 +1,5 @@
+{
+  "coc.preferences.messageLevel": "error",
+  "coc.preferences.formatOnSaveFiletypes": [ "go", "json", "c", "cpp", "javascript", "typescript" ],
+  "yaml.validate": false
+}
