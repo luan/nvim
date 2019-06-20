@@ -90,6 +90,13 @@ function! update#installLanguageServers()
   endif
 endfunction
 
+function! s:update_hook()
+  call update#installLanguageServers()
+  let g:update_plugins = 1
+  runtime plug.vim
+  echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
+endfunction
+
 function! s:remote_updated(id, status, type)
   if a:status != 0
     echohl ErrorMsg | echomsg 'Error fetching remote Nvim config. Are you connected to the internet?' | echohl None
@@ -104,6 +111,10 @@ function! s:remote_updated(id, status, type)
   let l:remote = update#remoteVersion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
+  if s:force ==# 1
+    call s:update_hook()
+  endif
+
   if l:has_local_changes
     echohl ErrorMsg | echomsg 'Local changes detected. If these are user preferences, consider'
     \ 'moving them to your user settings.' | echohl None
@@ -112,28 +123,24 @@ function! s:remote_updated(id, status, type)
     return
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
-
-    " should probably figure out a better way to do this
-    call update#installLanguageServers()
-
-    let g:update_plugins = 1
-    runtime plug.vim
-    autocmd VimEnter * UpdateRemotePlugins
-    echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
+    call s:update_hook()
   elseif l:remote == l:base
     echohl ErrorMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your' | echohl None
     return
   endif
 endfunction
 
-function! s:update()
+let s:force = 0
+
+function! s:update(force)
+  let s:force = a:force
   let l:update_job = s:jobstart('git remote update', {
         \ 'on_exit': function('s:remote_updated')
         \ })
 endfunction
 
 command ConfigInstallLanguageServers call update#installLanguageServers()
-command ConfigUpdate call s:update()
+command -bang ConfigUpdate call s:update(<bang>0)
 
 if s:is_win || !update#autoUpdateEnabled()
   finish
