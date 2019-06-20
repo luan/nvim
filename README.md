@@ -97,6 +97,11 @@ symlink them in here, see [my dotfiles
 repo](https://github.com/luan/dotfiles/tree/master/nvim/.config/nvim/user) for
 an example.
 
+### Options
+
+  - `g:autosave`: add a `let g:autosave = 1` to your `user/before.vim` to enable
+    autosaving.
+
 ## Troubleshooting
 
 In the even things behave incorrectly or the config becomes unstable in general,
