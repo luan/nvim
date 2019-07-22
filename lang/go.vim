@@ -23,9 +23,6 @@ call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
 
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
 let g:ale_go_gometalinter_options =
       \ '--tests ' .
       \ '--fast ' .
