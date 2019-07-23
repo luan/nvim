@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Color schemes {
 Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'kadekillary/Turtles'
 " }
 
 " UI -- User interface additions {
