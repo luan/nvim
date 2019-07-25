@@ -1,5 +1,6 @@
 {
   "coc.preferences.messageLevel": "error",
+  "diagnostic.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "go",
     "json",
@@ -14,6 +15,5 @@
   "solargraph.completion": true,
   "solargraph.useBundler": true,
   "solargraph.rename": true,
-  "solargraph.diagnostics": true,
   "yaml.validate": false
 }
