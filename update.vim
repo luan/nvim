@@ -92,6 +92,8 @@ function! update#installLanguageServers()
     let tmpdir = tempname()
     execute mkdir(l:tmpdir)
     call s:system('cd ' . l:tmpdir . ' && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
+    call s:system('cd ' . l:tmpdir . ' && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
+    execute delete(fnameescape(g:go_bin_path . '/gopls'))
     echon ' Done.'
   endif
 endfunction
