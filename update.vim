@@ -85,7 +85,9 @@ function! update#installLanguageServers()
     " cases; fork of gopls is behaving better. This is an awkard situation but
     " trying to make the best of it.
     echo 'Installing gopls [go]...'
-    call s:system('cd $TMPDIR && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
+    let tmpdir = tempname()
+    execute mkdir(l:tmpdir)
+    call s:system('cd ' . l:tmpdir . ' && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
     echon ' Done.'
   endif
 endfunction

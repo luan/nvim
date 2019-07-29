@@ -24,9 +24,7 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go :OR
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 let s:languageserver = {}
 
@@ -47,8 +45,7 @@ if executable('gopls')
   let s:languageserver["golang"] = {
         \   "command": "gopls",
         \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        \   "filetypes": ["go"],
-        \   "disableDiagnostics": v:true
+        \   "filetypes": ["go"]
         \ }
 endif
 
