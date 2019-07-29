@@ -268,7 +268,7 @@ Plug 'junegunn/vader.vim'
 
 " Text objects {
 " allows you to configure % to match more than just single characters
-Plug 'vim-scripts/matchit.zip'
+Plug 'adelarsq/vim-matchit'
 
 " Create your own text objects
 Plug 'kana/vim-textobj-user'
