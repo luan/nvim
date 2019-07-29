@@ -3,7 +3,12 @@ scriptencoding utf-8
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], ['cocstatus', 'fugitive', 'filename']],
-      \   'right': [['lineinfo'], ['percent'], ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
+      \   'right': [
+      \     ['lineinfo'],
+      \     ['percent'],
+      \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+      \     ['config_outdated'],
+      \   ]
       \ },
       \ 'component': {
       \   'lineinfo': ' %3l:%-2v',
@@ -11,23 +16,26 @@ let g:lightline = {
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
       \   'cocstatus': 'coc#status',
-      \   'filename': 'LightlineFilename'
+      \   'filename': 'LightlineFilename',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
+      \   'config_outdated': 'update#status',
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'left',
+      \   'config_outdated': 'warning',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
 function! LightlineModified()
   return &filetype =~# 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction

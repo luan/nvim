@@ -63,19 +63,18 @@ Plugins will be automatically downloaded and setup as necessary.
 
 ## Updating
 
-The distribution auto-updates when starting up if there are new changed, if you
-have trouble with auto-updating or want to disable it for other reason add the
-following to you `user/before.vim`:
+The distribution checks for updates on boot and every hour when it's running.
+The check is non-disruptive and will only show messages passively when one of
+the following is true:
 
-```
-let g:skip_autoupdate = 1
-```
+* An update is available (and you should run `:ConfigUpdate` or
+  `:ConfigUpdate!`).
+* An error occurred fetching the remove version.
+* You have local changes on your nvim config repo (you really shouldn't unless
+  you're preparing a PR).
 
-This distribution uses [vim-plug](https://github.com/junegunn/vim-plug) to
-manage plugins, it also uses vim-plug to manage itself. So you can run
-`:PlugUpdate` anytime to update all plugins and the distribution itself.
-Whenever updating, if anything has changed, it is recommended that you restart
-all instances of Neovim to reload plugins and configurations.
+`:ConfigUpdate` updates the local config and you can also `:ConfigUpdate!` to
+update *and* force run the post-update hooks.
 
 ## Customizing
 
@@ -110,10 +109,8 @@ wrong with your setup.
 
 Make sure language servers are installed for your language;
 `:ConfigInstallLanguageServers` installs a few that aren't automatically managed
-by other plugins.
-
-Lastly, `:ConfigUpdate` runs the auto-update and you can also `:ConfigUpdate!`
-to update *and* force run the post-update hooks.
+by other plugins (this should have happened automatically but it is sometimes good
+to make sure it runs successfully).
 
 Sometimes plugin authors make backwards incompatible changes or push changes in
 ways that confuse [vim-plug](https://github.com/junegunn/vim-plug). A simple way
