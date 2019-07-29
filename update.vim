@@ -47,16 +47,20 @@ function! s:system(cmd)
   endtry
 endfunction
 
+function! update#status()
+  if update#localVersion() != update#remoteVersion()
+    return " update available!"
+  endif
+
+  return ""
+endfunction
+
 function! update#localVersion()
   return s:system('git rev-parse @')
 endfunction
 
 function! update#remoteVersion()
   return s:system('git rev-parse "@{u}"')
-endfunction
-
-function! update#autoUpdateEnabled()
-  return !exists('g:skip_autoupdate') || g:skip_autoupdate != 1
 endfunction
 
 function! update#installLanguageServers()
@@ -116,40 +120,54 @@ function! s:remote_updated(id, status, type)
   let l:remote = update#remoteVersion()
   let l:base = s:system('git merge-base @ "@{u}"')
 
-  if s:force ==# 1
-    call s:update_hook()
+  if l:has_local_changes
+    echohl WarningMsg | echomsg 'Local changes detected. If these are user preferences, consider'
+    \ 'moving them to your user settings.' | echohl None
+  elseif l:local == l:remote
+    return
+  elseif l:local == l:base
+    echohl WarningMsg | echomsg 'There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest!' | echohl None
+  elseif l:remote == l:base
+    echohl WarningMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your'
+          \ 'changes to user settings?' | echohl None
   endif
+endfunction
+
+function! s:update(force)
+  call s:system('git update-index -q --refresh')
+  call s:system('git diff-index --quiet HEAD --')
+
+  let l:has_local_changes = v:shell_error
+  let l:local = update#localVersion()
+  let l:remote = update#remoteVersion()
+  let l:base = s:system('git merge-base @ "@{u}"')
 
   if l:has_local_changes
-    echohl ErrorMsg | echomsg 'Local changes detected. If these are user preferences, consider'
-    \ 'moving them to your user settings.' | echohl None
+    echohl ErrorMsg | echomsg 'Local changes detected. Update aborted!' | echohl None
     return
   elseif l:local == l:remote
     return
   elseif l:local == l:base
     call s:system('git merge ' . l:remote)
-    call s:update_hook()
   elseif l:remote == l:base
-    echohl ErrorMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your'
-          \ 'changes to user settings?' | echohl None
+    echohl ErrorMsg | echomsg 'Local commits detected. Update aborted!' | echohl None
     return
+  endif
+
+  if a:force ==# 1
+    call s:update_hook()
   endif
 endfunction
 
-let s:force = 0
-
-function! s:update(force)
-  let s:force = a:force
+function! s:checkupdates(timerid)
   let l:update_job = s:jobstart('git remote update', {
         \ 'on_exit': function('s:remote_updated')
         \ })
 endfunction
 
-command ConfigInstallLanguageServers call update#installLanguageServers()
-command -bang ConfigUpdate call s:update(<bang>0)
+command! ConfigInstallLanguageServers call update#installLanguageServers()
+command! -bang ConfigUpdate call s:update(<bang>0)
 
-if s:is_win || !update#autoUpdateEnabled()
-  finish
-endif
-
-autocmd VimEnter * :ConfigUpdate
+" every hour, check for updates
+let s:timer = timer_start(3600 * 1000, funcref("<sid>checkupdates"), { 'repeat': -1 })
+autocmd VimEnter * :call s:checkupdates(0) " check once on load
