@@ -12,8 +12,8 @@ endif
 runtime user/before.vim
 runtime update.vim " Auto-update
 runtime plug.vim
-runtime! include/*.vim
 runtime! lang/*.vim
+runtime! include/*.vim
 runtime keyboard.vim
 runtime user/after.vim
 runtime colorscheme.vim
