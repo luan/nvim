@@ -82,28 +82,18 @@ function! update#installLanguageServers()
     call s:system('rustup component add rls rust-analysis rust-src')
     echon ' Done.'
   endif
-
-  if executable('go')
-    " [Issue #18]
-    " UPDATE 2019-6-19: go-langserver seems to be slower and worse in a lot of
-    " cases; fork of gopls is behaving better. This is an awkard situation but
-    " trying to make the best of it.
-    echo 'Installing gopls [go]...'
-    let tmpdir = tempname()
-    execute mkdir(l:tmpdir)
-    call s:system('cd ' . l:tmpdir . ' && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
-    call s:system('cd ' . l:tmpdir . ' && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && go install')
-    execute delete(fnameescape(g:go_bin_path . '/gopls'))
-    echon ' Done.'
-  endif
 endfunction
 
-function! s:update_hook()
+function! s:update_hook(force)
   let g:update_plugins = 1
   runtime plug.vim
   call update#installLanguageServers()
   if executable('go')
-    GoUpdateBinaries
+    if a:force ==# 1
+      GoUpdateBinaries
+    else
+      GoInstallBinaries
+    endif
   endif
   echohl WarningMsg | echomsg 'Nvim config has been updated. Please re-open Nvim to apply changes.' | echohl None
 endfunction
@@ -128,7 +118,7 @@ function! s:remote_updated(id, status, type)
   elseif l:local == l:remote
     return
   elseif l:local == l:base
-    echohl WarningMsg | echomsg 'There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest!' | echohl None
+    echohl WarningMsg | echomsg 'There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest.' | echohl None
   elseif l:remote == l:base
     echohl WarningMsg | echomsg 'Local commits detected. You may want to push / send a PR / move your'
           \ 'changes to user settings?' | echohl None
@@ -156,9 +146,7 @@ function! s:update(force)
     return
   endif
 
-  if a:force ==# 1
-    call s:update_hook()
-  endif
+  call s:update_hook(a:force)
 endfunction
 
 function! s:checkupdates(timerid)
