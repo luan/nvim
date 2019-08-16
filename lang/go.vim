@@ -57,6 +57,4 @@ endfunction
 augroup config#go
   autocmd!
   autocmd User ProjectionistDetect call s:ProjectionistDetect()
-  autocmd Filetype go compiler go
-  autocmd BufEnter *.go setlocal foldmethod=syntax shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 augroup END
