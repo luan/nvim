@@ -2,7 +2,7 @@ scriptencoding utf-8
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [['mode', 'paste'], ['cocstatus', 'fugitive', 'filename']],
+      \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
       \   'right': [
       \     ['lineinfo'],
       \     ['percent'],
@@ -15,7 +15,6 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightlineFugitive',
-      \   'cocstatus': 'coc#status',
       \   'filename': 'LightlineFilename',
       \ },
       \ 'component_expand': {
