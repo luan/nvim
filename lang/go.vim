@@ -4,6 +4,7 @@ let g:go_metalinter_autosave = 0
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_experimental = 1
+let g:go_echo_command_info = 0
 
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
@@ -33,14 +34,6 @@ call mkdir(g:go_bin_path, 'p', 0755)
 
 let g:go_auto_type_info = 0
 let g:go_code_completion_enabled = 0
-
-let g:ale_go_gometalinter_options =
-      \ '--tests ' .
-      \ '--fast ' .
-      \ '--disable=gotype ' .
-      \ '--disable=gotypex ' .
-      \ '--exclude="should have comment" ' .
-      \ '--exclude="error return value not checked \(defer"'
 
 let s:projections = {
       \ '*.go': {'type': 'go', 'alternate': '{}_test.go'},
