@@ -42,6 +42,10 @@ set shiftwidth=2          " Use indents of 2 spaces
 set softtabstop=2         " Let backspace delete indent
 set tabstop=2             " An indentation every four columns
 
+" Visible Whitespace
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+set nolist
+
 set undofile              " Persistent undo
 set undolevels=1000       " Maximum number of changes that can be undone
 set undoreload=10000      " Maximum number lines to save for undo on a buffer reload
