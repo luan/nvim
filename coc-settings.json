@@ -15,6 +15,7 @@
   "solargraph.completion": true,
   "solargraph.useBundler": true,
   "solargraph.rename": true,
+  "suggest.enablePreselect": false,
   "yaml.validate": false,
   "snippets.ultisnips.directories": [
     "UltiSnips",
