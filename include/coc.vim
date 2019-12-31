@@ -45,7 +45,13 @@ if executable('gopls')
   let s:languageserver["golang"] = {
         \   "command": "gopls",
         \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        \   "filetypes": ["go"]
+        \   "filetypes": ["go"],
+        \   "initializationOptions": {
+        \     "completeUnimported": v:true,
+        \     "deepCompletion": v:true,
+        \     "fuzzyMatching": v:true,
+        \     "usePlaceholders": v:true
+        \   }
         \ }
 endif
 
