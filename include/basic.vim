@@ -78,6 +78,9 @@ set foldlevelstart=99
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
+" OS Clipboard Synchronization
+set clipboard+=unnamedplus
+
 " netrw
 let g:netrw_altfile = 1   " <Ctrl-^> should go to the last file, not to netrw.
 
