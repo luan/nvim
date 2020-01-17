@@ -252,6 +252,10 @@ Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " }
 
+" Org Mode {
+Plug 'jceb/vim-orgmode'
+" }
+
 " Misc {
 Plug 'PProvost/vim-ps1'
 Plug 'PotatoesMaster/i3-vim-syntax'
