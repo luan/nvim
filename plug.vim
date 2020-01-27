@@ -82,6 +82,10 @@ Plug 'tommcdo/vim-exchange'
 " }
 
 " General -- Helpful generic tools with no dependencies {
+
+" Nerdtree file explorer
+Plug 'scrooloose/nerdtree'
+
 " project configuration via 'projections'
 Plug 'tpope/vim-projectionist'
 

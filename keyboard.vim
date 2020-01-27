@@ -76,6 +76,9 @@ nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 
 let g:lmap =  {}
 
+" Open NERDTree on \
+nmap \ :NERDTreeToggle<CR>
+
 " Disable plugin mappings
 let g:swoopUseDefaultKeyMap = 0
 let g:gitgutter_map_keys = 1
