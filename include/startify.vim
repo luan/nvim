@@ -10,7 +10,7 @@ let g:startify_lists = [
                   \ { 'type': 'commands',  'header': [   'Commands']        },
                   \ ]
 
-let g:startify_bookmarks = [ {'c': '~/.vimrc'}, '~/.zshrc' ]
+let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
 
 let s:version = split(execute('version'), '\n')[0]
 

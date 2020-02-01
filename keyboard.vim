@@ -44,27 +44,11 @@ nnoremap <silent> <expr> <CR> keyboard#should_save_on_enter() ? ':call SaveIfUns
 let g:user_emmet_leader_key='<leader>e'
 let g:user_emmet_mode='nv'              " only enable normal and visual mode functions
 
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 " Escape to clear search
 nnoremap <silent> <esc> :noh<cr>
 
 " Close and delete buffer
 nnoremap <silent> <M-q> :Sayonara<cr>
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(LiveEasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(LiveEasyAlign)
-
-" Leader is <Space>
-let g:mapleader=' '
-let g:maplocalleader = ','
 
 " Copy to system clipboard
 vnoremap Y "+y
@@ -72,86 +56,170 @@ vnoremap Y "+y
 " Disable search highlight
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 
-let g:lmap =  {}
 
 " Disable plugin mappings
 let g:swoopUseDefaultKeyMap = 0
-let g:gitgutter_map_keys = 1
+let g:gitgutter_map_keys = 0
+let g:dispatch_no_maps = 1
 
-function! s:leaderGuideDisplay()
-  let g:leaderGuide#displayname =
-        \ substitute(g:leaderGuide#displayname, '\c<cr>$', '', '')
-  let g:leaderGuide#displayname =
-        \ substitute(g:leaderGuide#displayname, '^<Plug>', '', '')
-  let g:leaderGuide#displayname =
-        \ substitute(g:leaderGuide#displayname, '^:', '', '')
-endfunction
-let g:leaderGuide_displayfunc = [function('s:leaderGuideDisplay')]
+nnoremap <silent> <c-p> :Clap files<CR>
 
-call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+" Leader mappings {{{
+" Leader is <Space>
+let g:mapleader=' '
+let g:maplocalleader = ','
 
-let g:lmap[' '] = { 'name': 'General' }
-nnoremap <leader><leader>c :FZFCommands<CR>
+nnoremap <silent><nowait> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent><nowait> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent><nowait> <localleader> :<c-u>WhichKey  ','<CR>
+vnoremap <silent><nowait> <localleader> :<c-u>WhichKeyVisual ','<CR>
 
-let g:lmap.t = { 'name': 'Testing' }
-nnoremap <silent> <leader>tt :TestNearest<CR>
-nnoremap <silent> <leader>t. :TestLast<CR>
-nnoremap <silent> <leader>tf :TestFile<CR>
-nnoremap <silent> <leader>ts :TestSuite<CR>
-nnoremap <silent> <leader>tg :TestVisit<CR>
+call which_key#register('<Space>', "g:leader_key_map")
 
-let g:lmap.f = { 'name': 'Files' }
-nnoremap <silent> <leader>ff :FZFFiles<CR>
-nnoremap <silent> <leader>fo :FZFBuffers<CR>
-nnoremap <silent> <leader>fm :FZFHistory<CR>
-nnoremap <silent> <Plug>(open-alternate) <c-^>
-nmap     <silent> <leader>f. <Plug>(open-alternate)
+let g:leader_key_map=  {}
 
-let g:lmap.h = { 'name': 'Hunks' }
-let g:lmap.g = { 'name': 'Git' }
+let g:leader_key_map[' '] = {
+      \ 'name': '+general',
+      \ 'c': [':Clap command', 'Search commands'],
+      \ }
+
+let g:leader_key_map.t = {
+      \ 'name': '+testing',
+      \ 't': [':TestNearest', 'Run Nearest'],
+      \ '.': [':TestLast',    'Run Last'],
+      \ 'f': [':TestFile',    'Run File'],
+      \ 's': [':TestSuite',   'Run Suite'],
+      \ 'g': [':TestVisit',   'Goto last ran test'],
+      \ }
+
+let g:leader_key_map.f = {
+      \ 'name': '+files',
+      \ 'f': [':Clap files',   'File Search'],
+      \ 'o': [':Clap buffers', 'Open Buffer Search'],
+      \ 'm': [':Clap history', 'Recent Files Search'],
+      \ '-': [':Clap filer',   'File Browser'],
+      \ '.': ['<c-^>',         'Goto Last Buffer'],
+      \ }
+
+let g:leader_key_map.h = {
+      \ 'name': '+hunks',
+      \ 't': [':GitGutterToggle',             'Toggle Git Gutter'],
+      \ 'p': ['<Plug>(GitGutterPreviewHunk)', 'Preview Hunk'],
+      \ 's': ['<Plug>(GitGutterStageHunk)',   'Stage Hunk'],
+      \ 'u': ['<Plug>(GitGutterUndoHunk)',    'Undo Hunk'],
+      \ }
+
+let g:leader_key_map.g = { 'name': '+git' }
 nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gc :FZFCommits<CR>
-nnoremap <silent> <leader>gk :FZFBCommits<CR>
+nnoremap <silent> <leader>gc :Clap commits<CR>
+nnoremap <silent> <leader>gk :Clap bcommits<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 
-let g:lmap.s = { 'name': 'Search' }
+let g:leader_key_map.s = { 'name': '+search' }
 nnoremap <silent> <leader>sg :Grepper<CR>
-let g:lmap.s.f = [':FZFRg ', 'FZFRg']
-nnoremap <silent> <leader>st :FZFTags<CR>
-nnoremap <silent> <leader>sl :FZFLines<CR>
+nnoremap <silent> <leader>sf :Clap grep <CR>
+nnoremap <silent> <leader>st :Clap tags<CR>
+nnoremap <silent> <leader>sl :Clap lines<CR>
+nnoremap <silent> <leader>sb :Clap blines<CR>
 
-let g:lmap.c = { 'name': 'Cscope' }
-let g:lmap.c.s = ['cs find s <cword>',                                            'Cscope Symbol']
-let g:lmap.c.g = ['cs find g <cword>',                                            'Cscope Definition']
-let g:lmap.c.c = ['cs find c <cword>',                                            'Cscope Callers']
-let g:lmap.c.d = ['cs find d <cword>',                                            'Cscope Callees']
-let g:lmap.c.a = ['cs find a <cword>',                                            'Cscope Assignments']
-let g:lmap.c.z = ['!sh -xc ''starscope -e cscope -e ctags -x "*.go" -x "*.js"''', 'Cscope Build Database']
-let g:lmap.c.o = ['cs add cscope.out',                                            'Cscope Open Database']
+let g:leader_key_map.c = {
+      \ 'name': '+cscope',
+      \ 's': ['cs find s <cword>', 'Cscope Symbol'],
+      \ 'g': ['cs find g <cword>', 'Cscope Definition'],
+      \ 'c': ['cs find c <cword>', 'Cscope Callers'],
+      \ 'd': ['cs find d <cword>', 'Cscope Callees'],
+      \ 'a': ['cs find a <cword>', 'Cscope Assignments'],
+      \ 'o': ['cs add cscope.out', 'Cscope Open Database'],
+      \
+      \ 'z': ['!sh -xc ''starscope -e cscope -e ctags -x "*.go" -x "*.js"''', 'Cscope Build Database'],
+      \ }
 
-let g:lmap.e = { 'name': 'Emmet (HTML toolkit)' }
 
-let g:lmap.l = { 'name': 'Language Server' }
+let g:leader_key_map.e = { 'name': '+emmet' }
 
-let g:lmap.l.k =  [':call CocAction("doHover")',        'Hover']
-
-let g:lmap.l.s =  [':Vista finder coc',                 'Symbols']
-let g:lmap.l.t =  [':Vista coc',                        'Tag Bar']
-let g:lmap.l.ct = [':Vista!',                           'Close Tag Bar']
+let g:leader_key_map.l = {
+      \ 'name': '+language-server',
+      \ 'k': [':call CocAction("doHover")',    'Hover'],
+      \ 's': [':Vista finder',                 'Symbols'],
+      \ 't': [':Vista!!',                      'Tag Bar'],
+      \ }
 
 nmap <silent> <leader>la <Plug>(coc-codeaction)
 vmap <silent> <leader>la <Plug>(coc-codeaction-selected)
+let g:leader_key_map.l.a = 'Code Action'
 
 nmap <silent> <leader>l= <Plug>(coc-format)
 vmap <silent> <leader>l= <Plug>(coc-format-selected)
+let g:leader_key_map.l['='] = 'Code Format'
 
 nmap <silent> <leader>lr <Plug>(coc-rename)
+let g:leader_key_map.l.r = 'Rename'
+
 nmap <silent> <leader>lf <Plug>(coc-fix-current)
+let g:leader_key_map.l.f = 'Autofix Current'
 
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
+let g:leader_key_map.b = {
+      \ 'name' : '+buffer' ,
+      \ 'd' : ['bd',            'Delete Buffer'],
+      \ 'h' : ['Startify',      'Home Buffer'],
+      \ 'l' : ['b#',            'Last Buffer'],
+      \ 'n' : ['bnext',         'Next Buffer'],
+      \ 'p' : ['bprevious',     'Previous Buffer'],
+      \ 's' : [':Clap buffers', 'Search Buffer'],
+      \ }
 
-nnoremap <silent> <c-p> :FZFFiles<CR>
+" }}}
 
+" g mappings {{{
+
+" These unfortunately would make it so defaults don't work, so we can't yet
+" have a menu for non leader mappings.
+
+" nnoremap <silent> g :<c-u>WhichKey 'g'<CR>
+" vnoremap <silent> g :<c-u>WhichKeyVisual 'g'<CR>
+
+" call which_key#register('g', "g:g_key_map")
+
+" let g:g_key_map=  {}
+
+" " Start interactive EasyAlign in visual mode (e.g. vipga)
+" xmap ga <Plug>(LiveEasyAlign)
+
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nmap ga <Plug>(LiveEasyAlign)
+" let g:g_key_map.a = 'Align Mode'
+
+" " Remap keys for gotos
+" nmap <silent> gd <Plug>(coc-definition)
+" let g:g_key_map.d = 'Go to definition'
+" nmap <silent> gy <Plug>(coc-type-definition)
+" let g:g_key_map.y = 'Go to type'
+" nmap <silent> gi <Plug>(coc-implementation)
+" let g:g_key_map.i = 'Go to implementation'
+" nmap <silent> gr <Plug>(coc-references)
+" let g:g_key_map.r = 'Find references'
+
+" let g:g_key_map['#'] = 'which_key_ignore'
+" let g:g_key_map['*'] = 'which_key_ignore'
+" let g:g_key_map['F'] = 'which_key_ignore'
+" let g:g_key_map['/'] = 'which_key_ignore'
+" let g:g_key_map['b'] = 'which_key_ignore'
+" let g:g_key_map['%'] = 'which_key_ignore'
+" let g:g_key_map['x'] = 'which_key_ignore'
+
+" " from plugins
+
+" " splitjoin
+" let g:g_key_map.J = 'Smart join lines'
+" let g:g_key_map.S = 'Smart split lines'
+
+" " swap
+" let g:g_key_map['<'] = 'Swap left'
+" let g:g_key_map['>'] = 'Swap right'
+" let g:g_key_map.s = 'Swap Mode'
+
+" " commentary
+" let g:g_key_map.c = 'Comment (<control-/>)'
+" let g:g_key_map.cc = 'which_key_ignore'
+
+" }}}
