@@ -13,8 +13,7 @@ endfunction
 
 function! s:checkDependencies()
   if s:missingDependency('curl') ||
-        \ s:missingDependency('npm') ||
-        \ s:missingDependency('yarn')
+        \ s:missingDependency('npm')
     echoerr 'Missing dependencies detected. Please refer to the README for more information on how to install them.'
   endif
 endfunction

@@ -48,9 +48,6 @@ order to properly setup everything:
   * [`curl`](https://curl.haxx.se/): used to install the plugin manager.
   * [`npm`](https://www.npmjs.com/): used to install JS tools and some language
     server binaries.
-  * [`yarn`](https://yarnpkg.com/en/): used to install
-    [`coc.nvim`](https://github.com/neoclide/coc.nvim) extensions for better and
-    fancier autocomplete and language features.
 
 Once you have that setup, all you have to do is clone this config in the right
 spot:

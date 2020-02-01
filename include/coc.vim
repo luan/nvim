@@ -1,7 +1,3 @@
-if !executable('yarn')
-  finish
-endif
-
 let g:coc_global_extensions = [
       \   'coc-css',
       \   'coc-emmet',

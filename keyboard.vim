@@ -2,17 +2,15 @@
 nnoremap <silent> <c-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 " coc.nvim
-if executable('yarn')
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
-  vmap <C-j> <Plug>(coc-snippets-select)
-  let g:coc_snippet_next = '<c-j>'
-  let g:coc_snippet_prev = '<c-k>'
-  inoremap <silent><expr> <M-space> coc#refresh()
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+inoremap <silent><expr> <M-space> coc#refresh()
 
-  " coc.nvim diagnostics
-  nmap <silent> [v <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]v <Plug>(coc-diagnostic-next)
-endif
+" coc.nvim diagnostics
+nmap <silent> [v <Plug>(coc-diagnostic-prev)
+nmap <silent> ]v <Plug>(coc-diagnostic-next)
 
 " ALE
 nmap <silent> <M-p> <Plug>(ale_previous_wrap)
