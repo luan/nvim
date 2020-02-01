@@ -22,7 +22,7 @@ Table of Contents
          * [bronson/vim-trailing-whitespace](#bronsonvim-trailing-whitespace)
          * [kshenoy/vim-signature](#kshenoyvim-signature)
          * [itchyny/lightline.vim](#itchynylightlinevim)
-         * [hecal3/vim-leader-guide](#hecal3vim-leader-guide)
+         * [liuchengxu/vim-which-key](#liuchengxuvim-which-key)
       * [Editing - Text manipulation](#editing---text-manipulation)
          * [tpope/vim-commentary](#tpopevim-commentary)
          * [terryma/vim-multiple-cursors](#terrymavim-multiple-cursors)
@@ -146,7 +146,7 @@ More advanced configuration is documented in `:h lightline`
 
 ![lightline](https://raw.githubusercontent.com/wiki/itchyny/lightline.vim/image/powerline.png)
 
-### [`hecal3/vim-leader-guide`](https://github.com/hecal3/vim-leader-guide)
+### [`liuchengxu/vim-which-key`](https://github.com/liuchengxu/vim-which-key)
 
 Shows a guide to key mappings. This is meant to make our custom key mappings
 more discoverable. Will automatically show when hitting the leader key. Disable
@@ -156,7 +156,7 @@ with:
 unmap <leader>
 ```
 
-![vim-leader-guide](https://cloud.githubusercontent.com/assets/11238697/14471215/bbc54a40-00ed-11e6-9eb2-8b6fb247589f.png)
+![vim-which-key](https://raw.githubusercontent.com/liuchengxu/img/master/vim-which-key/vim-which-key.png)
 <!--}-->
 
 ## Editing - Text manipulation<!--{-->
