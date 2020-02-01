@@ -26,8 +26,11 @@ Plug 'itchyny/lightline.vim'
 " ALE indicator for the lightline vim plugin
 Plug 'maximbaz/lightline-ale'
 
-" Visual guide for keybindings
-Plug 'hecal3/vim-leader-guide'
+" Vim plugin that shows keybindings in popup
+Plug 'liuchengxu/vim-which-key'
+
+" Visual register search
+Plug 'junegunn/vim-peekaboo'
 " }
 
 " Editing -- Text manipulation helpers {
@@ -161,9 +164,8 @@ Plug 'w0rp/ale'
 " }
 
 " Navigation -- Fuzzy find, searching, etc {
-let g:fzf_command_prefix = 'FZF'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Modern performant generic finder and dispatcher for Vim and NeoVim
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " Helps you win at grep.
 Plug 'mhinz/vim-grepper'
