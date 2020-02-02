@@ -81,6 +81,7 @@ let g:leader_key_map=  {}
 let g:leader_key_map[' '] = {
       \ 'name': '+general',
       \ 'c': [':Clap command', 'Search commands'],
+      \ 'a': [':Clap colors', 'Search colorshcemes'],
       \ }
 
 let g:leader_key_map.t = {
