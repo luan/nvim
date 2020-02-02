@@ -6,6 +6,11 @@ from the original [vim](https://www.vim.org) and focus on supporting
 [Neovim](https://neovim.io).  Neovim is a faster moving project that is much
 more approachable for contributions.
 
+If you're familiar with [luan/vimfiles](https://github.com/luan/vimfiles) and
+want to know what has noticeably changed, try `:help vimfiles-migrating` (or
+just `:help migrating`). You can view that help file online
+[here](https://github.com/luan/nvim/blob/master/doc/migrating-from-legacy.txt).
+
 ## ALPHA disclaimer
 
 This is currently an experiment to discover more efficient key mappings that
