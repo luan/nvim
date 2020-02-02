@@ -9,6 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'kadekillary/Turtles'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " }
 
 " UI -- User interface additions {
@@ -195,6 +196,10 @@ Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rake'] }
 Plug 'tpope/vim-cucumber', { 'for': ['cucumber'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'rake'] }
 Plug 'tpope/vim-rake', { 'for': ['ruby', 'rake'] }
+" }
+
+" Python {
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " }
 
 " Clojure {
