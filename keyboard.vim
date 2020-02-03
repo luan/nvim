@@ -95,11 +95,12 @@ let g:leader_key_map.t = {
 
 let g:leader_key_map.f = {
       \ 'name': '+files',
-      \ 'f': [':Clap files',   'File Search'],
-      \ 'o': [':Clap buffers', 'Open Buffer Search'],
-      \ 'm': [':Clap history', 'Recent Files Search'],
-      \ '-': [':Clap filer',   'File Browser'],
-      \ '.': ['<c-^>',         'Goto Last Buffer'],
+      \ 'f': [':Clap files',          'File Search'],
+      \ 'h': [':Clap files --hidden', 'File Search (hidden)'],
+      \ 'o': [':Clap buffers',        'Open Buffer Search'],
+      \ 'm': [':Clap history',        'Recent Files Search'],
+      \ '-': [':Clap filer',          'File Browser'],
+      \ '.': ['<c-^>',                'Goto Last Buffer'],
       \ }
 
 let g:leader_key_map.h = {
@@ -173,6 +174,15 @@ let g:leader_key_map.b = {
 
 " g mappings {{{
 
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(LiveEasyAlign)
+
 " These unfortunately would make it so defaults don't work, so we can't yet
 " have a menu for non leader mappings.
 
@@ -183,21 +193,9 @@ let g:leader_key_map.b = {
 
 " let g:g_key_map=  {}
 
-" " Start interactive EasyAlign in visual mode (e.g. vipga)
-" xmap ga <Plug>(LiveEasyAlign)
-
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-" nmap ga <Plug>(LiveEasyAlign)
-" let g:g_key_map.a = 'Align Mode'
-
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
 " let g:g_key_map.d = 'Go to definition'
-" nmap <silent> gy <Plug>(coc-type-definition)
 " let g:g_key_map.y = 'Go to type'
-" nmap <silent> gi <Plug>(coc-implementation)
 " let g:g_key_map.i = 'Go to implementation'
-" nmap <silent> gr <Plug>(coc-references)
 " let g:g_key_map.r = 'Find references'
 
 " let g:g_key_map['#'] = 'which_key_ignore'
