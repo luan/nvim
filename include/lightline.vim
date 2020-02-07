@@ -7,7 +7,7 @@ let g:lightline = {
       \     ['lineinfo'],
       \     ['percent'],
       \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
-      \     ['config_outdated'],
+      \     ['config_deps', 'config_outdated'],
       \   ]
       \ },
       \ 'component': {
@@ -23,6 +23,7 @@ let g:lightline = {
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok',
       \   'config_outdated': 'update#status',
+      \   'config_deps': 'update#deps',
       \ },
       \ 'component_type': {
       \   'linter_checking': 'left',
@@ -30,6 +31,7 @@ let g:lightline = {
       \   'linter_errors': 'error',
       \   'linter_ok': 'left',
       \   'config_outdated': 'warning',
+      \   'config_deps': 'error',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }

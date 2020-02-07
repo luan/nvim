@@ -1,28 +1,18 @@
 let s:is_win = has('win32') || has('win64')
 let s:dir = fnamemodify(expand('$MYVIMRC'), ':p:h')
 
-function! s:missingDependency(command)
-  if !executable(a:command)
-    echohl WarningMsg
-    echomsg 'nvim config dependency `' . a:command . '` not installed and is required.'
-    echohl None
-    return 1
-  endif
-  return 0
-endfunction
-
 function! s:checkDependencies()
   let l:dependencies = ['curl', 'npm', 'rg', 'fd']
-  let l:missing = []
+  let s:missing = []
 
   for l:dep in l:dependencies
-    if s:missingDependency(l:dep)
-      call add(l:missing, l:dep)
+    if !executable(l:dep)
+      call add(s:missing, l:dep)
     endif
   endfor
 
-  if len(l:missing) > 0
-    echoerr 'Missing dependencies (' . join(l:missing, ', ') . ') detected. Please refer to the README for more information on how to install them.'
+  if len(s:missing) > 0
+    echohl ErrorMsg | echomsg 'Missing dependencies (' . join(s:missing, ', ') . ') detected. Please refer to the README for more information on how to install them.' | echohl None
   endif
 endfunction
 
@@ -57,6 +47,14 @@ endfunction
 function! update#status()
   if update#localVersion() != update#remoteVersion()
     return " update available!"
+  endif
+
+  return ""
+endfunction
+
+function! update#deps()
+  if len(s:missing) > 0
+    return ' missing dependencies (' . join(s:missing, ', ') . ')!'
   endif
 
   return ""
