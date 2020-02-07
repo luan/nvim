@@ -222,3 +222,12 @@ xmap ga <Plug>(LiveEasyAlign)
 " let g:g_key_map.cc = 'which_key_ignore'
 
 " }}}
+
+" [] mappings {{{
+
+" hunk jumping (changes)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+
+" }}}
+
