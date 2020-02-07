@@ -53,6 +53,10 @@ order to properly setup everything:
   * [`curl`](https://curl.haxx.se/): used to install the plugin manager.
   * [`npm`](https://www.npmjs.com/): used to install JS tools and some language
     server binaries.
+  * [`ripgrep`](https://github.com/BurntSushi/ripgrep): superfast grep
+    replacement used by the search plugins.
+  * [`fd`](https://github.com/sharkdp/fd): superfast fd replacement used
+    by the file finding plugins.
 
 Once you have that setup, all you have to do is clone this config in the right
 spot:
