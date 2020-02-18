@@ -142,7 +142,7 @@ let g:leader_key_map.e = { 'name': '+emmet' }
 let g:leader_key_map.l = {
       \ 'name': '+language-server',
       \ 'k': [':call CocAction("doHover")',    'Hover'],
-      \ 's': [':Vista finder',                 'Symbols'],
+      \ 's': [':Clap tags',                    'Symbols'],
       \ 't': [':Vista!!',                      'Tag Bar'],
       \ }
 
