@@ -117,12 +117,15 @@ nnoremap <silent> <leader>gc :Clap commits<CR>
 nnoremap <silent> <leader>gk :Clap bcommits<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 
-let g:leader_key_map.s = { 'name': '+search' }
-nnoremap <silent> <leader>sg :Grepper<CR>
-nnoremap <silent> <leader>sf :Clap grep <CR>
-nnoremap <silent> <leader>st :Clap tags<CR>
-nnoremap <silent> <leader>sl :Clap lines<CR>
-nnoremap <silent> <leader>sb :Clap blines<CR>
+let g:leader_key_map.s = {
+      \ 'name': '+search',
+      \ 'g': [':Grepper<CR>', 'Find in directory (quickfix)'],
+      \ 'f': [':Clap grep <CR>', 'Find in directory (live)'],
+      \ 't': [':Clap tags<CR>', 'Find tags'],
+      \ 'l': [':Clap lines<CR>', 'Find lines in open files'],
+      \ 'b': [':Clap blines<CR>', 'Find lines in current buffer'],
+      \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
+      \ }
 
 let g:leader_key_map.c = {
       \ 'name': '+cscope',
