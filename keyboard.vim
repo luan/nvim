@@ -119,11 +119,11 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 
 let g:leader_key_map.s = {
       \ 'name': '+search',
-      \ 'g': [':Grepper<CR>', 'Find in directory (quickfix)'],
-      \ 'f': [':Clap grep <CR>', 'Find in directory (live)'],
-      \ 't': [':Clap tags<CR>', 'Find tags'],
-      \ 'l': [':Clap lines<CR>', 'Find lines in open files'],
-      \ 'b': [':Clap blines<CR>', 'Find lines in current buffer'],
+      \ 'g': [':Grepper', 'Find in directory (quickfix)'],
+      \ 'f': [':Clap grep ', 'Find in directory (live)'],
+      \ 't': [':Clap tags', 'Find tags'],
+      \ 'l': [':Clap lines', 'Find lines in open files'],
+      \ 'b': [':Clap blines', 'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
       \ }
 
