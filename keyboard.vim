@@ -53,10 +53,6 @@ nnoremap <silent> <M-q> :Sayonara<cr>
 " Copy to system clipboard
 vnoremap Y "+y
 
-" Disable search highlight
-nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
-
-
 " Disable plugin mappings
 let g:swoopUseDefaultKeyMap = 0
 let g:gitgutter_map_keys = 0
