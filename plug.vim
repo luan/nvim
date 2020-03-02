@@ -161,7 +161,7 @@ Plug 'honza/vim-snippets'
 
 " Linting {
 " Asynchronous Lint Engine
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 " }
 
 " Navigation -- Fuzzy find, searching, etc {
