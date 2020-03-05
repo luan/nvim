@@ -132,7 +132,7 @@ let g:leader_key_map.c = {
       \ 'a': ['cs find a <cword>', 'Cscope Assignments'],
       \ 'o': ['cs add cscope.out', 'Cscope Open Database'],
       \
-      \ 'z': ['!sh -xc ''starscope -e cscope -e ctags -x "*.go" -x "*.js"''', 'Cscope Build Database'],
+      \ 'z': [':!sh -xc starscope -e cscope -e ctags', 'Cscope Build Database'],
       \ }
 
 
