@@ -125,14 +125,14 @@ let g:leader_key_map.s = {
 
 let g:leader_key_map.c = {
       \ 'name': '+cscope',
-      \ 's': ['cs find s <cword>', 'Cscope Symbol'],
-      \ 'g': ['cs find g <cword>', 'Cscope Definition'],
-      \ 'c': ['cs find c <cword>', 'Cscope Callers'],
-      \ 'd': ['cs find d <cword>', 'Cscope Callees'],
-      \ 'a': ['cs find a <cword>', 'Cscope Assignments'],
-      \ 'o': ['cs add cscope.out', 'Cscope Open Database'],
+      \ 's': [':cs find s <cword>', 'Cscope Symbol'],
+      \ 'g': [':cs find g <cword>', 'Cscope Definition'],
+      \ 'c': [':cs find c <cword>', 'Cscope Callers'],
+      \ 'd': [':cs find d <cword>', 'Cscope Callees'],
+      \ 'a': [':cs find a <cword>', 'Cscope Assignments'],
+      \ 'o': [':cs add cscope.out', 'Cscope Open Database'],
       \
-      \ 'z': [':!sh -xc starscope -e cscope -e ctags', 'Cscope Build Database'],
+      \ 'z': [':!sh -xc ''starscope -e cscope -e ctags''', 'Cscope Build Database'],
       \ }
 
 
