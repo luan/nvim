@@ -78,7 +78,7 @@ let g:leader_key_map[' '] = {
       \ 'name': '+general',
       \ 's': ['Startify',      'Home Buffer'],
       \ 'c': [':Clap command', 'Search commands'],
-      \ 'a': [':Clap colors', 'Search colorshcemes'],
+      \ 'a': [':Clap colors',  'Search colorshcemes'],
       \ }
 
 let g:leader_key_map.t = {
@@ -96,9 +96,11 @@ let g:leader_key_map.f = {
       \ 'h': [':Clap files --hidden', 'File Search (hidden)'],
       \ 'o': [':Clap buffers',        'Open Buffer Search'],
       \ 'm': [':Clap history',        'Recent Files Search'],
-      \ '-': [':Clap filer',          'File Browser'],
       \ '.': ['<c-^>',                'Goto Last Buffer'],
       \ }
+ 
+nmap <silent> <leader>f- :execute(':Clap filer ' . expand('%:h'))<CR>
+let g:leader_key_map.f['-'] = 'File Browser'
 
 let g:leader_key_map.h = {
       \ 'name': '+hunks',
@@ -117,10 +119,10 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 let g:leader_key_map.s = {
       \ 'name': '+search',
       \ 'g': ['Grepper',            'Find in directory (quickfix)'],
-      \ 'f': [':Clap grep ',         'Find in directory (live)'],
-      \ 't': [':Clap tags',          'Find tags'],
-      \ 'l': [':Clap lines',         'Find lines in open files'],
-      \ 'b': [':Clap blines',        'Find lines in current buffer'],
+      \ 'f': [':Clap grep ',        'Find in directory (live)'],
+      \ 't': [':Clap tags',         'Find tags'],
+      \ 'l': [':Clap lines',        'Find lines in open files'],
+      \ 'b': [':Clap blines',       'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
       \ }
 
@@ -167,7 +169,7 @@ let g:leader_key_map.b = {
       \ 'l': ['b#',            'Last Buffer'],
       \ 'n': ['bnext',         'Next Buffer'],
       \ 'p': ['bprevious',     'Previous Buffer'],
-      \ 's': [':Clap buffers',  'Search Buffer'],
+      \ 's': [':Clap buffers', 'Search Buffer'],
       \ }
 
 let g:leader_key_map.y = {
