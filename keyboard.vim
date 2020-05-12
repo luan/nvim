@@ -58,6 +58,9 @@ let g:swoopUseDefaultKeyMap = 0
 let g:gitgutter_map_keys = 0
 let g:dispatch_no_maps = 1
 
+" Current file's path in command mode
+cnoremap <expr> %% expand('%:h').'/'
+
 nnoremap <silent> <c-p> :Clap files<CR>
 
 " Leader mappings {{{
