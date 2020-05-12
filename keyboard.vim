@@ -76,6 +76,7 @@ let g:leader_key_map=  {}
 
 let g:leader_key_map[' '] = {
       \ 'name': '+general',
+      \ 's': ['Startify',      'Home Buffer'],
       \ 'c': [':Clap command', 'Search commands'],
       \ 'a': [':Clap colors', 'Search colorshcemes'],
       \ }
@@ -115,11 +116,11 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 
 let g:leader_key_map.s = {
       \ 'name': '+search',
-      \ 'g': [':Grepper', 'Find in directory (quickfix)'],
-      \ 'f': [':Clap grep ', 'Find in directory (live)'],
-      \ 't': [':Clap tags', 'Find tags'],
-      \ 'l': [':Clap lines', 'Find lines in open files'],
-      \ 'b': [':Clap blines', 'Find lines in current buffer'],
+      \ 'g': ['Grepper',            'Find in directory (quickfix)'],
+      \ 'f': [':Clap grep ',         'Find in directory (live)'],
+      \ 't': [':Clap tags',          'Find tags'],
+      \ 'l': [':Clap lines',         'Find lines in open files'],
+      \ 'b': [':Clap blines',        'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
       \ }
 
@@ -161,12 +162,18 @@ let g:leader_key_map.l.f = 'Autofix Current'
 
 let g:leader_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ 'd' : ['bd',            'Delete Buffer'],
-      \ 'h' : ['Startify',      'Home Buffer'],
-      \ 'l' : ['b#',            'Last Buffer'],
-      \ 'n' : ['bnext',         'Next Buffer'],
-      \ 'p' : ['bprevious',     'Previous Buffer'],
-      \ 's' : [':Clap buffers', 'Search Buffer'],
+      \ 'd': ['bd',            'Delete Buffer'],
+      \ 'h': ['Startify',      'Home Buffer'],
+      \ 'l': ['b#',            'Last Buffer'],
+      \ 'n': ['bnext',         'Next Buffer'],
+      \ 'p': ['bprevious',     'Previous Buffer'],
+      \ 's': [':Clap buffers',  'Search Buffer'],
+      \ }
+
+let g:leader_key_map.y = {
+      \ 'name' : '+yanking' ,
+      \ 'y' : [':Clap yanks',     'Yank history'],
+      \ 'r' : [':Clap registers', 'Vim registers'],
       \ }
 
 " }}}
