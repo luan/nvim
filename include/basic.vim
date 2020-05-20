@@ -100,6 +100,6 @@ augroup config#basic
 
   " Autosave?
   if exists('g:autosave') && g:autosave ==# 1
-    autocmd CursorHold * nested call SaveIfUnsaved()
+    autocmd CursorHold * nested noautocmd call SaveIfUnsaved()
   endif
 augroup END
