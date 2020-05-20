@@ -20,7 +20,11 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+augroup config#go#coc
+  autocmd!
+  " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+augroup END
 
 let s:languageserver = {}
 
