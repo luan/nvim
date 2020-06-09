@@ -15,6 +15,7 @@ highlight link ALEVirtualTextInfo ALEVirtualTextWarning
 highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
 
 let g:ale_go_langserver_executable = 'gopls'
+let g:ale_go_gopls_options = '-remote=auto'
 
 let g:ale_linters = {
 \   'go': ['golangci-lint', 'gopls'],

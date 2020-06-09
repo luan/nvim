@@ -1,6 +1,7 @@
 let g:coc_global_extensions = [
       \   'coc-css',
       \   'coc-emmet',
+      \   'coc-go',
       \   'coc-highlight',
       \   'coc-html',
       \   'coc-json',
@@ -37,20 +38,6 @@ if executable('ccls')
         \     "cache": {
         \       "directory": "/tmp/ccls"
         \     }
-        \   }
-        \ }
-endif
-
-if executable('gopls')
-  let s:languageserver["golang"] = {
-        \   "command": "gopls",
-        \   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        \   "filetypes": ["go"],
-        \   "initializationOptions": {
-        \     "completeUnimported": v:true,
-        \     "deepCompletion": v:true,
-        \     "fuzzyMatching": v:true,
-        \     "usePlaceholders": v:true
         \   }
         \ }
 endif

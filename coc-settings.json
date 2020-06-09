@@ -20,6 +20,13 @@
   "solargraph.useBundler": true,
   "suggest.enablePreselect": false,
   "yaml.validate": false,
+  "go.goplsOptions": {
+    "completeUnimported": true
+  },
+  "go.goplsPath": "gopls",
+  "go.goplsArgs": [
+    "-remote=auto"
+  ],
   "snippets.ultisnips.directories": [
     "UltiSnips",
     "gosnippets/UltiSnips"
