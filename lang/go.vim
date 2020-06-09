@@ -6,6 +6,12 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_experimental = 1
 let g:go_echo_command_info = 0
 
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_referrers_mode = 'gopls'
+
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_extra_types = 1
