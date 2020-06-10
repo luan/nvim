@@ -18,6 +18,9 @@
   "solargraph.hover": true,
   "solargraph.rename": true,
   "solargraph.useBundler": true,
+  "solargraph.symbols": true,
+  "solargraph.definitions": true,
+  "solargraph.references": true,
   "suggest.enablePreselect": false,
   "yaml.validate": false,
   "go.goplsOptions": {
