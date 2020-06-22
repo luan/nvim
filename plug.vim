@@ -234,6 +234,7 @@ Plug 'mxw/vim-jsx'
 
 " TypeScript {
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " }
 
 " Vue {
