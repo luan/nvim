@@ -21,7 +21,7 @@ set ttimeoutlen=0         " Timeout for completing commands
 set cscopequickfix=s-,c-,d-,i-,t-,e-,a-,g- "
 set inccommand=nosplit    " Preview commands like substitute
 set nomodeline            " Older versions of neovim might have this security issue: https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
-set textwidth=100         " Limit text width to 100
+set textwidth=0           " Unlimited text width
 
 set ignorecase            " Case insensitive search
 set smartcase             " ... but case sensitive when uc present
