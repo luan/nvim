@@ -22,6 +22,7 @@ let g:ale_linters = {
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop', 'ruby'],
+\   'proto': [],
 \}
 
 " This gets around typecheck errors for types defined in other files in the
