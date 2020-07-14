@@ -30,6 +30,9 @@
   "go.goplsArgs": [
     "-remote=auto"
   ],
+  "go.disable": {
+    "workspaceFolder": true
+  },
   "snippets.ultisnips.directories": [
     "UltiSnips",
     "gosnippets/UltiSnips"
