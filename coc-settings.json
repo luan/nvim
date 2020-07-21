@@ -10,7 +10,8 @@
     "json",
     "jsonc",
     "python",
-    "typescript"
+    "rust",
+    "typescript",
   ],
   "python.formatting.provider": "black",
   "solargraph.completion": true,
@@ -36,5 +37,6 @@
   "snippets.ultisnips.directories": [
     "UltiSnips",
     "gosnippets/UltiSnips"
-  ]
+  ],
+  "rust-analyzer.updates.channel": "nightly"
 }

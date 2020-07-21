@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
       \   'coc-html',
       \   'coc-json',
       \   'coc-python',
+      \   'coc-rust-analyzer',
       \   'coc-rls',
       \   'coc-snippets',
       \   'coc-solargraph',
