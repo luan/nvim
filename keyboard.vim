@@ -96,7 +96,7 @@ let g:leader_key_map.t = {
 let g:leader_key_map.f = {
       \ 'name': '+files',
       \ 'f': [':Clap!! files',          'File Search'],
-      \ 'h': [':Clap files --hidden', 'File Search (hidden)'],
+      \ 'h': [':Clap!! files --hidden', 'File Search (hidden)'],
       \ 'o': [':Clap buffers',        'Open Buffer Search'],
       \ 'm': [':Clap history',        'Recent Files Search'],
       \ '.': ['<c-^>',                'Goto Last Buffer'],
