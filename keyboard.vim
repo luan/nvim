@@ -61,7 +61,7 @@ let g:dispatch_no_maps = 1
 " Current file's path in command mode
 cnoremap <expr> %% expand('%:h').'/'
 
-nnoremap <silent> <c-p> :Clap files<CR>
+nnoremap <silent> <c-p> :Clap!! files<CR>
 
 " Leader mappings {{{
 " Leader is <Space>
@@ -95,7 +95,7 @@ let g:leader_key_map.t = {
 
 let g:leader_key_map.f = {
       \ 'name': '+files',
-      \ 'f': [':Clap files',          'File Search'],
+      \ 'f': [':Clap!! files',          'File Search'],
       \ 'h': [':Clap files --hidden', 'File Search (hidden)'],
       \ 'o': [':Clap buffers',        'Open Buffer Search'],
       \ 'm': [':Clap history',        'Recent Files Search'],
