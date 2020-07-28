@@ -109,9 +109,9 @@ an example.
 
 ## Troubleshooting
 
-In the even things behave incorrectly or the config becomes unstable in general,
-regular vim debugging methods apply. Check `:checkhealth` for clues on what's
-wrong with your setup.
+In the event things behave incorrectly or the config becomes unstable in
+general, regular vim debugging methods apply. Check `:checkhealth` for clues on
+what's wrong with your setup.
 
 Make sure language servers are installed for your language;
 `:ConfigInstallLanguageServers` installs a few that aren't automatically managed
