@@ -8,10 +8,6 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 inoremap <silent><expr> <M-space> coc#refresh()
 
-" coc.nvim diagnostics
-nmap <silent> [v <Plug>(coc-diagnostic-prev)
-nmap <silent> ]v <Plug>(coc-diagnostic-next)
-
 " ALE
 nmap <silent> <M-p> <Plug>(ale_previous_wrap)
 nmap <silent> <M-n> <Plug>(ale_next_wrap)
@@ -101,7 +97,7 @@ let g:leader_key_map.f = {
       \ 'm': [':Clap history',        'Recent Files Search'],
       \ '.': ['<c-^>',                'Goto Last Buffer'],
       \ }
- 
+
 nmap <silent> <leader>f- :execute(':Clap filer ' . expand('%:h'))<CR>
 let g:leader_key_map.f['-'] = 'File Browser'
 

@@ -4,9 +4,14 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '➤'
 let g:ale_sign_info = '➟'
 
-let g:ale_echo_cursor = 1
-let g:ale_virtualtext_cursor = 0
+let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = '▬▶  '
+
+let g:ale_hover_cursor = 0
+let g:ale_echo_cursor = 1
+let g:ale_fix_on_save = 1
+let g:ale_disable_lsp = 1
+let g:ale_set_loclist = 0
 
 highlight link ALEVirtualTextError ErrorMsg
 highlight link ALEVirtualTextStyleError ALEVirtualTextError
@@ -14,12 +19,9 @@ highlight link ALEVirtualTextWarning WarningMsg
 highlight link ALEVirtualTextInfo ALEVirtualTextWarning
 highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
 
-let g:ale_go_langserver_executable = 'gopls'
-let g:ale_go_gopls_options = '-remote=auto'
-
 let g:ale_linters = {
-\   'go': ['golangci-lint', 'gopls'],
-\   'typescript': ['tsserver', 'typecheck'],
+\   'go': ['golangci-lint'],
+\   'typescript': ['typecheck'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop', 'ruby'],
 \   'proto': [],
