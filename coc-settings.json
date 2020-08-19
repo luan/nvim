@@ -1,6 +1,7 @@
 {
   "coc.preferences.messageLevel": "error",
-  "diagnostic.enable": false,
+  "diagnostic.enable": true,
+  "diagnostic.displayByAle": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "c",
     "cpp",
