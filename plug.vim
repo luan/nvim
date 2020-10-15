@@ -261,7 +261,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " ytt/Starlark {
 Plug 'cappyzawa/starlark.vim'
 Plug 'cappyzawa/ytt.vim'
-"
+" }
 
 " Org Mode {
 Plug 'jceb/vim-orgmode'
