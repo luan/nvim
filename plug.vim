@@ -262,6 +262,10 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'jceb/vim-orgmode'
 " }
 
+" Starlark {
+Plug 'cappyzawa/starlark.vim'
+" }
+
 " Misc {
 Plug 'PProvost/vim-ps1'
 Plug 'PotatoesMaster/i3-vim-syntax'
