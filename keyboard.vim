@@ -119,7 +119,7 @@ let g:leader_key_map.s = {
       \ 'name': '+search',
       \ 'g': ['Grepper',            'Find in directory (quickfix)'],
       \ 'f': [':Clap grep ',        'Find in directory (live)'],
-      \ 't': [':Clap tags',         'Find tags'],
+      \ 't': [':Clap tags coc',     'Find tags'],
       \ 'l': [':Clap lines',        'Find lines in open files'],
       \ 'b': [':Clap blines',       'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
