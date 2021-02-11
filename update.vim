@@ -7,7 +7,13 @@ function! s:checkDependencies()
 
   for l:dep in l:dependencies
     if !executable(l:dep)
-      call add(s:missing, l:dep)
+      if l:dep != 'fd'
+        call add(s:missing, l:dep)
+      else
+         if !executable('fdfind')
+            call add(s:missing, 'fd')
+         endif
+      endif
     endif
   endfor
 
