@@ -165,8 +165,10 @@ Plug 'dense-analysis/ale'
 " }
 
 " Navigation -- Fuzzy find, searching, etc {
-" Modern performant generic finder and dispatcher for Vim and NeoVim
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" Fuzzy finder
+let g:fzf_command_prefix = 'FZF'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Helps you win at grep.
 Plug 'mhinz/vim-grepper'
