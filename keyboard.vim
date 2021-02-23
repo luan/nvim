@@ -57,7 +57,7 @@ let g:dispatch_no_maps = 1
 " Current file's path in command mode
 cnoremap <expr> %% expand('%:h').'/'
 
-nnoremap <silent> <c-p> :Clap!! files<CR>
+nnoremap <silent> <c-p> :FZFFiles<CR>
 
 " Leader mappings {{{
 " Leader is <Space>
@@ -76,8 +76,8 @@ let g:leader_key_map=  {}
 let g:leader_key_map[' '] = {
       \ 'name': '+general',
       \ 's': ['Startify',      'Home Buffer'],
-      \ 'c': [':Clap command', 'Search commands'],
-      \ 'a': [':Clap colors',  'Search colorshcemes'],
+      \ 'c': [':FZFCommands', 'Search commands'],
+      \ 'a': [':FZFColors',  'Search colorshcemes'],
       \ }
 
 let g:leader_key_map.t = {
@@ -91,14 +91,13 @@ let g:leader_key_map.t = {
 
 let g:leader_key_map.f = {
       \ 'name': '+files',
-      \ 'f': [':Clap!! files',          'File Search'],
-      \ 'h': [':Clap!! files --hidden', 'File Search (hidden)'],
-      \ 'o': [':Clap buffers',        'Open Buffer Search'],
-      \ 'm': [':Clap history',        'Recent Files Search'],
+      \ 'f': [':FZFFiles',          'File Search'],
+      \ 'o': [':FZFBuffers',        'Open Buffer Search'],
+      \ 'm': [':FZFHistory',        'Recent Files Search'],
       \ '.': ['<c-^>',                'Goto Last Buffer'],
       \ }
 
-nmap <silent> <leader>f- :execute(':Clap filer ' . expand('%:h'))<CR>
+nmap <silent> <leader>f- :execute(':FZFFiles ' . expand('%:h'))<CR>
 let g:leader_key_map.f['-'] = 'File Browser'
 
 let g:leader_key_map.h = {
@@ -111,17 +110,17 @@ let g:leader_key_map.h = {
 
 let g:leader_key_map.g = { 'name': '+git' }
 nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gc :Clap commits<CR>
-nnoremap <silent> <leader>gk :Clap bcommits<CR>
+nnoremap <silent> <leader>gc :FZFCommits<CR>
+nnoremap <silent> <leader>gk :FZFBCommitss<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 
 let g:leader_key_map.s = {
       \ 'name': '+search',
       \ 'g': ['Grepper',            'Find in directory (quickfix)'],
-      \ 'f': [':Clap grep ',        'Find in directory (live)'],
-      \ 't': [':Clap tags coc',     'Find tags'],
-      \ 'l': [':Clap lines',        'Find lines in open files'],
-      \ 'b': [':Clap blines',       'Find lines in current buffer'],
+      \ 'f': [':FZFRg ',        'Find in directory (live)'],
+      \ 't': [':FZFTags',     'Find tags'],
+      \ 'l': [':FZFLines',        'Find lines in open files'],
+      \ 'b': [':FZFBlines',       'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
       \ }
 
@@ -143,7 +142,7 @@ let g:leader_key_map.e = { 'name': '+emmet' }
 let g:leader_key_map.l = {
       \ 'name': '+language-server',
       \ 'k': [':call CocAction("doHover")',    'Hover'],
-      \ 's': [':Clap tags',                    'Symbols'],
+      \ 's': [':FZFTags',                    'Symbols'],
       \ 't': [':Vista!!',                      'Tag Bar'],
       \ }
 
@@ -168,13 +167,7 @@ let g:leader_key_map.b = {
       \ 'l': ['b#',            'Last Buffer'],
       \ 'n': ['bnext',         'Next Buffer'],
       \ 'p': ['bprevious',     'Previous Buffer'],
-      \ 's': [':Clap buffers', 'Search Buffer'],
-      \ }
-
-let g:leader_key_map.y = {
-      \ 'name' : '+yanking' ,
-      \ 'y' : [':Clap yanks',     'Yank history'],
-      \ 'r' : [':Clap registers', 'Vim registers'],
+      \ 's': [':FZFBuffers', 'Search Buffer'],
       \ }
 
 " }}}
