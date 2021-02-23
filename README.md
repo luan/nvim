@@ -57,6 +57,8 @@ order to properly setup everything:
     replacement used by the search plugins.
   * [`fd`](https://github.com/sharkdp/fd): superfast fd replacement used
     by the file finding plugins.
+  * [`bat`](https://github.com/sharkdp/bat):  A cat(1) clone with syntax
+    highlighting and Git integration.
 
 Once you have that setup, all you have to do is clone this config in the right
 spot:
