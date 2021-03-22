@@ -25,7 +25,7 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 augroup config#go#coc
   autocmd!
-  autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 augroup END
 
 let s:languageserver = {}
