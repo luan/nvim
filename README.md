@@ -59,6 +59,7 @@ order to properly setup everything:
     by the file finding plugins.
   * [`bat`](https://github.com/sharkdp/bat):  A cat(1) clone with syntax
     highlighting and Git integration.
+  * [`tmux`](https://github.com/tmux/tmux/wiki): used for terminal multiplexing
 
 Once you have that setup, all you have to do is clone this config in the right
 spot:
