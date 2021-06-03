@@ -60,6 +60,12 @@ order to properly setup everything:
   * [`bat`](https://github.com/sharkdp/bat):  A cat(1) clone with syntax
     highlighting and Git integration.
 
+**Python Dependencies**: To ensure smooth work for `coc-pyright` we must install
+the following dependencies via `pip` (`$ pip install isort black`):
+
+  * ['isort'](https://pypi.org/project/isort/): used to sort dependencies
+  * ['black'](https://github.com/psf/black): used to lint Python code
+
 Once you have that setup, all you have to do is clone this config in the right
 spot:
 
