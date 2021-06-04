@@ -5,7 +5,7 @@ let g:coc_global_extensions = [
       \   'coc-highlight',
       \   'coc-html',
       \   'coc-json',
-      \   'coc-python',
+      \   'coc-pyright',
       \   'coc-rust-analyzer',
       \   'coc-rls',
       \   'coc-snippets',
@@ -49,74 +49,6 @@ if executable('bash-language-server')
         \   "args": ["start"],
         \   "filetypes": ["sh"],
         \   "ignoredRootPaths": ["~"]
-        \ }
-endif
-
-if executable('python')
-  let s:languageserver["python"] = {
-        \   "command": "python",
-        \   "args": [
-        \     "-mpyls",
-        \     "-vv",
-        \     "--log-file",
-        \     "/tmp/lsp_python.log"
-        \   ],
-        \   "trace.server": "verbose",
-        \   "filetypes": ["python"],
-        \   "settings": {
-        \     "pyls": {
-        \       "enable": v:true,
-        \       "trace": {
-        \         "server": "verbose"
-        \       },
-        \       "commandPath": "",
-        \       "configurationSources": [
-        \         "pycodestyle"
-        \       ],
-        \       "plugins": {
-        \         "jedi_completion": {
-        \           "enabled": v:true
-        \         },
-        \         "jedi_hover": {
-        \           "enabled": v:true
-        \         },
-        \         "jedi_references": {
-        \           "enabled": v:true
-        \         },
-        \         "jedi_signature_help": {
-        \           "enabled": v:true
-        \         },
-        \         "jedi_symbols": {
-        \           "enabled": v:true,
-        \           "all_scopes": v:true
-        \         },
-        \         "mccabe": {
-        \           "enabled": v:true,
-        \           "threshold": 15
-        \         },
-        \         "preload": {
-        \           "enabled": v:true
-        \         },
-        \         "pycodestyle": {
-        \           "enabled": v:true
-        \         },
-        \         "pydocstyle": {
-        \           "enabled": v:false,
-        \           "match": "(?!test_).*\\.py",
-        \           "matchDir": "[^\\.].*"
-        \         },
-        \         "pyflakes": {
-        \           "enabled": v:true
-        \         },
-        \         "rope_completion": {
-        \           "enabled": v:true
-        \         },
-        \         "yapf": {
-        \           "enabled": v:true
-        \         }
-        \       }
-        \     }
-        \   }
         \ }
 endif
 
