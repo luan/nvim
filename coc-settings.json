@@ -12,7 +12,7 @@
     "jsonc",
     "python",
     "rust",
-    "typescript",
+    "typescript"
   ],
   "python.formatting.provider": "black",
   "solargraph.completion": true,
