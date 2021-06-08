@@ -78,6 +78,8 @@ let g:leader_key_map[' '] = {
       \ 's': ['Startify',      'Home Buffer'],
       \ 'c': [':FZFCommands', 'Search commands'],
       \ 'a': [':FZFColors',  'Search colorshcemes'],
+      \ 'f': [':FocusMode',  'Focus-mode: remove gutter info for a cleaner experience'],
+      \ 'z': [':Goyo',  'Zen-mode: distraction free editing'],
       \ }
 
 let g:leader_key_map.t = {
