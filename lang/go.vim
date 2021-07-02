@@ -1,17 +1,4 @@
-let g:go_fmt_autosave = 0
-let g:go_mod_fmt_autosave = 0
-let g:go_metalinter_autosave = 0
-let g:go_fmt_command = 'goimports'
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_experimental = 1
-let g:go_echo_command_info = 0
-
-let g:go_gopls_enabled = 1
-let g:go_gopls_options = ['-remote=auto']
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_referrers_mode = 'gopls'
-let g:go_def_mapping_enabled = 0
+let g:go_fmt_autosave = 1
 
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_chan_whitespace_error = 1
@@ -32,8 +19,6 @@ let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 
 let g:go_list_type = 'quickfix'
-
-let g:go_snippet_engine = 'ultisnips'
 
 let g:go_bin_path = $HOME . '/.local/share/nvim/go/bin'
 let $PATH = $PATH . ':' . g:go_bin_path

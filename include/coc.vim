@@ -2,7 +2,6 @@ let g:coc_global_extensions = [
       \   'coc-css',
       \   'coc-emmet',
       \   'coc-go',
-      \   'coc-highlight',
       \   'coc-html',
       \   'coc-json',
       \   'coc-pyright',
@@ -13,20 +12,6 @@ let g:coc_global_extensions = [
       \   'coc-tsserver',
       \   'coc-yaml',
       \ ]
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-
-augroup config#go#coc
-  autocmd!
-  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-augroup END
 
 let s:languageserver = {}
 
