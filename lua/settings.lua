@@ -4,7 +4,8 @@ local opt         = vim.opt
 opt.autoread      = true                   -- reload changes from disk
 opt.autowriteall  = true                   -- Writes on make/shell commands
 opt.hidden        = true                   -- Allow buffer switching without saving
-opt.wrap          = true                   -- Do not wrap long lines
+opt.linespace     = 0                      -- No extra spaces between rows
+opt.wrap          = false                   -- Do not wrap long lines
 opt.number        = true                   -- Show line numbers
 opt.scrolloff     = 5                      -- Minumum lines to keep above and below cursor
 opt.showmatch     = true                   -- Show matching brackets/parentthesis
@@ -24,7 +25,7 @@ opt.mouse         = 'a'                    -- Mouse enabled in all modes
 
 -- Completion
 opt.pumheight     = 20                     -- Avoid the pop up menu occupying the whole screen
-opt.completeopt   = {'noinsert', 'menuone', 'noselect'}
+opt.completeopt   = {'menuone', 'noselect'}
 opt.shortmess:append('c')                  -- don't pass messages to |ins-completion-menu|
 
 -- Indentation
@@ -41,6 +42,7 @@ opt.undoreload    = 10000                  -- Maximum number lines to save for u
 
 -- Command mode
 opt.showmode      = false                  -- Hide current mode in command-line (shown by lightline)
+opt.fillchars = 'vert:│,stl: ,stlnc: '
 
 -- Encoding & file formats
 opt.fileencoding  = 'utf-8'

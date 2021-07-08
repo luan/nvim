@@ -7,6 +7,13 @@ gl.short_line_list = {" "}
 local global_theme = "themes/" .. vim.g.luan_theme
 local colors = require(global_theme)
 
+local buffer_not_empty = function()
+  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+    return true
+  end
+  return false
+end
+
 gls.left[1] = {
     FirstElement = {
         provider = function()
@@ -17,14 +24,20 @@ gls.left[1] = {
 }
 
 gls.left[2] = {
-    statusIcon = {
-        provider = function()
-            return "  "
-        end,
-        highlight = {colors.statusline_bg, colors.nord_blue},
-        separator = "  ",
-        separator_highlight = {colors.nord_blue, colors.lightbg}
-    }
+  ViMode = {
+    provider = function()
+      local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', [''] = 'VISUAL BLOCK'}
+      return alias[vim.fn.mode()]
+    end,
+    separator = '',
+    separator_highlight = {colors.purple,function()
+      if not buffer_not_empty() then
+        return colors.purple
+      end
+      return colors.darkblue
+    end},
+    highlight = {colors.nord_blue,colors.darkblue,'bold'},
+  },
 }
 
 gls.left[3] = {
@@ -143,17 +156,6 @@ gls.right[3] = {
 }
 
 gls.right[4] = {
-    viMode_icon = {
-        provider = function()
-            return " "
-        end,
-        highlight = {colors.statusline_bg, colors.red},
-        separator = " ",
-        separator_highlight = {colors.red, colors.statusline_bg}
-    }
-}
-
-gls.right[5] = {
     ViMode = {
         provider = function()
             local alias = {
@@ -180,9 +182,9 @@ gls.right[5] = {
 gls.right[6] = {
     some_icon = {
         provider = function()
-            return " "
+            return "  "
         end,
-        separator = "",
+        separator = "",
         separator_highlight = {colors.green, colors.lightbg},
         highlight = {colors.lightbg, colors.green}
     }
