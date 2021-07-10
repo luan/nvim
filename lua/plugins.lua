@@ -115,6 +115,9 @@ return require('packer').startup {
                 'rafamadriz/friendly-snippets',
             },
         }
+
+        use 'lukas-reineke/indent-blankline.nvim'
+        use 'b3nj5m1n/kommentary'
     end,
     config = {
         display = {
