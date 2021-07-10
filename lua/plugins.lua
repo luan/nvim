@@ -129,6 +129,12 @@ return require('packer').startup {
 
         use 'kevinhwang91/nvim-bqf'
 
+        -- file explorer
+        use {
+            'tamago324/lir.nvim',
+            config = function() require('plugins.lir') end,
+        }
+
         -- generic (non lua) plugins
         use 'bronson/vim-trailing-whitespace'
         use 'mg979/vim-visual-multi'
