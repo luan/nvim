@@ -61,7 +61,8 @@ map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-map("i", '<C-Space>', [[compe#complete()]], {silent = true, expr = true})
+map("i", '<C-x><C-x>', [[compe#complete()]], {silent = true, expr = true})
+map("i", '<CR>', [[compe#confirm('<CR>')]], {silent = true, expr = true})
 
 map("i", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
 map("s", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})

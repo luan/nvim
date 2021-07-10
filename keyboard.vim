@@ -29,12 +29,6 @@ let g:leader_key_map.t = {
 nmap <silent> <leader>f- :execute(':FZFFiles ' . expand('%:h'))<CR>
 let g:leader_key_map.f['-'] = 'File Browser'
 
-let g:leader_key_map.g = { 'name': '+git' }
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gc :FZFCommits<CR>
-nnoremap <silent> <leader>gk :FZFBCommitss<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-
 let g:leader_key_map.s = {
       \ 'name': '+search',
       \ 'g': ['Grepper',            'Find in directory (quickfix)'],

@@ -113,6 +113,14 @@ wk.register({
 }, {prefix = '<leader>f'})
 
 wk.register({
+    name = "+git",
+    s = {':Gstatus<cr>', 'git status'},
+    b = {':Git blame<cr>', 'git blame'},
+    c = {telescope.git_commits, 'git commits'},
+    k = {telescope.git_bcommits, 'git commits (buffer)'},
+}, {prefix = '<leader>g'})
+
+wk.register({
     name = "+hunks",
     t = {gitsigns.toggle_signs, 'Toggle Sign colum'},
     s = {gitsigns.stage_hunk, 'Stage Hunk'},
@@ -135,6 +143,7 @@ wk.register({
     s = {telescope.lsp_dynamic_workspace_symbols, 'Search Symbols'},
     d = {"<cmd>Trouble lsp_document_diagnostics<cr>", 'Diagnostics'},
     D = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", 'Workspace Diagnostics'},
+    t = {"<cmd>Vista!!<cr>", 'Symbol tree'},
 }, {prefix = '<leader>l'})
 
 wk.register({
@@ -145,3 +154,12 @@ wk.register({
     p = {':bprevious<cr>', 'Previous buffer'},
     s = {telescope.buffers, 'Search buffers'},
 }, {prefix = '<leader>b'})
+
+wk.register({
+    name = "+search",
+    g = {'<cmd>Grepper<cr>', 'Find in directory (quickfix)'},
+    f = {telescope.live_grep, 'Find in directory (live)'},
+    l = {':FZFLines<cr>', 'Find in open files'},
+    b = {telescope.current_buffer_fuzzy_find, 'Find in buffer'},
+}, {prefix = '<leader>s'})
+
