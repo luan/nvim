@@ -31,11 +31,6 @@ let g:leader_key_map.f['-'] = 'File Browser'
 
 let g:leader_key_map.s = {
       \ 'name': '+search',
-      \ 'g': ['Grepper',            'Find in directory (quickfix)'],
-      \ 'f': [':FZFRg ',        'Find in directory (live)'],
-      \ 't': [':FZFTags',     'Find tags'],
-      \ 'l': [':FZFLines',        'Find lines in open files'],
-      \ 'b': [':FZFBlines',       'Find lines in current buffer'],
       \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
       \ }
 

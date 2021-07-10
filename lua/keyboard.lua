@@ -3,6 +3,8 @@ local wk = require("which-key")
 local gitsigns = require('gitsigns')
 local telescope = require('telescope.builtin')
 
+map('n', '-', [[:lua require('lir.float').init()<cr>]], {noremap = true, silent = true})
+
 -- close buffer
 map('n', '<M-q>', [[:lua require('bufdelete').bufdelete(0, true) <cr>]], {noremap = true, silent = true})
 
@@ -109,6 +111,7 @@ wk.register({
     f = {telescope.find_files, 'File Search'},
     o = {telescope.buffers, 'Buffer Search'},
     m = {telescope.oldfiles, 'Recent Files'},
+    ['-'] = {function() telescope.file_browser({cwd = '%:h'}) end, 'File Browser'},
     ['.'] = {'<c-^>', 'Go to last buffer'},
 }, {prefix = '<leader>f'})
 
