@@ -101,14 +101,6 @@ return require('packer').startup {
         use 'famiu/bufdelete.nvim'
 
         use {
-            'windwp/nvim-autopairs',
-            requires = {
-                'windwp/nvim-ts-autotag',
-            },
-            config = function() require('plugins.autopairs') end,
-        }
-
-        use {
             'hrsh7th/vim-vsnip',
             requires = {
                 'hrsh7th/vim-vsnip-integ',
@@ -116,8 +108,60 @@ return require('packer').startup {
             },
         }
 
-        use 'lukas-reineke/indent-blankline.nvim'
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                      vim.g.indent_blankline_char = "▏"
+
+                      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard", "nofile"}
+                      vim.g.indent_blankline_buftype_exclude = {"terminal"}
+
+                      vim.g.indent_blankline_show_trailing_blankline_indent = false
+                      vim.g.indent_blankline_show_first_indent_level = false
+            end,
+        }
         use 'b3nj5m1n/kommentary'
+
+        use {
+            "blackCauldron7/surround.nvim",
+            config = function() require('surround').setup {mappings_style = 'surround'} end,
+        }
+
+        use 'kevinhwang91/nvim-bqf'
+
+        -- generic (non lua) plugins
+        use 'bronson/vim-trailing-whitespace'
+        use 'mg979/vim-visual-multi'
+        use 'tpope/vim-endwise'
+        use 'rstacruz/vim-closer'
+        use 'machakann/vim-swap'
+        use 'AndrewRadev/splitjoin.vim'
+        use 'tpope/vim-repeat'
+        use 'matze/vim-move'
+        use 'tommcdo/vim-exchange'
+        use 'tpope/vim-sleuth'
+        use 'tpope/vim-abolish'
+        use 'tpope/vim-unimpaired'
+        use 'tpope/vim-eunuch'
+        use 'kopischke/vim-stay'
+        use 'kopischke/vim-fetch'
+        use 'mbbill/undotree'
+        use 'romainl/vim-qf'
+        use 'tpope/vim-fugitive'
+        use 'tpope/vim-rhubarb'
+        use 'liuchengxu/vista.vim'
+        use {
+            'trsdln/vim-grepper',
+            config = function()
+                vim.g.grepper = {
+                    tools = {'rg', 'git'},
+                    simple_prompt = 0,
+                    prompt_mapping_tool = '<F10>',
+                    prompt_mapping_dir = '<F11>',
+                    prompt_mapping_side = '<F12>',
+                }
+            end,
+        }
     end,
     config = {
         display = {
