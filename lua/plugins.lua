@@ -135,6 +135,13 @@ return require('packer').startup {
             config = function() require('plugins.lir') end,
         }
 
+        use 'windwp/nvim-spectre'
+        use {
+            'karb94/neoscroll.nvim',
+            config = function() require('neoscroll').setup() end,
+        }
+        use 'sindrets/diffview.nvim'
+
         -- generic (non lua) plugins
         use 'bronson/vim-trailing-whitespace'
         use 'mg979/vim-visual-multi'

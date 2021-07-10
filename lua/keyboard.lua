@@ -164,5 +164,6 @@ wk.register({
     f = {telescope.live_grep, 'Find in directory (live)'},
     l = {':FZFLines<cr>', 'Find in open files'},
     b = {telescope.current_buffer_fuzzy_find, 'Find in buffer'},
+    p = {require('spectre').open, 'Search & Replace'},
 }, {prefix = '<leader>s'})
 
