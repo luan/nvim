@@ -97,6 +97,24 @@ return require('packer').startup {
             'glepnir/dashboard-nvim',
             config = function() require('plugins.dashboard') end,
         }
+
+        use 'famiu/bufdelete.nvim'
+
+        use {
+            'windwp/nvim-autopairs',
+            requires = {
+                'windwp/nvim-ts-autotag',
+            },
+            config = function() require('plugins.autopairs') end,
+        }
+
+        use {
+            'hrsh7th/vim-vsnip',
+            requires = {
+                'hrsh7th/vim-vsnip-integ',
+                'rafamadriz/friendly-snippets',
+            },
+        }
     end,
     config = {
         display = {
