@@ -1,9 +1,9 @@
-local function setup_servers()
-    local lspinstall = require('lspinstall')
-    lspinstall.setup()
+local lspinstall = require('lspinstall')
+lspinstall.setup()
+local servers = lspinstall.installed_servers()
 
+local function setup_servers()
     local lspconf = require('lspconfig')
-    local servers = lspinstall.installed_servers()
 
     for _, lang in pairs(servers) do
         if lang ~= "lua" then
@@ -35,3 +35,6 @@ local function setup_servers()
 end
 
 setup_servers()
+
+-- load other languages
+require('lang/go')
