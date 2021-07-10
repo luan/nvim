@@ -1,5 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local wk = require("which-key")
+local gitsigns = require('gitsigns')
+local telescope = require('telescope.builtin')
 
 -- emacs bindings
 map('i', '<C-b>', '<Left>', {})
@@ -61,12 +63,12 @@ map('n', '<C-b>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1
 -- LSP remaps
 wk.register({
     g = {
-        D = {function() vim.lsp.buf.declaration() end, 'Go to declaration'},
-        d = {function() vim.lsp.buf.definition() end, 'Go to definition'},
-        y = {function() vim.lsp.buf.type_definition() end, 'Go to type'},
-        i = {function() vim.lsp.buf.implementation() end, 'Find implementation'},
+        D = {vim.lsp.buf.declaration, 'Go to declaration'},
+        d = {telescope.lsp_definitions, 'Go to definition'},
+        y = {vim.lsp.buf.type_definition, 'Go to type'},
+        i = {telescope.lsp_implementations, 'Find implementation'},
         h = {[[<cmd>Lspsaga lsp_finder<cr>]], 'Smart find refereces/implementation'},
-        r = {function() vim.lsp.buf.references() end, 'Find refereces'},
+        r = {telescope.lsp_references, 'Find refereces'},
         K = {[[<cmd>Lspsaga signature_help<cr>]], 'Show signature'},
     },
 }, {silent = true})
@@ -76,29 +78,49 @@ map('n', 'K', [[<cmd>Lspsaga hover_doc<cr>]], {silent = true})
 wk.register({
     name = "+general",
     s = {':Dashboard<cr>', 'Home Buffer'},
-    c = {':Telescope commands<cr>', 'Search commands'},
-    a = {':Telescope colorshceme<cr>', 'Search colorschemes'},
+    c = {telescope.commands, 'Search commands'},
+    a = {telescope.colorscheme, 'Search colorschemes'},
+    h = {telescope.help_tags, 'Help'},
 }, {prefix = '<leader> '})
 
 wk.register({
     name = "+files",
-    f = {':Telescope fd<cr>', 'File Search'},
-    o = {':Telescope buffers<cr>', 'Buffer Search'},
-    m = {':Telescope oldfiles<cr>', 'Recent Files'},
+    f = {telescope.find_files, 'File Search'},
+    o = {telescope.buffers, 'Buffer Search'},
+    m = {telescope.oldfiles, 'Recent Files'},
     ['.'] = {'<c-^>', 'Go to last buffer'},
 }, {prefix = '<leader>f'})
 
-local gitsigns = require('gitsigns')
 wk.register({
     name = "+hunks",
-    t = {function() gitsigns.toggle_signs() end, 'Toggle Sign colum'},
-    s = {function() gitsigns.stage_hunk() end, 'Stage Hunk'},
-    S = {function() gitsigns.undo_stage_hunk() end, 'Unstage Hunk'},
-    p = {function() gitsigns.preview_hunk() end, 'Preview Hunk'},
-    u = {function() gitsigns.reset_hunk() end, 'Undo Hunk'},
-    R = {function() gitsigns.reset_buffer() end, 'Reset Buffer'},
-    b = {function() gitsigns.blame_line() end, 'Blame Line'},
-    n = {function() gitsigns.toggle_numhl() end, 'Toggle line-num diff'},
-    l = {function() gitsigns.toggle_linehl() end, 'Toggle line diff'},
-    w = {function() gitsigns.toggle_word_diff() end, 'Toggle word diff'},
+    t = {gitsigns.toggle_signs, 'Toggle Sign colum'},
+    s = {gitsigns.stage_hunk, 'Stage Hunk'},
+    S = {gitsigns.undo_stage_hunk, 'Unstage Hunk'},
+    p = {gitsigns.preview_hunk, 'Preview Hunk'},
+    u = {gitsigns.reset_hunk, 'Undo Hunk'},
+    R = {gitsigns.reset_buffer, 'Reset Buffer'},
+    b = {gitsigns.blame_line, 'Blame Line'},
+    n = {gitsigns.toggle_numhl, 'Toggle line-num diff'},
+    l = {gitsigns.toggle_linehl, 'Toggle line diff'},
+    w = {gitsigns.toggle_word_diff, 'Toggle word diff'},
 }, {prefix = '<leader>h'})
+
+wk.register({
+    name = "+language-server",
+    a = {':Lspsaga code_action<cr>', 'Code Action'},
+    ['='] = {vim.lsp.buf.formatting_sync, 'Code Action'},
+    r = {':Lspsaga rename<cr>', 'Rename'},
+    k = {':Lspsaga hover_doc<cr>', 'Doc'},
+    s = {telescope.lsp_dynamic_workspace_symbols, 'Search Symbols'},
+    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", 'Diagnostics'},
+    D = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", 'Workspace Diagnostics'},
+}, {prefix = '<leader>l'})
+
+wk.register({
+    name = "+buffer",
+    d = {function() require('bufdelete').bufdelete(0, true) end, 'Delete Buffer'},
+    l = {':b#<cr>', 'Last buffer'},
+    n = {':bnext<cr>', 'Next buffer'},
+    p = {':bprevious<cr>', 'Previous buffer'},
+    s = {telescope.buffers, 'Search buffers'},
+}, {prefix = '<leader>b'})

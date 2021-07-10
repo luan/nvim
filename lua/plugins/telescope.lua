@@ -1,4 +1,5 @@
 local actions = require('telescope.actions')
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup {
     defaults = {
@@ -11,6 +12,12 @@ require("telescope").setup {
                 ["<C-k>"] = actions.move_selection_previous,
 
                 ["<Esc>"] = actions.close,
+
+                ["<c-q>"] = trouble.open_with_trouble,
+            },
+
+            n = {
+                ["<c-q>"] = trouble.open_with_trouble,
             },
         },
         vimgrep_arguments = {

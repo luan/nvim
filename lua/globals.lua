@@ -6,3 +6,4 @@ local g = vim.g
 
 g.mapleader = " "
 g.auto_save = false
+g.vsnip_snippet_dirs = {CONFIG_PATH .. '/snippets'}
