@@ -31,11 +31,6 @@ return require('packer').startup {
         }
 
         use {
-            'junegunn/vim-peekaboo',
-            config = function() require('plugins.peekaboo') end,
-        }
-
-        use {
             'junegunn/fzf.vim',
             require = {'junegunn/fzf', run = vim.fn['fzf#install'] },
             setup = function() vim.g.fzf_command_prefix = 'FZF' end,
@@ -48,6 +43,59 @@ return require('packer').startup {
         use {
             "hrsh7th/nvim-compe",
             config = function() require('plugins.compe') end,
+        }
+
+        use {
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function() require('plugins.trouble') end,
+        }
+
+        use 'folke/lsp-colors.nvim'
+
+        use {
+            'glepnir/lspsaga.nvim',
+            config = function() require('plugins.lspsaga') end,
+        }
+
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+            requires = {
+                "nvim-treesitter/playground",
+                "nvim-treesitter/nvim-treesitter-textobjects",
+            },
+            config = function() require('plugins.treesitter') end,
+        }
+
+        use {
+            'onsails/lspkind-nvim',
+            config = function() require('lspkind').init{} end,
+        }
+
+        use {
+            "folke/which-key.nvim",
+            config = function() require("which-key").setup{} end
+        }
+
+        use {
+            'jghauser/mkdir.nvim',
+            config = function() require('mkdir') end,
+        }
+
+        use {
+            'lewis6991/gitsigns.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim'
+            },
+            config = function() require('plugins.gitsigns') end,
+        }
+
+        use 'ray-x/go.nvim'
+
+        use {
+            'glepnir/dashboard-nvim',
+            config = function() require('plugins.dashboard') end,
         }
     end,
     config = {

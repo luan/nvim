@@ -26,7 +26,6 @@ require("telescope").setup {
         selection_caret = "  ",
         entry_prefix = "  ",
         initial_mode = "insert",
-        shorten_path = true,
         winblend = 10,
     },
     extensions = {
