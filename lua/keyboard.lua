@@ -3,22 +3,43 @@ local wk = require("which-key")
 local gitsigns = require('gitsigns')
 local telescope = require('telescope.builtin')
 
+-- close buffer
+map('n', '<M-q>', [[:lua require('bufdelete').bufdelete(0, true) <cr>]], {noremap = true, silent = true})
+
+-- comments
+map('n', '<C-_>', '<Plug>kommentary_line_default', {})
+map('v', '<C-_>', '<Plug>kommentary_visual_default', {})
+
 -- emacs bindings
 map('i', '<C-b>', '<Left>', {})
+map('i', '<M-b>', '<C-Left>', {})
+
 map('i', '<C-f>', '<Right>', {})
+map('i', '<M-f>', '<C-Right>', {})
+
+map('i', '<C-d>', '<Del>', {})
+map('i', '<M-d>', '<C-Right><C-w>', {})
+map('i', '<C-h>', '<BS>', {})
+
 map('i', '<C-a>', '<Home>', {})
 map('i', '<C-e>', '<End>', {})
-map('i', '<C-d>', '<Del>', {})
-map('i', '<C-h>', '<BS>', {})
 map('i', '<C-k>', '<Esc>lDa', {noremap = true})
+
 map('c', '<C-p>', '<Up>', {})
 map('c', '<C-n>', '<Down>', {})
+
 map('c', '<C-b>', '<Left>', {})
+map('c', '<M-b>', '<C-Left>', {})
+
 map('c', '<C-f>', '<Right>', {})
+map('c', '<M-f>', '<C-Right>', {})
+
+map('c', '<C-d>', '<Del>', {})
+map('c', '<M-d>', '<C-Right><C-w>', {noremap = true})
+map('c', '<C-h>', '<BS>', {noremap = true})
+
 map('c', '<C-a>', '<Home>', {})
 map('c', '<C-e>', '<End>', {noremap = true})
-map('c', '<C-d>', '<Del>', {noremap = true})
-map('c', '<C-h>', '<BS>', {noremap = true})
 map('c', '<C-k>', '<C-f>D<C-c><C-c>:<Up>', {noremap = true})
 
 -- Diagnostics
