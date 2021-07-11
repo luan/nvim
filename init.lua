@@ -5,5 +5,4 @@ require('colorscheme')
 require('keyboard')
 require('diagnostics')
 require('paste')
-
-require('lang/all')
+require('lang')

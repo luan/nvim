@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = require('utils').map
 local t = require('utils').t
 
 _G.restore_register = function()

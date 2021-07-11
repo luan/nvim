@@ -36,5 +36,3 @@ end
 
 setup_servers()
 
--- load other languages
-require('lang/go')
