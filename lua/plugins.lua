@@ -16,8 +16,6 @@ return require('packer').startup {
             config = function() require('plugins.lualine') end,
         }
 
-        use 'famiu/nvim-reload'
-
         use 'nvim-lua/popup.nvim'
 
         use {
@@ -120,7 +118,14 @@ return require('packer').startup {
                       vim.g.indent_blankline_show_first_indent_level = false
             end,
         }
-        use 'b3nj5m1n/kommentary'
+        use {
+            'b3nj5m1n/kommentary',
+            config = function()
+                require('kommentary.config').configure_language("default", {
+                    prefer_single_line_comments = true,
+                })
+            end,
+        }
 
         use {
             "blackCauldron7/surround.nvim",
@@ -141,6 +146,14 @@ return require('packer').startup {
             config = function() require('neoscroll').setup() end,
         }
         use 'sindrets/diffview.nvim'
+        use {
+            'rmagatti/auto-session',
+            config = function() require('auto-session').setup() end,
+        }
+        use {
+            "Pocco81/TrueZen.nvim",
+            config = function() require('plugins/truezen') end,
+        }
 
         -- generic (non lua) plugins
         use 'bronson/vim-trailing-whitespace'
@@ -174,6 +187,10 @@ return require('packer').startup {
                     prompt_mapping_side = '<F12>',
                 }
             end,
+        }
+        use {
+            'haya14busa/incsearch.vim',
+            config = function() require('plugins.incsearch') end,
         }
     end,
     config = {

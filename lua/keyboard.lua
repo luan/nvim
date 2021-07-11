@@ -140,7 +140,7 @@ wk.register({
 wk.register({
     name = "+language-server",
     a = {':Lspsaga code_action<cr>', 'Code Action'},
-    ['='] = {vim.lsp.buf.formatting_sync, 'Code Action'},
+    ['='] = {vim.lsp.buf.formatting_sync, 'Format'},
     r = {':Lspsaga rename<cr>', 'Rename'},
     k = {':Lspsaga hover_doc<cr>', 'Doc'},
     s = {telescope.lsp_dynamic_workspace_symbols, 'Search Symbols'},

@@ -16,6 +16,7 @@ opt.timeoutlen    = 700                    -- Timeout for keybindings
 opt.ttimeoutlen   = 0                      -- Timeout for completing commands
 opt.inccommand    = 'nosplit'              -- Preview commands like substitute
 opt.iskeyword:append('$', '@', '-')
+opt.wildmode      = {'list', 'longest'}    -- Use emacs-style tab completion in command mode
 
 opt.ignorecase    = true                   -- Case insensitive search
 opt.smartcase     = true                   -- ... but case sensitive when uc present
