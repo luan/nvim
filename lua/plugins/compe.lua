@@ -54,6 +54,16 @@ _G.s_tab_complete = function()
         return t "<S-Tab>"
     end
 end
+_G.compeCR = function()
+	if vim.fn.pumvisible() == 1 and vim.fn.complete_info()['selected'] ~= -1 then
+		vim.fn['compe#confirm']('<CR>')
+	else
+		return vim.api.nvim_replace_termcodes("<CR><Plug>DiscretionaryEnd<Plug>CloserClose", true, true, true)
+	end
+end
+
+vim.g.closer_no_mappings = 1
+vim.g.endwise_no_mappings = 1
 
 local map = vim.api.nvim_set_keymap
 map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
@@ -61,8 +71,8 @@ map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-map("i", '<C-x><C-x>', [[compe#complete()]], {noremap = true, silent = true, expr = true})
-map("i", '<CR>', [[compe#confirm('<CR>')]], {noremap = true, silent = true, expr = true})
+map("i", '<C-x><C-x>', [[compe#complete()]], {silent = true, expr = true})
+map("i", '<CR>', [[v:lua.compeCR()]], {silent = true, expr = true})
 
 map("i", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
 map("s", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
