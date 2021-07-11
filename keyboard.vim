@@ -11,29 +11,6 @@ call which_key#register('<Space>', "g:leader_key_map")
 
 let g:leader_key_map=  {}
 
-let g:leader_key_map[' '] = {
-      \ 'name': '+general',
-      \ 'f': [':FocusMode',  'Focus-mode: remove gutter info for a cleaner experience'],
-      \ 'z': [':Goyo',  'Zen-mode: distraction free editing'],
-      \ }
-
-let g:leader_key_map.t = {
-      \ 'name': '+testing',
-      \ 't': [':TestNearest', 'Run Nearest'],
-      \ '.': [':TestLast',    'Run Last'],
-      \ 'f': [':TestFile',    'Run File'],
-      \ 's': [':TestSuite',   'Run Suite'],
-      \ 'g': [':TestVisit',   'Goto last ran test'],
-      \ }
-
-nmap <silent> <leader>f- :execute(':FZFFiles ' . expand('%:h'))<CR>
-let g:leader_key_map.f['-'] = 'File Browser'
-
-let g:leader_key_map.s = {
-      \ 'name': '+search',
-      \ 'p': ['<Plug>CtrlSFPrompt', 'Find in directory (ctrlsf)'],
-      \ }
-
 let g:leader_key_map.c = {
       \ 'name': '+cscope',
       \ 's': [':cs find s <cword>', 'Cscope Symbol'],

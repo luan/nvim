@@ -127,11 +127,6 @@ return require('packer').startup {
             end,
         }
 
-        use {
-            "blackCauldron7/surround.nvim",
-            config = function() require('surround').setup {mappings_style = 'surround'} end,
-        }
-
         use 'kevinhwang91/nvim-bqf'
 
         -- file explorer
@@ -156,26 +151,20 @@ return require('packer').startup {
         }
 
         -- generic (non lua) plugins
-        use 'bronson/vim-trailing-whitespace'
-        use 'mg979/vim-visual-multi'
-        use 'tpope/vim-endwise'
-        use 'rstacruz/vim-closer'
-        use 'machakann/vim-swap'
         use 'AndrewRadev/splitjoin.vim'
-        use 'tpope/vim-repeat'
-        use 'matze/vim-move'
-        use 'tommcdo/vim-exchange'
-        use 'tpope/vim-sleuth'
-        use 'tpope/vim-abolish'
-        use 'tpope/vim-unimpaired'
-        use 'tpope/vim-eunuch'
-        use 'kopischke/vim-stay'
+        use 'bronson/vim-trailing-whitespace'
+        use 'junegunn/vim-easy-align'
         use 'kopischke/vim-fetch'
-        use 'mbbill/undotree'
-        use 'romainl/vim-qf'
-        use 'tpope/vim-fugitive'
-        use 'tpope/vim-rhubarb'
+        use 'kopischke/vim-stay'
         use 'liuchengxu/vista.vim'
+        use 'machakann/vim-swap'
+        use 'matze/vim-move'
+        use 'mbbill/undotree'
+        use 'mg979/vim-visual-multi'
+        use 'romainl/vim-qf'
+        use 'rstacruz/vim-closer'
+        use 'tommcdo/vim-exchange'
+
         use {
             'trsdln/vim-grepper',
             config = function()
@@ -192,6 +181,17 @@ return require('packer').startup {
             'haya14busa/incsearch.vim',
             config = function() require('plugins.incsearch') end,
         }
+
+        -- thanks tpope
+        use 'tpope/vim-abolish'
+        use 'tpope/vim-endwise'
+        use 'tpope/vim-eunuch'
+        use 'tpope/vim-fugitive'
+        use 'tpope/vim-repeat'
+        use 'tpope/vim-rhubarb'
+        use 'tpope/vim-sleuth'
+        use 'tpope/vim-surround'
+        use 'tpope/vim-unimpaired'
     end,
     config = {
         display = {

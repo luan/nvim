@@ -49,6 +49,7 @@ true_zen.setup({
 	}
 })
 
-vim.api.nvim_set_keymap("n", "<F10>", [[<Cmd>TZMinimalist<CR>]], {})
-vim.api.nvim_set_keymap("n", "<F11>", [[<Cmd>TZFocus<CR>]], {})
-vim.api.nvim_set_keymap("n", "<F12>", [[<Cmd>TZAtaraxis<CR>]], {})
+local map = require('utils').map
+map("n", "<F10>", [[<Cmd>TZMinimalist<CR>]])
+map("n", "<F11>", [[<Cmd>TZFocus<CR>]])
+map("n", "<F12>", [[<Cmd>TZAtaraxis<CR>]])

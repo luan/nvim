@@ -65,16 +65,12 @@ end
 vim.g.closer_no_mappings = 1
 vim.g.endwise_no_mappings = 1
 
-local map = vim.api.nvim_set_keymap
-map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+local map = require('utils').map
+map('si', "<Tab>", "v:lua.tab_complete()", {expr = true})
+map('si', "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-map("i", '<C-x><C-x>', [[compe#complete()]], {silent = true, expr = true})
-map("i", '<CR>', [[v:lua.compeCR()]], {silent = true, expr = true})
+map('i', '<C-x><C-x>', [[compe#complete()]], {silent = true, expr = true})
+map('i', '<CR>', [[v:lua.compeCR()]], {silent = true, expr = true})
 
-map("i", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
-map("s", '<C-j>',   [[vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
-map("i", '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<C-j>']], {expr = true})
-map("s", '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<C-j>']], {expr = true})
+map('si', '<C-j>',   [[vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
+map('si', '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<C-j>']], {expr = true})

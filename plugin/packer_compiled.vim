@@ -225,11 +225,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/splitjoin.vim"
   },
-  ["surround.nvim"] = {
-    config = { "\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\19mappings_style\rsurround\nsetup\rsurround\frequire\0" },
-    loaded = true,
-    path = "/home/luan/.local/share/nvim/site/pack/packer/start/surround.nvim"
-  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
@@ -255,6 +250,10 @@ _G.packer_plugins = {
   ["vim-closer"] = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-closer"
+  },
+  ["vim-easy-align"] = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-easy-align"
   },
   ["vim-endwise"] = {
     loaded = true,
@@ -305,6 +304,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-stay"
   },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
   ["vim-swap"] = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-swap"
@@ -348,10 +351,6 @@ time([[Setup for fzf.vim]], false)
 time([[packadd for fzf.vim]], true)
 vim.cmd [[packadd fzf.vim]]
 time([[packadd for fzf.vim]], false)
--- Config for: surround.nvim
-time([[Config for surround.nvim]], true)
-try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\19mappings_style\rsurround\nsetup\rsurround\frequire\0", "config", "surround.nvim")
-time([[Config for surround.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\1\0022\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
