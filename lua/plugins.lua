@@ -160,6 +160,10 @@ packer.startup {
             "Pocco81/TrueZen.nvim",
             config = function() require('plugins/truezen') end,
         }
+        use {
+            'rcarriga/vim-ultest',
+            requires = { 'vim-test/vim-test' },
+        }
 
         -- generic (non lua) plugins
         use 'AndrewRadev/splitjoin.vim'
@@ -175,6 +179,8 @@ packer.startup {
         use 'romainl/vim-qf'
         use 'rstacruz/vim-closer'
         use 'tommcdo/vim-exchange'
+        use 'benmills/vimux'
+        use 'sk1418/Join'
 
         use {
             'trsdln/vim-grepper',
