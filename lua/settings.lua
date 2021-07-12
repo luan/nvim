@@ -53,3 +53,14 @@ opt.writebackup   = false
 
 -- Cursor line
 opt.cursorline    = true
+
+vim.cmd [[
+augroup config#basic
+  autocmd!
+  " Don't format when adding lines with o/O
+  autocmd BufNewFile,BufEnter * set formatoptions-=o
+
+  " Reload file on focus
+  autocmd FocusGained * :checktime
+augroup END
+]]

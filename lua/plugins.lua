@@ -1,7 +1,18 @@
 require('packer-init')
+local packer = require('packer')
+local has_module = require('utils').has_module
 
-return require('packer').startup {
+vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+
+packer.startup {
     function(use)
+        if has_module('user.plugins') then
+            local user_plugins = require('user.plugins')
+            if user_plugins and user_plugins.plugins then
+                user_plugins.plugins(use)
+            end
+        end
+
         -- Packer can manage itself as an optional plugin
         use 'wbthomason/packer.nvim'
 
