@@ -41,7 +41,7 @@ packer.startup {
 
         use {
             'junegunn/fzf.vim',
-            require = {'junegunn/fzf', run = vim.fn['fzf#install'] },
+            requires = {'junegunn/fzf', run = vim.fn['fzf#install'] },
             setup = function() vim.g.fzf_command_prefix = 'FZF' end,
             config = function() require('plugins.fzf') end,
         }
@@ -240,8 +240,5 @@ packer.startup {
     end,
     config = {
         max_jobs = 50,
-        display = {
-            open_fn = require('packer.util').float,
-        }
     }
 }
