@@ -213,6 +213,31 @@ packer.startup {
         use 'tpope/vim-sleuth'
         use 'tpope/vim-surround'
         use 'tpope/vim-unimpaired'
+
+
+        -- languages
+        use {
+            'numirias/semshi',
+            run = ':UpdateRemotePlugins',
+            -- ft = 'python' -- doesn't work
+        }
+        use {
+            'tpope/vim-markdown',
+            ft = 'markdown',
+        }
+        use 'keith/rspec.vim'
+        use {
+            'tpope/vim-bundler',
+            'tpope/vim-rails',
+            'tpope/vim-rake',
+            ft = {'ruby', 'rake'}
+        }
+        use {
+            'tpope/vim-cucumber',
+            ft = 'cucumber',
+        }
+        use 'PotatoesMaster/i3-vim-syntax'
+        use 'cappyzawa/starlark.vim'
     end,
     config = {
         display = {
