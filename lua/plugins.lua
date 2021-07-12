@@ -32,9 +32,9 @@ packer.startup {
         use {
             'nvim-telescope/telescope.nvim',
             requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"},
-                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+                {'nvim-lua/popup.nvim'},
+                {'nvim-lua/plenary.nvim'},
+                {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
             },
             config = function() require('plugins.telescope') end,
         }
@@ -50,13 +50,13 @@ packer.startup {
         use 'kabouzeid/nvim-lspinstall'
 
         use {
-            "hrsh7th/nvim-compe",
+            'hrsh7th/nvim-compe',
             config = function() require('plugins.compe') end,
         }
 
         use {
-            "folke/trouble.nvim",
-            requires = "kyazdani42/nvim-web-devicons",
+            'folke/trouble.nvim',
+            requires = 'kyazdani42/nvim-web-devicons',
             config = function() require('plugins.trouble') end,
         }
 
@@ -68,11 +68,11 @@ packer.startup {
         }
 
         use {
-            "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate",
+            'nvim-treesitter/nvim-treesitter',
+            run = ':TSUpdate',
             requires = {
-                "nvim-treesitter/playground",
-                "nvim-treesitter/nvim-treesitter-textobjects",
+                'nvim-treesitter/playground',
+                'nvim-treesitter/nvim-treesitter-textobjects',
             },
             config = function() require('plugins.treesitter') end,
         }
@@ -83,8 +83,8 @@ packer.startup {
         }
 
         use {
-            "folke/which-key.nvim",
-            config = function() require("which-key").setup{} end
+            'folke/which-key.nvim',
+            config = function() require('which-key').setup{} end
         }
 
         use {
@@ -120,10 +120,10 @@ packer.startup {
         use {
             'lukas-reineke/indent-blankline.nvim',
             config = function()
-                      vim.g.indent_blankline_char = "▏"
+                      vim.g.indent_blankline_char = '▏'
 
-                      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard", "nofile"}
-                      vim.g.indent_blankline_buftype_exclude = {"terminal"}
+                      vim.g.indent_blankline_filetype_exclude = {'help', 'terminal', 'dashboard', 'nofile'}
+                      vim.g.indent_blankline_buftype_exclude = {'terminal'}
 
                       vim.g.indent_blankline_show_trailing_blankline_indent = false
                       vim.g.indent_blankline_show_first_indent_level = false
@@ -132,7 +132,7 @@ packer.startup {
         use {
             'b3nj5m1n/kommentary',
             config = function()
-                require('kommentary.config').configure_language("default", {
+                require('kommentary.config').configure_language('default', {
                     prefer_single_line_comments = true,
                 })
             end,
