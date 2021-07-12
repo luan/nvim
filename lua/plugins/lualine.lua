@@ -1,6 +1,10 @@
+if not(vim.g.lualine_theme) then
+    vim.g.lualine_theme = 'neon'
+end
+
 require('lualine').setup {
     options = {
-        theme = 'neon',
+        theme = vim.g.lualine_theme,
         section_separators = {'', ''},
         component_separators = {'', ''},
     },
