@@ -214,7 +214,6 @@ packer.startup {
         use 'tpope/vim-surround'
         use 'tpope/vim-unimpaired'
 
-
         -- languages
         use {
             'numirias/semshi',
@@ -240,6 +239,7 @@ packer.startup {
         use 'cappyzawa/starlark.vim'
     end,
     config = {
+        max_jobs = 50,
         display = {
             open_fn = require('packer.util').float,
         }
