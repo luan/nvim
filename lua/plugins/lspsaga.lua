@@ -4,7 +4,7 @@ require('lspsaga').init_lsp_saga {
     hint_sign = "",
     infor_sign = "➟",
     code_action_icon = "",
-    code_action_prompt = { enable = true, sign = true, sign_priority = 20, virtual_text = false },
+    code_action_prompt = { enable = true, sign = false, virtual_text = true },
     finder_action_keys = {
         open = "e",
         vsplit = "v",
