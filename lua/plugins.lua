@@ -21,7 +21,7 @@ packer.startup {
         use 'rafamadriz/neon'
         use 'RRethy/nvim-base16'
 
-        use "kyazdani42/nvim-web-devicons"
+        use 'kyazdani42/nvim-web-devicons'
         use {
             'hoob3rt/lualine.nvim',
             config = function() require('plugins.lualine') end,
