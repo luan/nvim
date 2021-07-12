@@ -12,58 +12,7 @@ Plug 'kadekillary/Turtles'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 " }
 
-" Visual context when bulk editing buffers
-Plug 'pelodelfuego/vim-swoop'
-
-" Select regions incrementally
-Plug 'terryma/vim-expand-region'
-
-" :Join command
-Plug 'sk1418/Join'
-
-" quoting/parenthesizing made simple; e.g. ysiw) to wrap word in parens
-Plug 'tpope/vim-surround'
-
-" enable repeating supported plugin maps with '.'
-Plug 'tpope/vim-repeat'
-
-" A Vim alignment plugin
-Plug 'junegunn/vim-easy-align'
-
-" General -- Helpful generic tools with no dependencies {
-" project configuration via 'projections'
-Plug 'tpope/vim-projectionist'
-
-" Distraction-free writing in Vim
-Plug 'junegunn/goyo.vim'
-
-" All the world's indeed a stage and we are merely players
-Plug 'junegunn/limelight.vim'
-
-" interact with tmux
-Plug 'benmills/vimux'
-
-" asynchronous build and test dispatcher
-Plug 'tpope/vim-dispatch'
-
-" Wrapper of some vim/neovim's :terminal functions
-Plug 'kassio/neoterm'
-
-" An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
-Plug 'dyng/ctrlsf.vim'
-
-" - for netrw current directory
-Plug 'tpope/vim-vinegar'
-
-" Improved incremental searching
-Plug 'haya14busa/incsearch.vim'
-" }
-
 " Language configuration {
-" Testing {
-Plug 'janko/vim-test'
-" }
-
 " C {
 Plug 'arakashic/chromatica.nvim'
 " }

@@ -72,6 +72,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  Join = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/Join"
+  },
   ["TrueZen.nvim"] = {
     config = { "\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20plugins/truezen\frequire\0" },
     loaded = true,
@@ -312,9 +316,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-swap"
   },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-test"
+  },
   ["vim-trailing-whitespace"] = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-trailing-whitespace"
+  },
+  ["vim-ultest"] = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-ultest"
   },
   ["vim-unimpaired"] = {
     loaded = true,
@@ -331,6 +343,10 @@ _G.packer_plugins = {
   ["vim-vsnip-integ"] = {
     loaded = true,
     path = "/home/luan/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+  },
+  vimux = {
+    loaded = true,
+    path = "/home/luan/.local/share/nvim/site/pack/packer/start/vimux"
   },
   ["vista.vim"] = {
     loaded = true,
@@ -379,10 +395,10 @@ time([[Config for incsearch.vim]], false)
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20plugins.trouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20plugins.lualine\frequire\0", "config", "lualine.nvim")
-time([[Config for lualine.nvim]], false)
+-- Config for: lir.nvim
+time([[Config for lir.nvim]], true)
+try_loadstring("\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16plugins.lir\frequire\0", "config", "lir.nvim")
+time([[Config for lir.nvim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20plugins.lspsaga\frequire\0", "config", "lspsaga.nvim")
@@ -423,10 +439,10 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for vim-grepper]], true)
 try_loadstring("\27LJ\1\2¢\1\0\0\3\0\6\0\a4\0\0\0007\0\1\0003\1\4\0003\2\3\0:\2\5\1:\1\2\0G\0\1\0\ntools\1\0\4\24prompt_mapping_side\n<F12>\24prompt_mapping_tool\n<F10>\18simple_prompt\3\0\23prompt_mapping_dir\n<F11>\1\3\0\0\arg\bgit\fgrepper\6g\bvim\0", "config", "vim-grepper")
 time([[Config for vim-grepper]], false)
--- Config for: lir.nvim
-time([[Config for lir.nvim]], true)
-try_loadstring("\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16plugins.lir\frequire\0", "config", "lir.nvim")
-time([[Config for lir.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20plugins.lualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
 -- Config for: mkdir.nvim
 time([[Config for mkdir.nvim]], true)
 try_loadstring("\27LJ\1\2%\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\nmkdir\frequire\0", "config", "mkdir.nvim")
