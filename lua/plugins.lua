@@ -157,12 +157,16 @@ packer.startup {
             config = function() require('auto-session').setup() end,
         }
         use {
-            "Pocco81/TrueZen.nvim",
+            'Pocco81/TrueZen.nvim',
             config = function() require('plugins/truezen') end,
         }
         use {
             'rcarriga/vim-ultest',
             requires = { 'vim-test/vim-test' },
+            run = ':UpdateRemotePlugins',
+            config = function()
+                vim.g.ultest_use_pty = 1
+            end,
         }
 
         -- generic (non lua) plugins
