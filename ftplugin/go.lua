@@ -1,14 +1,3 @@
-require('lspconfig').gopls.setup {
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-                unusedwrite = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
 require('go').setup()
 
 function GoImportsSync(timeout_ms)
