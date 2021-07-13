@@ -2,10 +2,10 @@ local actions = require'lir.actions'
 local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require'lir.clipboard.actions'
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
-require'lir'.setup {
+require('lir').setup {
   show_hidden_files = false,
   devicons_enable = true,
   mappings = {
@@ -16,6 +16,7 @@ require'lir'.setup {
 
     ['-']     = actions.up,
     ['q']     = actions.quit,
+    ['<Esc>']     = actions.quit,
 
     ['K']     = actions.mkdir,
     ['N']     = actions.newfile,
@@ -39,8 +40,10 @@ require'lir'.setup {
   hide_cursor = true,
 }
 
+require('lir.git_status').setup {}
+
 -- custom folder icon
-require'nvim-web-devicons'.setup({
+require('nvim-web-devicons').setup({
   override = {
     lir_folder_icon = {
       icon = "",
@@ -53,9 +56,6 @@ require'nvim-web-devicons'.setup({
 -- use visual mode
 function _G.LirSettings()
   vim.api.nvim_buf_set_keymap(0, 'x', 'J', ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>', {noremap = true, silent = true})
-
-  -- echo cwd
-  vim.api.nvim_echo({{vim.fn.expand('%:p'), 'Normal'}}, false, {})
 end
 
 vim.cmd [[augroup lir-settings]]

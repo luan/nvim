@@ -143,6 +143,7 @@ packer.startup {
         -- file explorer
         use {
             'tamago324/lir.nvim',
+            requires = {'tamago324/lir-git-status.nvim'},
             config = function() require('plugins.lir') end,
         }
 
