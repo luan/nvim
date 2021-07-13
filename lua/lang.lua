@@ -18,33 +18,45 @@ local function setup_servers()
     local lspconf = require('lspconfig')
 
     for _, lang in pairs(servers) do
-        if lang == "lua" then
-            lspconf[lang].setup {
-                root_dir = vim.loop.cwd,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {"vim"}
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                            }
-                        },
-                        telemetry = {
-                            enable = false
-                        }
-                    }
+      if lang == 'lua' then
+        lspconf[lang].setup {
+          root_dir = vim.loop.cwd,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = {"vim"}
+              },
+              workspace = {
+                library = {
+                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                  [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
                 }
+              },
+              telemetry = {
+                enable = false
+              }
             }
-        else
-            lspconf[lang].setup {
-                root_dir = vim.loop.cwd
-            }
-        end
+          }
+        }
+      elseif lang == 'go' then
+        lspconf[lang].setup {
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true,
+                unusedwrite = true,
+              },
+              staticcheck = true,
+            },
+          },
+        }
+      else
+        lspconf[lang].setup {
+          root_dir = vim.loop.cwd
+        }
+      end
     end
-end
+  end
 
-setup_servers()
+  setup_servers()
 
