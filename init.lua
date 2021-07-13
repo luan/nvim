@@ -1,3 +1,12 @@
+-- Disable some in built plugins completely
+vim.g.loaded_netrw            = 1
+vim.g.loaded_netrwPlugin      = 1
+vim.g.loaded_2html_plugin     = 1
+vim.g.loaded_getscriptPlugin  = 1
+vim.g.loaded_logipat          = 1
+vim.g.loaded_rrhelper         = 1
+vim.g.loaded_vimballPlugin    = 1
+
 require('globals')
 
 local has_module  = require('utils').has_module
