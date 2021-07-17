@@ -7,6 +7,7 @@ vim.g.loaded_rrhelper         = 1
 vim.g.loaded_vimballPlugin    = 1
 
 require('globals')
+require('update')
 
 local has_module  = require('utils').has_module
 local file_exists = require('utils').file_exists
