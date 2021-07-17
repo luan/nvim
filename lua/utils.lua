@@ -1,4 +1,6 @@
 local map = vim.api.nvim_set_keymap
+local a = require('packer.async')
+local async = a.sync
 
 local M = {}
 
@@ -65,6 +67,37 @@ function M.copy(source, destination)
   end
 
   return true
+end
+
+function M.check_dependencies(dependencies)
+  async(function()
+    local missing = {}
+
+    for _, deps in pairs(dependencies) do
+      if type(deps) ~= 'table' then
+        deps = {deps}
+      end
+
+      local found = false
+      for _, dep in pairs(deps) do
+        if vim.fn.executable(dep) == 1 then
+          found = true
+          break
+        end
+      end
+
+      if not found then
+        table.insert(missing, deps[1])
+      end
+    end
+
+    if #missing > 0 then
+      local missing_string = table.concat(missing, ", ")
+      vim.cmd([[
+      echohl ErrorMsg | echomsg 'Missing dependencies (]] .. missing_string .. [[) detected. Please refer to the README for more information on how to install them.' | echohl None]]
+      )
+    end
+  end)()
 end
 
 return M

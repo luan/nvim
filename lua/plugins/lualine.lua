@@ -21,7 +21,7 @@ require('lualine').setup {
         },
         lualine_x = {'diagnostics', 'encoding', 'fileformat'},
         lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_z = {'location', require('update').status }
     },
     inactive_sections = {
         lualine_a = {},

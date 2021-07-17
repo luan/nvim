@@ -239,7 +239,6 @@ packer.startup {
         use 'PotatoesMaster/i3-vim-syntax'
         use 'cappyzawa/starlark.vim'
     end,
-    config = {
-        max_jobs = 50,
-    }
 }
+
+return packer
