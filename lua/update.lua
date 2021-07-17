@@ -8,7 +8,7 @@ local check_dependencies = require('utils').check_dependencies
 
 check_dependencies({'curl', 'npm', 'rg', {'fd', 'fdfind'}})
 
-local memo = {}
+local memo = { status = "" }
 
 local function printerr(msg)
     error(fmt('echoerr "%s"', string.gsub(msg, "\n", " ")))
@@ -53,24 +53,26 @@ local function merge_base()
 end
 
 local function update_check()
+  memo.status = ''
   return async(function()
     await(async_command('git remote update'))
     await(async_command('git update-index -q --refresh'))
     local has_local_changes = await(async_command('git diff-index --quiet HEAD --', true)) == nil
-    memo.local_version = local_version()
-    memo.remote_version = remote_version()
-    memo.merge_base = merge_base()
 
     if has_local_changes then
+      memo.status = '祝local changes'
       warn('Local changes detected. If these are user preferences, consider moving them to your user settings.')
       return -1
-    elseif memo.local_version == memo.remote_version then
-      -- up to date
+    elseif local_version() == remote_version() then
+      memo.status = ''
       return 0
-    elseif memo.local_version == memo.merge_base then
+    elseif local_version() == merge_base() then
+      memo.status = ' update available'
       warn('There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest.')
       return 1
-    elseif memo.remote_version == memo.merge_base then
+    elseif remote_version() == merge_base() then
+      memo.status = 'ﴻ local commits'
+      memo.local_commits = true
       warn('Local commits detected. You may want to push / send a PR / move your changes to user settings?')
       return -1
     end
@@ -81,14 +83,7 @@ end
 local M = {}
 
 function M.status()
-  if not memo.remote_version or not memo.local_version then
-    return ''
-  end
-
-  if memo.local_version ~= memo.remote_version then
-    return " update available!"
-  end
-  return ""
+  return memo.status
 end
 
 function _G.config_update()
@@ -109,8 +104,6 @@ end
 
 local timer = vim.loop.new_timer()
 timer:start(1000, 3600 * 1000, function()
-  memo.remote_version = nil
-  memo.local_version = nil
   update_check()()
 end)
 
