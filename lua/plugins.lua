@@ -248,4 +248,5 @@ packer.startup {
     end,
 }
 
+packer.install()
 return packer
