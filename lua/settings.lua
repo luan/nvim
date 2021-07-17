@@ -26,7 +26,7 @@ opt.mouse         = 'a'                    -- Mouse enabled in all modes
 
 -- Completion
 opt.pumheight     = 20                     -- Avoid the pop up menu occupying the whole screen
-opt.completeopt   = {'menuone', 'noselect'}
+opt.completeopt   = {'noinsert', 'menuone', 'noselect'}
 opt.shortmess:append('c')                  -- don't pass messages to |ins-completion-menu|
 
 -- Indentation

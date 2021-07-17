@@ -71,6 +71,7 @@ map('si', "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 map('i', '<C-x><C-x>', [[compe#complete()]], {silent = true, expr = true})
 map('i', '<CR>', [[v:lua.compeCR()]], {silent = true, expr = true})
+map('i', '<c-y>', [[v:lua.compeCR()]], {silent = true, expr = true})
 
 map('si', '<C-j>',   [[vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
 map('si', '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<C-j>']], {expr = true})
