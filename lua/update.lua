@@ -8,6 +8,8 @@ local check_dependencies = require('utils').check_dependencies
 
 check_dependencies({'curl', 'npm', 'rg', {'fd', 'fdfind'}})
 
+local memo = {}
+
 local function printerr(msg)
     error(fmt('echoerr "%s"', string.gsub(msg, "\n", " ")))
 end
@@ -39,15 +41,15 @@ local function async_command(cmd, ignore_error)
 end
 
 local function remote_version()
-  return vim.fn.system('git rev-parse @{u}')
+  return await(async_command('git rev-parse @{u}'))
 end
 
 local function local_version()
-  return vim.fn.system('git rev-parse @')
+  return await(async_command('git rev-parse @'))
 end
 
 local function merge_base()
-  return vim.fn.system('git merge-base @ "@{u}"')
+  return await(async_command('git merge-base @ @{u}'))
 end
 
 local function update_check()
@@ -55,17 +57,20 @@ local function update_check()
     await(async_command('git remote update'))
     await(async_command('git update-index -q --refresh'))
     local has_local_changes = await(async_command('git diff-index --quiet HEAD --', true)) == nil
+    memo.local_version = local_version()
+    memo.remote_version = remote_version()
+    memo.merge_base = merge_base()
 
     if has_local_changes then
       warn('Local changes detected. If these are user preferences, consider moving them to your user settings.')
       return -1
-    elseif local_version() == remote_version() then
+    elseif memo.local_version == memo.remote_version then
       -- up to date
       return 0
-    elseif local_version() == merge_base() then
+    elseif memo.local_version == memo.merge_base then
       warn('There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest.')
       return 1
-    elseif remote_version() == merge_base() then
+    elseif memo.remote_version == memo.merge_base then
       warn('Local commits detected. You may want to push / send a PR / move your changes to user settings?')
       return -1
     end
@@ -76,8 +81,12 @@ end
 local M = {}
 
 function M.status()
-  if local_version() ~= remote_version() then
-    return " update available!"
+  if not memo.remote_version or not memo.local_version then
+    return ''
+  end
+
+  if memo.local_version ~= memo.remote_version then
+    return " update available!"
   end
   return ""
 end
@@ -98,9 +107,12 @@ function _G.config_update()
   end)()
 end
 
-async(function()
-  await(update_check())
-end)()
+local timer = vim.loop.new_timer()
+timer:start(1000, 3600 * 1000, function()
+  memo.remote_version = nil
+  memo.local_version = nil
+  update_check()()
+end)
 
 vim.cmd("command! ConfigUpdate call v:lua.config_update()")
 
