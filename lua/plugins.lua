@@ -238,6 +238,13 @@ packer.startup {
         }
         use 'PotatoesMaster/i3-vim-syntax'
         use 'cappyzawa/starlark.vim'
+        use {
+            'mattn/emmet-vim',
+            config = function()
+                vim.g.user_emmet_leader_key = '<leader>e'
+                vim.g.user_emmet_mode = 'nv'
+            end,
+        }
     end,
 }
 
