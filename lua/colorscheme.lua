@@ -1,2 +1,2 @@
-vim.cmd[[colorscheme neon]]
+vim.cmd[[silent! colorscheme neon]]
 
