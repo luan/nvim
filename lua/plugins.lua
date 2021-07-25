@@ -70,9 +70,12 @@ packer.startup {
         use {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
+            branch = '0.5-compat',
             requires = {
-                'nvim-treesitter/playground',
-                'nvim-treesitter/nvim-treesitter-textobjects',
+                {
+                    'nvim-treesitter/nvim-treesitter-textobjects',
+                    branch = '0.5-compat'
+                },
             },
             config = function() require('plugins.treesitter') end,
         }

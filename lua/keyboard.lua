@@ -1,5 +1,5 @@
 local map = require('utils').map
-local wk = require("which-key")
+local wk = require('which-key')
 local gitsigns = require('gitsigns')
 local telescope = require('telescope.builtin')
 

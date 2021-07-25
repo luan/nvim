@@ -21,13 +21,19 @@ if has_module('user.before') then
     require('user.before')
 end
 
-require('settings')
-require('plugins')
-require('colorscheme')
-require('keyboard')
-require('diagnostics')
-require('paste')
-require('lang')
+local modules = {
+    'settings',
+    'plugins',
+    'colorscheme',
+    'keyboard',
+    'diagnostics',
+    'paste',
+    'lang',
+}
+
+for i = 1, #modules, 1 do
+    pcall(require, modules[i])
+end
 
 if has_module('user.after') then
     require('user.after')
