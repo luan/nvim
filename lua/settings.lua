@@ -21,6 +21,8 @@ opt.wildmode      = {'list', 'longest'}    -- Use emacs-style tab completion in 
 opt.ignorecase    = true                   -- Case insensitive search
 opt.smartcase     = true                   -- ... but case sensitive when uc present
 
+opt.sessionoptions = {'blank', 'buffers', 'curdir', 'folds', 'help', 'options', 'tabpages', 'winsize', 'resize', 'winpos', 'terminal'}
+
 -- Mouse
 opt.mouse         = 'a'                    -- Mouse enabled in all modes
 
