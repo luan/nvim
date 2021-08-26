@@ -50,8 +50,8 @@ packer.startup {
         use 'kabouzeid/nvim-lspinstall'
 
         use {
-            'hrsh7th/nvim-compe',
-            config = function() require('plugins.compe') end,
+            'nvim-lua/completion-nvim',
+            config = function() require('plugins/completion') end,
         }
 
         use {
@@ -70,11 +70,9 @@ packer.startup {
         use {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
-            branch = '0.5-compat',
             requires = {
                 {
                     'nvim-treesitter/nvim-treesitter-textobjects',
-                    branch = '0.5-compat'
                 },
             },
             config = function() require('plugins.treesitter') end,
