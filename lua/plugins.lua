@@ -157,10 +157,6 @@ packer.startup {
         }
         use 'sindrets/diffview.nvim'
         use {
-            'rmagatti/auto-session',
-            config = function() require('auto-session').setup() end,
-        }
-        use {
             'Pocco81/TrueZen.nvim',
             config = function() require('plugins/truezen') end,
         }
