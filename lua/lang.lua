@@ -1,62 +1,39 @@
-local lspinstall = require('lspinstall')
+local lsp_installer = require("nvim-lsp-installer")
 
-local jedi_config = require("lspinstall/util").extract_config("jedi_language_server")
-jedi_config.default_config.cmd[1] = "./venv/bin/jedi-language-server"
+lsp_installer.on_server_ready(function(server)
+  local opts = {
+    root_dir = vim.loop.cwd,
+  }
 
-require('lspinstall/servers').jedi = vim.tbl_extend('error', jedi_config, {
-  install_script = [[
-  python3 -m venv ./venv
-  ./venv/bin/pip3 install --upgrade pip
-  ./venv/bin/pip3 install --upgrade jedi-language-server
-  ]]
-})
-
-lspinstall.setup()
-local servers = lspinstall.installed_servers()
-
-local function setup_servers()
-    local lspconf = require('lspconfig')
-
-    for _, lang in pairs(servers) do
-      if lang == 'lua' then
-        lspconf[lang].setup {
-          root_dir = vim.loop.cwd,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = {"vim"}
-              },
-              workspace = {
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                }
-              },
-              telemetry = {
-                enable = false
-              }
-            }
+  if server.name == 'lua' then
+    opts.settings = {
+      Lua = {
+        diagnostics = {
+          globals = {"vim"}
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
           }
+        },
+        telemetry = {
+          enable = false
         }
-      elseif lang == 'go' then
-        lspconf[lang].setup {
-          settings = {
-            gopls = {
-              analyses = {
-                unusedparams = true,
-                unusedwrite = true,
-              },
-              staticcheck = true,
-            },
-          },
-        }
-      else
-        lspconf[lang].setup {
-          root_dir = vim.loop.cwd
-        }
-      end
-    end
+      }
+    }
+  elseif server.name == 'go' then
+    opts.settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+          unusedwrite = true,
+        },
+        staticcheck = true,
+      },
+    }
   end
 
-  setup_servers()
-
+  server:setup(opts)
+  vim.cmd [[ do User LspAttachBuffers ]]
+end)
