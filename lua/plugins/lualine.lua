@@ -19,7 +19,7 @@ require('lualine').setup {
                 path = 1,
             },
         },
-        lualine_x = {'diagnostics', 'encoding', 'fileformat'},
+        lualine_x = {{ 'diagnostics', sources = {'nvim_lsp'}}, 'encoding', 'fileformat'},
         lualine_y = {'progress'},
         lualine_z = {'location', require('update').status }
     },
