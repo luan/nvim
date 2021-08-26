@@ -11,13 +11,11 @@ check_dependencies({'curl', 'npm', 'rg', {'fd', 'fdfind'}})
 local memo = { status = "" }
 
 local function printerr(msg)
-    error(fmt('echoerr "%s"', string.gsub(msg, "\n", " ")))
+  vim.notify(msg, 'error', { title = 'Config Update' })
 end
 
 local function warn(msg)
-    vim.schedule(function()
-      vim.cmd(fmt("echohl WarningMsg | echomsg '%s' | echohl None", msg))
-    end)
+  vim.notify(msg, 'warn', { title = 'Config Update' })
 end
 
 local function async_command(cmd, ignore_error)

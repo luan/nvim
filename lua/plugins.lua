@@ -17,6 +17,10 @@ packer.startup {
         use 'wbthomason/packer.nvim'
 
         use 'nvim-lua/plenary.nvim'
+        use {
+            'rcarriga/nvim-notify',
+            config = function() vim.notify = require('notify') end,
+        }
 
         use 'rafamadriz/neon'
         use 'RRethy/nvim-base16'
@@ -46,8 +50,10 @@ packer.startup {
             config = function() require('plugins.fzf') end,
         }
 
-        use 'neovim/nvim-lspconfig'
-        use 'kabouzeid/nvim-lspinstall'
+        use {
+            'neovim/nvim-lspconfig',
+            'williamboman/nvim-lsp-installer',
+        }
 
         use {
             'nvim-lua/completion-nvim',

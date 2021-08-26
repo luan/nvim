@@ -93,8 +93,10 @@ function M.check_dependencies(dependencies)
 
     if #missing > 0 then
       local missing_string = table.concat(missing, ", ")
-      vim.cmd([[
-      echohl ErrorMsg | echomsg 'Missing dependencies (]] .. missing_string .. [[) detected. Please refer to the README for more information on how to install them.' | echohl None]]
+      vim.notify(
+        [[Missing dependencies (]] .. missing_string .. [[) detected. Please refer to the README for more information on how to install them.]],
+        'error',
+        { title = 'Config Dependencies' }
       )
     end
   end)()
