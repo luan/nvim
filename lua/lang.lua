@@ -5,7 +5,7 @@ lsp_installer.on_server_ready(function(server)
     root_dir = vim.loop.cwd,
   }
 
-  if server.name == 'lua' then
+  if server.name == 'sumneko_lua' then
     opts.settings = {
       Lua = {
         diagnostics = {
@@ -22,7 +22,7 @@ lsp_installer.on_server_ready(function(server)
         }
       }
     }
-  elseif server.name == 'go' then
+  elseif server.name == 'gopls' then
     opts.settings = {
       gopls = {
         analyses = {
