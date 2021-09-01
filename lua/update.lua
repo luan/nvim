@@ -94,7 +94,7 @@ function _G.config_update()
       return
     end
 
-    await(async_command('git merge' .. remote_version()))
+    await(async_command('git merge ' .. remote_version()))
     package.loaded['plugins'] = nil
     require('plugins').sync()
   end)()
