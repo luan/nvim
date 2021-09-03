@@ -19,10 +19,9 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping(function(fallback)
       if not cmp.confirm({ select = false }) then
-	vim.fn.feedkeys(t('<CR>'), 'n')
+	fallback()
 	vim.fn.feedkeys(t('<Plug>DiscretionaryEnd'), '')
 	vim.fn.feedkeys(t('<Plug>CloserClose'), '')
-	fallback()
       end
     end),
     ['<Tab>'] = cmp.mapping(function(fallback)
