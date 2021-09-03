@@ -1,35 +1,73 @@
-_G.completionCR = function()
-	if vim.fn.pumvisible() == 1 and vim.fn.complete_info()['selected'] ~= -1 then
-		return vim.api.nvim_replace_termcodes("<Plug>(completion_confirm_completion)", true, true, true)
-	else
-		return vim.api.nvim_replace_termcodes("<CR><Plug>DiscretionaryEnd<Plug>CloserClose", true, true, true)
-	end
-end
-
 vim.g.closer_no_mappings = 1
 vim.g.endwise_no_mappings = 1
-vim.g.completion_enable_snippet = 'vim-vsnip'
-vim.g.completion_confirm_key = ''
-vim.g.completion_enable_auto_paren = 1
-vim.g.completion_menu_length = 40
-vim.g.completion_popup_border = 'shadow'
 
-local map = require('utils').map
-map('si', "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], {expr = true})
-map('si', "<S-Tab>", [[pumvisible() ? "<C-p>" : "<S-Tab>"]], {expr = true})
-map('i', '<c-y>', [[<Plug>(completion_trigger)]], {silent = true})
-map('i', '<tab>',   '<Plug>(completion_smart_tab)')
-map('i', '<s-tab>', '<Plug>(completion_smart_s_tab)')
-map('i', '<CR>', [[v:lua.completionCR()]], {silent = true, expr = true})
-map('i', '<c-y>', [[v:lua.completionCR()]], {silent = true, expr = true})
+local check_back_space = function()
+  local col = vim.fn.col '.' - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+end
 
-map('si', '<C-j>',   [[vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>']], {expr = true})
-map('i', '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<Esc>lDa']], {expr = true})
-map('s', '<C-k>',   [[vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'         : '<C-k>']], {expr = true})
+local t = require('utils').t
 
-vim.cmd [[
-augroup config#completion
-  autocmd!
-  autocmd BufEnter * lua require('completion').on_attach()
-augroup END
-]]
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if not cmp.confirm({ select = false }) then
+	vim.fn.feedkeys(t('<CR>'), 'n')
+	vim.fn.feedkeys(t('<Plug>DiscretionaryEnd'), '')
+	vim.fn.feedkeys(t('<Plug>CloserClose'), '')
+	fallback()
+      end
+    end),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if vim.fn.pumvisible() == 1 then
+	vim.fn.feedkeys(t('<C-n>'), 'n')
+      elseif check_back_space() then
+	vim.fn.feedkeys(t('<Tab>'), 'n')
+	vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
+      elseif vim.fn['vsnip#available']() == 1 then
+      else
+	fallback()
+      end
+    end, {'i', 's'}),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if vim.fn.pumvisible() == 1 then
+	vim.fn.feedkeys(t('<C-p>'), 'n')
+      elseif check_back_space() then
+	vim.fn.feedkeys(t('<S-Tab>'), 'n')
+      elseif vim.fn['vsnip#available']() == 1 then
+	vim.fn.feedkeys(t('<Plug>(vsnip-prev)'), '')
+      else
+	fallback()
+      end
+    end, {'i', 's'}),
+    ['<C-j>'] = cmp.mapping(function(fallback)
+      if vim.fn['vsnip#available']() == 1 then
+	vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
+      else
+	fallback()
+      end
+    end, {'i', 's'}),
+    ['<C-k>'] = cmp.mapping(function(fallback)
+      if vim.fn['vsnip#available']() == 1 then
+	vim.fn.feedkeys(t('<Plug>(vsnip-prev-or-jump)'), '')
+      else
+	fallback()
+      end
+    end, {'i', 's'}),
+  },
+  sources = {
+    {name = 'buffer'},
+    {name = 'vsnip'},
+    {name = 'calc'},
+    {name = 'path'},
+    {name = 'nvim_lsp'},
+    {name = 'nvim_lua'},
+  },
+})
