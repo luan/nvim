@@ -29,8 +29,8 @@ cmp.setup({
 	vim.fn.feedkeys(t('<C-n>'), 'n')
       elseif check_back_space() then
 	vim.fn.feedkeys(t('<Tab>'), 'n')
-	vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
       elseif vim.fn['vsnip#available']() == 1 then
+	vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
       else
 	fallback()
       end
