@@ -177,9 +177,7 @@ packer.startup {
             'rcarriga/vim-ultest',
             requires = { 'vim-test/vim-test' },
             run = ':UpdateRemotePlugins',
-            config = function()
-                vim.g.ultest_use_pty = 1
-            end,
+            config = function() require('plugins/test') end,
         }
 
         -- generic (non lua) plugins
