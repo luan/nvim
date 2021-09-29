@@ -78,8 +78,8 @@ wk.register({
     d = {telescope.lsp_definitions,           'Go to definition'},
     y = {vim.lsp.buf.type_definition,         'Go to type'},
     i = {telescope.lsp_implementations,       'Find implementation'},
-    h = {[[<cmd>Lspsaga lsp_finder<cr>]],     'Smart find refereces/implementation'},
-    r = {telescope.lsp_references,            'Find refereces'},
+    h = {[[<cmd>Lspsaga lsp_finder<cr>]],     'Smart find references/implementation'},
+    r = {telescope.lsp_references,            'Find references'},
     K = {[[<cmd>Lspsaga signature_help<cr>]], 'Show signature'},
     a = {'<Plug>(LiveEasyAlign)',             'EasyAlign', mode = 'x'},
 }, {prefix = 'g', silent = true})
