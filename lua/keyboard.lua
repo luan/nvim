@@ -104,7 +104,7 @@ wk.register({
 
 wk.register({
     name = "+git",
-    s = {':Gstatus<cr>',         'git status'},
+    s = {':Git<cr>',         'git status'},
     b = {':Git blame<cr>',       'git blame'},
     c = {telescope.git_commits,  'git commits'},
     k = {telescope.git_bcommits, 'git commits (buffer)'},
