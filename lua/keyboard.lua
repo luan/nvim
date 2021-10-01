@@ -157,8 +157,8 @@ wk.register({
 
 wk.register({
     name  = "+testing",
-    t     = {':UltestNearest<cr>', 'Run Nearest'},
-    f     = {':Ultest<cr>',    'Run File'},
+    t     = {':TestNearest<cr>', 'Run Nearest'},
+    f     = {':TestFile<cr>',    'Run File'},
     s     = {':TestSuite<cr>',   'Run Suite'},
     g     = {':TestVisit<cr>',   'Goto last ran test'},
     ['.'] = {':TestLast<cr>',    'Run Last'},
