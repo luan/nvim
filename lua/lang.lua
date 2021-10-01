@@ -38,9 +38,6 @@ lsp_installer.on_server_ready(function(server)
         staticcheck = true,
       },
     }
-  elseif server.name == 'solargraph' then
-    local root_dir = lsp_server.get_server_root_path("ruby")
-    opts.cmd = { path.concat { root_dir, "solargraph"  }, "stdio" }
   end
 
   server:setup(opts)
