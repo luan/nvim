@@ -77,7 +77,7 @@ wk.register({
     D = {vim.lsp.buf.declaration,             'Go to declaration'},
     d = {telescope.lsp_definitions,           'Go to definition'},
     y = {vim.lsp.buf.type_definition,         'Go to type'},
-    i = {telescope.lsp_implementations,       'Find implementation'},
+    m = {telescope.lsp_implementations,       'Find implementation'},
     h = {[[<cmd>Lspsaga lsp_finder<cr>]],     'Smart find references/implementation'},
     r = {telescope.lsp_references,            'Find references'},
     K = {[[<cmd>Lspsaga signature_help<cr>]], 'Show signature'},
