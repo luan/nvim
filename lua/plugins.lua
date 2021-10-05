@@ -78,7 +78,7 @@ packer.startup {
         use 'folke/lsp-colors.nvim'
 
         use {
-            'glepnir/lspsaga.nvim',
+            'tami5/lspsaga.nvim',
             config = function() require('plugins.lspsaga') end,
         }
 
