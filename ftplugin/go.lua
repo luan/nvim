@@ -9,6 +9,7 @@ function GoImportsSync(timeout_ms)
     params.context = context
 
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+    if not result then return end
     for _, result in pairs(result) do
         if not result.result then return end
         result = result.result
