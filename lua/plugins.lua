@@ -2,7 +2,12 @@ require('packer-init')
 local packer = require('packer')
 local has_module = require('utils').has_module
 
-vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+vim.cmd([[
+augroup config#update
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup END
+]])
 
 packer.startup {
     function(use)

@@ -19,5 +19,8 @@ function GoImportsSync(timeout_ms)
 end
 
 vim.api.nvim_command([[
-autocmd BufWritePre *.go lua GoImportsSync(1000)
+augroup config#go
+    autocmd!
+    autocmd BufWritePre *.go lua GoImportsSync(1000)
+augroup END
 ]])
