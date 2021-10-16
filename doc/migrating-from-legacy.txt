@@ -12,12 +12,8 @@ QUICK DIFFERENCES
 
 - Leader has changed from `,` to `<Space>`
 - `:nohl` is no longer bound to `<Space>`. It's now `<Esc><Esc>`
-- NERDTree on `\` is deprecated in favour of |vinegar| and |netrw| on `-`
-  - For a NERDTree-like tree-view in |netrw|, hit `iii`
 - Running tests was `,t`. Now try `<Space>tf`
-- `<C-p>` used to run a fuzzy matcher. It now runs |clap|, which by default
-  expects a regex.
-
+- `<C-p>` used to run a fuzzy matcher.
 -----------------------------------------------------------------------------
 PHILOSOPHY
 
