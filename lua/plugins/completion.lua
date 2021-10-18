@@ -61,11 +61,11 @@ cmp.setup({
     end, {'i', 's'}),
   },
   sources = {
-    {name = 'buffer'},
-    {name = 'vsnip'},
-    {name = 'calc'},
-    {name = 'path'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
+    {name = 'vsnip'},
+    {name = 'buffer'},
+    {name = 'calc'},
+    {name = 'path'},
   },
 })
