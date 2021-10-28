@@ -56,6 +56,11 @@ opt.writebackup   = false
 -- Cursor line
 opt.cursorline    = true
 
+-- Folding
+opt. foldlevel    = 20
+opt.foldmethod    = 'expr'
+opt.foldexpr      = 'nvim_treesitter#foldexpr()'
+
 vim.cmd [[
 augroup config#basic
   autocmd!
