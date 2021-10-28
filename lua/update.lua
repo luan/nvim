@@ -94,11 +94,16 @@ function _G.config_update()
       return
     end
 
-    vim.schedule_wrap(function()
-      os.execute('git merge ' .. remote_version())
+    local did_update = await(async_command('git merge ' .. remote_version()))
+    if did_update == -1 then
+      printerr('Failed updating config. Try doing a git pull in the repository directly.')
+      return
+    end
+
+    vim.defer_fn(function()
       package.loaded['plugins'] = nil
       require('plugins').sync()
-    end)
+    end, 1000)
   end)()
 end
 
