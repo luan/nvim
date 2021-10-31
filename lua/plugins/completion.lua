@@ -52,7 +52,7 @@ cmp.setup({
     end, {'i', 's'}),
     ['<C-k>'] = cmp.mapping(function(fallback)
       if vim.fn['vsnip#available']() == 1 then
-	vim.fn.feedkeys(t('<Plug>(vsnip-prev-or-jump)'), '')
+	vim.fn.feedkeys(t('<Plug>(vsnip-jump-prev)'), '')
       else
 	fallback()
       end
