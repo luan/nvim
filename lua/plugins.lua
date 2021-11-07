@@ -208,7 +208,7 @@ packer.startup {
         use 'sk1418/Join'
 
         use {
-            'trsdln/vim-grepper',
+            'mhinz/vim-grepper',
             config = function()
                 vim.g.grepper = {
                     tools = {'rg', 'git'},
