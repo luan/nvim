@@ -1,7 +1,3 @@
-if not(vim.g.lualine_theme) then
-    vim.g.lualine_theme = 'neon'
-end
-
 require('lualine').setup {
     options = {
         theme = vim.g.lualine_theme,
