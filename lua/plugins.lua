@@ -28,6 +28,7 @@ packer.startup {
         }
 
         use 'rafamadriz/neon'
+        use 'navarasu/onedark.nvim'
         use 'RRethy/nvim-base16'
 
         use 'kyazdani42/nvim-web-devicons'
