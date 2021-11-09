@@ -29,6 +29,9 @@ packer.startup {
 
         use 'rafamadriz/neon'
         use 'navarasu/onedark.nvim'
+        use 'sainnhe/gruvbox-material'
+
+        -- these don't switch the whole background sometimes...
         use 'RRethy/nvim-base16'
 
         use 'kyazdani42/nvim-web-devicons'
