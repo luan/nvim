@@ -87,7 +87,7 @@ wk.register({
 
 wk.register({
     name = "+general",
-    s    = {':Dashboard<cr>',      'Home Buffer'},
+    s    = {':Alpha<cr>',          'Home Buffer'},
     c    = {telescope.commands,    'Search commands'},
     a    = {telescope.colorscheme, 'Search colorschemes'},
     h    = {telescope.help_tags,   'Help'},
