@@ -3,6 +3,5 @@
 --
 -- vim.opt.number = false -- No line numbers
 -- require('utils').map('n', 's', ':MultipleCursorsFind<cr>')
--- vim.cmd[[colorscheme hybrid]]
 -- ...
 --
