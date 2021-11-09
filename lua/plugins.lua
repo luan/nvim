@@ -133,7 +133,7 @@ packer.startup {
         use 'ray-x/go.nvim'
 
         use {
-            'glepnir/dashboard-nvim',
+            'goolord/alpha-nvim',
             config = function() require('plugins.dashboard') end,
         }
 
