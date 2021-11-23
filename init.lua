@@ -13,10 +13,6 @@ local has_module  = require('utils').has_module
 local file_exists = require('utils').file_exists
 local copy = require('utils').copy
 
-if not(file_exists(CONFIG_PATH .. '/lua/user')) then
-    copy(CONFIG_PATH .. '/lua/user.defaults', CONFIG_PATH .. '/lua/user')
-end
-
 if has_module('user.before') then
     require('user.before')
 end
