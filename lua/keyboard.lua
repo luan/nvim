@@ -131,8 +131,8 @@ wk.register({
     r     = {':Lspsaga rename<cr>',                        'Rename'},
     k     = {':Lspsaga hover_doc<cr>',                     'Doc'},
     s     = {telescope.lsp_dynamic_workspace_symbols,      'Search Symbols'},
-    d     = {"<cmd>Trouble lsp_document_diagnostics<cr>",  'Diagnostics'},
-    D     = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", 'Workspace Diagnostics'},
+    d     = {"<cmd>Trouble document_diagnostics<cr>",  'Diagnostics'},
+    D     = {"<cmd>Trouble workspace_diagnostics<cr>", 'Workspace Diagnostics'},
     t     = {"<cmd>Vista!!<cr>",                           'Symbol tree'},
 }, {prefix = '<leader>l'})
 
