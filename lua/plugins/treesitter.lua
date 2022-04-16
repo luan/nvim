@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,              -- false will disable the whole extension
   },
+  ignore_install = { "phpdoc" },
   incremental_selection = {
     enable = true,
     keymaps = {
