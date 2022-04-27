@@ -14,7 +14,7 @@ function GoImportsSync(timeout_ms)
         if not result.result then return end
         result = result.result
         local edit = result[1].edit
-        vim.lsp.util.apply_workspace_edit(edit)
+        vim.lsp.util.apply_workspace_edit(edit, 'utf-16')
     end
 end
 
