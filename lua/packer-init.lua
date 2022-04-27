@@ -12,7 +12,12 @@ local packer_ok, packer = pcall(require, "packer")
 if not packer_ok then return end
 
 packer.init {
-    git = {clone_timeout = 300},
+    git = {
+        clone_timeout = 300,
+        subcommands = {
+            update = "pull --ff-only --progress --rebase=true",
+        },
+    },
     max_jobs = 50,
     display = {
         open_fn = function()
