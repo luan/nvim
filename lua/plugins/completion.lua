@@ -1,5 +1,5 @@
-vim.g.closer_no_mappings = 1
-vim.g.endwise_no_mappings = 1
+-- vim.g.closer_no_mappings = 1
+-- vim.g.endwise_no_mappings = 1
 
 local check_back_space = function()
   local col = vim.fn.col '.' - 1

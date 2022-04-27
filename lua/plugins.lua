@@ -64,16 +64,16 @@ packer.startup {
         use {
             'nvim-telescope/telescope.nvim',
             requires = {
-                {'nvim-lua/popup.nvim'},
-                {'nvim-lua/plenary.nvim'},
-                {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+                { 'nvim-lua/popup.nvim' },
+                { 'nvim-lua/plenary.nvim' },
+                { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             },
             config = function() require('plugins.telescope') end,
         }
 
         use {
             'junegunn/fzf.vim',
-            requires = {'junegunn/fzf', run = vim.fn['fzf#install'] },
+            requires = { 'junegunn/fzf', run = vim.fn['fzf#install'] },
             setup = function() vim.g.fzf_command_prefix = 'FZF' end,
             config = function() require('plugins.fzf') end,
         }
@@ -127,13 +127,48 @@ packer.startup {
         }
 
         use {
+            'p00f/nvim-ts-rainbow',
+            'windwp/nvim-ts-autotag',
+            'JoosepAlviste/nvim-ts-context-commentstring'
+        }
+        use {
+            'windwp/nvim-autopairs',
+            config = function() require('plugins.autopairs') end,
+        }
+
+        use {
+            'RRethy/nvim-treesitter-endwise',
+            config = function()
+                require('nvim-treesitter.configs').setup {
+                    endwise = {
+                        enable = true,
+                    },
+                }
+            end
+        }
+
+        use {
+            'jose-elias-alvarez/null-ls.nvim',
+            event = { 'BufRead', 'BufNewFile' },
+            config = function()
+                require("null-ls").setup({
+                    sources = {
+                        require("null-ls").builtins.formatting.stylua,
+                        require("null-ls").builtins.diagnostics.eslint,
+                        require("null-ls").builtins.completion.spell,
+                    },
+                })
+            end,
+        }
+
+        use {
             'onsails/lspkind-nvim',
-            config = function() require('lspkind').init{} end,
+            config = function() require('lspkind').init {} end,
         }
 
         use {
             'folke/which-key.nvim',
-            config = function() require('which-key').setup{} end
+            config = function() require('which-key').setup {} end
         }
 
         use {
@@ -167,13 +202,13 @@ packer.startup {
         use {
             'lukas-reineke/indent-blankline.nvim',
             config = function()
-                      vim.g.indent_blankline_char = '▏'
+                vim.g.indent_blankline_char = '▏'
 
-                      vim.g.indent_blankline_filetype_exclude = {'help', 'terminal', 'dashboard', 'nofile'}
-                      vim.g.indent_blankline_buftype_exclude = {'terminal'}
+                vim.g.indent_blankline_filetype_exclude = { 'help', 'terminal', 'dashboard', 'nofile' }
+                vim.g.indent_blankline_buftype_exclude = { 'terminal' }
 
-                      vim.g.indent_blankline_show_trailing_blankline_indent = false
-                      vim.g.indent_blankline_show_first_indent_level = false
+                vim.g.indent_blankline_show_trailing_blankline_indent = false
+                vim.g.indent_blankline_show_first_indent_level = false
             end,
         }
         use {
@@ -188,7 +223,7 @@ packer.startup {
         -- file explorer
         use {
             'tamago324/lir.nvim',
-            requires = {'tamago324/lir-git-status.nvim'},
+            requires = { 'tamago324/lir-git-status.nvim' },
             config = function() require('plugins.lir') end,
         }
 
@@ -221,7 +256,6 @@ packer.startup {
         use 'mbbill/undotree'
         use 'mg979/vim-visual-multi'
         use 'romainl/vim-qf'
-        use 'rstacruz/vim-closer'
         use 'tommcdo/vim-exchange'
         use 'benmills/vimux'
         use 'sk1418/Join'
@@ -230,7 +264,7 @@ packer.startup {
             'mhinz/vim-grepper',
             config = function()
                 vim.g.grepper = {
-                    tools = {'rg', 'git'},
+                    tools = { 'rg', 'git' },
                     simple_prompt = 0,
                     prompt_mapping_tool = '<F10>',
                     prompt_mapping_dir = '<F11>',
@@ -245,7 +279,6 @@ packer.startup {
 
         -- thanks tpope
         use 'tpope/vim-abolish'
-        use 'tpope/vim-endwise'
         use 'tpope/vim-eunuch'
         use 'tpope/vim-fugitive'
         use 'tpope/vim-repeat'
@@ -269,7 +302,7 @@ packer.startup {
             'tpope/vim-bundler',
             'tpope/vim-rails',
             'tpope/vim-rake',
-            ft = {'ruby', 'rake'}
+            ft = { 'ruby', 'rake' }
         }
         use {
             'tpope/vim-cucumber',
