@@ -1,4 +1,5 @@
 local opt         = vim.opt
+local g           = vim.g
 
 -- General
 opt.autoread      = true                   -- reload changes from disk
@@ -60,6 +61,9 @@ opt.cursorline    = true
 opt.foldlevel    = 20
 opt.foldmethod   = 'expr'
 opt.foldexpr     = 'nvim_treesitter#foldexpr()'
+
+g.do_filetype_lua = 1 -- use filetype.lua
+g.did_load_filetypes = 0 -- don't use filetype.vim
 
 vim.cmd [[
 augroup config#basic

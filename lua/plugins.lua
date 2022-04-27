@@ -21,6 +21,15 @@ packer.startup {
         -- Packer can manage itself as an optional plugin
         use 'wbthomason/packer.nvim'
 
+        -- Speed up loading Lua modules in Neovim to improve startup time.
+        use {
+            'lewis6991/impatient.nvim',
+            config = function() require('impatient') end,
+        }
+
+        -- drop in replacement for filetype.vim
+        use 'nathom/filetype.nvim'
+
         use 'nvim-lua/plenary.nvim'
         use {
             'rcarriga/nvim-notify',
