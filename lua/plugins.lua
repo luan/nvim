@@ -145,20 +145,6 @@ packer.startup {
         }
 
         use {
-            'jose-elias-alvarez/null-ls.nvim',
-            event = { 'BufRead', 'BufNewFile' },
-            config = function()
-                require("null-ls").setup({
-                    sources = {
-                        require("null-ls").builtins.formatting.stylua,
-                        require("null-ls").builtins.diagnostics.eslint,
-                        require("null-ls").builtins.completion.spell,
-                    },
-                })
-            end,
-        }
-
-        use {
             'onsails/lspkind-nvim',
             config = function() require('lspkind').init {} end,
         }
