@@ -6,7 +6,7 @@ local telescope = require('telescope.builtin')
 map('n', '-', [[:lua require('lir.float').init()<cr>]], {noremap = true, silent = true})
 
 -- close buffer
-map('n', '<M-q>', [[:lua require('bufdelete').bufdelete(0, true) <cr>]], {noremap = true, silent = true})
+map('n', '<M-q>', [[:Bdelete<cr>]], {noremap = true, silent = true})
 
 -- comments
 map('n', '<C-_>', '<Plug>kommentary_line_default')
