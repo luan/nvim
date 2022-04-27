@@ -106,9 +106,6 @@ packer.startup {
         use 'folke/lsp-colors.nvim'
 
         local saga_branch = 'main'
-        if vim.version().major == 0 and vim.version().minor == 5 and vim.version().patch == 1 then
-            saga_branch = 'nvim51'
-        end
         use {
             'tami5/lspsaga.nvim',
             branch = saga_branch,
