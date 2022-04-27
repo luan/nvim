@@ -1,4 +1,3 @@
-local map = vim.api.nvim_set_keymap
 local a = require('packer.async')
 local async = a.sync
 
@@ -6,13 +5,6 @@ local M = {}
 
 function M.t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-function M.map(modes, key, action, opts)
-  opts = opts or {}
-  modes:gsub(".", function(mode)
-    map(mode, key, action, opts)
-  end)
 end
 
 function M.has_module(name)
