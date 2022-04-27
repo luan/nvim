@@ -52,6 +52,16 @@ packer.startup {
         use 'nvim-lua/popup.nvim'
 
         use {
+            'antoinemadec/FixCursorHold.nvim',
+            event = { 'BufRead', 'BufNewFile' },
+            config = function()
+                vim.g.cursorhold_updatetime = 100
+            end,
+        }
+
+        use 'moll/vim-bbye'
+
+        use {
             'nvim-telescope/telescope.nvim',
             requires = {
                 {'nvim-lua/popup.nvim'},
@@ -145,8 +155,6 @@ packer.startup {
             'goolord/alpha-nvim',
             config = function() require('plugins.dashboard') end,
         }
-
-        use 'famiu/bufdelete.nvim'
 
         use {
             'hrsh7th/vim-vsnip',
