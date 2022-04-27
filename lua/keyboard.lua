@@ -9,8 +9,8 @@ map('n', '-', [[:lua require('lir.float').init()<cr>]], {noremap = true, silent 
 map('n', '<M-q>', [[:Bdelete<cr>]], {noremap = true, silent = true})
 
 -- comments
-map('n', '<C-_>', '<Plug>kommentary_line_default')
-map('v', '<C-_>', '<Plug>kommentary_visual_default')
+map('n', '<C-_>', '<Plug>(comment_toggle_current_linewise)')
+map('v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)')
 
 -- emacs bindings
 map('ic', '<C-b>', '<Left>')
