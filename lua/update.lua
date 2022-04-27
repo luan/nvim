@@ -10,12 +10,12 @@ check_dependencies({'curl', 'npm', 'rg', {'fd', 'fdfind'}})
 
 local memo = { status = "" }
 
-local function printerr(msg)
-  vim.notify(msg, 'error', { title = 'Config Update' })
+local function printerr(title, msg)
+  vim.notify_once(msg, 'error', { title = fmt('[Config] %s', title) })
 end
 
-local function warn(msg)
-  vim.notify(msg, 'warn', { title = 'Config Update' })
+local function warn(title, msg)
+  vim.notify_once(msg, 'warn', { title = fmt('[Config] %s', title) })
 end
 
 local function async_command(cmd, ignore_error)
@@ -26,7 +26,7 @@ local function async_command(cmd, ignore_error)
       :and_then(await, jobs.run(cmd, opts))
       :map_err(function(err)
         if not ignore_error then
-          printerr(fmt('Failed to update config. %s: %s', cmd, err.output.data.stderr[1]))
+          printerr('Failed to update config.', fmt('%s:\n%s', cmd, err.output.data.stderr[1]))
         end
         return nil
       end)
@@ -59,19 +59,19 @@ local function update_check()
 
     if has_local_changes then
       memo.status = '祝local changes'
-      warn('Local changes detected. If these are user preferences, consider moving them to your user settings.')
+      warn('Local changes detected', 'Consider moving them to your user settings.')
       return -1
     elseif local_version() == remote_version() then
       memo.status = ''
       return 0
     elseif local_version() == merge_base() then
       memo.status = ' update available'
-      warn('There is a new version of the nvim config available. Run :ConfigUpdate to update to the latest.')
+      warn('Update available!', 'There is a new version of the nvim config available.\nRun :ConfigUpdate to update to the latest.')
       return 1
     elseif remote_version() == merge_base() then
       memo.status = 'ﴻ local commits'
       memo.local_commits = true
-      warn('Local commits detected. You may want to push / send a PR / move your changes to user settings?')
+      warn('Local commits detected', 'You may want to push / send a PR / move your changes to user settings?')
       return -1
     end
     return -1
@@ -90,13 +90,13 @@ function _G.config_update()
     if has_update == 0 then
       return
     elseif has_update == -1 then
-      printerr('Local changes detected. Update aborted!')
+      printerr('Local changes detected', 'Update aborted!')
       return
     end
 
     local did_update = await(async_command('git merge ' .. remote_version()))
     if did_update == -1 then
-      printerr('Failed updating config. Try doing a git pull in the repository directly.')
+      printerr('Failed updating config', 'Try doing a git pull in the repository directly.')
       return
     end
 
