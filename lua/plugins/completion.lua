@@ -27,7 +27,6 @@ cmp.setup({
   },
   mapping = {
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
 
     ['<Tab>'] = next,
     ['<C-n>'] = next,
