@@ -81,6 +81,7 @@ packer.startup {
         use {
             'neovim/nvim-lspconfig',
             'williamboman/nvim-lsp-installer',
+            after = 'go.nvim',
         }
 
         use {
@@ -167,7 +168,10 @@ packer.startup {
             config = function() require('plugins.gitsigns') end,
         }
 
-        use 'ray-x/go.nvim'
+        use {
+            'ray-x/go.nvim',
+            config = function() require('go').setup() end,
+        }
 
         use {
             'goolord/alpha-nvim',
