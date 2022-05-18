@@ -14,15 +14,15 @@ lsp_installer.setup {
 }
 
 trouble.setup {
-    use_diagnostic_signs = true,
-    signs = {
-        -- icons / text used for a diagnostic
-        error = "",
-        warning = "",
-        hint = "",
-        information = "",
-        other = "﫠"
-    },
+  use_diagnostic_signs = true,
+  signs = {
+    -- icons / text used for a diagnostic
+    error = "",
+    warning = "",
+    hint = "",
+    information = "",
+    other = "﫠"
+  },
 }
 
 local on_attach = function(client, bufnr)
@@ -47,17 +47,17 @@ lspconfig.util.default_config = vim.tbl_extend(
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      format = function(diagnostic)
-        -- Only show the first line with virtualtext.
-        return string.gsub(diagnostic.message, '\n.*', '')
-      end,
-    },
-    signs = true,
-    update_in_insert = false,
-  }
+  underline = true,
+  virtual_text = {
+    spacing = 4,
+    format = function(diagnostic)
+      -- Only show the first line with virtualtext.
+      return string.gsub(diagnostic.message, '\n.*', '')
+    end,
+  },
+  signs = true,
+  update_in_insert = false,
+}
 )
 
 lspkind.init()
@@ -72,7 +72,7 @@ lspconfig.sumneko_lua.setup({
         path = vim.split(package.path, ';'),
       },
       diagnostics = {
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         library = {
@@ -108,8 +108,8 @@ lspconfig.rust_analyzer.setup({
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {
     default_config = {
-      cmd = {'emmet-ls', '--stdio'};
-      filetypes = {'html', 'css', 'blade', 'javascriptreact', 'javascript.jsx'};
+      cmd = { 'emmet-ls', '--stdio' };
+      filetypes = { 'html', 'css', 'blade', 'javascriptreact', 'javascript.jsx' };
       root_dir = function()
         return vim.loop.cwd()
       end;
@@ -154,13 +154,6 @@ lspconfig.gopls.setup {
     },
   },
 }
-
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.trim_whitespace,
-  },
-})
 
 vim.api.nvim_exec([[
   autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
