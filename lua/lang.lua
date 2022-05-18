@@ -4,6 +4,10 @@ local configs = require('lspconfig/configs')
 local lsp_status = require('lsp-status')
 local lspkind = require('lspkind')
 local trouble = require('trouble')
+local lsp_format = require("lsp-format")
+
+lsp_format.setup()
+
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -82,6 +86,10 @@ lspconfig.sumneko_lua.setup({
       },
     },
   },
+  on_attach = function(client, bufnr)
+    lsp_format.on_attach(client)
+    on_attach(client, bufnr)
+  end
 })
 
 -- Rust
