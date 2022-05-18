@@ -79,6 +79,7 @@ packer.startup {
         }
 
         use {
+            'lukas-reineke/lsp-format.nvim',
             'neovim/nvim-lspconfig',
             'folke/lsp-colors.nvim',
             'tami5/lspsaga.nvim',
