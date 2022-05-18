@@ -80,7 +80,15 @@ packer.startup {
 
         use {
             'neovim/nvim-lspconfig',
+            'folke/lsp-colors.nvim',
+            'tami5/lspsaga.nvim',
             'williamboman/nvim-lsp-installer',
+            'folke/trouble.nvim',
+            'onsails/lspkind-nvim',
+            'ray-x/lsp_signature.nvim',
+            'nvim-lua/lsp-status.nvim',
+            'jose-elias-alvarez/null-ls.nvim',
+            requires = 'kyazdani42/nvim-web-devicons',
             after = 'go.nvim',
         }
 
@@ -96,21 +104,6 @@ packer.startup {
                 "hrsh7th/cmp-calc",
             },
             config = function() require('plugins/completion') end,
-        }
-
-        use {
-            'folke/trouble.nvim',
-            requires = 'kyazdani42/nvim-web-devicons',
-            config = function() require('plugins.trouble') end,
-        }
-
-        use 'folke/lsp-colors.nvim'
-
-        local saga_branch = 'main'
-        use {
-            'tami5/lspsaga.nvim',
-            branch = saga_branch,
-            config = function() require('plugins.lspsaga') end,
         }
 
         use {
@@ -146,11 +139,6 @@ packer.startup {
         }
 
         use {
-            'onsails/lspkind-nvim',
-            config = function() require('lspkind').init {} end,
-        }
-
-        use {
             'folke/which-key.nvim',
             config = function() require('which-key').setup {} end
         }
@@ -170,7 +158,12 @@ packer.startup {
 
         use {
             'ray-x/go.nvim',
-            config = function() require('go').setup() end,
+            config = function()
+                require('go').setup()
+                vim.api.nvim_exec([[
+                    autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
+                ]], false)
+            end,
         }
 
         use {
@@ -289,6 +282,7 @@ packer.startup {
             'tpope/vim-bundler',
             'tpope/vim-rails',
             'tpope/vim-rake',
+            'vim-ruby/vim-ruby',
             ft = { 'ruby', 'rake' }
         }
         use {
