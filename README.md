@@ -85,7 +85,7 @@ In the config directory there's a special folder that is git ignored, that is
 
 It is recommended that you track your user settings on a separate repo and
 symlink them in here, see [my dotfiles
-repo](https://github.com/luan/dotfiles/tree/master/nvim/.config/nvim/lua/user) for
+repo](https://github.com/luan/dotfiles/tree/main/xdg-configs/nvim/lua/user) for
 an example.
 
 ## Troubleshooting
