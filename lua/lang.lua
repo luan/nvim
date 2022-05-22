@@ -168,6 +168,20 @@ require 'lspconfig'.terraformls.setup {
   filetypes = { 'terraform', 'tf' };
 }
 
+-- Docker
+require 'lspconfig'.dockerls.setup {}
+
+-- Yaml
+require 'lspconfig'.yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-comppose.yml"
+      }
+    }
+  }
+}
+
 vim.api.nvim_exec([[
   autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
   autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 500)
