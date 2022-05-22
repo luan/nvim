@@ -1,6 +1,6 @@
 .netrwhist
 user/
 spell/
-lua/user
+lua/user.defaults
 plugin/packer_compiled.vim
 plugin/packer_compiled.lua
