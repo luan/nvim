@@ -1,6 +1,0 @@
--- Called before everything, even before loading plugins
--- Do things that need to happen very early such as:
--- vim.g.fzf_command_prefix = 'Fuzzy'
--- vim.g.config_colorscheme = 'gruvbox-material'
--- vim.g.lualine_theme = 'gruvbox-material'
--- ...
