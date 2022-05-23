@@ -4,6 +4,8 @@ local telescope = require('telescope.builtin')
 -- local map = vim.keymap.set
 local api = vim.api
 
+vim.g.VM_leader = { default = '<space>v', visual = '<space>v', buffer = 'z' }
+
 vim.keymap.set('n', '-', [[:lua require('lir.float').init()<cr>]], { silent = true })
 
 -- close buffer
@@ -14,18 +16,18 @@ vim.keymap.set('n', '<C-_>', '<Plug>(comment_toggle_current_linewise)')
 vim.keymap.set('v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)')
 
 -- emacs bindings
-vim.keymap.set({'i', 'c'}, '<C-b>', '<Left>')
-vim.keymap.set({'i', 'c'}, '<M-b>', '<C-Left>')
+vim.keymap.set({ 'i', 'c' }, '<C-b>', '<Left>')
+vim.keymap.set({ 'i', 'c' }, '<M-b>', '<C-Left>')
 
-vim.keymap.set({'i', 'c'}, '<C-f>', '<Right>')
-vim.keymap.set({'i', 'c'}, '<M-f>', '<C-Right>')
+vim.keymap.set({ 'i', 'c' }, '<C-f>', '<Right>')
+vim.keymap.set({ 'i', 'c' }, '<M-f>', '<C-Right>')
 
-vim.keymap.set({'i', 'c'}, '<C-d>', '<Del>')
-vim.keymap.set({'i', 'c'}, '<M-d>', '<C-Right><C-w>')
-vim.keymap.set({'i', 'c'}, '<C-h>', '<BS>')
+vim.keymap.set({ 'i', 'c' }, '<C-d>', '<Del>')
+vim.keymap.set({ 'i', 'c' }, '<M-d>', '<C-Right><C-w>')
+vim.keymap.set({ 'i', 'c' }, '<C-h>', '<BS>')
 
-vim.keymap.set({'i', 'c'}, '<C-a>', '<Home>')
-vim.keymap.set({'i', 'c'}, '<C-e>', '<End>')
+vim.keymap.set({ 'i', 'c' }, '<C-a>', '<Home>')
+vim.keymap.set({ 'i', 'c' }, '<C-e>', '<End>')
 
 vim.keymap.set('c', '<C-p>', '<Up>')
 vim.keymap.set('c', '<C-n>', '<Down>')
