@@ -150,11 +150,11 @@ packer.startup {
         }
 
         use {
-            'lewis6991/gitsigns.nvim',
+            'tanvirtin/vgit.nvim',
             requires = {
                 'nvim-lua/plenary.nvim'
             },
-            config = function() require('plugins.gitsigns') end,
+            config = function() require('plugins.vgit') end,
         }
 
         use {
