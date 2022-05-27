@@ -1,5 +1,5 @@
 local wk = require('which-key')
-local gitsigns = require('gitsigns')
+local vgit = require('vgit')
 local telescope = require('telescope.builtin')
 -- local map = vim.keymap.set
 local api = vim.api
@@ -120,16 +120,14 @@ wk.register({
 
 wk.register({
     name = "+hunks",
-    t    = { gitsigns.toggle_signs, 'Toggle Sign colum' },
-    s    = { gitsigns.stage_hunk, 'Stage Hunk' },
-    S    = { gitsigns.undo_stage_hunk, 'Unstage Hunk' },
-    p    = { gitsigns.preview_hunk, 'Preview Hunk' },
-    u    = { gitsigns.reset_hunk, 'Undo Hunk' },
-    R    = { gitsigns.reset_buffer, 'Reset Buffer' },
-    b    = { gitsigns.blame_line, 'Blame Line' },
-    n    = { gitsigns.toggle_numhl, 'Toggle line-num diff' },
-    l    = { gitsigns.toggle_linehl, 'Toggle line diff' },
-    w    = { gitsigns.toggle_word_diff, 'Toggle word diff' },
+    t    = { vgit.toggle_live_guttter, 'Toggle live gutter' },
+    s    = { vgit.buffer_hunk_stage, 'Stage Hunk' },
+    p    = { vgit.buffer_hunk_preview, 'Preview Hunk' },
+    u    = { vgit.buffer_hunk_reset, 'Undo Hunk' },
+    R    = { vgit.buffer_unstage, 'Reset Buffer' },
+    l    = { vgit.buffer_blame_preview, 'Blame line' },
+    b    = { vgit.toggle_live_blame, 'Toggle live blame' },
+    a    = { vgit.toggle_authorship_code_lens, 'Toggle authors' },
 }, { prefix = '<leader>h' })
 
 wk.register({
