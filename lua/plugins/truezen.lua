@@ -38,7 +38,7 @@ true_zen.setup({
 	},
 	integrations = {
 		tmux = false,
-		gitsigns = true,
+		gitsigns = false,
 		limelight = false,
 		lualine = true,
 	},
