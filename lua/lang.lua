@@ -176,7 +176,8 @@ require 'lspconfig'.yamlls.setup {
   settings = {
     yaml = {
       schemas = {
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-comppose.yml"
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
+        ["https://json.schemastore.org/chart.json"] = "Chart.yaml"
       }
     }
   }
