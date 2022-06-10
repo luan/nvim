@@ -160,7 +160,9 @@ packer.startup {
         use {
             'ray-x/go.nvim',
             config = function()
-                require('go').setup()
+                require('go').setup({
+                    lsp_keymaps = false,
+                })
                 vim.api.nvim_exec([[
                     autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
                 ]], false)
