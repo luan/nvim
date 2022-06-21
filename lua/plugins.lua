@@ -221,8 +221,12 @@ packer.startup {
             config = function() require('plugins/truezen') end,
         }
         use {
-            'rcarriga/vim-ultest',
-            requires = { 'vim-test/vim-test' },
+            'nvim-neotest/neotest',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'nvim-treesitter/nvim-treesitter',
+                'antoinemadec/FixCursorHold.nvim',
+            },
             run = ':UpdateRemotePlugins',
             config = function() require('plugins/test') end,
         }
