@@ -221,9 +221,14 @@ packer.startup {
             config = function() require('plugins/truezen') end,
         }
         use {
-            'rcarriga/vim-ultest',
-            requires = { 'vim-test/vim-test' },
-            run = ':UpdateRemotePlugins',
+            'nvim-neotest/neotest',
+            requires = {
+                'vim-test/vim-test',
+                'nvim-neotest/neotest-vim-test',
+                'nvim-neotest/neotest-go',
+                'haydenmeade/neotest-jest',
+                'mfussenegger/nvim-dap',
+            },
             config = function() require('plugins/test') end,
         }
 
@@ -241,6 +246,7 @@ packer.startup {
         use 'romainl/vim-qf'
         use 'tommcdo/vim-exchange'
         use 'benmills/vimux'
+        use 'skywind3000/asyncrun.vim'
         use 'sk1418/Join'
 
         use {
