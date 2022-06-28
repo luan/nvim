@@ -15,7 +15,3 @@ require('lspsaga').init_lsp_saga {
     },
     code_action_keys = { quit = "<ESC>", exec = "<CR>" },
 }
-
-vim.api.nvim_command([[
-autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-]])
