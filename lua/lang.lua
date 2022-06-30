@@ -139,8 +139,8 @@ lspconfig.tsserver.setup({
   },
   root_dir = lspconfig.util.root_pattern("tsconfig.json"),
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
 
     if client.config.flags then
       client.config.flags.allow_incremental_sync = true
