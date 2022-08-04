@@ -1,27 +1,27 @@
-local actions = require'lir.actions'
+local actions = require 'lir.actions'
 local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
+local clipboard_actions = require 'lir.clipboard.actions'
 
 require('lir').setup {
-  show_hidden_files = false,
+  show_hidden_files = true,
   devicons_enable = true,
   mappings = {
-    ['<cr>']     = actions.edit,
+    ['<cr>']  = actions.edit,
     ['<C-s>'] = actions.split,
     ['<C-v>'] = actions.vsplit,
     ['<C-t>'] = actions.tabedit,
 
     ['-']     = actions.up,
     ['q']     = actions.quit,
-    ['<Esc>']     = actions.quit,
+    ['<Esc>'] = actions.quit,
 
-    ['K']     = actions.mkdir,
-    ['N']     = actions.newfile,
-    ['R']     = actions.rename,
-    ['@']     = actions.cd,
-    ['Y']     = actions.yank_path,
-    ['.']     = actions.toggle_show_hidden,
-    ['D']     = actions.delete,
+    ['K'] = actions.mkdir,
+    ['N'] = actions.newfile,
+    ['R'] = actions.rename,
+    ['@'] = actions.cd,
+    ['Y'] = actions.yank_path,
+    ['.'] = actions.toggle_show_hidden,
+    ['D'] = actions.delete,
 
     ['J'] = function()
       mark_actions.toggle_mark()
@@ -52,7 +52,8 @@ require('nvim-web-devicons').setup({
 
 -- use visual mode
 function _G.LirSettings()
-  vim.api.nvim_buf_set_keymap(0, 'x', 'J', ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>', {noremap = true, silent = true})
+  vim.api.nvim_buf_set_keymap(0, 'x', 'J', ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
+    { noremap = true, silent = true })
 end
 
 vim.cmd [[augroup lir-settings]]
