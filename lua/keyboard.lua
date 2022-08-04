@@ -60,6 +60,13 @@ vim.keymap.set('n', '<CR>', function()
     end
     vim.schedule(function() vim.cmd("write") end)
 end, { expr = true })
+-- Save without formatting
+vim.keymap.set('n', '<S-CR>', function()
+    if api.nvim_eval([[&modified]]) ~= 1 or api.nvim_eval([[&buftype]]) ~= '' then
+        return nil
+    end
+    vim.schedule(function() vim.cmd("noautocmd write") end)
+end, { expr = true })
 
 -- Copy to system clipboard
 vim.keymap.set('v', 'Y', '"+y')
@@ -106,7 +113,7 @@ wk.register({
     f = { telescope.find_files, 'File Search' },
     o = { telescope.buffers, 'Buffer Search' },
     m = { telescope.oldfiles, 'Recent Files' },
-    ['-'] = { function() telescope.file_browser({ cwd = '%:h' }) end, 'File Browser' },
+    ['-'] = { function() require('telescope').extensions.file_browser.file_browser({ cwd = '%:h' }) end, 'File Browser' },
     ['.'] = { '<c-^>', 'Go to last buffer' },
 }, { prefix = '<leader>f' })
 
