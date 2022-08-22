@@ -187,5 +187,6 @@ vim.api.nvim_exec([[
   autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
   autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 500)
   autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform
-  autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+  autocmd BufWritePre *.tfvars lua vim.lsp.buf.format { async = true }
+  autocmd BufWritePre *.tf lua vim.lsp.buf.format { async = true }
 ]], false)
