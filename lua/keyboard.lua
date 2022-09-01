@@ -12,7 +12,7 @@ vim.keymap.set('n', '-', [[:lua require('lir.float').init()<cr>]], { silent = tr
 vim.keymap.set('n', '<M-q>', [[:Bdelete<cr>]], { silent = true })
 
 -- comments
-vim.keymap.set('n', '<C-_>', '<Plug>(comment_toggle_current_linewise)')
+vim.keymap.set('n', '<C-_>', '<Plug>(comment_toggle_linewise_current)')
 vim.keymap.set('v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)')
 
 -- emacs bindings
