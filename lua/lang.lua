@@ -150,6 +150,21 @@ lspconfig.tsserver.setup({
   end
 })
 
+lspconfig.eslint.setup({
+  handlers = {
+    ["window/showMessageRequest"] = function(_, result, params)
+      return result
+    end,
+  },
+  on_attach = function(client, bufnr)
+    -- require "lsp-format".on_attach(client)
+    on_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_range_formatting = true
+  end,
+})
+
+
 -- Go
 lspconfig.gopls.setup {
   settings = {
