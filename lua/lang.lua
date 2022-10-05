@@ -131,24 +131,17 @@ lspconfig.emmet_ls.setup({
 
 -- TypeScript
 lspconfig.tsserver.setup({
-  capabilities = capabilities,
-  cmd_env = { NODE_OPTIONS = "--max-old-space-size=8192" }, -- Give 8gb of RAM to node
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   init_options = {
-    maxTsServerMemory = "8192",
+    hostInfo = "neovim",
+    maxTsServerMemory = 8192,
   },
-  root_dir = lspconfig.util.root_pattern("tsconfig.json"),
   on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
-
-    if client.config.flags then
-      client.config.flags.allow_incremental_sync = true
-    end
-
     on_attach(client, bufnr)
-  end
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
 })
+
 
 lspconfig.eslint.setup({
   handlers = {
@@ -157,7 +150,6 @@ lspconfig.eslint.setup({
     end,
   },
   on_attach = function(client, bufnr)
-    -- require "lsp-format".on_attach(client)
     on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.document_range_formatting = true
@@ -204,4 +196,5 @@ vim.api.nvim_exec([[
   autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform
   autocmd BufWritePre *.tfvars lua vim.lsp.buf.format { async = true }
   autocmd BufWritePre *.tf lua vim.lsp.buf.format { async = true }
+  autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 ]], false)
