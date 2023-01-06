@@ -76,7 +76,7 @@ In the config directory there's a special folder that is git ignored, that is
 
 * `lua/user/before.lua`: Runs before everything, useful to set globals that change
   plugin behavior
-* `lua/user/plug.lua`: Runs during plugin setup, you can add your own choices of
+* `lua/user/plugins.lua`: Runs during plugin setup, you can add your own choices of
   plugins here. More on adding plugins
   [here](https://github.com/wbthomason/packer.nvim)
 * `lua/user/after.lua`: Runs at the end, useful to override and map your own key
