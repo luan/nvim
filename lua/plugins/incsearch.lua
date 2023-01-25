@@ -11,5 +11,5 @@ vim.keymap.set('', 'g*', '<Plug>(incsearch-nohl-g*)')
 vim.keymap.set('', 'g#', '<Plug>(incsearch-nohl-g#)')
 
 return {
-	'haya14busa/incsearch.vim',
+  'haya14busa/incsearch.vim',
 }

@@ -1,3 +1,11 @@
+-- Disable some in built plugins completely
+vim.g.loaded_netrwPlugin     = 1
+vim.g.loaded_2html_plugin    = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_logipat         = 1
+vim.g.loaded_rrhelper        = 1
+vim.g.loaded_vimballPlugin   = 1
+
 local opt = vim.opt
 local g   = vim.g
 
@@ -23,7 +31,8 @@ opt.wildmode = { 'list', 'longest' } -- Use emacs-style tab completion in comman
 opt.ignorecase = true -- Case insensitive search
 opt.smartcase  = true -- ... but case sensitive when uc present
 
-opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'help', 'options', 'tabpages', 'winsize', 'resize', 'winpos', 'terminal' }
+opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'help', 'options', 'tabpages', 'winsize', 'resize',
+  'winpos', 'terminal' }
 
 -- Mouse
 opt.mouse = 'a' -- Mouse enabled in all modes

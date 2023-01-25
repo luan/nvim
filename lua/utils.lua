@@ -24,7 +24,7 @@ function M.file_exists(fname)
   return (stat and stat.type) or false
 end
 
-local path_separator = package.config:sub(1,1)
+local path_separator = package.config:sub(1, 1)
 function M.path_join(paths)
   return table.concat(paths, path_separator)
 end
@@ -49,8 +49,8 @@ function M.copy(source, destination)
     local name, _ = luv.fs_scandir_next(handle)
     if not name then break end
 
-    local new_name = M.path_join({source, name})
-    local new_destination = M.path_join({destination, name})
+    local new_name = M.path_join({ source, name })
+    local new_destination = M.path_join({ destination, name })
     local success, msg = M.copy(new_name, new_destination)
     if not success then return success, msg end
   end
@@ -59,34 +59,55 @@ function M.copy(source, destination)
 end
 
 function M.check_dependencies(dependencies)
-    local missing = {}
+  local missing = {}
 
-    for _, deps in pairs(dependencies) do
-      if type(deps) ~= 'table' then
-        deps = {deps}
-      end
+  for _, deps in pairs(dependencies) do
+    if type(deps) ~= 'table' then
+      deps = { deps }
+    end
 
-      local found = false
-      for _, dep in pairs(deps) do
-        if vim.fn.executable(dep) == 1 then
-          found = true
-          break
-        end
-      end
-
-      if not found then
-        table.insert(missing, deps[1])
+    local found = false
+    for _, dep in pairs(deps) do
+      if vim.fn.executable(dep) == 1 then
+        found = true
+        break
       end
     end
 
-    if #missing > 0 then
-      local missing_string = table.concat(missing, ", ")
-      vim.notify(
-        [[Missing dependencies (]] .. missing_string .. [[) detected. Please refer to the README for more information on how to install them.]],
-        'error',
-        { title = 'Config Dependencies' }
-      )
+    if not found then
+      table.insert(missing, deps[1])
     end
+  end
+
+  if #missing > 0 then
+    local missing_string = table.concat(missing, ", ")
+    vim.notify(
+      [[Missing dependencies (]] ..
+      missing_string .. [[) detected. Please refer to the README for more information on how to install them.]],
+      'error',
+      { title = 'Config Dependencies' }
+    )
+  end
+end
+
+--- @param on_attach fun(client, buffer)
+M.on_attach = function(on_attach)
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buffer = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
+    end
+  })
+end
+
+M.get_highlight_value = function(group)
+  local hl = vim.api.nvim_get_hl_by_name(group, true)
+  local hl_config = {}
+  for key, value in pairs(hl) do
+    hl_config[key] = string.format("#%02x", value)
+  end
+  return hl_config
 end
 
 return M

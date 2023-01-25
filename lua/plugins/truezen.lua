@@ -56,6 +56,6 @@ local function config()
 end
 
 return {
-	'Pocco81/TrueZen.nvim',
-	config = config,
+	-- 'Pocco81/TrueZen.nvim',
+	-- config = config,
 }
