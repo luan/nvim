@@ -189,7 +189,7 @@ require 'lspconfig'.yamlls.setup {
 
 vim.api.nvim_exec([[
   autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-  autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 500)
+  autocmd BufWritePre *.lua lua vim.lsp.buf.format(nil, 500)
   autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform
   autocmd BufWritePre *.tfvars lua vim.lsp.buf.format { async = true }
   autocmd BufWritePre *.tf lua vim.lsp.buf.format { async = true }

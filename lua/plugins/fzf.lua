@@ -24,4 +24,11 @@ vim.g.fzf_colors = {
   ['header'] = { 'fg', 'Comment' },
 }
 
+vim.g.fzf_command_prefix = 'FZF'
+
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
+
+return {
+  'junegunn/fzf.vim',
+  dependencies = { 'junegunn/fzf', build = vim.fn['fzf#install'] },
+}

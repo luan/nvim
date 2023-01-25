@@ -1,6 +1,3 @@
-local a = require('packer.async')
-local async = a.sync
-
 local M = {}
 
 function M.t(str)
@@ -62,7 +59,6 @@ function M.copy(source, destination)
 end
 
 function M.check_dependencies(dependencies)
-  async(function()
     local missing = {}
 
     for _, deps in pairs(dependencies) do
@@ -91,7 +87,6 @@ function M.check_dependencies(dependencies)
         { title = 'Config Dependencies' }
       )
     end
-  end)()
 end
 
 return M
