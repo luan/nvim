@@ -1,40 +1,40 @@
 local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
-    return
+  return
 end
 
 toggleterm.setup({
-    size = 15,
-    open_mapping = [[<C-\>]],
-    hide_numbers = false,
-    shade_filetypes = {},
-    shade_terminals = true,
-    shading_factor = 2,
-    start_in_insert = true,
-    insert_mappings = true,
-    persist_size = true,
-    direction = "float",
-    close_on_exit = true,
-    shell = vim.o.shell,
-    float_opts = {
-        -- border = "rounded",
-        border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
-        winblend = 0,
-    },
-    execs = {
-        { vim.o.shell, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-        { vim.o.shell, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
-        { vim.o.shell, "<M-3>", "Float Terminal", "float", nil },
-    },
-    highlights = {
-        FloatBorder = { link = "ToggleTermBorder" },
-        Normal = { link = "ToggleTerm" },
-        NormalFloat = { link = "ToggleTerm" },
-    },
-    winbar = {
-        enabled = true,
-        name_formatter = function(term) --  term: Terminal
-            return term.name
-        end
-    },
+  size = 15,
+  open_mapping = [[<C-\>]],
+  hide_numbers = false,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 2,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction = "float",
+  close_on_exit = true,
+  shell = vim.o.shell,
+  float_opts = {
+    -- border = "rounded",
+    border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
+    winblend = 0,
+  },
+  execs = {
+    { vim.o.shell, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
+    { vim.o.shell, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
+    { vim.o.shell, "<M-3>", "Float Terminal", "float", nil },
+  },
+  highlights = {
+    FloatBorder = { link = "ToggleTermBorder" },
+    Normal = { link = "ToggleTerm" },
+    NormalFloat = { link = "ToggleTerm" },
+  },
+  winbar = {
+    enabled = true,
+    name_formatter = function(term) --  term: Terminal
+      return term.name
+    end
+  },
 })
