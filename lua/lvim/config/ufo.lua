@@ -39,23 +39,21 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-local function selectProviderWithChainByDefault() end
-
-local function peekOrHover()
+local function peek_or_hover()
   local winid = ufo.peekFoldedLinesUnderCursor()
   if not winid then
     vim.lsp.buf.hover()
   end
 end
 
-vim.keymap.set("n", "K", peekOrHover)
+vim.keymap.set("n", "K", peek_or_hover)
 
 ufo.setup {
   fold_virt_text_handler = handler,
   open_fold_hl_timeout = 0,
   provider_selector = function(bufnr, _, _)
     return function()
-      local function handleFallbackException(err, providerName)
+      local function handle_fallback_exception(err, providerName)
         if type(err) == "string" and err:match "UfoFallbackException" then
           return ufo.getFolds(providerName, bufnr)
         else
@@ -64,13 +62,13 @@ ufo.setup {
       end
 
       return ufo
-        .getFolds("lsp", bufnr)
-        :catch(function(err)
-          return handleFallbackException(err, "treesitter")
-        end)
-        :catch(function(err)
-          return handleFallbackException(err, "indent")
-        end)
+          .getFolds("lsp", bufnr)
+          :catch(function(err)
+            return handle_fallback_exception(err, "treesitter")
+          end)
+          :catch(function(err)
+            return handle_fallback_exception(err, "indent")
+          end)
     end
   end,
 }

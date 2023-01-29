@@ -81,6 +81,8 @@ local groups = {
       "nvim-telescope/telescope.nvim",
       dependencies = { "telescope-fzf-native.nvim" },
     },
+    "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-frecency.nvim", dependencies = "kkharji/sqlite.lua" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
     c "folke/which-key.nvim",
     c {

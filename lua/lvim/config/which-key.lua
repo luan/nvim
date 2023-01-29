@@ -98,6 +98,10 @@ local mappings = {
   ["W"] = { "<cmd>w!<CR>", "Save without formatting" },
   ["w"] = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>w!<CR>", "Format and Save" },
   ["d"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
+  ["o"] = {
+    "<cmd>lua require('telescope.builtin').buffers()<cr>",
+    "Find open buffers",
+  },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files()<cr>",
     "Find files",
@@ -129,9 +133,9 @@ local mappings = {
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    r = { "<cmd>lua require('renamer').rename()<cr>", "Rename" },
+    s = { "<cmd>lua vim.lsp.bug.signature_help()<cr>", "Document Symbols" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
