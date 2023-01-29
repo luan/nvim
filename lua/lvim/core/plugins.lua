@@ -127,7 +127,6 @@ local groups = {
     "mbbill/undotree",
     "romainl/vim-qf",
     "tommcdo/vim-exchange",
-    -- "AckslD/nvim-trevJ.lua",
   },
 
   code = {
