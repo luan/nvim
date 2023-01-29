@@ -8,7 +8,7 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
-neotree.setup({
+neotree.setup {
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" },
   enable_git_status = true,
@@ -102,12 +102,10 @@ neotree.setup({
       nowait = true,
     },
     mappings = {
-      ["<space>"] = {
-        "toggle_node",
-        nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-      },
+      ["<space>"] = false,
       ["<1-LeftMouse>"] = "open",
       ["<cr>"] = "open",
+      ["h"] = "close_node",
       ["l"] = "open",
       ["S"] = "open_split",
       ["s"] = "open_vsplit",
@@ -115,7 +113,6 @@ neotree.setup({
       -- ["s"] = "vsplit_with_window_picker",
       ["t"] = "open_tabnew",
       ["w"] = "open_with_window_picker",
-      ["C"] = "close_node",
       ["a"] = {
         "add",
         -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -137,7 +134,7 @@ neotree.setup({
     },
   },
   nesting_rules = {
-    -- ["js"] = { "js.map" },
+    -- ["ts"] = { "test.ts" },
   },
   filesystem = {
     filtered_items = {
@@ -145,14 +142,15 @@ neotree.setup({
       hide_dotfiles = false,
       hide_gitignored = false,
       hide_by_name = {
-        --"node_modules"
+        ".git",
+        "node_modules",
       },
       hide_by_pattern = { -- uses glob style patterns
         --"*.meta"
       },
       never_show = { -- remains hidden even if visible is toggled to true
-        --".DS_Store",
-        --"thumbs.db"
+        ".DS_Store",
+        "thumbs.db",
       },
     },
     follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -259,4 +257,4 @@ neotree.setup({
       { "bufnr" },
     },
   },
-})
+}

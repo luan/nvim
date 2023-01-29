@@ -12,11 +12,11 @@ local kind_icons = require("lvim.core.icons").kind
 
 local check_backspace = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
-cmp.setup({
+cmp.setup {
   completion = {
-    completeopt = "menu,menuone,noinsert",
+    completeopt = "menu,menuone,noinsert,noselect",
     keyword_length = 1,
   },
   preselect = cmp.PreselectMode.None,
@@ -46,20 +46,20 @@ cmp.setup({
     behavior = cmp.ConfirmBehavior.Replace,
     select = false, --[[  NOTE: test ]]
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
+  mapping = cmp.mapping.preset.insert {
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-c>"] = cmp.mapping({
+    ["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-y>"] = cmp.mapping.confirm { select = true },
+    ["<C-c>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
-    }),
+    },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -87,7 +87,7 @@ cmp.setup({
       "i",
       "s",
     }),
-  }),
+  },
   sources = {
     {
       name = "nvim_lsp",
@@ -102,7 +102,7 @@ cmp.setup({
         end
       end,
     },
-    { name = "vsnip" },
+    { name = "copilot", group_index = 2 },
     { name = "nvim_lua" },
     { name = "luasnip", option = { use_show_condition = false } },
     { name = "buffer" },
@@ -124,7 +124,7 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-})
+}
 
 cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
@@ -134,9 +134,12 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline {
+    ["<C-p>"] = cmp.config.disable,
+    ["<C-n>"] = cmp.config.disable,
+  },
   sources = cmp.config.sources({
-    { name = "path" },
+    { name = "path", trailing_slash = true },
   }, {
     { name = "cmdline" },
   }),

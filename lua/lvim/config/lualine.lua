@@ -52,15 +52,15 @@ local branch = {
 		end
 		local icon = hl_str(" ", "SLGitIcon", "SLBranchName")
 		return hl_str(separator_icon.left, "SLSeparator")
-			.. hl_str(" " .. icon, "SLGitIcon")
-			.. hl_str(str .. " ", "SLBranchName")
-			.. hl_str(separator_icon.right, "SLSeparator", "SLSeparator")
+			 .. hl_str(" " .. icon, "SLGitIcon")
+			 .. hl_str(str .. " ", "SLBranchName")
+			 .. hl_str(separator_icon.right, "SLSeparator", "SLSeparator")
 	end,
 }
 
 local position = function()
-	local current_line = vim.fn.line(".")
-	local current_column = vim.fn.col(".")
+	local current_line = vim.fn.line "."
+	local current_column = vim.fn.col "."
 	local left_sep = hl_str(separator_icon.left, "SLSeparator")
 	local right_sep = hl_str(separator_icon.right, "SLSeparator", "SLSeparator")
 	local str = " Ln " .. current_line .. ", Col " .. current_column .. " "
@@ -82,9 +82,9 @@ local diagnostics = function()
 			count[diagnostic.severity] = count[diagnostic.severity] + 1
 		end
 		return count[vim.diagnostic.severity.ERROR],
-			count[vim.diagnostic.severity.WARN],
-			count[vim.diagnostic.severity.INFO],
-			count[vim.diagnostic.severity.HINT]
+			 count[vim.diagnostic.severity.WARN],
+			 count[vim.diagnostic.severity.INFO],
+			 count[vim.diagnostic.severity.HINT]
 	end
 
 	local error_count, warn_count, info_count, hint_count = nvim_diagnostic()
@@ -215,4 +215,3 @@ local float_config = {
 }
 
 lualine.setup(float_config)
-
