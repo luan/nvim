@@ -1,4 +1,6 @@
 require "lvim.globals"
 reload "lvim.core.options"
 require "lvim.core.lazy"
+require "lvim.core.autocmds"
+require "lvim.core.colorscheme"
 reload "lvim.core.keymaps"

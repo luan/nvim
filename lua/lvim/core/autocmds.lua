@@ -1,16 +1,16 @@
 local remember_folds_id = vim.api.nvim_create_augroup("remember_folds", { clear = false })
 vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
-  pattern = "?*",
+	pattern = "?*",
 	group = remember_folds_id,
 	callback = function()
-		vim.cmd([[silent! mkview 1]])
+		vim.cmd [[silent! mkview 1]]
 	end,
 })
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = "?*",
+	pattern = "?*",
 	group = remember_folds_id,
 	callback = function()
-		vim.cmd([[silent! loadview 1]])
+		vim.cmd [[silent! loadview 1]]
 	end,
 })
 
@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.cpp" },
 	callback = function()
-		vim.cmd("setlocal noexpandtab")
+		vim.cmd "setlocal noexpandtab"
 	end,
 })
 
@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	callback = function()
-		vim.cmd("tabdo wincmd =")
+		vim.cmd "tabdo wincmd ="
 	end,
 })
 
@@ -40,10 +40,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
 	callback = function()
 		vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q!<CR>", { noremap = true, silent = true })
-		vim.cmd([[
-      " nnoremap <silent> <buffer> q! :close<CR> 
-      set nobuflisted 
-    ]])
+		vim.cmd [[
+		      " nnoremap <silent> <buffer> q! :close<CR> 
+		      set nobuflisted 
+		]]
 	end,
 })
 
@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*" },
 	callback = function()
-		vim.cmd([[set formatoptions-=cro]])
+		vim.cmd [[set formatoptions-=cro]]
 	end,
 })
 
@@ -80,7 +80,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
+		vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
 	end,
 })
 
@@ -93,27 +93,27 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 		if luasnip.expand_or_jumpable() then
 			-- ask maintainer for option to make this silent
 			-- luasnip.unlink_current()
-			vim.cmd([[silent! lua require("luasnip").unlink_current()]])
+			vim.cmd [[silent! lua require("luasnip").unlink_current()]]
 		end
 	end,
 })
 
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
 	callback = function()
-		vim.cmd([[silent! NeoTreeClose]])
+		vim.cmd [[silent! NeoTreeClose]]
 	end,
 })
 
 -- clear cmd output
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	callback = function()
-		vim.cmd([[echon '']])
+		vim.cmd [[echon '']]
 	end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "help" },
 	callback = function()
-		vim.cmd([[wincmd L]])
+		vim.cmd [[wincmd L]]
 	end,
 })

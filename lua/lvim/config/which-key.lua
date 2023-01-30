@@ -107,7 +107,7 @@ local mappings = {
     "Find open buffers",
   },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files()<cr>",
+    "<cmd>lua require('fzf-lua').files()<cr>",
     "Find files",
   },
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },

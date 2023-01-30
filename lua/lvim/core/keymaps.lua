@@ -115,4 +115,7 @@ vim.keymap.set("v", "Y", '"+y')
 vim.keymap.set("c", "%%", [[expand('%:h').'/']], { expr = true })
 
 ---- Find Files
-vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+-- vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<C-p>", function()
+  require("fzf-lua").files()
+end, { desc = "Find Files" })

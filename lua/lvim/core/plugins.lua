@@ -30,8 +30,8 @@ local groups = {
   },
 
   colorschemes = {
-    "folke/tokyonight.nvim",
-    "navarasu/onedark.nvim",
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+    { "navarasu/onedark.nvim", lazy = false, priority = 1000 },
     "sainnhe/gruvbox-material",
     c {
       "loctvl842/monokai-pro.nvim",
@@ -77,6 +77,7 @@ local groups = {
 
   editor = {
     c "ahmedkhalf/project.nvim",
+    c "ibhagwan/fzf-lua",
     c {
       "nvim-telescope/telescope.nvim",
       dependencies = { "telescope-fzf-native.nvim" },
@@ -88,6 +89,7 @@ local groups = {
     c {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPre",
+      enabled = false,
     },
     c "RRethy/vim-illuminate",
     "moll/vim-bbye",
@@ -105,13 +107,14 @@ local groups = {
     },
     {
       "j-hui/fidget.nvim",
-      config = {
+      opts = {
         window = {
-          relative = "win", -- where to anchor, either "win" or "editor"
+          relative = "editor", -- where to anchor, either "win" or "editor"
           blend = 50, -- &winblend for the window
           zindex = nil, -- the zindex value for the window
           border = "none", -- style of border for the fidget window
         },
+        text = { spinner = "dots" },
       },
     },
     c {

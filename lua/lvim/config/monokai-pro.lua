@@ -1,6 +1,5 @@
-local monokai = require "monokai-pro"
-monokai.setup {
-  transparent_background = true,
+require("monokai-pro").setup {
+  transparent_background = false,
   italic_comments = true,
   filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
   inc_search = "underline", -- underline | background
@@ -22,6 +21,3 @@ monokai.setup {
     },
   },
 }
-
-monokai.load()
-vim.api.nvim_command "hi IndentBlanklineContextStart gui=underdotted"

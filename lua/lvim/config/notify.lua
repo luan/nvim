@@ -3,9 +3,9 @@ if not status_ok then
   return
 end
 
-local icons = require("lvim.core.icons")
+local icons = require "lvim.core.icons"
 
-notify.setup({
+notify.setup {
   -- Animation style (see below for details)
   stages = "fade_in_slide_out",
 
@@ -36,6 +36,6 @@ notify.setup({
     DEBUG = icons.ui.Bug,
     TRACE = icons.ui.Pencil,
   },
-})
+}
 
 vim.notify = notify

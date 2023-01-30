@@ -37,9 +37,9 @@ local cursor_theme = require("telescope.themes").get_cursor {
 
 local dropdown_theme = require("telescope.themes").get_dropdown {
    borderchars = { "█", "█", "▀", "█", "█", "█", "▀", "▀" },
-   width = 0.5,
+   width = 0.8,
    prompt = " ",
-   results_height = 15,
+   results_height = 25,
    previewer = false,
    winblend = 0,
 }
