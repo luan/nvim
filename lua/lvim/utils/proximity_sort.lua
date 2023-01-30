@@ -1,15 +1,7 @@
-local function split(str, sep)
-  local parts = {}
-  for part in string.gmatch(str, "[^" .. sep .. "]+") do
-    table.insert(parts, part)
-  end
-  return parts
-end
-
 local function distance(a, b)
   local result = 0
-  local a_parts = split(a, "/")
-  local b_parts = split(b, "/")
+  local a_parts = vim.split(a, "/")
+  local b_parts = vim.split(b, "/")
   for i = 1, math.min(#a_parts, #b_parts) do
     if a_parts[i] ~= b_parts[i] then
       break

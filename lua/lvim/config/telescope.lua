@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local proximity_sort = require "lvim.utils.proximity_sort"
+local current_path = require("lvim.utils").current_path
 local actions = require "telescope.actions"
 
 ---@alias telescope_themes
@@ -44,8 +45,7 @@ local dropdown_theme = require("telescope.themes").get_dropdown {
 }
 
 local function proximity_sort_tiebreak(current_entry, existing_entry, _)
-  local current_path = vim.fn.fnamemodify(vim.fn.expand "#", ":~:.")
-  return proximity_sort(current_entry.ordinal, existing_entry.ordinal, current_path)
+  return proximity_sort(current_entry.ordinal, existing_entry.ordinal, current_path "#")
 end
 
 telescope.setup {

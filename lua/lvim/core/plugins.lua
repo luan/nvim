@@ -120,7 +120,8 @@ local groups = {
     },
     "mg979/vim-visual-multi",
     c "kevinhwang91/nvim-bqf",
-    "windwp/nvim-spectre",
+    c "windwp/nvim-spectre",
+    "cshuaimin/ssr.nvim",
 
     "junegunn/vim-easy-align",
     { "abecodes/tabout.nvim", config = true },

@@ -70,7 +70,11 @@ vim.keymap.set("n", "<C-f>", function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require("telescope.builtin").current_buffer_fuzzy_find(require "telescope.themes")
 end, { desc = "[/] Fuzzily search in current buffer]" })
-vim.keymap.set("n", "<A-f>", "<cmd>Spectre<cr>", { desc = "Search in project" })
+vim.keymap.set("n", "<A-S-f>", "<cmd>Spectre<cr>", { desc = "Search in project" })
+vim.keymap.set("n", "<A-f>", "<cmd>lua require('spectre').open_file_search()<cr>", { desc = "Search in file" })
+vim.keymap.set({ "n", "x" }, "<A-S-s>", function()
+  require("ssr").open()
+end, { desc = "Structured search & replace" })
 
 vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })
 
@@ -96,23 +100,12 @@ vim.keymap.set("c", "<C-k>", "<C-f>D<C-c><C-c>:<Up>")
 
 ---- Save on enter
 vim.keymap.set("n", "<CR>", function()
-  if vim.api.nvim_eval [[&modified]] ~= 1 or vim.api.nvim_eval [[&buftype]] ~= "" then
-    return nil
-  end
-  vim.schedule(function()
-    vim.lsp.buf.format()
-    vim.cmd "silent! write"
-  end)
+  reload("lvim.utils").save { skip_unmodified = true, format = true }
 end, { expr = true })
 
 ---- Save without formatting
 vim.keymap.set("n", "<M-CR>", function()
-  if vim.api.nvim_eval [[&modified]] ~= 1 or vim.api.nvim_eval [[&buftype]] ~= "" then
-    return nil
-  end
-  vim.schedule(function()
-    vim.cmd "noautocmd write"
-  end)
+  reload("lvim.utils").save { skip_unmodified = true, format = false }
 end, { expr = true })
 
 ---- Copy to system clipboard

@@ -3,6 +3,7 @@ local servers = {
   cssls = {},
   html = {},
   jsonls = {},
+  prismals = {},
   sumneko_lua = {
     settings = {
       Lua = {

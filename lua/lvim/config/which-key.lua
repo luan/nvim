@@ -83,11 +83,11 @@ local opts = {
 
 local mappings = {
   [";"] = { "<cmd>Alpha<cr>", "Go to dashboard" },
-  ["b"] = {
+  ["B"] = {
     "<cmd>Neotree toggle show buffers left<cr>",
     "Buffers",
   },
-  ["g"] = {
+  ["G"] = {
     "<cmd>Neotree toggle show git_status left<cr>",
     "Buffers",
   },
@@ -95,9 +95,13 @@ local mappings = {
   ["j"] = { "<cmd>lua reload('trevj').join_at_cursor()<cr>", "Split block" },
   ["e"] = { "<cmd>Neotree toggle position=left<cr>", "Explorer" },
   ["E"] = { "<cmd>Neotree focus reveal position=left<cr>", "Explorer" },
-  ["W"] = { "<cmd>w!<CR>", "Save without formatting" },
-  ["w"] = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>w!<CR>", "Format and Save" },
-  ["d"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
+  ["w"] = {
+    function()
+      reload("lvim.utils").save()
+    end,
+    "Format and Save",
+  },
+  ["q"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
   ["o"] = {
     "<cmd>lua require('telescope.builtin').buffers()<cr>",
     "Find open buffers",
@@ -107,9 +111,10 @@ local mappings = {
     "Find files",
   },
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+  ["g"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },
+  ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -121,9 +126,8 @@ local mappings = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    f = { "<cmd>lua vim.lsp.buf.format({ async = true})<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    I = { "<cmd>Mason<cr>", "Installer (Mason)" },
     j = {
       "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
@@ -143,44 +147,11 @@ local mappings = {
   },
 }
 which_key.register(mappings, opts)
+which_key.register({
+  ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+}, tbl.merge(opts, { mode = "x" }))
 
--- fold [f]
-local fold_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "f",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-local fold_mappings = {
-  ["d"] = { "zd", "Delete fold under cursor" },
-  ["o"] = { "zo<cmd>IndentBlanklineEnable<CR>", "Open fold under cursor" },
-  ["O"] = { "zO", "Open all folds under cursor" },
-  ["c"] = { "zc", "Close fold under cursor" },
-  ["C"] = { "zC", "Close all folds under cursor" },
-  ["a"] = { "za<cmd>IndentBlanklineEnable<CR>", "Toggle fold under cursor" },
-  ["A"] = { "zA", "Toggle all folds under cursor" },
-  ["v"] = { "zv", "Show cursor line" },
-  ["M"] = { require("ufo").closeAllFolds, "Close all folds" },
-  ["R"] = { require("ufo").openAllFolds, "Open all folds" },
-  ["m"] = { require("ufo").closeFoldsWith, "Fold more" },
-  ["r"] = { require("ufo").openFoldsExceptKinds, "Fold less" },
-  ["x"] = { "zx", "Update folds" },
-  ["z"] = { "zz", "Center this line" },
-  ["t"] = { "zt", "Top this line" },
-  ["b"] = { "zb", "Bottom this line" },
-  ["g"] = { "zg", "Add word to spell list" },
-  ["w"] = { "zw", "Mark word as bad/misspelling" },
-  ["e"] = { "ze", "Right this line" },
-  ["E"] = { "zE", "Delete all folds in current buffer" },
-  ["s"] = { "zs", "Left this line" },
-  ["H"] = { "zH", "Half screen to the left" },
-  ["L"] = { "zL", "Half screen to the right" },
-}
-which_key.register(fold_mappings, fold_opts)
-
-local goto_mapping = {
+local g_mappings = {
   ["d"] = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition" },
   ["r"] = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
   ["i"] = { "<cmd>Telescope lsp_implementations<cr>", "Go to implementations" },
@@ -195,4 +166,4 @@ local goto_opts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
-which_key.register(goto_mapping, goto_opts)
+which_key.register(g_mappings, goto_opts)
