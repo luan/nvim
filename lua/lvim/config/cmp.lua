@@ -8,6 +8,7 @@ if not snip_status_ok then
   return
 end
 
+local lspkind = require "lspkind"
 local kind_icons = require("lvim.core.icons").kind
 
 local check_backspace = function()
@@ -20,19 +21,37 @@ cmp.setup {
     keyword_length = 1,
   },
   preselect = cmp.PreselectMode.None,
+  -- formatting = {
+  --   fields = { "kind", "abbr", "menu" },
+  --   format = function(entry, vim_item)
+  --     vim_item.kind = kind_icons[vim_item.kind]
+  --     vim_item.menu = ({
+  --       nvim_lsp = "Lsp",
+  --       nvim_lua = "Lua",
+  --       luasnip = "Snippet",
+  --       buffer = "Buffer",
+  --       path = "Path",
+  --     })[entry.source.name]
+  --     return vim_item
+  --   end,
+  -- },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
-      vim_item.kind = kind_icons[vim_item.kind]
-      vim_item.menu = ({
-        nvim_lsp = "Lsp",
-        nvim_lua = "Lua",
-        luasnip = "Snippet",
-        buffer = "Buffer",
-        path = "Path",
-      })[entry.source.name]
-      return vim_item
-    end,
+    format = lspkind.cmp_format {
+      mode = "symbol_text", -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = "", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      -- before = function(entry, vim_item)
+      --   vim_item.kind = kind_icons[vim_item.kind]
+      --   vim_item.menu = ({
+      --     nvim_lsp = "Lsp",
+      --     nvim_lua = "Lua",
+      --     luasnip = "Snippet",
+      --     buffer = "Buffer",
+      --     path = "Path",
+      --   })[entry.source.name]
+      --   return vim_item
+      -- end,
+    },
   },
   performance = {
     debounce = 20,

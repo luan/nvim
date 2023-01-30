@@ -130,6 +130,8 @@ local groups = {
     "mbbill/undotree",
     "romainl/vim-qf",
     "tommcdo/vim-exchange",
+    "kopischke/vim-fetch",
+    "kopischke/vim-stay",
   },
 
   code = {
@@ -153,6 +155,7 @@ local groups = {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind.nvim",
       },
     },
     c "filipdutescu/renamer.nvim",
