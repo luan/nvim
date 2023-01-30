@@ -162,6 +162,7 @@ local groups = {
 
     c {
       "nvim-treesitter/nvim-treesitter",
+      branch = "master",
       dependencies = {
         "windwp/nvim-ts-autotag",
         "nvim-treesitter/playground",
