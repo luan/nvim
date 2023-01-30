@@ -173,10 +173,14 @@ local groups = {
 
     c {
       "neovim/nvim-lspconfig",
+      branch = "master",
       event = "BufReadPre",
     },
 
-    c "williamboman/mason.nvim",
+    c {
+      "williamboman/mason.nvim",
+      dependencies = { "williamboman/mason-lspconfig.nvim" },
+    },
 
     c {
       "jose-elias-alvarez/null-ls.nvim",
