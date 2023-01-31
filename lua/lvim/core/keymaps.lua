@@ -115,13 +115,14 @@ vim.keymap.set("v", "Y", '"+y')
 vim.keymap.set("c", "%%", [[expand('%:h').'/']], { expr = true })
 
 ---- Find Files
--- vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
-vim.keymap.set("n", "<C-p>", function()
-  require("fzf-lua").files()
-end, { desc = "Find Files" })
-vim.keymap.set("n", "<M-p>", function()
-  require("fzf-lua").files()
-end, { desc = "Find Files" })
+vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>")
+-- vim.keymap.set("n", "<C-p>", function()
+--   require("fzf-lua").files()
+-- end, { desc = "Find Files" })
+-- vim.keymap.set("n", "<M-p>", function()
+--   require("fzf-lua").files()
+-- end, { desc = "Find Files" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

@@ -106,11 +106,14 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers()<cr>",
     "Find open buffers",
   },
+  -- ["f"] = {
+  --   "<cmd>lua require('fzf-lua').files()<cr>",
+  --   "Find files",
+  -- },
   ["f"] = {
-    "<cmd>lua require('fzf-lua').files()<cr>",
+    "<cmd>Telescope find_files<cr>",
     "Find files",
   },
-  -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["g"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },

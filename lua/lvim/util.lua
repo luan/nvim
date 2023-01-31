@@ -7,7 +7,7 @@ M.on_attach = function(on_attach)
       local buffer = args.buf
       local client = vim.lsp.get_client_by_id(args.data.client_id)
       on_attach(client, buffer)
-    end
+    end,
   })
 end
 

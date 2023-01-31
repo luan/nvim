@@ -3,8 +3,8 @@ if not status_ok then
   return
 end
 
-local theme = require("alpha.themes.startify")
-local version = vim.version().major .. '.' .. vim.version().minor .. '.' .. vim.version().patch
+local theme = require "alpha.themes.startify"
+local version = vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
 theme.section.header.val = {
   [[                                   __                ]],
   [[      ___     ___    ___   __  __ /\_\    ___ ___    ]],
@@ -13,7 +13,7 @@ theme.section.header.val = {
   [[    \ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
   [[     \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
   [[     config by Luan Santos <https://github.com/luan>]],
-  [[     Neovim Version: ]]  .. version .. [[ (run :version for more details)]],
+  [[     Neovim Version: ]] .. version .. [[ (run :version for more details)]],
   [[]],
 }
 
@@ -26,10 +26,10 @@ end
 vim.api.nvim_create_autocmd("User", {
   pattern = "AlphaReady",
   callback = function()
-    vim.cmd([[
+    vim.cmd [[
         setlocal showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
         setlocal laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-      ]])
+      ]]
   end,
 })
 
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("User", {
     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
     vim.list_extend(
       theme.section.header.val,
-      {"             Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"}
+      { "             Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms" }
     )
     pcall(vim.cmd.AlphaRedraw)
   end,

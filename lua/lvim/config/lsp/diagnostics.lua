@@ -36,7 +36,7 @@ local diagnostics = {
       header = "",
       prefix = "",
     },
-  }
+  },
 }
 return diagnostics
 -- vim.diagnostic.config(diagnostics["on"])

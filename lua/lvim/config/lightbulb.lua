@@ -1,5 +1,5 @@
 -- Showing defaults
-require('nvim-lightbulb').setup({
+require("nvim-lightbulb").setup {
   -- LSP client names to ignore
   -- Example: {"sumneko_lua", "null-ls"}
   ignore = {},
@@ -40,15 +40,15 @@ require('nvim-lightbulb').setup({
     -- Text to provide when code actions are available
     text = "",
     -- Text to provide when no actions are available
-    text_unavailable = ""
+    text_unavailable = "",
   },
   autocmd = {
     enabled = true,
     -- see :help autocmd-pattern
     pattern = { "*" },
     -- see :help autocmd-events
-    events = { "CursorHold", "CursorHoldI" }
-  }
-})
+    events = { "CursorHold", "CursorHoldI" },
+  },
+}
 
-vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LspDiagnosticsDefaultInformation" })
+vim.fn.sign_define("LightBulbSign", { text = "", texthl = "LspDiagnosticsDefaultInformation" })

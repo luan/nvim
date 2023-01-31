@@ -1,4 +1,4 @@
-require("illuminate").configure({
+require("illuminate").configure {
   -- providers: provider used to get references in the buffer, ordered by priority
   providers = {
     "lsp",
@@ -40,4 +40,4 @@ require("illuminate").configure({
   providers_regex_syntax_allowlist = {},
   -- under_cursor: whether or not to illuminate under the cursor
   under_cursor = true,
-})
+}

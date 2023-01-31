@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-comment.setup({
+comment.setup {
   ignore = "^$",
   pre_hook = function(ctx)
     -- For inlay hints
@@ -11,11 +11,8 @@ comment.setup({
     local line_end = ctx.erow or ctx.range.erow
     require("lsp-inlayhints.core").clear(0, line_start, line_end)
 
-    if vim.bo.filetype == "javascript"
-        or vim.bo.filetype == "typescript"
-        or vim.bo.filetype == "javascriptreact"
-    then
-      local U = require("Comment.utils")
+    if vim.bo.filetype == "javascript" or vim.bo.filetype == "typescript" or vim.bo.filetype == "javascriptreact" then
+      local U = require "Comment.utils"
 
       -- Determine whether to use linewise or blockwise commentstring
       local type = ctx.ctype == U.ctype.linewise and "__default" or "__multiline"
@@ -28,10 +25,10 @@ comment.setup({
         location = require("ts_context_commentstring.utils").get_visual_start_location()
       end
 
-      return require("ts_context_commentstring.internal").calculate_commentstring({
+      return require("ts_context_commentstring.internal").calculate_commentstring {
         key = type,
         location = location,
-      })
+      }
     end
   end,
-})
+}

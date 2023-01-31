@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-indent_blankline.setup({
+indent_blankline.setup {
   char = "▏",
   context_char = "▏",
   show_end_of_line = false,
@@ -29,4 +29,4 @@ indent_blankline.setup({
   --   "IndentBlanklineIndent2",
   --   "IndentBlanklineIndent3",
   -- },
-})
+}
