@@ -92,7 +92,6 @@ local groups = {
       enabled = false,
     },
     c "RRethy/vim-illuminate",
-    "moll/vim-bbye",
     c {
       "kevinhwang91/nvim-ufo",
       dependencies = "kevinhwang91/promise-async",
@@ -133,8 +132,6 @@ local groups = {
     "mbbill/undotree",
     "romainl/vim-qf",
     "tommcdo/vim-exchange",
-    "kopischke/vim-fetch",
-    "kopischke/vim-stay",
   },
 
   code = {
@@ -149,7 +146,6 @@ local groups = {
     },
     c {
       "hrsh7th/nvim-cmp",
-      commit = "0e436ee23abc6c3fe5f3600145d2a413703e7272",
       event = "InsertEnter",
       dependencies = {
         "mfussenegger/nvim-jdtls",
@@ -203,6 +199,7 @@ local groups = {
   },
 
   tpope = {
+    { "stevearc/oil.nvim", config = true },
     "tpope/vim-abolish",
     "tpope/vim-eunuch",
     "tpope/vim-fugitive",

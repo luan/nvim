@@ -76,8 +76,6 @@ vim.keymap.set({ "n", "x" }, "<A-S-s>", function()
   require("ssr").open()
 end, { desc = "Structured search & replace" })
 
-vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })
-
 ---- Emacs bindings
 vim.keymap.set({ "i", "c" }, "<C-b>", "<Left>")
 vim.keymap.set({ "i", "c" }, "<M-b>", "<C-Left>")
@@ -127,3 +125,7 @@ vim.keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>")
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+--- oil not vinegar
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+-- vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })
