@@ -94,9 +94,9 @@ local float_config = {
     lualine_a = { mode, branch },
     lualine_b = { diagnostics },
     lualine_c = {},
-    lualine_x = { diff },
-    lualine_y = { location, filetype },
-    lualine_z = {},
+    lualine_x = { "overseer" },
+    lualine_y = { diff },
+    lualine_z = { location, filetype },
   },
   inactive_sections = {
     lualine_a = {},

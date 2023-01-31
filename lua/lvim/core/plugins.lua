@@ -67,12 +67,16 @@ local groups = {
     },
   },
 
-  files = {
+  utilities = {
     {
       "jghauser/mkdir.nvim",
       config = function()
         require "mkdir"
       end,
+    },
+    c {
+      "stevearc/overseer.nvim",
+      dir = "~/src/overseer.nvim",
     },
   },
 
