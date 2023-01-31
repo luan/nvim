@@ -115,6 +115,7 @@ vim.keymap.set("c", "%%", [[expand('%:h').'/']], { expr = true })
 ---- Find Files
 vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>")
+
 -- vim.keymap.set("n", "<C-p>", function()
 --   require("fzf-lua").files()
 -- end, { desc = "Find Files" })
@@ -122,10 +123,15 @@ vim.keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>")
 --   require("fzf-lua").files()
 -- end, { desc = "Find Files" })
 
+vim.keymap.set("n", "<M-e>", "<cmd>NvimTreeFocus<cr>")
+vim.keymap.set("n", "<M-b>", "<cmd>NvimTreeToggle<cr>")
+vim.keymap.set("n", "<M-\\>", "<cmd>NvimTreeFindFile<cr>")
+vim.keymap.set("n", "<M-w>", "<cmd>BufferClose<cr>")
+
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 --- oil not vinegar
-vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
 -- vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })

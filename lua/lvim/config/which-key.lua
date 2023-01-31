@@ -83,18 +83,10 @@ local opts = {
 
 local mappings = {
   [";"] = { "<cmd>Alpha<cr>", "Go to dashboard" },
-  ["B"] = {
-    "<cmd>Neotree toggle show buffers left<cr>",
-    "Buffers",
-  },
-  ["G"] = {
-    "<cmd>Neotree toggle show git_status left<cr>",
-    "Buffers",
-  },
-  ["s"] = { "<cmd>lua require('trevj').split_at_cursor()<cr>", "Split block" },
-  ["j"] = { "<cmd>lua reload('trevj').join_at_cursor()<cr>", "Split block" },
-  ["e"] = { "<cmd>Neotree toggle position=left<cr>", "Explorer" },
-  ["E"] = { "<cmd>Neotree focus reveal position=left<cr>", "Explorer" },
+  ["S"] = { "<cmd>lua require('trevj').split_at_cursor()<cr>", "Split block" },
+  ["J"] = { "<cmd>lua reload('trevj').join_at_cursor()<cr>", "Split block" },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["E"] = { "<cmd>NvimTreeFindFile<cr>", "Explorer (reveal current file)" },
   ["w"] = {
     function()
       reload("lvim.utils").save()
@@ -118,6 +110,14 @@ local mappings = {
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },
   ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+  j = {
+    j = { "<cmd>HopAnywhere<cr>", "Jump anywhere" },
+    w = { "<cmd>HopWord<cr>", "Jump words" },
+    p = { "<cmd>HopPattern<cr>", "Jump patterns" },
+    l = { "<cmd>HopLineStart<cr>", "Jump lines" },
+    c = { "<cmd>HopChar1<cr>", "Jump character" },
+    v = { "<cmd>HopVertical<cr>", "Jump vertically" },
+  },
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

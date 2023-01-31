@@ -42,7 +42,8 @@ local groups = {
 
   ui = {
     c "rcarriga/nvim-notify",
-    c "nvim-neo-tree/neo-tree.nvim",
+    { "nvim-tree/nvim-tree.lua", tag = "nightly", config = true },
+    { "stevearc/oil.nvim", config = true },
     c {
       "nvim-lualine/lualine.nvim",
       dependencies = { "loctvl842/monokai-pro.nvim" },
@@ -199,7 +200,6 @@ local groups = {
   },
 
   tpope = {
-    { "stevearc/oil.nvim", config = true },
     "tpope/vim-abolish",
     "tpope/vim-eunuch",
     "tpope/vim-fugitive",
