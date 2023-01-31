@@ -1,7 +1,6 @@
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   pattern = "?*",
-  callback = function(opts)
-    print("colorscheme set", opts)
+  callback = function()
     vim.api.nvim_command "hi IndentBlanklineContextStart gui=underdotted"
   end,
 })

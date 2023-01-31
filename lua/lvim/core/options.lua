@@ -72,3 +72,10 @@ vim.cmd "set whichwrap+=<,>,[,]"
 vim.cmd [[set iskeyword+=-]]
 -- diable open fold with `l`
 vim.cmd [[set foldopen-=hor]]
+
+if vim.fn.executable "rg" == 1 then
+   vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
+   vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+else
+   vim.notify("Ripgrep not found. brew install rg", vim.log.levels.WARN)
+end
