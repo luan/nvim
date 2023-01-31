@@ -98,10 +98,6 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers()<cr>",
     "Find open buffers",
   },
-  -- ["f"] = {
-  --   "<cmd>lua require('fzf-lua').files()<cr>",
-  --   "Find files",
-  -- },
   ["f"] = {
     "<cmd>Telescope find_files<cr>",
     "Find files",
@@ -110,7 +106,24 @@ local mappings = {
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },
   ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+  t = {
+    name = "[t]esting",
+    t = { [[<cmd>lua require("neotest").run.run()<cr>]], "Run Nearest" },
+    f = { [[<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>]], "Run File" },
+    s = { [[<cmd>lua require("neotest").run.stop()<cr>]], "Stop test" },
+    ["."] = { [[<cmd>lua require("neotest").run.run_last()<cr>]], "Run Last" },
+    d = { [[<cmd>lua require("neotest").run.run_last({strategy = "dap"})<cr>]], "Debug Last" },
+    o = { [[<cmd>lua require("neotest").output.open({ enter = true })<cr>]], "Show test output" },
+  },
+  k = {
+    name = "tas[k]s",
+    r = { "<cmd>OverseerRun<cr>", "Run task" },
+    t = { "<cmd>OveseerToggle<cr>", "Toggle tasks window" },
+    a = { "<cmd>OveseerTaskAction<cr>", "Select a task action to run" },
+    i = { "<cmd>OveseerInfo<cr>", "Show tasks info" },
+  },
   j = {
+    name = "[l]jumps",
     j = { "<cmd>HopAnywhere<cr>", "Jump anywhere" },
     w = { "<cmd>HopWord<cr>", "Jump words" },
     p = { "<cmd>HopPattern<cr>", "Jump patterns" },
@@ -119,7 +132,7 @@ local mappings = {
     v = { "<cmd>HopVertical<cr>", "Jump vertically" },
   },
   l = {
-    name = "LSP",
+    name = "[l]sp",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",

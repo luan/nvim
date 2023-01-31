@@ -101,11 +101,6 @@ vim.keymap.set("n", "<CR>", function()
   reload("lvim.utils").save { skip_unmodified = true, format = true }
 end, { expr = true })
 
----- Save without formatting
-vim.keymap.set("n", "<M-CR>", function()
-  reload("lvim.utils").save { skip_unmodified = true, format = false }
-end, { expr = true })
-
 ---- Copy to system clipboard
 vim.keymap.set("v", "Y", '"+y')
 
@@ -123,15 +118,33 @@ vim.keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>")
 --   require("fzf-lua").files()
 -- end, { desc = "Find Files" })
 
+-- bad habits
+
 vim.keymap.set("n", "<M-e>", "<cmd>NvimTreeFocus<cr>")
 vim.keymap.set("n", "<M-b>", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<M-\\>", "<cmd>NvimTreeFindFile<cr>")
 vim.keymap.set("n", "<M-w>", "<cmd>BufferClose<cr>")
+vim.keymap.set("n", "<M-s>", function()
+  reload("lvim.utils").save { format = true }
+end)
+
+vim.keymap.set("n", "<M-d>", "<Plug>(VM-Find-Under)")
+vim.keymap.set("x", "<M-d>", "<Plug>(VM-Find-Subword-Under)")
+vim.keymap.set("n", "<M-down>", "<Plug>(VM-Add-Cursor-Down)")
+vim.keymap.set("n", "<M-up>", "<Plug>(VM-Add-Cursor-Up)")
+
+vim.keymap.set("n", "<C-/>", "<Plug>(comment_toggle_linewise_current)")
+vim.keymap.set("v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)")
+vim.keymap.set("n", "<M-/>", "<Plug>(comment_toggle_linewise_current)")
+vim.keymap.set("v", "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 --- oil not vinegar
-vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", function()
+  vim.cmd.edit { args = { vim.fn.expand "%:p:h" } }
+end, { silent = true })
+
 -- vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })

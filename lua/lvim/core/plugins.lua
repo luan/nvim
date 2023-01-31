@@ -1,32 +1,13 @@
-local function config(opts)
-  local name = string.lower(opts.name:gsub("%..*", ""))
-  name = name:gsub("^n?vim%-", ""):gsub("%-n?vim$", ""):gsub("_", "-"):gsub("lspconfig", "lsp")
-  local mod = "lvim.config." .. name
-  local m = require(mod)
-  if type(m) == "table" then
-    m.setup()
-  end
-end
-
-local function tableize(spec)
-  if type(spec) == "string" then
-    spec = { spec }
-  end
-  return spec
-end
-
-local function c(spec)
-  spec = tableize(spec)
-  spec["config"] = config
-  return spec
-end
+local c = require("lvim.utils.plugins").c
+local p = require("lvim.utils.plugins").p
 
 local groups = {
-  libs = {
+  libs = p(100) {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     "dstein64/vim-startuptime",
     "Tastyep/structlog.nvim",
+    c "folke/neodev.nvim",
   },
 
   colorschemes = {
@@ -42,8 +23,8 @@ local groups = {
 
   ui = {
     c "rcarriga/nvim-notify",
-    { "nvim-tree/nvim-tree.lua", tag = "nightly", config = true },
-    { "stevearc/oil.nvim", config = true },
+    c { "nvim-tree/nvim-tree.lua", tag = "nightly" },
+    c { "tamago324/lir.nvim", dependencies = { "tamago324/lir-git-status.nvim" } },
     c {
       "nvim-lualine/lualine.nvim",
       dependencies = { "loctvl842/monokai-pro.nvim" },
@@ -77,6 +58,19 @@ local groups = {
     c {
       "stevearc/overseer.nvim",
       dir = "~/src/overseer.nvim",
+    },
+    c {
+      "nvim-neotest/neotest",
+      dependencies = {
+        "nvim-neotest/neotest-python",
+        "nvim-neotest/neotest-plenary",
+        "nvim-neotest/neotest-go",
+        "haydenmeade/neotest-jest",
+        "marilari88/neotest-vitest",
+        "rouge8/neotest-rust",
+        "nvim-neotest/neotest-vim-test",
+        "vim-test/vim-test",
+      },
     },
   },
 
@@ -200,6 +194,11 @@ local groups = {
       event = "InsertEnter",
       cmd = "Copilot",
       dependencies = { "zbirenbaum/copilot.lua" },
+    },
+
+    c {
+      "mfussenegger/nvim-dap",
+      dependencies = { "rcarriga/nvim-dap-ui" },
     },
   },
 
