@@ -46,7 +46,8 @@ local groups = {
         "loctvl842/monokai-pro.nvim",
       },
     },
-    c { "stevearc/dressing.nvim" },
+    c { "stevearc/dressing.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+    c "folke/noice.nvim",
   },
 
   utilities = {
