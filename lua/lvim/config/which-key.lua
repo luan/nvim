@@ -118,7 +118,7 @@ local mappings = {
   k = {
     name = "tas[k]s",
     r = { "<cmd>OverseerRun<cr>", "Run task" },
-    t = { "<cmd>OveseerToggle<cr>", "Toggle tasks window" },
+    t = { "<cmd>OverseerToggle<cr>", "Toggle tasks window" },
     a = { "<cmd>OveseerTaskAction<cr>", "Select a task action to run" },
     i = { "<cmd>OveseerInfo<cr>", "Show tasks info" },
   },
