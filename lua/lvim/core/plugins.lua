@@ -48,6 +48,7 @@ local groups = {
     },
     c { "stevearc/dressing.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
     c "folke/noice.nvim",
+    { "petertriho/nvim-scrollbar", config = true },
   },
 
   utilities = {
