@@ -46,6 +46,7 @@ local groups = {
         "loctvl842/monokai-pro.nvim",
       },
     },
+    c { "stevearc/dressing.nvim" },
   },
 
   utilities = {
@@ -81,7 +82,6 @@ local groups = {
       "nvim-telescope/telescope.nvim",
       dependencies = { "telescope-fzf-native.nvim" },
     },
-    "nvim-telescope/telescope-ui-select.nvim",
     { "nvim-telescope/telescope-frecency.nvim", dependencies = "kkharji/sqlite.lua" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
     c "folke/which-key.nvim",
@@ -156,7 +156,6 @@ local groups = {
         "onsails/lspkind.nvim",
       },
     },
-    c "filipdutescu/renamer.nvim",
     "lvimuser/lsp-inlayhints.nvim",
 
     c "ray-x/lsp_signature.nvim",
@@ -205,6 +204,7 @@ local groups = {
     "tpope/vim-rhubarb",
     "tpope/vim-sleuth",
     "tpope/vim-surround",
+    "tpope/vim-unimpaired",
   },
 }
 

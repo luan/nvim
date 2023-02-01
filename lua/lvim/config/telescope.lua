@@ -7,42 +7,7 @@ local proximity_sort = require "lvim.utils.proximity_sort"
 local current_path = require("lvim.utils").current_path
 local actions = require "telescope.actions"
 
----@alias telescope_themes
----| "cursor"   # see `telescope.themes.get_cursor()`
----| "dropdown" # see `telescope.themes.get_dropdown()`
----| "ivy"      # see `telescope.themes.get_ivy()`
----| "center"   # retain the default telescope theme
-
-local center_theme = {
-  borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
-  layout_config = {
-    sorting_strategy = "ascending",
-    horizontal = {
-      prompt_position = "top",
-      preview_width = 0.55,
-      results_width = 0.8,
-    },
-    vertical = {
-      mirror = false,
-    },
-    width = 0.87,
-    height = 0.80,
-    preview_cutoff = 120,
-  },
-}
-
-local cursor_theme = require("telescope.themes").get_cursor {
-  borderchars = { "█", "█", "▀", "█", "█", "█", "▀", "▀" },
-}
-
-local dropdown_theme = require("telescope.themes").get_dropdown {
-  borderchars = { "█", "█", "▀", "█", "█", "█", "▀", "▀" },
-  width = 0.9,
-  prompt = " ",
-  results_height = 25,
-  previewer = false,
-  winblend = 0,
-}
+local themes = require("lvim.core.telescope").themes
 
 local function proximity_sort_tiebreak(current_entry, existing_entry, _)
   return proximity_sort(current_entry.ordinal, existing_entry.ordinal, current_path "#")
@@ -52,7 +17,7 @@ telescope.setup {
   active = true,
   on_config_done = nil,
   defaults = {
-    theme = "dropdown", ---@type telescope_themes
+    theme = themes.dropdown,
     prompt_prefix = " ",
     selection_caret = " ",
     entry_prefix = "  ",
@@ -93,7 +58,7 @@ telescope.setup {
     path_display = { "truncate" },
     winblend = 0,
     border = {},
-    borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
+    -- borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
     color_devicons = true,
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_ignore_patterns = {
@@ -152,14 +117,14 @@ telescope.setup {
     },
   },
   pickers = {
-    find_files = tbl.merge(dropdown_theme, {
+    find_files = tbl.merge(themes.dropdown, {
       hidden = true,
     }),
-    commands = tbl.merge(dropdown_theme, {
+    commands = tbl.merge(themes.dropdown, {
       hidden = true,
       prompt_prefix = " ",
     }),
-    live_grep = tbl.merge(center_theme, {
+    live_grep = tbl.merge(themes.center, {
       --@usage don't include the filename in the search results
       only_sort_text = true,
       prompt_prefix = " ",
@@ -167,7 +132,7 @@ telescope.setup {
     grep_string = {
       only_sort_text = true,
     },
-    buffers = tbl.merge(dropdown_theme, {
+    buffers = tbl.merge(themes.dropdown, {
       preview = false,
       mappings = {
         i = {
@@ -197,10 +162,9 @@ telescope.setup {
       override_file_sorter = true, -- override the file sorter
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
     },
-    ["ui-select"] = tbl.merge(cursor_theme),
   },
 }
+
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "projects"
 require("telescope").load_extension "frecency"
-require("telescope").load_extension "ui-select"

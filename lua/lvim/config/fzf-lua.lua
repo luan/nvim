@@ -3,7 +3,7 @@ require("fzf-lua").setup {
     previewer = false,
   },
   height = 0.50,
-  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   -- This is required to support older version of fzf on remote devboxes
   fzf_opts = { ["--border"] = false },
   -- These settings reduce lag from slow git operations

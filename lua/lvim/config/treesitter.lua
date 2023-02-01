@@ -30,7 +30,7 @@ require("nvim-treesitter.configs").setup {
     enable = true,
     extended_mode = false,
     disable = { "html" },
-    colors = reload "lvim.colors",
+    colors = reload "lvim.utils.rainbow-colors",
   },
   textobjects = {
     select = {

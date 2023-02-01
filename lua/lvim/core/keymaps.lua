@@ -27,12 +27,6 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts)
 
----- Resize windows
-keymap("n", "<A-S-C-j>", ":resize +1<CR>", opts)
-keymap("n", "<A-S-C-k>", ":resize -1<CR>", opts)
-keymap("n", "<A-S-C-h>", ":vertical resize +1<CR>", opts)
-keymap("n", "<A-S-C-l>", ":vertical resize -1<CR>", opts)
-
 ---- Move text up/down
 -- Visual --
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)

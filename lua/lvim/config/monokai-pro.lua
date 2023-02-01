@@ -3,7 +3,12 @@ require("monokai-pro").setup {
   italic_comments = true,
   filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
   inc_search = "underline", -- underline | background
-  background_clear = {},
+  background_clear = {
+    -- "float_win",
+    -- "toggleterm",
+    -- "telescope",
+    -- "which-key",
+  },
   diagnostic = {
     background = true,
   },

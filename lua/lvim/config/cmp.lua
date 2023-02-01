@@ -129,7 +129,6 @@ cmp.setup {
     -- documentation = false,
     documentation = {
       -- border = "rounded",
-      -- 	-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       -- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
     },
     completion = {
