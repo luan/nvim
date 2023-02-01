@@ -4,6 +4,16 @@ local servers = {
   html = {},
   jsonls = {},
   prismals = {},
+  gopls = {
+    hints = {
+      assignVariableTypes = true,
+      compositeLiteralFields = true,
+      constantValues = true,
+      functionTypeParameters = true,
+      parameterNames = true,
+      rangeVariableTypes = true,
+    },
+  },
   tsserver = {
     settings = {
       typescript = {

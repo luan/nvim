@@ -94,7 +94,13 @@ local float_config = {
     lualine_a = { mode, branch },
     lualine_b = { diagnostics },
     lualine_c = {},
-    lualine_x = { "overseer" },
+    lualine_x = {
+      "overseer",
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+      },
+    },
     lualine_y = { diff },
     lualine_z = { location, filetype },
   },

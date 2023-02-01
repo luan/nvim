@@ -1,8 +1,17 @@
 require("noice").setup {
-  messages = {
-    enabled = false,
+  presets = {
+    long_message_to_split = true,
+  },
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
   },
   lsp = {
+    hover = {
+      enabled = false,
+    },
     signature = {
       enabled = false,
     },

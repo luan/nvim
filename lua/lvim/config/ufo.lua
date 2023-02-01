@@ -62,13 +62,13 @@ ufo.setup {
       end
 
       return ufo
-        .getFolds("lsp", bufnr)
-        :catch(function(err)
-          return handle_fallback_exception(err, "treesitter")
-        end)
-        :catch(function(err)
-          return handle_fallback_exception(err, "indent")
-        end)
+          .getFolds("lsp", bufnr)
+          :catch(function(err)
+            return handle_fallback_exception(err, "treesitter")
+          end)
+          :catch(function(err)
+            return handle_fallback_exception(err, "indent")
+          end)
     end
   end,
 }

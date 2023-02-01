@@ -27,7 +27,7 @@ local groups = {
     c { "tamago324/lir.nvim", dependencies = { "tamago324/lir-git-status.nvim" } },
     c {
       "nvim-lualine/lualine.nvim",
-      dependencies = { "loctvl842/monokai-pro.nvim" },
+      dependencies = { "loctvl842/monokai-pro.nvim", "folke/noice.nvim" },
     },
     c "akinsho/toggleterm.nvim",
     c {
@@ -104,18 +104,6 @@ local groups = {
     c {
       "windwp/nvim-autopairs",
       event = "VeryLazy",
-    },
-    {
-      "j-hui/fidget.nvim",
-      opts = {
-        window = {
-          relative = "editor", -- where to anchor, either "win" or "editor"
-          blend = 50, -- &winblend for the window
-          zindex = nil, -- the zindex value for the window
-          border = "none", -- style of border for the fidget window
-        },
-        text = { spinner = "dots" },
-      },
     },
     c {
       "numToStr/Comment.nvim",
