@@ -195,11 +195,6 @@ local groups = {
       cmd = "Copilot",
       dependencies = { "zbirenbaum/copilot.lua" },
     },
-
-    c {
-      "mfussenegger/nvim-dap",
-      dependencies = { "rcarriga/nvim-dap-ui" },
-    },
   },
 
   tpope = {
