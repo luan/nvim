@@ -39,5 +39,5 @@ require("illuminate").configure {
   -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
   providers_regex_syntax_allowlist = {},
   -- under_cursor: whether or not to illuminate under the cursor
-  under_cursor = true,
+  under_cursor = false,
 }
