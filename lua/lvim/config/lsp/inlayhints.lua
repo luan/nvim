@@ -1,11 +1,9 @@
 local M = {}
 
 M.on_attach = function(client, buffer)
-  local status_ok, inlayhints = pcall(require, "lsp-inlayhints")
-  if not status_ok then
-    return
-  end
-  inlayhints.on_attach(client, buffer)
+  require("lsp-inlayhints").on_attach(client, buffer)
 end
+
+require("lsp-inlayhints").setup()
 
 return M
