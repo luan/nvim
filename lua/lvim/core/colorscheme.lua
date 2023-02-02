@@ -17,6 +17,14 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   group = colorscheme_group,
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = "?*",
+  callback = function()
+    vim.schedule(colorscheme_callback)
+  end,
+  group = colorscheme_group,
+})
+
 vim.cmd.colorscheme { args = { "tokyonight-night" } }
 
 -- Some themes do not trigger the autocmd in time and we lose our precious dotted line

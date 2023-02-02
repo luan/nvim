@@ -23,9 +23,16 @@ telescope.setup {
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    -- sorting_strategy = nil,
     layout_strategy = nil,
-    layout_config = {},
+    layout_config = {
+      horizontal = {
+        sorting_strategy = "ascending",
+        prompt_position = "top",
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
     tiebreak = proximity_sort_tiebreak,
     vimgrep_arguments = {
       "rg",
