@@ -1,98 +1,46 @@
-# Luan's Neovim distribution
+# DEPRECATED V1
 
-This Vim distribution is a re-write of
-[luan/vimfiles](https://github.com/luan/vimfiles) with the goal of break free
-from the original [vim](https://www.vim.org) and focus on supporting
-[Neovim](https://neovim.io).  Neovim is a faster moving project that is much
-more approachable for contributions.
+Hi! If you're reading this it means you've stuck around using my config for a while. It's been a great honor to maintain this with you. Thank you!
 
-If you're familiar with [luan/vimfiles](https://github.com/luan/vimfiles) and
-want to know what has noticeably changed, try `:help vimfiles-migrating` (or
-just `:help migrating`). You can view that help file online
-[here](https://github.com/luan/nvim/blob/master/doc/migrating-from-legacy.txt).
+A lot has changed in the world of development editors since in the past few years since I've been trying to keep this up to date. But most importantly, a lot has changed in my own ability to keep a high quality general purpose configuration around for public consumption.
 
-## Why a new repo?
+TL;DR: This config, as a general purpose IDE is now deprecated. I have not been able to, and will no longer pretend to be able to, keep it fresh for every possible language you might work in. More importantly I am hereon advocating that you maintain your own config, or if you must use something off the shelf, find a more suitable alternative.
 
-The old repo may still be used by people stuck in the original vim for some
-reason, so breaking that compatibility could be frustrating for them.
+If you want to keep using this v1 config and get rid of the warning checkout the `v1.0` tag. But you should probably for the repo instead.
 
-Furthermore, I feel like some of the decisions made with regards to keybindings
-on the other repo need to be updated. Having a completely new fork makes it so
-users have to intentionally transition, giving them the change to realize that
-some things have changed.
+## What's changing with this repo?
 
-## Installation
+This is now officially "Luan's config" not "distribution". The vim ecosystem does not need more distributions and this was never fully "marketed" as a general purpose one anyway. It just happened to become the de-facto standard set of tools we used while pairing on Cloud Foundry, but I have long left that community, and it's time I focus on maintaining this for myself.
 
-This config is exclusive to [Neovim](https://neovim.io), so you need to [install
-it](https://github.com/neovim/neovim/wiki/Installing-Neovim) on your system
-first. You also need python and the [python 3 client for
-Neovim](https://github.com/neovim/python-client) installed(python 3 is
-important). Those are well documented processes and are platform dependent. At
-the moment I don't intend to provide an all-in-one installer as part of this
-config as we used to have on luan/vimfiles.
+More specifically:
+- No more auto-updates. Anyone who uses this config is expected to pull the
+repo to get new changes.
+- I will add and change things here how ever I see fit. This is more than just
+a benevolent dictatorship. This is just me keeping these as my personal
+settings.
+- I will most likely not accept contributions here unless they're fixing a bug
+or adding something really cool (but if you do this, you should probably talk
+to me first).
 
-**Dependencies**: We'll need a few extra things installed in your system in
-order to properly setup everything:
+There will still be a way to provide user customizations. Mostly because I
+need private hooks in order to use this at work, so if you fall into the
+category of still wanting to use this, you could do that I guess.
 
-  * [`curl`](https://curl.haxx.se/): used to install the plugin manager.
-  * [`npm`](https://www.npmjs.com/): used to install JS tools and some language
-    server binaries.
-  * [`ripgrep`](https://github.com/BurntSushi/ripgrep): superfast grep
-    replacement used by the search plugins.
-  * [`fd`](https://github.com/sharkdp/fd): superfast fd replacement used
-    by the file finding plugins.
-  * [`bat`](https://github.com/sharkdp/bat):  A cat(1) clone with syntax
-    highlighting and Git integration. (optional)
+## Why though?
 
-Once you have that setup, all you have to do is clone this config in the right
-spot:
+Like I said above, I don't have the time or motivation to keep this generic. I
+don't work directly with the users of this and I don't spent virtually any
+time actively maintaining things here other than for my own needs or when
+someone reaches out directly already. I don't have the inputs to keep
+improving user experience.
 
-```bash
-git clone https://github.com/luan/nvim ~/.config/nvim
-```
+## What should you use instead?
 
-Plugins will be automatically downloaded and setup as necessary.
+I have personally gotten a lot from knowing the ins and outs of my editor. I've even dabbled in VSCode a lot recently and made plugins/customizations for that. If you have the energy and interest, just set your own configuration up. I won't write down any specific recommendations for plugins here because that can get stale, but Neovim is likely to still be the best Vim when you read this. Also go to /r/neovim, there's lots of good stuff there all the time. And learn lua.
 
-## Updating
+If you don't have the time or interest to do that, I recommend looking into a popular config. LunarVim is at the time of writing a solid config that works well for a lot of cases, and it's well documented. NvChad is another good one. But do your research. I also heard great things about Doom Emacs, it defaults to using vim bindings, don't worry.
 
-The distribution checks for updates on boot and every hour when it's running.
-The check is non-disruptive and will only show messages passively when one of
-the following is true:
+You can also try out GUI editors, VSCode is solid and easy, JetBrain's stuff is incredibly powerful. There's nothing wrong with using those things.
 
-* An update is available (and you should run `:ConfigUpdate`).
-* An error occurred fetching the remove version.
-* You have local changes on your nvim config repo (you really shouldn't unless
-  you're preparing a PR).
+Finally, and if you got this far into this long-winded doc it's possible you really like me, you're welcome to use this config. I won't block you. And I will do my best to make it stable (for my own sake and sanity really). If you do that and have any problems I'll be happy to try to help, but I expect you are very motivated to figure things out on your own at this point.
 
-`:ConfigUpdate` updates the local config. Since we use
-[packer](https://github.com/wbthomason/packer.nvim) you can also use
-`:PackerSync` to update plugins separately.
-
-## Customizing
-
-In the config directory there's a special folder that is git ignored, that is
-`$XDG_CONFIG_HOME/nvim/lua/user`, it is created on first boot based on the
-`lua/user.defaults` on in this repo. The three hooks are:
-
-* `lua/user/before.lua`: Runs before everything, useful to set globals that change
-  plugin behavior
-* `lua/user/plugins.lua`: Runs during plugin setup, you can add your own choices of
-  plugins here. More on adding plugins
-  [here](https://github.com/wbthomason/packer.nvim)
-* `lua/user/after.lua`: Runs at the end, useful to override and map your own key
-  bindings and configure your custom plugins. This is also where you'd change
-  the colorscheme
-
-It is recommended that you track your user settings on a separate repo and
-symlink them in here, see [my dotfiles
-repo](https://github.com/luan/dotfiles/tree/main/xdg-configs/nvim/lua/user) for
-an example.
-
-## Troubleshooting
-
-In the event things behave incorrectly or the config becomes unstable in
-general, regular vim debugging methods apply. Check `:checkhealth` for clues on
-what's wrong with your setup.
-
-Make sure language servers are installed for your language;
-`:LspInstall <language>` installs it for a given language.
