@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local theme = require "alpha.themes.startify"
+local theme = require "alpha.themes.dashboard"
 local version = vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
 theme.section.header.val = {
   [[                                   __                ]],
@@ -16,6 +16,20 @@ theme.section.header.val = {
   [[     Neovim Version: ]] .. version .. [[ (run :version for more details)]],
   [[]],
 }
+
+theme.section.buttons.val = {
+  theme.button("r", "  Recently files", ":Telescope oldfiles<CR>"),
+  theme.button("f", "  Find files", ":Telescope find_files<CR>"),
+  theme.button("p", "  Find projects", ":Telescope projects<CR>"),
+  theme.button("c", "  Configuration", ":e " .. require("lvim.utils.modules").user_config_file() .. "<CR>"),
+  theme.button("q", "  Quit Neovim", ":qa<CR>"),
+}
+-- theme.section.buttons.type = "button"
+
+theme.section.footer.opts.hl = "AlphaFooter"
+theme.section.header.opts.hl = "AlphaHeader"
+theme.section.buttons.opts.hl = "AlphaButton"
+theme.opts.layout[1].val = 1
 
 -- close Lazy and re-open when the dashboard is ready
 if vim.o.filetype == "lazy" then
@@ -40,10 +54,7 @@ vim.api.nvim_create_autocmd("User", {
   callback = function()
     local stats = require("lazy").stats()
     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    vim.list_extend(
-      theme.section.header.val,
-      { "             Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms" }
-    )
+    theme.section.footer.val = " Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
     pcall(vim.cmd.AlphaRedraw)
   end,
 })

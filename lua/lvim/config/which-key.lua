@@ -98,6 +98,10 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers()<cr>",
     "Find open buffers",
   },
+  ["r"] = {
+    "<cmd>Telescope oldfiles<cr>",
+    "Recent files",
+  },
   ["f"] = {
     "<cmd>Telescope find_files<cr>",
     "Find files",

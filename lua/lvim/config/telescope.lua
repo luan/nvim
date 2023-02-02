@@ -16,8 +16,8 @@ end
 telescope.setup {
   active = true,
   on_config_done = nil,
-  defaults = {
-    theme = themes.dropdown,
+  defaults = tbl.merge(themes.dropdown, {
+    preview = false,
     prompt_prefix = " ",
     selection_caret = " ",
     entry_prefix = "  ",
@@ -48,11 +48,11 @@ telescope.setup {
     ---@usage Mappings are fully customizable. Many familiar mapping patterns are setup as defaults.
     mappings = {
       i = {
-        ["<C-n>"] = actions.move_selection_next,
-        ["<C-p>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
         ["<C-c>"] = actions.close,
-        ["<C-j>"] = actions.cycle_history_next,
-        ["<C-k>"] = actions.cycle_history_prev,
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<CR>"] = actions.select_default,
       },
@@ -122,8 +122,8 @@ telescope.setup {
       "%.flac",
       "%.tar.gz",
     },
-  },
-  pickers = {
+  }),
+  pickers = tbl.merge {
     find_files = tbl.merge(themes.dropdown, {
       hidden = true,
     }),
@@ -131,11 +131,12 @@ telescope.setup {
       hidden = true,
       prompt_prefix = " ",
     }),
-    live_grep = tbl.merge(themes.center, {
+    live_grep = tbl.merge(themes.ivy, {
       --@usage don't include the filename in the search results
       only_sort_text = true,
       prompt_prefix = " ",
     }),
+    lsp_definitions = themes.cursor,
     grep_string = {
       only_sort_text = true,
     },
@@ -150,10 +151,6 @@ telescope.setup {
         },
       },
     }),
-    planets = {
-      show_pluto = true,
-      show_moon = true,
-    },
     git_files = {
       hidden = true,
       show_untracked = true,

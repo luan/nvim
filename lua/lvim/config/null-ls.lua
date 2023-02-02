@@ -5,12 +5,13 @@ end
 
 local formatting = null_ls.builtins.formatting
 
+local sources = {
+  formatting.prettier,
+  formatting.stylua,
+}
+sources = tbl.merge_lists(sources, lvim.nullls.sources)
+
 null_ls.setup {
   debug = false,
-  sources = {
-    formatting.prettier,
-    formatting.stylua,
-    formatting.google_java_format,
-    formatting.black.with { extra_args = { "--fast" } },
-  },
+  sources = sources,
 }

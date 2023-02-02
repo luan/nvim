@@ -17,7 +17,7 @@ require("lvim.lsp").setup("sumneko_lua", {
         },
       },
       diagnostics = {
-        globals = { "vim" },
+        globals = { "vim", "lvim" },
       },
       workspace = {
         library = {

@@ -1,6 +1,6 @@
 return {
 	themes = {
-		center = {
+		ivy = require("telescope.themes").get_ivy {
 			borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
 			width = 0.87,
 			height = 0.80,

@@ -19,8 +19,8 @@ local diagnostics = {
     update_in_insert = false,
   },
   on = {
-    virtual_text = false, -- disable virtual text
-    virtual_lines = false,
+    virtual_text = true, -- disable virtual text
+    virtual_lines = true,
     signs = {
       active = signs, -- show signs
     },
@@ -39,4 +39,3 @@ local diagnostics = {
   },
 }
 return diagnostics
--- vim.diagnostic.config(diagnostics["on"])

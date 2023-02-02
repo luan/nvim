@@ -1,5 +1,3 @@
-local util = require "lvim.util"
-
 vim.diagnostic.config(require("lvim.config.lsp.diagnostics")["on"])
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(function(_, result, ctx, config)
@@ -8,6 +6,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(function(_, result, ctx, c
   if not (result and result.contents) then
     return
   end
+  ---@diagnostic disable-next-line: missing-parameter
   local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
   markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
   if vim.tbl_isempty(markdown_lines) then
@@ -24,10 +23,14 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   width = 60,
 })
 
-util.on_attach(function(client, buffer)
-  require("lvim.config.lsp.keymaps").on_attach(client, buffer)
-  require("lvim.config.lsp.inlayhints").on_attach(client, buffer)
-  require("lvim.config.lsp.navic").on_attach(client, buffer)
-end)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local buffer = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    require("lvim.config.lsp.keymaps").on_attach(client, buffer)
+    require("lvim.config.lsp.inlayhints").on_attach(client, buffer)
+    require("lvim.config.lsp.navic").on_attach(client, buffer)
+  end,
+})
 
 lvim.lsp = { servers = {} }

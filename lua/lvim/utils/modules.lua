@@ -1,5 +1,6 @@
 local M = {}
 
+local file = require "lvim.utils.file"
 local Log = require "lvim.core.log"
 
 local function _assign(old, new, k)
@@ -82,6 +83,33 @@ M.reload = function(mod)
 
   package.loaded[mod] = old
   return old
+end
+
+M.user_config_dir = function()
+  return file.join(XDG_CONFIG_HOME, "nvim.luan")
+end
+
+M.user_config_file = function()
+  return file.join(M.user_config_dir(), "init.lua")
+end
+
+M.load_user_config = function()
+  local config_dir = M.user_config_dir()
+  local config_file = M.user_config_file()
+
+  local ok, err = pcall(dofile, config_file)
+  if not ok then
+    if file.exists(config_file) then
+      Log:warn("Invalid configuration: " .. err)
+    else
+      vim.notify_once(
+        string.format("User-configuration not found. Creating an example configuration in %s", config_file)
+      )
+      local example_config = file.join(CONFIG_PATH, "example.init.lua")
+      vim.fn.mkdir(config_dir, "p")
+      vim.loop.fs_copyfile(example_config, config_file)
+    end
+  end
 end
 
 return M
