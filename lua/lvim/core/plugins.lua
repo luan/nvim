@@ -191,7 +191,7 @@ local groups = {
     "tpope/vim-rhubarb",
     "tpope/vim-sleuth",
     "tpope/vim-surround",
-    -- "tpope/vim-unimpaired",
+    "tpope/vim-unimpaired",
   },
 
   user = lvim.plugins,
