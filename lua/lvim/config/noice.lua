@@ -7,6 +7,21 @@ require("noice").setup {
       view = "notify",
       filter = { event = "msg_showmode" },
     },
+    {
+      view = "notify",
+      filter = {
+        find = "no matching language servers",
+      },
+      opts = { skip = true },
+    },
+    {
+      filter = {
+        event = "msg_show",
+        kind = "",
+        find = "written",
+      },
+      opts = { skip = true },
+    },
   },
   lsp = {
     hover = {
