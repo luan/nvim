@@ -174,14 +174,6 @@ local mappings = {
     },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>Mason<cr>", "Installer (Mason)" },
-    j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-      "Next Diagnostic",
-    },
-    k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-      "Prev Diagnostic",
-    },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>lua vim.lsp.bug.signature_help()<cr>", "Document Symbols" },
