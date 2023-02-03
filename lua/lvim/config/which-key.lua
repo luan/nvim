@@ -135,6 +135,32 @@ local mappings = {
     c = { "<cmd>HopChar1<cr>", "Jump character" },
     v = { "<cmd>HopVertical<cr>", "Jump vertically" },
   },
+  s = {
+    name = "[s]essions",
+    s = {
+      function()
+        require("resession").save()
+      end,
+      "Save session",
+    },
+    l = {
+      function()
+        require("resession").load()
+      end,
+      "Load session",
+    },
+    d = {
+      function()
+        require("resession").delete()
+      end,
+      "Delete session",
+    },
+  },
+  n = {
+    name = "[n]otifications",
+    r = { "<cmd>Telescope notify<cr>", "Browse recent notifications" },
+    l = { "<cmd>Noice log<cr>", "Browse log" },
+  },
   l = {
     name = "[l]sp",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

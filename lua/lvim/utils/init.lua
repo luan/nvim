@@ -1,5 +1,15 @@
 local M = {}
 
+function M.get_session_name()
+  local name = vim.fn.getcwd()
+  local branch = vim.fn.system "git branch --show-current"
+  if vim.v.shell_error == 0 then
+    return name .. branch
+  else
+    return name
+  end
+end
+
 function M.is_executable(bin)
   return vim.fn.executable(bin) > 0
 end

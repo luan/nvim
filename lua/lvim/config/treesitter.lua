@@ -1,7 +1,7 @@
 require("nvim-treesitter.configs").setup {
   auto_install = true,
   sync_install = false,
-  ensure_installed = { "typescript", "lua", "go", "svelte" },
+  ensure_installed = { "typescript", "lua", "go", "svelte", "c", "vim", "help" },
   ignore_install = { "phpdoc", "tree-sitter-phpdoc" }, -- List of parsers to ignore installing
   autopairs = { enable = true },
   incremental_selection = {

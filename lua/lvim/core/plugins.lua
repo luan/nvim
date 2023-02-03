@@ -72,6 +72,7 @@ local groups = {
         "vim-test/vim-test",
       },
     },
+    c "stevearc/resession.nvim",
   },
 
   editor = {

@@ -27,6 +27,12 @@ theme.section.buttons.val = {
   theme.button("r", "  Recently files", ":Telescope oldfiles<CR>"),
   theme.button("f", "  Find files", ":Telescope find_files<CR>"),
   theme.button("p", "  Find projects", ":Telescope projects<CR>"),
+  theme.button("s", "  Load session", ':lua require("resession").load()<CR>'),
+  theme.button(
+    "l",
+    "  Load last session",
+    [[:lua require("resession").load(require("lvim.utils").get_session_name(), { dir = "dirsession", silence_errors = true })<CR>]]
+  ),
   theme.button("c", "  Configuration", ":e " .. require("lvim.utils.modules").user_config_file() .. "<CR>"),
   theme.button("q", "  Quit Neovim", ":qa<CR>"),
 }
