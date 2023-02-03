@@ -88,7 +88,6 @@ local groups = {
     c {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPre",
-      enabled = false,
     },
     c "RRethy/vim-illuminate",
     c {

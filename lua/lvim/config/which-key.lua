@@ -193,7 +193,6 @@ local g_mappings = {
   ["d"] = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition" },
   ["r"] = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
   ["i"] = { "<cmd>Telescope lsp_implementations<cr>", "Go to implementations" },
-  ["b"] = { "<cmd>BufferLinePick<CR>", "Bufferline: pick buffer" },
 }
 -- Go to [g]
 local goto_opts = {
