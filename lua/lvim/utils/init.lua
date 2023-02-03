@@ -1,5 +1,9 @@
 local M = {}
 
+function M.is_executable(bin)
+  return vim.fn.executable(bin) > 0
+end
+
 function M.current_path(buffer, opts)
   if buffer == nil then
     buffer = "%"
@@ -29,7 +33,12 @@ function M.save(opts)
 
   vim.schedule(function()
     if opts.format ~= false and vim.lsp.buf.server_ready() then
-      vim.lsp.buf.format()
+      vim.lsp.buf.format {
+        timeout_ms = 5000,
+        filter = function(client)
+          return client.name ~= "tsserver"
+        end,
+      }
     end
     vim.cmd "silent! write"
 

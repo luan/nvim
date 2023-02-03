@@ -26,7 +26,6 @@ telescope.setup {
     layout_strategy = nil,
     layout_config = {
       horizontal = {
-        sorting_strategy = "ascending",
         prompt_position = "top",
       },
       vertical = {
