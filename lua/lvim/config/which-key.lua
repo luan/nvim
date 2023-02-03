@@ -176,7 +176,7 @@ local mappings = {
     I = { "<cmd>Mason<cr>", "Installer (Mason)" },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>lua vim.lsp.bug.signature_help()<cr>", "Document Symbols" },
+    s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Document Symbols" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
