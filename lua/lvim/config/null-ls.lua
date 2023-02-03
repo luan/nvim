@@ -6,6 +6,7 @@ end
 local formatting = null_ls.builtins.formatting
 
 local sources = {
+  formatting.prettierd,
   formatting.prettier,
   formatting.stylua,
 }

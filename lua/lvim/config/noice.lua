@@ -10,6 +10,13 @@ require("noice").setup {
     {
       view = "notify",
       filter = {
+        find = "Failed to attach to svelte for current buffer. Already attached to svelte",
+      },
+      opts = { skip = true },
+    },
+    {
+      view = "notify",
+      filter = {
         find = "no matching language servers",
       },
       opts = { skip = true },

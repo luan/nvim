@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     require("lvim.config.lsp.keymaps").on_attach(client, buffer)
     require("lvim.config.lsp.inlayhints").on_attach(client, buffer)
     require("lvim.config.lsp.navic").on_attach(client, buffer)
+    require("lvim.config.lsp.format").on_attach(client, buffer)
   end,
 })
 

@@ -42,14 +42,6 @@ function M.save(opts)
   end
 
   vim.schedule(function()
-    if opts.format ~= false and vim.lsp.buf.server_ready() then
-      vim.lsp.buf.format {
-        timeout_ms = 5000,
-        filter = function(client)
-          return client.name ~= "tsserver"
-        end,
-      }
-    end
     vim.cmd "silent! write"
 
     local path = M.current_path("%:p", { absolute = true })
