@@ -2,35 +2,6 @@ local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
 end
-local devicons = require "nvim-web-devicons"
-local lualine_require = require "lualine_require"
-local modules = lualine_require.lazy_require {
-  highlight = "lualine.highlight",
-  utils = "lualine.utils.utils",
-}
-
-local separator = "bubble" -- bubble | triangle
-local separator_icon = {
-  left = "",
-  right = "",
-}
-
-local alt_separator_icon = {
-  left = "",
-  right = "",
-}
-
-if separator == "triangle" then
-  separator_icon = {
-    left = "",
-    right = "",
-  }
-
-  alt_separator_icon = {
-    left = "",
-    right = "",
-  }
-end
 
 local branch = {
   "branch",
@@ -55,7 +26,7 @@ local diagnostics = {
 local diff = {
   "diff",
   colored = true,
-  symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+  symbols = { added = " ", modified = " ", removed = " " },
 }
 
 local mode = {

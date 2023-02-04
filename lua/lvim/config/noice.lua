@@ -28,13 +28,6 @@ require("noice").setup {
     {
       view = "notify",
       filter = {
-        kind = "echom",
-      },
-      opts = { skip = true },
-    },
-    {
-      view = "notify",
-      filter = {
         find = "Failed to attach to svelte for current buffer. Already attached to svelte",
       },
       opts = { skip = true },

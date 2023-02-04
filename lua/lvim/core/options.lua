@@ -14,7 +14,6 @@ local options = {
   timeoutlen = 500, -- Timeout for keybindings
   ttimeoutlen = -1, -- Timeout for completing commands
   inccommand = "nosplit", -- Preview commands like substitute
-  wildmode = { "list", "longest" }, -- Use emacs-style tab completion in command mode
 
   ignorecase = true, -- Case insensitive search
   smartcase = true, -- ... but case sensitive when uc present

@@ -27,7 +27,7 @@ local groups = {
     c { "tamago324/lir.nvim", dependencies = { "tamago324/lir-git-status.nvim" } },
     c {
       "nvim-lualine/lualine.nvim",
-      dependencies = { "loctvl842/monokai-pro.nvim", "folke/noice.nvim" },
+      dependencies = { "loctvl842/monokai-pro.nvim" },
     },
     c "akinsho/toggleterm.nvim",
     c {
@@ -180,11 +180,17 @@ local groups = {
       event = "BufReadPre",
     },
     c {
-      "zbirenbaum/copilot-cmp",
+      "zbirenbaum/copilot.lua",
+      enabled = lvim.copilot.enabled,
       name = "copilot",
       event = "InsertEnter",
       cmd = "Copilot",
-      dependencies = { "zbirenbaum/copilot.lua" },
+    },
+    c {
+      "Exafunction/codeium.vim",
+      enabled = lvim.codeium.enabled,
+      event = "InsertEnter",
+      cmd = "Codeium",
     },
   },
 
