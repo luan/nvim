@@ -4,6 +4,7 @@ require("fzf-lua").setup {
   },
   height = 0.50,
   -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" },
   -- This is required to support older version of fzf on remote devboxes
   fzf_opts = { ["--border"] = false },
   -- These settings reduce lag from slow git operations
@@ -11,6 +12,11 @@ require("fzf-lua").setup {
   git = {
     files = {
       previewer = false,
+    },
+  },
+  keymap = {
+    fzf = {
+      ["ctrl-q"] = "select-all+accept",
     },
   },
 }

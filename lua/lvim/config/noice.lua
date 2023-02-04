@@ -1,4 +1,22 @@
 require("noice").setup {
+  cmdline = {
+    format = {
+      silentgrep = {
+        enabled = true,
+        pattern = "^:%s*silent!? grep!?%s+",
+        icon = "",
+        lang = "regex",
+        hl_group_icon = "NoiceCmdlineIconSearch",
+      },
+      grep = {
+        enabled = true,
+        pattern = "^:%s*grep!?%s+",
+        icon = "",
+        lang = "regex",
+        hl_group_icon = "NoiceCmdlineIconSearch",
+      },
+    },
+  },
   presets = {
     long_message_to_split = true,
   },
@@ -6,6 +24,13 @@ require("noice").setup {
     {
       view = "notify",
       filter = { event = "msg_showmode" },
+    },
+    {
+      view = "notify",
+      filter = {
+        kind = "echom",
+      },
+      opts = { skip = true },
     },
     {
       view = "notify",

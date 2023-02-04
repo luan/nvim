@@ -94,19 +94,24 @@ local mappings = {
     "Format and Save",
   },
   ["q"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
-  ["o"] = {
-    "<cmd>lua require('telescope.builtin').buffers()<cr>",
-    "Find open buffers",
+  f = {
+    name = "[f]iles",
+    f = { "<cmd>Telescope find_files<cr>", "Find files" },
+    o = {
+      "<cmd>lua require('telescope.builtin').buffers()<cr>",
+      "Find open buffers",
+    },
+    m = {
+      "<cmd>Telescope oldfiles<cr>",
+      "Recent files",
+    },
   },
-  ["r"] = {
-    "<cmd>Telescope oldfiles<cr>",
-    "Recent files",
+  s = {
+    name = "[s]earch",
+    ["s"] = { "<cmd>Telescope live_grep<cr>", "Find text (live)" },
+    ["w"] = { "<cmd>Telescope grep_string<cr>", "Find text at cursor (live)" },
+    ["g"] = "Find text",
   },
-  ["f"] = {
-    "<cmd>Telescope find_files<cr>",
-    "Find files",
-  },
-  ["g"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },
   ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
@@ -135,8 +140,8 @@ local mappings = {
     c = { "<cmd>HopChar1<cr>", "Jump character" },
     v = { "<cmd>HopVertical<cr>", "Jump vertically" },
   },
-  s = {
-    name = "[s]essions",
+  x = {
+    name = "[x]sessions",
     s = {
       function()
         require("resession").save()
@@ -172,6 +177,7 @@ local mappings = {
       "<cmd>Telescope diagnostics<cr>",
       "Workspace Diagnostics",
     },
+    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle inlay hints" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>Mason<cr>", "Installer (Mason)" },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
@@ -204,3 +210,8 @@ local goto_opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 which_key.register(g_mappings, goto_opts)
+
+-- for some reason this doesn't work through whichkey
+vim.keymap.set("n", "<leader>sg", ":silent! grep! ", {
+  desc = "Find text",
+})

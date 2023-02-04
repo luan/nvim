@@ -42,9 +42,9 @@ local options = {
 
   -- Indentation
   expandtab = true, -- Tabs are spaces, not tabs
-  shiftwidth = 3, -- Use indents of 2 spaces
-  softtabstop = 3, -- Let backspace delete indent
-  tabstop = 3, -- An indentation every four columns
+  shiftwidth = 2, -- Use indents of 2 spaces
+  softtabstop = 2, -- Let backspace delete indent
+  tabstop = 2, -- An indentation every four columns
 
   -- Undo
   undofile = true, -- Persistent undo

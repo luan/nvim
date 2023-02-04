@@ -6,6 +6,8 @@ local function colorscheme_callback()
   vim.api.nvim_command("hi FloatBorder guifg=" .. bg)
   vim.api.nvim_command("hi ToggleTermBorder guifg=" .. bg)
   vim.api.nvim_command("hi TelescopeBorder guifg=" .. bg)
+  vim.api.nvim_command("hi FzfLuaBorder guifg=" .. bg)
+  vim.api.nvim_command "hi link FzfLuaNormal TelescopeNormal"
   vim.api.nvim_command "hi IndentBlanklineContextStart gui=underdotted"
 end
 

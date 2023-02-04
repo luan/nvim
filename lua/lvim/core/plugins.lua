@@ -46,7 +46,6 @@ local groups = {
         "loctvl842/monokai-pro.nvim",
       },
     },
-    c { "stevearc/dressing.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
     c "folke/noice.nvim",
     { "petertriho/nvim-scrollbar", config = true },
   },
@@ -84,6 +83,7 @@ local groups = {
     },
     { "nvim-telescope/telescope-frecency.nvim", dependencies = "kkharji/sqlite.lua" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    "nvim-telescope/telescope-ui-select.nvim",
     c "folke/which-key.nvim",
     c {
       "lewis6991/gitsigns.nvim",
@@ -194,7 +194,6 @@ local groups = {
     "tpope/vim-fugitive",
     "tpope/vim-repeat",
     "tpope/vim-rhubarb",
-    "tpope/vim-sleuth",
     "tpope/vim-surround",
     "tpope/vim-unimpaired",
   },
