@@ -45,7 +45,7 @@ cmp.setup {
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<M-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.mapping.confirm { select = true },
     ["<C-c>"] = cmp.mapping {
       i = cmp.mapping.abort(),
