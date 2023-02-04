@@ -12,5 +12,3 @@ end, { expr = true })
 vim.keymap.set("i", "<M-k>", function()
   return vim.fn["codeium#Clear"]()
 end, { expr = true })
-
-require("codeium").setup {}
