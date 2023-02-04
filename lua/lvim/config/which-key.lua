@@ -199,6 +199,7 @@ local g_mappings = {
   ["d"] = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition" },
   ["r"] = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
   ["i"] = { "<cmd>Telescope lsp_implementations<cr>", "Go to implementations" },
+  ["l"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open float" },
 }
 -- Go to [g]
 local goto_opts = {
@@ -210,6 +211,32 @@ local goto_opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 which_key.register(g_mappings, goto_opts)
+
+-- [] pairs
+local pair_opts = {
+  mode = "n", -- NORMAL mode
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+local pair_mappings = {
+  ["d"] = {
+    prev = "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
+    next = "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
+    desc = "%s diagnostic",
+  },
+}
+
+local prev_mappings = {}
+local next_mappings = {}
+for index, value in pairs(pair_mappings) do
+  prev_mappings[index] = { value.prev, string.format(value.desc, "Previous") }
+  next_mappings[index] = { value.prev, string.format(value.desc, "Next") }
+end
+
+which_key.register(prev_mappings, tbl.merge(pair_opts, { prefix = "[" }))
+which_key.register(next_mappings, tbl.merge(pair_opts, { prefix = "]" }))
 
 -- for some reason this doesn't work through whichkey
 vim.keymap.set("n", "<leader>sg", ":silent! grep! ", {

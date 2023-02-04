@@ -27,7 +27,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local buffer = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("lvim.config.lsp.keymaps").on_attach(client, buffer)
     require("lvim.config.lsp.inlayhints").on_attach(client, buffer)
     require("lvim.config.lsp.navic").on_attach(client, buffer)
     require("lvim.config.lsp.format").on_attach(client, buffer)

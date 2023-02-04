@@ -114,6 +114,8 @@ vim.keymap.set("n", "<M-e>", "<cmd>NvimTreeFocus<cr>")
 vim.keymap.set("n", "<M-b>", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<M-\\>", "<cmd>NvimTreeFindFile<cr>")
 vim.keymap.set("n", "<M-w>", "<cmd>BufferClose<cr>")
+vim.keymap.set("n", "<M-W>", "<cmd>close!<cr>")
+vim.keymap.set("n", "<M-Q>", "<cmd>quitall!<cr>")
 vim.keymap.set("n", "<M-s>", function()
   reload("lvim.utils").save { format = true }
 end)
