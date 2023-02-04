@@ -108,17 +108,14 @@ local groups = {
       dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
     },
     "mg979/vim-visual-multi",
-    c "kevinhwang91/nvim-bqf",
+    c { "kevinhwang91/nvim-bqf", dependencies = { "junegunn/fzf" } },
     c "windwp/nvim-spectre",
     "cshuaimin/ssr.nvim",
 
     "junegunn/vim-easy-align",
     { "abecodes/tabout.nvim", config = true },
-    "machakann/vim-swap",
     { "phaazon/hop.nvim", config = true },
     "mbbill/undotree",
-    "romainl/vim-qf",
-    "tommcdo/vim-exchange",
   },
 
   code = {
@@ -149,9 +146,7 @@ local groups = {
       },
     },
     "lvimuser/lsp-inlayhints.nvim",
-
     c "ray-x/lsp_signature.nvim",
-
     c {
       "nvim-treesitter/nvim-treesitter",
       branch = "master",
@@ -163,18 +158,15 @@ local groups = {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
     },
-
     c {
       "neovim/nvim-lspconfig",
       branch = "master",
       event = "BufReadPre",
     },
-
     c {
       "williamboman/mason.nvim",
       dependencies = { "williamboman/mason-lspconfig.nvim" },
     },
-
     c {
       "jose-elias-alvarez/null-ls.nvim",
       event = "BufReadPre",
@@ -188,7 +180,7 @@ local groups = {
     },
     c {
       "Exafunction/codeium.vim",
-      enabled = lvim.codeium.enabled,
+      enabled = lvim.codeium.enabled and not lvim.copilot.enabled,
       event = "InsertEnter",
       cmd = "Codeium",
     },
