@@ -45,13 +45,19 @@ cmp.setup {
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<M-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.mapping.confirm { select = true },
     ["<C-c>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    ["<C-l>"] = cmp.mapping.confirm { select = true },
+    ["<C-l>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm { select = true }
+      else
+        cmp.complete()
+      end
+    end, { "i", "c" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
