@@ -53,4 +53,32 @@ function M.save(opts)
   end)
 end
 
+function M.get_win_type(winid)
+  winid = winid or vim.api.nvim_get_current_win()
+  local info = vim.fn.getwininfo(winid)[1]
+  if info.quickfix == 0 then
+    return ""
+  elseif info.loclist == 0 then
+    return "c"
+  else
+    return "l"
+  end
+end
+
+function M.toggle_quickfix()
+  if M.get_win_info "c" ~= nil then
+    vim.cmd.cclose()
+  else
+    vim.cmd.copen()
+  end
+end
+
+function M.toggle_loc()
+  if M.get_win_info "l" ~= nil then
+    vim.cmd.lclose()
+  else
+    vim.cmd.lopen()
+  end
+end
+
 return M

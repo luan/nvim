@@ -52,6 +52,7 @@ local groups = {
 
   utilities = {
     {
+      -- TODO: replace with 0.9.0 feature
       "jghauser/mkdir.nvim",
       config = function()
         require "mkdir"
@@ -90,6 +91,7 @@ local groups = {
       event = "BufReadPre",
       enabled = lvim.gitsigns.enabled,
     },
+    -- TODO: check for lua version
     c "RRethy/vim-illuminate",
     c {
       "kevinhwang91/nvim-ufo",
@@ -107,14 +109,17 @@ local groups = {
       "numToStr/Comment.nvim",
       dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
     },
+    -- TODO: check for lua version
     "mg979/vim-visual-multi",
     c { "kevinhwang91/nvim-bqf", dependencies = { "junegunn/fzf" } },
     c "windwp/nvim-spectre",
     "cshuaimin/ssr.nvim",
 
+    -- TODO: check for lua version
     "junegunn/vim-easy-align",
     { "abecodes/tabout.nvim", config = true },
     { "phaazon/hop.nvim", config = true },
+    -- TODO: check for lua version
     "mbbill/undotree",
   },
 
@@ -186,6 +191,7 @@ local groups = {
     },
   },
 
+  -- TODO: check for lua version
   tpope = {
     "tpope/vim-abolish",
     "tpope/vim-eunuch",

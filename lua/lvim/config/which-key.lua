@@ -23,16 +23,6 @@ local setup = {
       g = true, -- bindings for prefixed with g
     },
   },
-  -- add operators that will trigger motion and text object completion
-  -- to enable all native operators, set the preset / operators plugin above
-  -- operators = { gc = "Comments" },
-  key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
-    -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
-  },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
@@ -59,14 +49,6 @@ local setup = {
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
-  triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for key maps that start with a native binding
-    -- most people should not need to change this
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
 }
 
 which_key.setup(setup)
@@ -93,20 +75,24 @@ local mappings = {
     end,
     "Format and Save",
   },
-  ["q"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
-  f = {
+  ["q"] = {
+    name = "[q]uickfix",
+    ["q"] = { require("lvim.utils").toggle_quickfix(), "Toggle quickfix" },
+    ["l"] = { require("lvim.utils").toggle_loc(), "Toggle location list" },
+  },
+  ["f"] = {
     name = "[f]iles",
-    f = { "<cmd>Telescope find_files<cr>", "Find files" },
-    o = {
+    ["f"] = { "<cmd>Telescope find_files<cr>", "Find files" },
+    ["o"] = {
       "<cmd>lua require('telescope.builtin').buffers()<cr>",
       "Find open buffers",
     },
-    m = {
+    ["m"] = {
       "<cmd>Telescope oldfiles<cr>",
       "Recent files",
     },
   },
-  s = {
+  ["s"] = {
     name = "[s]earch",
     ["s"] = { "<cmd>Telescope live_grep<cr>", "Find text (live)" },
     ["w"] = { "<cmd>Telescope grep_string<cr>", "Find text at cursor (live)" },
@@ -115,76 +101,76 @@ local mappings = {
   ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["<Tab>"] = { "<c-6>", "Move back and forth" },
   ["="] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-  t = {
+  ["t"] = {
     name = "[t]esting",
-    t = { [[<cmd>lua require("neotest").run.run()<cr>]], "Run Nearest" },
-    f = { [[<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>]], "Run File" },
-    s = { [[<cmd>lua require("neotest").run.stop()<cr>]], "Stop test" },
+    ["t"] = { [[<cmd>lua require("neotest").run.run()<cr>]], "Run Nearest" },
+    ["f"] = { [[<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>]], "Run File" },
+    ["s"] = { [[<cmd>lua require("neotest").run.stop()<cr>]], "Stop test" },
     ["."] = { [[<cmd>lua require("neotest").run.run_last()<cr>]], "Run Last" },
-    d = { [[<cmd>lua require("neotest").run.run_last({strategy = "dap"})<cr>]], "Debug Last" },
-    o = { [[<cmd>lua require("neotest").output.open({ enter = true })<cr>]], "Show test output" },
+    ["d"] = { [[<cmd>lua require("neotest").run.run_last({strategy = "dap"})<cr>]], "Debug Last" },
+    ["o"] = { [[<cmd>lua require("neotest").output.open({ enter = true })<cr>]], "Show test output" },
   },
-  k = {
+  ["k"] = {
     name = "tas[k]s",
-    r = { "<cmd>OverseerRun<cr>", "Run task" },
-    t = { "<cmd>OverseerToggle<cr>", "Toggle tasks window" },
-    a = { "<cmd>OverseerTaskAction<cr>", "Select a task action to run" },
-    i = { "<cmd>OverseerInfo<cr>", "Show tasks info" },
+    ["r"] = { "<cmd>OverseerRun<cr>", "Run task" },
+    ["t"] = { "<cmd>OverseerToggle<cr>", "Toggle tasks window" },
+    ["a"] = { "<cmd>OverseerTaskAction<cr>", "Select a task action to run" },
+    ["i"] = { "<cmd>OverseerInfo<cr>", "Show tasks info" },
   },
-  j = {
+  ["j"] = {
     name = "[l]jumps",
-    j = { "<cmd>HopAnywhere<cr>", "Jump anywhere" },
-    w = { "<cmd>HopWord<cr>", "Jump words" },
-    p = { "<cmd>HopPattern<cr>", "Jump patterns" },
-    l = { "<cmd>HopLineStart<cr>", "Jump lines" },
-    c = { "<cmd>HopChar1<cr>", "Jump character" },
-    v = { "<cmd>HopVertical<cr>", "Jump vertically" },
+    ["j"] = { "<cmd>HopAnywhere<cr>", "Jump anywhere" },
+    ["w"] = { "<cmd>HopWord<cr>", "Jump words" },
+    ["p"] = { "<cmd>HopPattern<cr>", "Jump patterns" },
+    ["l"] = { "<cmd>HopLineStart<cr>", "Jump lines" },
+    ["c"] = { "<cmd>HopChar1<cr>", "Jump character" },
+    ["v"] = { "<cmd>HopVertical<cr>", "Jump vertically" },
   },
-  x = {
+  ["x"] = {
     name = "[x]sessions",
-    s = {
+    ["s"] = {
       function()
         require("resession").save()
       end,
       "Save session",
     },
-    l = {
+    ["l"] = {
       function()
         require("resession").load()
       end,
       "Load session",
     },
-    d = {
+    ["d"] = {
       function()
         require("resession").delete()
       end,
       "Delete session",
     },
   },
-  n = {
+  ["n"] = {
     name = "[n]otifications",
-    r = { "<cmd>Telescope notify<cr>", "Browse recent notifications" },
-    l = { "<cmd>Noice log<cr>", "Browse log" },
+    ["r"] = { "<cmd>Telescope notify<cr>", "Browse recent notifications" },
+    ["l"] = { "<cmd>Noice log<cr>", "Browse log" },
   },
-  l = {
+  ["l"] = {
     name = "[l]sp",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = {
+    ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    ["d"] = {
       "<cmd>Telescope diagnostics bufnr=0<cr>",
       "Document Diagnostics",
     },
-    w = {
+    ["w"] = {
       "<cmd>Telescope diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle inlay hints" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>Mason<cr>", "Installer (Mason)" },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Document Symbols" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    S = {
+    ["h"] = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle inlay hints" },
+    ["i"] = { "<cmd>LspInfo<cr>", "Info" },
+    ["I"] = { "<cmd>Mason<cr>", "Installer (Mason)" },
+    ["l"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    ["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    ["s"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Document Symbols" },
+    ["q"] = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    ["S"] = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },

@@ -28,7 +28,7 @@ require("noice").setup {
     {
       view = "notify",
       filter = {
-        find = "Failed to attach to svelte for current buffer. Already attached to svelte",
+        find = "Failed to attach to .* for current buffer. Already attached to .*",
       },
       opts = { skip = true },
     },
