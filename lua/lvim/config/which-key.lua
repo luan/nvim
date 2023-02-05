@@ -77,8 +77,8 @@ local mappings = {
   },
   ["q"] = {
     name = "[q]uickfix",
-    ["q"] = { require("lvim.utils").toggle_quickfix(), "Toggle quickfix" },
-    ["l"] = { require("lvim.utils").toggle_loc(), "Toggle location list" },
+    ["q"] = { require("lvim.utils").toggle_quickfix, "Toggle quickfix" },
+    ["l"] = { require("lvim.utils").toggle_loc, "Toggle location list" },
   },
   ["f"] = {
     name = "[f]iles",

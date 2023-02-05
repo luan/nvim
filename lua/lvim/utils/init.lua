@@ -65,6 +65,16 @@ function M.get_win_type(winid)
   end
 end
 
+function M.get_win_info(qftype)
+  local ll = qftype == "l" and 1 or 0
+  for _, info in ipairs(vim.fn.getwininfo()) do
+    if info.quickfix == 1 and info.loclist == ll then
+      return info
+    end
+  end
+  return nil
+end
+
 function M.toggle_quickfix()
   if M.get_win_info "c" ~= nil then
     vim.cmd.cclose()
