@@ -47,11 +47,11 @@ telescope.setup {
     ---@usage Mappings are fully customizable. Many familiar mapping patterns are setup as defaults.
     mappings = {
       i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.move_selection_next,
+        ["<C-p>"] = actions.move_selection_previous,
         ["<C-c>"] = actions.close,
-        ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
+        ["<C-j>"] = actions.cycle_history_next,
+        ["<C-k>"] = actions.cycle_history_prev,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<CR>"] = actions.select_default,
       },
@@ -173,3 +173,4 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "projects"
 require("telescope").load_extension "frecency"
 require("telescope").load_extension "ui-select"
+require("telescope").load_extension "yank_history"

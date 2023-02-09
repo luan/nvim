@@ -65,8 +65,9 @@ local opts = {
 
 local mappings = {
   [";"] = { "<cmd>Alpha<cr>", "Go to dashboard" },
-  ["S"] = { "<cmd>lua require('trevj').split_at_cursor()<cr>", "Split block" },
-  ["J"] = { "<cmd>lua reload('trevj').join_at_cursor()<cr>", "Split block" },
+  ["S"] = { "<cmd>TSJSplit<cr>", "Split block" },
+  ["J"] = { "<cmd>TSJJoin<cr>", "Split block" },
+  ["M"] = { "<cmd>TSJToggle<cr>", "Split block" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["E"] = { "<cmd>NvimTreeFindFile<cr>", "Explorer (reveal current file)" },
   ["w"] = {

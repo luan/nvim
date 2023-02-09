@@ -1,5 +1,7 @@
 local c = require("lvim.utils.plugins").c
+local d = require("lvim.utils.plugins").d
 local p = require("lvim.utils.plugins").p
+local l = require("lvim.utils.plugins").l
 
 local groups = {
   libs = p(100) {
@@ -10,16 +12,13 @@ local groups = {
     c "folke/neodev.nvim",
   },
 
-  colorschemes = {
-    { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-    { "navarasu/onedark.nvim", lazy = false, priority = 1000 },
-    "sainnhe/gruvbox-material",
-    c {
-      "loctvl842/monokai-pro.nvim",
-      lazy = false,
-      priority = 1000,
-    },
-  },
+  colorschemes = l(p(1000) {
+    "folke/tokyonight.nvim",
+    "navarasu/onedark.nvim",
+    "rafamadriz/neon",
+    "sainnhe/sonokai",
+    "loctvl842/monokai-pro.nvim",
+  }),
 
   ui = {
     c "rcarriga/nvim-notify",
@@ -36,7 +35,7 @@ local groups = {
     },
     c "goolord/alpha-nvim",
     c "nvim-tree/nvim-web-devicons",
-    { "karb94/neoscroll.nvim", config = true },
+    d "karb94/neoscroll.nvim",
     { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
     c {
       "utilyre/barbecue.nvim",
@@ -47,7 +46,8 @@ local groups = {
       },
     },
     c "folke/noice.nvim",
-    { "petertriho/nvim-scrollbar", config = true },
+    d "petertriho/nvim-scrollbar",
+    d "mawkler/modicator.nvim",
   },
 
   utilities = {
@@ -73,6 +73,9 @@ local groups = {
       },
     },
     c "stevearc/resession.nvim",
+    "chrisgrieser/nvim-genghis",
+    d "chrisgrieser/nvim-recorder",
+    c "Wansmer/treesj",
   },
 
   editor = {
@@ -115,11 +118,19 @@ local groups = {
     c "windwp/nvim-spectre",
     "cshuaimin/ssr.nvim",
 
+    d "abecodes/tabout.nvim",
+    d "phaazon/hop.nvim",
+
+    d "kylechui/nvim-surround",
+    c "code-biscuits/nvim-biscuits",
+    d "nguyenvukhang/nvim-toggler",
+
+    d "gbprod/cutlass.nvim",
+    c "gbprod/yanky.nvim",
+    c "gbprod/substitute.nvim",
+
     -- TODO: check for lua version
     "junegunn/vim-easy-align",
-    { "abecodes/tabout.nvim", config = true },
-    { "phaazon/hop.nvim", config = true },
-    -- TODO: check for lua version
     "mbbill/undotree",
   },
 
@@ -161,6 +172,7 @@ local groups = {
         "mrjones2014/nvim-ts-rainbow",
         "RRethy/nvim-treesitter-endwise",
         "nvim-treesitter/nvim-treesitter-textobjects",
+        "m-demare/hlargs.nvim",
       },
     },
     c {
@@ -194,11 +206,9 @@ local groups = {
   -- TODO: check for lua version
   tpope = {
     "tpope/vim-abolish",
-    "tpope/vim-eunuch",
     "tpope/vim-fugitive",
     "tpope/vim-repeat",
     "tpope/vim-rhubarb",
-    "tpope/vim-surround",
     "tpope/vim-unimpaired",
   },
 

@@ -23,7 +23,10 @@ require("noice").setup {
   routes = {
     {
       view = "notify",
-      filter = { event = "msg_showmode" },
+      filter = {
+        find = "search hit BOTTOM, continuing at TOP",
+      },
+      opts = { skip = true },
     },
     {
       view = "notify",

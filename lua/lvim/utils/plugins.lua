@@ -1,10 +1,14 @@
 local M = {}
 
-function M.config(opts)
+local function module_name(opts)
   local name = string.lower(opts.name:gsub("%..*", ""))
   name = name:gsub("^n?vim%-", ""):gsub("%-n?vim$", ""):gsub("_", "-"):gsub("lspconfig", "lsp")
-  local mod = "lvim.config." .. name
-  local m = require(mod)
+  return "lvim.config." .. name
+end
+
+function M.config(opts)
+  local mod = module_name(opts)
+  local m = require_safe(mod)
   if type(m) == "table" then
     m.setup()
   end
@@ -23,6 +27,12 @@ function M.mapped(f)
   end
 end
 
+function M.d(spec)
+  spec = M.tableize(spec)
+  spec["config"] = true
+  return spec
+end
+
 function M.c(spec)
   spec = M.tableize(spec)
   spec["config"] = M.config
@@ -36,5 +46,11 @@ function M.p(priority)
     return spec
   end)
 end
+
+M.l = M.mapped(function(spec)
+  spec = M.tableize(spec)
+  spec["lazy"] = false
+  return spec
+end)
 
 return M

@@ -6,6 +6,7 @@ _G.CACHE_PATH = vim.fn.stdpath "cache"
 _G.XDG_CONFIG_HOME = os.getenv "XDG_CONFIG_HOME" or require("lvim.utils.file").join(os.getenv "HOME", ".config")
 _G.tbl = reload "lvim.utils.table"
 _G.lvim = {
+  colorscheme = "tokyonight-night",
   log = { level = "INFO" },
   plugins = {},
   nullls = { sources = {} },

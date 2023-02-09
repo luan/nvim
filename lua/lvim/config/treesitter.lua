@@ -110,3 +110,5 @@ require("nvim-ts-autotag").setup {
     "hbs",
   },
 }
+
+require("hlargs").setup()

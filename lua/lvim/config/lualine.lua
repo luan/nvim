@@ -67,10 +67,8 @@ local float_config = {
     lualine_c = {},
     lualine_x = {
       "overseer",
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-      },
+      { require("recorder").displaySlots },
+      { require("recorder").recordingStatus },
     },
     lualine_y = { diff },
     lualine_z = { location, filetype },

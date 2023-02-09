@@ -51,13 +51,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  group = augroup,
-  callback = function()
-    vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
-  end,
-})
-
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = augroup,
   callback = function()

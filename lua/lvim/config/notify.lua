@@ -7,7 +7,7 @@ local icons = require "lvim.core.icons"
 
 notify.setup {
   -- Animation style (see below for details)
-  stages = "fade_in_slide_out",
+  stages = "fade",
 
   -- Function called when a new window is opened, use for changing win settings/config
   on_open = nil,
@@ -16,7 +16,7 @@ notify.setup {
   on_close = nil,
 
   -- Render function for notifications. See notify-render()
-  render = "default",
+  render = "compact",
 
   -- Default timeout for notifications
   timeout = 1000,
@@ -27,15 +27,6 @@ notify.setup {
 
   -- Minimum width for notification windows
   minimum_width = 10,
-
-  -- Icons for the different levels
-  icons = {
-    ERROR = icons.diagnostics.Error,
-    WARN = icons.diagnostics.Warning,
-    INFO = icons.diagnostics.Information,
-    DEBUG = icons.ui.Bug,
-    TRACE = icons.ui.Pencil,
-  },
 }
 
 vim.notify = notify

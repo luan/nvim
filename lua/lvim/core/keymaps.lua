@@ -80,11 +80,8 @@ vim.keymap.set({ "i", "c" }, "<C-h>", "<BS>")
 vim.keymap.set({ "i", "c" }, "<C-a>", "<Home>")
 vim.keymap.set({ "i", "c" }, "<C-e>", "<End>")
 
-vim.keymap.set("c", "<C-p>", "<Up>")
-vim.keymap.set("c", "<C-n>", "<Down>")
-
-vim.keymap.set("i", "<C-k>", "<Esc>lDa")
-vim.keymap.set("c", "<C-k>", "<C-f>D<C-c><C-c>:<Up>")
+vim.keymap.set("c", "<C-k>", "<Up>")
+vim.keymap.set("c", "<C-j>", "<Down>")
 
 ---- Save on enter
 vim.keymap.set("n", "<CR>", function()
@@ -139,4 +136,9 @@ vim.keymap.set("n", "-", function()
   vim.cmd.edit { args = { vim.fn.expand "%:p:h" } }
 end, { silent = true })
 
--- vim.keymap.set("n", "-", "<cmd>Neotree float toggle reveal_force_cwd<cr>", { desc = "Show floating file browser" })
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-j>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-k>", "<Plug>(YankyCycleBackward)")

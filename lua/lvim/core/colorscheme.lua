@@ -3,6 +3,11 @@ local color_utils = require "lvim.utils.colors"
 
 local function colorscheme_callback()
   local bg = color_utils.get_hl_bg "TelescopeNormal"
+  if not bg then
+    bg = color_utils.get_hl_bg "StatusLine"
+  end
+
+  vim.api.nvim_command("hi TelescopeNormal guibg=" .. bg)
   vim.api.nvim_command("hi FloatBorder guifg=" .. bg)
   vim.api.nvim_command("hi ToggleTermBorder guifg=" .. bg)
   vim.api.nvim_command("hi TelescopeBorder guifg=" .. bg)
@@ -27,7 +32,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = colorscheme_group,
 })
 
-vim.cmd.colorscheme { args = { "tokyonight-night" } }
+vim.cmd.colorscheme { args = { lvim.colorscheme } }
 
 -- Some themes do not trigger the autocmd in time and we lose our precious dotted line
 ---@diagnostic disable-next-line: param-type-mismatch
