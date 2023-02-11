@@ -10,7 +10,6 @@ _G.lvim = {
   log = { level = "INFO" },
   plugins = {},
   nullls = { sources = {} },
-  gitsigns = { enabled = true },
   copilot = { enabled = false },
   codeium = { enabled = false },
 }

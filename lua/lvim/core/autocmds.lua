@@ -12,9 +12,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
   callback = function()
     vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q!<CR>", { noremap = true, silent = true })
-    vim.cmd [[
-		      set nobuflisted 
-		]]
+    vim.cmd [[set nobuflisted]]
   end,
 })
 
@@ -59,8 +57,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
       return
     end
     if luasnip.expand_or_jumpable() then
-      -- ask maintainer for option to make this silent
-      -- luasnip.unlink_current()
       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
     end
   end,
@@ -80,6 +76,14 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = augroup,
   callback = function()
     vim.cmd [[echon '']]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup,
+  pattern = { "qf" },
+  callback = function()
+    vim.cmd [[wincmd J]]
   end,
 })
 

@@ -5,4 +5,7 @@ require("nvim-biscuits").setup {
     min_distance = 5,
     prefix_string = "  ",
   },
+  language_config = {
+    help = { disabled = true },
+  },
 }

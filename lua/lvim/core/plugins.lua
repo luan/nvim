@@ -78,21 +78,27 @@ local groups = {
     c "Wansmer/treesj",
   },
 
-  editor = {
-    c "ahmedkhalf/project.nvim",
+  finding = {
     c "ibhagwan/fzf-lua",
-    c {
-      "nvim-telescope/telescope.nvim",
-      dependencies = { "telescope-fzf-native.nvim" },
-    },
+    c "nvim-telescope/telescope.nvim",
     { "nvim-telescope/telescope-frecency.nvim", dependencies = "kkharji/sqlite.lua" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
     "nvim-telescope/telescope-ui-select.nvim",
-    c "folke/which-key.nvim",
+  },
+
+  editor = {
     c {
-      "lewis6991/gitsigns.nvim",
+      "mrjones2014/legendary.nvim",
+      opts = { which_key = { auto_register = true } },
+      lazy = false,
+      priority = 10,
+    },
+    "folke/which-key.nvim",
+
+    c "ahmedkhalf/project.nvim",
+    c {
+      "tanvirtin/vgit.nvim",
       event = "BufReadPre",
-      enabled = lvim.gitsigns.enabled,
     },
     -- TODO: check for lua version
     c "RRethy/vim-illuminate",
@@ -125,13 +131,9 @@ local groups = {
     c "code-biscuits/nvim-biscuits",
     d "nguyenvukhang/nvim-toggler",
 
-    d "gbprod/cutlass.nvim",
+    c "gbprod/cutlass.nvim",
     c "gbprod/yanky.nvim",
     c "gbprod/substitute.nvim",
-
-    -- TODO: check for lua version
-    "junegunn/vim-easy-align",
-    "mbbill/undotree",
   },
 
   code = {
