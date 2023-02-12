@@ -16,6 +16,10 @@ local function colorscheme_callback()
   vim.api.nvim_command("hi FzfLuaBorder guifg=" .. bg)
   vim.api.nvim_command "hi link FzfLuaNormal TelescopeNormal"
   vim.api.nvim_command "hi IndentBlanklineContextStart gui=underdotted"
+
+  -- Plugin integrations
+  require("lualine").setup { options = { theme = vim.g.colors_name } }
+  require("barbecue").setup { theme = "catppuccin" }
 end
 
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {

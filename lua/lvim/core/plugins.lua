@@ -19,6 +19,7 @@ local groups = {
     "sainnhe/sonokai",
     c "loctvl842/monokai-pro.nvim",
     c "EdenEast/nightfox.nvim",
+    c { "catppuccin/nvim", name = "catppuccin" },
   }),
 
   ui = {
@@ -35,6 +36,7 @@ local groups = {
     c "nvim-tree/nvim-web-devicons",
     d "karb94/neoscroll.nvim",
     { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
+    c "SmiteshP/nvim-navic",
     c {
       "utilyre/barbecue.nvim",
       dependencies = {
@@ -44,7 +46,7 @@ local groups = {
     },
     c "folke/noice.nvim",
     d "petertriho/nvim-scrollbar",
-    d "mawkler/modicator.nvim",
+    d { "mawkler/modicator.nvim", event = "VeryLazy" },
   },
 
   utilities = {
@@ -73,6 +75,7 @@ local groups = {
     "chrisgrieser/nvim-genghis",
     d "chrisgrieser/nvim-recorder",
     c "Wansmer/treesj",
+    d "folke/todo-comments.nvim",
   },
 
   finding = {
@@ -189,7 +192,7 @@ local groups = {
     },
     c {
       "zbirenbaum/copilot.lua",
-      enabled = lvim.copilot.enabled,
+      enabled = lvim.copilot.enabled and not lvim.codeium.enabled,
       name = "copilot",
       event = "InsertEnter",
       cmd = "Copilot",

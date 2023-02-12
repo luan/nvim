@@ -2,7 +2,7 @@
 vim.defer_fn(function()
   require("copilot").setup {
     suggestion = {
-      enabled = false,
+      enabled = true,
       auto_trigger = true,
       debounce = 75,
       keymap = {
@@ -12,6 +12,6 @@ vim.defer_fn(function()
         dismiss = "<C-k>",
       },
     },
-    panel = { enabled = false },
+    panel = { enabled = true },
   }
 end, 100)

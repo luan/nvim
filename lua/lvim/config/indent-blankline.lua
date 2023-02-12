@@ -5,8 +5,8 @@ end
 
 indent_blankline.setup {
   char = "▏",
-  context_char = "▏",
-  show_end_of_line = false,
+  context_char = "▎",
+  show_end_of_line = true,
   space_char_blankline = " ",
   show_current_context = true,
   show_current_context_start = true,
@@ -24,9 +24,4 @@ indent_blankline.setup {
     "terminal",
     "nofile",
   },
-  -- char_highlight_list = {
-  --   "IndentBlanklineIndent1",
-  --   "IndentBlanklineIndent2",
-  --   "IndentBlanklineIndent3",
-  -- },
 }
