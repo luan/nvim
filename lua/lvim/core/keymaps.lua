@@ -65,7 +65,7 @@ require("legendary").keymaps {
   -- Search
   { "<M-S-f>", "<cmd>Spectre<cr>", description = "Search in project" },
   { "<M-f>", "<cmd>lua require('spectre').open_file_search()<cr>", description = "Search in file" },
-  { "<M-S-s>", require("ssr").open, description = "Structured search & replace" },
+  { "<M-S-s>", "<cmd>lua require('ssr').open()", description = "Structured search & replace" },
 
   -- Readline bindings
   { "<C-b>", "<Left>", mode = { "i", "c" } },
@@ -231,8 +231,8 @@ local leader_mappings = {
   ["?"] = { "<cmd>Legendary<cr>", "Command palette" },
   [";"] = { "<cmd>Alpha<cr>", "Go to dashboard" },
   ["S"] = { "<cmd>TSJSplit<cr>", "Split block" },
-  ["J"] = { "<cmd>TSJJoin<cr>", "Split block" },
-  ["M"] = { "<cmd>TSJToggle<cr>", "Split block" },
+  ["J"] = { "<cmd>TSJJoin<cr>", "Join block" },
+  ["M"] = { "<cmd>TSJToggle<cr>", "Split/join block" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["E"] = { "<cmd>NvimTreeFindFile<cr>", "Explorer (reveal current file)" },
   ["w"] = {

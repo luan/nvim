@@ -18,6 +18,9 @@ function M.tableize(spec)
   if type(spec) == "string" then
     spec = { spec }
   end
+  if spec.lazy == nil and spec.event == nil and spec.cmd == nil and spec.ft == nil and spec.keys == nil then
+    spec.event = "VeryLazy"
+  end
   return spec
 end
 

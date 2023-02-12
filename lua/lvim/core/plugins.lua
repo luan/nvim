@@ -23,17 +23,14 @@ local groups = {
   }),
 
   ui = {
-    c "rcarriga/nvim-notify",
+    c { "rcarriga/nvim-notify" },
     c { "nvim-tree/nvim-tree.lua", tag = "nightly" },
     c { "tamago324/lir.nvim", dependencies = { "tamago324/lir-git-status.nvim" } },
     c { "nvim-lualine/lualine.nvim" },
-    c "akinsho/toggleterm.nvim",
-    c {
-      "lukas-reineke/indent-blankline.nvim",
-      event = "BufReadPre",
-    },
-    c "goolord/alpha-nvim",
-    c "nvim-tree/nvim-web-devicons",
+    c { "akinsho/toggleterm.nvim", cmd = "ToggleTerm", keys = { "<C-\\>" } },
+    c { "lukas-reineke/indent-blankline.nvim", event = "BufReadPre" },
+    c { "glepnir/dashboard-nvim", event = "VimEnter" },
+    c { "nvim-tree/nvim-web-devicons" },
     d "karb94/neoscroll.nvim",
     { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
     c "SmiteshP/nvim-navic",
@@ -46,7 +43,6 @@ local groups = {
     },
     c "folke/noice.nvim",
     d "petertriho/nvim-scrollbar",
-    d { "mawkler/modicator.nvim", event = "VeryLazy" },
   },
 
   utilities = {
@@ -57,7 +53,6 @@ local groups = {
         require "mkdir"
       end,
     },
-    c "stevearc/overseer.nvim",
     c {
       "nvim-neotest/neotest",
       dependencies = {
@@ -72,18 +67,37 @@ local groups = {
       },
     },
     c "stevearc/resession.nvim",
-    "chrisgrieser/nvim-genghis",
+    {
+      "chrisgrieser/nvim-genghis",
+      cmd = {
+        "NewFromSelection",
+        "Duplicate",
+        "Rename",
+        "Trash",
+        "Move",
+        "CopyFilename",
+        "CopyFilepath",
+        "Chmodx",
+        "New",
+      },
+    },
     d "chrisgrieser/nvim-recorder",
-    c "Wansmer/treesj",
-    d "folke/todo-comments.nvim",
+    c { "Wansmer/treesj", cmd = { "TSJSplit", "TSJJoin", "TSJToggle" } },
+    d { "folke/todo-comments.nvim", event = "BufReadPre" },
   },
 
   finding = {
-    c "ibhagwan/fzf-lua",
-    c "nvim-telescope/telescope.nvim",
-    { "nvim-telescope/telescope-frecency.nvim", dependencies = "kkharji/sqlite.lua" },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-    "nvim-telescope/telescope-ui-select.nvim",
+    c { "ibhagwan/fzf-lua", cmd = "FzfLua" },
+    c {
+      "nvim-telescope/telescope.nvim",
+      lazy = false,
+      dependencies = {
+        "nvim-telescope/telescope-frecency.nvim",
+        "kkharji/sqlite.lua",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
+    },
   },
 
   editor = {
@@ -93,7 +107,7 @@ local groups = {
       lazy = false,
       priority = 10,
     },
-    "folke/which-key.nvim",
+    { "folke/which-key.nvim", lazy = true },
 
     c "ahmedkhalf/project.nvim",
     c {
@@ -112,7 +126,6 @@ local groups = {
     },
     c {
       "windwp/nvim-autopairs",
-      event = "VeryLazy",
     },
     c {
       "numToStr/Comment.nvim",
@@ -143,8 +156,8 @@ local groups = {
     },
 
     {
-      event = "InsertEnter",
       "rafamadriz/friendly-snippets",
+      event = "InsertEnter",
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
         require("luasnip.loaders.from_snipmate").lazy_load()
