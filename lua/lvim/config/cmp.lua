@@ -21,12 +21,20 @@ cmp.setup {
   },
   preselect = cmp.PreselectMode.None,
   formatting = {
-    format = lspkind.cmp_format {
-      mode = "symbol_text", -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = "", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-      symbol_map = { Copilot = "", Suggestion = "" },
-    },
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      local kind = require("lspkind").cmp_format {
+        mode = "symbol_text",
+        maxwidth = 50,
+        ellipsis_char = "", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        symbol_map = { Copilot = "", Suggestion = "" },
+      }(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+      return kind
+    end,
   },
   performance = {
     debounce = 20,
@@ -108,9 +116,11 @@ cmp.setup {
     { name = "path", group_index = 2 },
   },
   window = {
-    documentation = {},
     completion = {
-      border = "none",
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+    },
+    documentation = cmp.config.window.bordered {
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },
   },
   experimental = {

@@ -165,7 +165,7 @@ require("legendary").keymaps {
   -- exchange
   { "sx", "<cmd>lua require('substitute.exchange').operator()<cr>" },
   { "sxx", "<cmd>lua require('substitute.exchange').line()<cr>" },
-  { "x", "<cmd>lua require('substitute.exchange').visual()<cr>", mode = { "x" } },
+  { "X", "<cmd>lua require('substitute.exchange').visual()<cr>", mode = { "x" } },
   { "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>" },
 }
 

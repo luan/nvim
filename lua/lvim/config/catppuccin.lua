@@ -32,7 +32,34 @@ require("catppuccin").setup {
   },
   custom_highlights = function(c)
     local dark = util.darken(c.base, 0.5)
-    local hl = {}
+    local hl = {
+      CmpItemKindSnippet = { fg = c.base, bg = c.mauve },
+      CmpItemKindKeyword = { fg = c.base, bg = c.red },
+      CmpItemKindText = { fg = c.base, bg = c.teal },
+      CmpItemKindMethod = { fg = c.base, bg = c.blue },
+      CmpItemKindConstructor = { fg = c.base, bg = c.blue },
+      CmpItemKindFunction = { fg = c.base, bg = c.blue },
+      CmpItemKindFolder = { fg = c.base, bg = c.blue },
+      CmpItemKindModule = { fg = c.base, bg = c.blue },
+      CmpItemKindConstant = { fg = c.base, bg = c.peach },
+      CmpItemKindField = { fg = c.base, bg = c.green },
+      CmpItemKindProperty = { fg = c.base, bg = c.green },
+      CmpItemKindEnum = { fg = c.base, bg = c.green },
+      CmpItemKindUnit = { fg = c.base, bg = c.green },
+      CmpItemKindClass = { fg = c.base, bg = c.yellow },
+      CmpItemKindVariable = { fg = c.base, bg = c.flamingo },
+      CmpItemKindFile = { fg = c.base, bg = c.blue },
+      CmpItemKindInterface = { fg = c.base, bg = c.yellow },
+      CmpItemKindColor = { fg = c.base, bg = c.red },
+      CmpItemKindReference = { fg = c.base, bg = c.red },
+      CmpItemKindEnumMember = { fg = c.base, bg = c.red },
+      CmpItemKindStruct = { fg = c.base, bg = c.blue },
+      CmpItemKindValue = { fg = c.base, bg = c.peach },
+      CmpItemKindEvent = { fg = c.base, bg = c.blue },
+      CmpItemKindOperator = { fg = c.base, bg = c.blue },
+      CmpItemKindTypeParameter = { fg = c.base, bg = c.blue },
+      CmpItemKindCopilot = { fg = c.base, bg = c.teal },
+    }
     hl.TelescopeNormal = {
       bg = dark,
       fg = c.fg_dark,
