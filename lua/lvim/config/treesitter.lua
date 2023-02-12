@@ -58,12 +58,12 @@ require("nvim-treesitter.configs").setup {
       goto_next = {
         ["]c"] = "@conditional.outer",
         ["]a"] = "@parameter.outer",
-        ["]f"] = "@funcion.outer",
+        ["]f"] = "@function.outer",
       },
       goto_previous = {
         ["[c"] = "@conditional.outer",
         ["[a"] = "@parameter.outer",
-        ["[f"] = "@funcion.outer",
+        ["[f"] = "@function.outer",
       },
     },
   },
