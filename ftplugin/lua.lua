@@ -1,6 +1,13 @@
 require("lvim.lsp").setup("sumneko_lua", {
   settings = {
     Lua = {
+      format = {
+        enable = false,
+        defaultConfig = {
+          indentStyle = "space",
+          indentSize = "2",
+        },
+      },
       hint = {
         enable = true,
         arrayIndex = "Disable", -- "Enable", "Auto", "Disable"

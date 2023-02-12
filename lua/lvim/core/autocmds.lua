@@ -102,3 +102,31 @@ vim.api.nvim_create_autocmd({ "QuickFixCmdPost" }, {
     vim.cmd [[lwindow]]
   end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup,
+  pattern = "TelescopePrompt",
+  callback = function()
+    vim.cmd.setlocal [[nocursorline]]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinEnter" }, {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    if vim.bo.buftype ~= "prompt" then
+      vim.cmd.setlocal [[cursorline]]
+    else
+      vim.cmd.setlocal [[nocursorline]]
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    vim.cmd.setlocal [[nocursorline]]
+  end,
+})

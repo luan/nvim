@@ -7,10 +7,12 @@ local function colorscheme_callback()
     bg = color_utils.get_hl_bg "StatusLine"
   end
 
+  vim.api.nvim_command("hi NormalFloat guibg=" .. bg)
   vim.api.nvim_command("hi TelescopeNormal guibg=" .. bg)
+  vim.api.nvim_command("hi TelescopeBorder guifg=" .. bg)
+  vim.api.nvim_command("hi TelescopePromptNormal guibg=" .. bg)
   vim.api.nvim_command("hi FloatBorder guifg=" .. bg)
   vim.api.nvim_command("hi ToggleTermBorder guifg=" .. bg)
-  vim.api.nvim_command("hi TelescopeBorder guifg=" .. bg)
   vim.api.nvim_command("hi FzfLuaBorder guifg=" .. bg)
   vim.api.nvim_command "hi link FzfLuaNormal TelescopeNormal"
   vim.api.nvim_command "hi IndentBlanklineContextStart gui=underdotted"

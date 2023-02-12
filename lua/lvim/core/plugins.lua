@@ -13,21 +13,19 @@ local groups = {
   },
 
   colorschemes = l(p(1000) {
-    "folke/tokyonight.nvim",
+    c "folke/tokyonight.nvim",
     "navarasu/onedark.nvim",
     "rafamadriz/neon",
     "sainnhe/sonokai",
-    "loctvl842/monokai-pro.nvim",
+    c "loctvl842/monokai-pro.nvim",
+    c "EdenEast/nightfox.nvim",
   }),
 
   ui = {
     c "rcarriga/nvim-notify",
     c { "nvim-tree/nvim-tree.lua", tag = "nightly" },
     c { "tamago324/lir.nvim", dependencies = { "tamago324/lir-git-status.nvim" } },
-    c {
-      "nvim-lualine/lualine.nvim",
-      dependencies = { "loctvl842/monokai-pro.nvim" },
-    },
+    c { "nvim-lualine/lualine.nvim" },
     c "akinsho/toggleterm.nvim",
     c {
       "lukas-reineke/indent-blankline.nvim",
@@ -42,7 +40,6 @@ local groups = {
       dependencies = {
         "SmiteshP/nvim-navic",
         "nvim-tree/nvim-web-devicons",
-        "loctvl842/monokai-pro.nvim",
       },
     },
     c "folke/noice.nvim",
