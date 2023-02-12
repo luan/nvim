@@ -66,9 +66,11 @@ local groups = {
         "vim-test/vim-test",
       },
     },
+    c "stevearc/overseer.nvim",
     c "stevearc/resession.nvim",
     {
       "chrisgrieser/nvim-genghis",
+      lazy = false,
       cmd = {
         "NewFromSelection",
         "Duplicate",
@@ -197,6 +199,7 @@ local groups = {
     },
     c {
       "williamboman/mason.nvim",
+      lazy = false,
       dependencies = { "williamboman/mason-lspconfig.nvim" },
     },
     c {

@@ -1,5 +1,3 @@
-local util = require "tokyonight.util"
-
 require("catppuccin").setup {
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = { -- :h background
@@ -31,7 +29,8 @@ require("catppuccin").setup {
     operators = {},
   },
   custom_highlights = function(c)
-    local dark = util.darken(c.base, 0.5)
+    local dark = c.surface0
+    print("-> " .. dark)
     local hl = {
       CmpItemKindSnippet = { fg = c.base, bg = c.mauve },
       CmpItemKindKeyword = { fg = c.base, bg = c.red },

@@ -117,10 +117,11 @@ cmp.setup {
   },
   window = {
     completion = {
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+      side_padding = 0,
+      winhighlight = "FloatNormal:FloatNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },
-    documentation = cmp.config.window.bordered {
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+    documentation = {
+      winhighlight = "FloatNormal:FloatNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },
   },
   experimental = {
