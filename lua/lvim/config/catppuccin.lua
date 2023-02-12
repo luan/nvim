@@ -1,3 +1,5 @@
+local util = require "tokyonight.util"
+
 require("catppuccin").setup {
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = { -- :h background
@@ -28,8 +30,39 @@ require("catppuccin").setup {
     types = {},
     operators = {},
   },
+  custom_highlights = function(c)
+    local dark = util.darken(c.base, 0.5)
+    local hl = {}
+    hl.TelescopeNormal = {
+      bg = dark,
+      fg = c.fg_dark,
+    }
+    hl.TelescopeBorder = {
+      bg = dark,
+      fg = dark,
+    }
+    hl.TelescopePromptNormal = {
+      bg = dark,
+    }
+    hl.TelescopePromptBorder = {
+      bg = dark,
+      fg = dark,
+    }
+    hl.TelescopePromptTitle = {
+      bg = dark,
+      fg = dark,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = dark,
+      fg = dark,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = dark,
+      fg = c.bg_dark,
+    }
+    return hl
+  end,
   color_overrides = {},
-  custom_highlights = {},
   integrations = {
     barbar = true,
     cmp = true,
