@@ -64,7 +64,7 @@ telescope.setup {
         "--type=f",
         "--hidden",
         "--follow",
-        "--exclude=git",
+        "--exclude=.git",
       },
     }),
     commands = tbl.merge(themes.dropdown, {

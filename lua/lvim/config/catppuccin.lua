@@ -30,8 +30,7 @@ require("catppuccin").setup {
   },
   custom_highlights = function(c)
     local dark = c.surface0
-    print("-> " .. dark)
-    local hl = {
+    return {
       CmpItemKindSnippet = { fg = c.base, bg = c.mauve },
       CmpItemKindKeyword = { fg = c.base, bg = c.red },
       CmpItemKindText = { fg = c.base, bg = c.teal },
@@ -58,35 +57,15 @@ require("catppuccin").setup {
       CmpItemKindOperator = { fg = c.base, bg = c.blue },
       CmpItemKindTypeParameter = { fg = c.base, bg = c.blue },
       CmpItemKindCopilot = { fg = c.base, bg = c.teal },
+      TelescopeNormal = { bg = dark, fg = c.fg_dark },
+      TelescopeBorder = { bg = dark, fg = dark },
+      TelescopePromptNormal = { bg = dark },
+      TelescopePromptBorder = { bg = dark, fg = dark },
+      TelescopePromptTitle = { bg = dark, fg = dark },
+      TelescopePreviewTitle = { bg = dark, fg = dark },
+      TelescopeResultsTitle = { bg = dark, fg = c.bg_dark },
+      NoiceCursor = { bg = c.yellow },
     }
-    hl.TelescopeNormal = {
-      bg = dark,
-      fg = c.fg_dark,
-    }
-    hl.TelescopeBorder = {
-      bg = dark,
-      fg = dark,
-    }
-    hl.TelescopePromptNormal = {
-      bg = dark,
-    }
-    hl.TelescopePromptBorder = {
-      bg = dark,
-      fg = dark,
-    }
-    hl.TelescopePromptTitle = {
-      bg = dark,
-      fg = dark,
-    }
-    hl.TelescopePreviewTitle = {
-      bg = dark,
-      fg = dark,
-    }
-    hl.TelescopeResultsTitle = {
-      bg = dark,
-      fg = c.bg_dark,
-    }
-    return hl
   end,
   color_overrides = {},
   integrations = {

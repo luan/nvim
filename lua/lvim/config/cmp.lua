@@ -46,7 +46,7 @@ cmp.setup {
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
-    select = false, --[[  NOTE: test ]]
+    select = false,
   },
   mapping = cmp.mapping.preset.insert {
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
@@ -117,6 +117,16 @@ cmp.setup {
   },
   window = {
     completion = {
+      border = {
+        "🬞",
+        "🬭",
+        "🬏",
+        "▌",
+        "🬀",
+        "🬂",
+        "🬁",
+        "▐",
+      },
       side_padding = 0,
       winhighlight = "FloatNormal:FloatNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
     },

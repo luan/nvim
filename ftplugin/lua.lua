@@ -1,4 +1,4 @@
-require("lvim.lsp").setup("sumneko_lua", {
+require("lvim.lsp").setup("lua_ls", {
   settings = {
     Lua = {
       format = {

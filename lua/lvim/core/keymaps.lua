@@ -67,20 +67,6 @@ require("legendary").keymaps {
   { "<M-f>", "<cmd>lua require('spectre').open_file_search()<cr>", description = "Search in file" },
   { "<M-S-s>", "<cmd>lua require('ssr').open()", description = "Structured search & replace" },
 
-  -- Readline bindings
-  { "<C-b>", "<Left>", mode = { "i", "c" } },
-  { "<M-b>", "<C-Left>", mode = { "i", "c" } },
-
-  { "<C-f>", "<Right>", mode = { "i", "c" } },
-  { "<M-f>", "<C-Right>", mode = { "i", "c" } },
-
-  { "<C-d>", "<Del>", mode = { "i", "c" } },
-  { "<M-d>", "<C-Right><C-w>", mode = { "i", "c" } },
-  { "<C-h>", "<BS>", mode = { "i", "c" } },
-
-  { "<C-a>", "<Home>", mode = { "i", "c" } },
-  { "<C-e>", "<End>", mode = { "i", "c" } },
-
   -- Command mode history
   { "<C-k>", "<Up>", mode = "c" },
   { "<C-j>", "<Down>", mode = "c" },
@@ -411,3 +397,17 @@ wk.register(next_mappings, tbl.merge(pair_opts, { prefix = "]" }))
 vim.keymap.set("n", "<leader>sg", ":silent! grep! ", {
   desc = "Find text",
 })
+
+-- readline bindings
+vim.keymap.set({ "i", "c" }, "<C-b>", "<Left>")
+vim.keymap.set({ "i", "c" }, "<M-b>", "<C-Left>")
+
+vim.keymap.set({ "i", "c" }, "<C-f>", "<Right>")
+vim.keymap.set({ "i", "c" }, "<M-f>", "<C-Right>")
+
+vim.keymap.set({ "i", "c" }, "<C-d>", "<Del>")
+vim.keymap.set({ "i", "c" }, "<M-d>", "<C-Right><C-w>")
+vim.keymap.set({ "i", "c" }, "<C-h>", "<BS>")
+
+vim.keymap.set({ "i", "c" }, "<C-a>", "<Home>")
+vim.keymap.set({ "i", "c" }, "<C-e>", "<End>")

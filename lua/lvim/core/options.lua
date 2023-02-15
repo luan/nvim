@@ -14,6 +14,15 @@ local options = {
   timeoutlen = 500, -- Timeout for keybindings
   ttimeoutlen = -1, -- Timeout for completing commands
   inccommand = "nosplit", -- Preview commands like substitute
+  guicursor = {
+    "n-v-c:block",
+    "i-c-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "sm:block-blinkwait175-blinkoff150-blinkon175",
+  },
+  pumblend = 10,
 
   ignorecase = true, -- Case insensitive search
   smartcase = true, -- ... but case sensitive when uc present
