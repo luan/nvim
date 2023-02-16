@@ -1,3 +1,5 @@
+local util = require "lvim.utils.colors"
+
 require("catppuccin").setup {
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = { -- :h background
@@ -65,6 +67,8 @@ require("catppuccin").setup {
       TelescopePreviewTitle = { bg = dark, fg = dark },
       TelescopeResultsTitle = { bg = dark, fg = c.bg_dark },
       NoiceCursor = { bg = c.yellow },
+      IndentBlanklineContextChar = { fg = util.darken(c.flamingo, 0.3) },
+      IndentBlanklineContextStart = { sp = util.darken(c.flamingo, 0.3) },
     }
   end,
   color_overrides = {},
