@@ -215,7 +215,7 @@ local leader_opts = {
 
 local leader_mappings = {
   ["?"] = { "<cmd>Legendary<cr>", "Command palette" },
-  [";"] = { "<cmd>Alpha<cr>", "Go to dashboard" },
+  [";"] = { "<cmd>Dashboard<cr>", "Go to dashboard" },
   ["S"] = { "<cmd>TSJSplit<cr>", "Split block" },
   ["J"] = { "<cmd>TSJJoin<cr>", "Join block" },
   ["M"] = { "<cmd>TSJToggle<cr>", "Split/join block" },
