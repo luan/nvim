@@ -3,7 +3,7 @@ local options = {
   autowriteall = true, -- Writes on make/shell commands
   hidden = true, -- Allow buffer switching without saving
   linespace = -1, -- No extra spaces between rows
-  wrap = false, -- Do not wrap long lines
+  wrap = true, -- Do not wrap long lines
   number = true, -- Show line numbers
   scrolloff = 4, -- Minumum lines to keep above and below cursor
   showmatch = true, -- Show matching brackets/parentthesis
@@ -23,6 +23,14 @@ local options = {
     "sm:block-blinkwait175-blinkoff150-blinkon175",
   },
   pumblend = 10,
+  list = true,
+  listchars = {
+    tab = "▷ ",
+    trail = "⊙",
+    extends = "◣",
+    precedes = "◢",
+    nbsp = "○",
+  },
 
   ignorecase = true, -- Case insensitive search
   smartcase = true, -- ... but case sensitive when uc present

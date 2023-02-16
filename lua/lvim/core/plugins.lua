@@ -86,6 +86,8 @@ local groups = {
     d "chrisgrieser/nvim-recorder",
     c { "Wansmer/treesj", cmd = { "TSJSplit", "TSJJoin", "TSJToggle" } },
     d { "folke/todo-comments.nvim", event = "BufReadPre" },
+
+    c "echasnovski/mini.nvim",
   },
 
   finding = {
