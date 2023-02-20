@@ -3,10 +3,10 @@ if not null_ls_status_ok then
   return
 end
 
-local formatting = null_ls.builtins.formatting
-
-local sources = {}
-sources = tbl.merge_lists(sources, lvim.nullls.sources)
+local sources = lvim.nullls.sources
+if type(sources) == "function" then
+  sources = sources()
+end
 
 null_ls.setup {
   debug = false,

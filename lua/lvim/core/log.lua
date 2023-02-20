@@ -111,6 +111,7 @@ function Log:add_entry(level, msg, event)
     not pcall(function()
       local logger = self:get_logger()
       if not logger then
+        error(vim.inpsect(msg))
         return
       end
       logger:log(level, vim.inspect(msg), event)

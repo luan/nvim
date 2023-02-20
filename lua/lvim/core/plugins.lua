@@ -206,7 +206,8 @@ local groups = {
     },
     c {
       "jose-elias-alvarez/null-ls.nvim",
-      event = "BufReadPre",
+      event = "VeryLazy",
+      module = "false",
     },
     c {
       "zbirenbaum/copilot.lua",
