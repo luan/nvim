@@ -1,7 +1,8 @@
-.DS_Store
-.netrwhist
-user/
-spell/
-lua/user
-plugin/packer_compiled.vim
-plugin/packer_compiled.lua
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
