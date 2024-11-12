@@ -1,0 +1,10 @@
+{
+    "workspace.library": [
+        "/nix/store/aqafkzaksbm4zk0343qi44xxlw6hvywn-neovim-unwrapped-0.10.2/share/nvim/runtime/lua",
+        "/nix/store/aqafkzaksbm4zk0343qi44xxlw6hvywn-neovim-unwrapped-0.10.2/share/nvim/runtime/lua/vim/lsp",
+        "/Users/luan/.local/share/nvim/lazy/ui/nvchad_types",
+        "/Users/luan/.local/share/nvim/lazy/lazy.nvim/lua/lazy",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ]
+}
