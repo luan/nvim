@@ -6,5 +6,8 @@
         "/Users/luan/.local/share/nvim/lazy/lazy.nvim/lua/lazy",
         "${3rd}/luv/library",
         "${3rd}/luassert/library"
+    ],
+    "diagnostics.globals": [
+        "vim"
     ]
 }
