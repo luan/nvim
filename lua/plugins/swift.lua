@@ -13,6 +13,13 @@ return {
               or require("lspconfig.util").root_pattern("Package.swift")(fname)
               or require("lspconfig.util").find_git_ancestor(fname)
           end,
+          settings = {
+            sourcekit = {
+              formatting = {
+                enable = false,
+              },
+            },
+          },
         },
       },
     },

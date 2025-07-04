@@ -1,0 +1,3 @@
+return {
+  "assistcontrol/readline.nvim",
+}
