@@ -1,8 +1,10 @@
 return {
-  -- "folke/tokyonight.nvim",
-  -- opts = {
-  --   style = "night",
-  -- },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "night",
+    },
+  },
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   opts = {

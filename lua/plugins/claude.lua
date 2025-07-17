@@ -4,16 +4,14 @@ local function list_window_paths()
   for _, w in ipairs(vim.api.nvim_list_wins()) do
     local buf = vim.api.nvim_win_get_buf(w)
     local bufname = vim.api.nvim_buf_get_name(buf)
-    
+
     -- Skip empty buffers, special buffers, and non-file buffers
-    if bufname ~= "" and 
-       vim.bo[buf].buftype == "" and 
-       vim.fn.filereadable(bufname) == 1 then
+    if bufname ~= "" and vim.bo[buf].buftype == "" and vim.fn.filereadable(bufname) == 1 then
       local relative_path = vim.fn.fnamemodify(bufname, ":.")
       table.insert(file_paths, "@" .. relative_path)
     end
   end
-  
+
   return table.concat(file_paths, " ")
 end
 
@@ -45,14 +43,14 @@ return {
   config = function()
     require("claude-code").setup({
       window = {
-        position = "float",
+        position = "vertical",
         float = {
           width = "40%",
           height = "90%",
           row = "center",
           col = "60%",
           relative = "editor",
-          border = "single",
+          border = "rounded",
         },
       },
       refresh = {
@@ -66,7 +64,7 @@ return {
           normal = "<M-i>", -- Normal mode keymap for toggling Claude Code, false to disable
           terminal = "<M-i>", -- Terminal mode keymap for toggling Claude Code, false to disable
           variants = {
-            continue = "<leader>cC", -- Normal mode keymap for Claude Code with continue flag
+            resume = "<M-S-i>", -- Normal mode keymap for Claude Code with continue flag
             verbose = "<leader>cV", -- Normal mode keymap for Claude Code with verbose flag
           },
         },

@@ -16,21 +16,40 @@ map({ "n", "v" }, "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
 
 -- readline
 local readline = require("readline")
-vim.keymap.set("!", "<C-k>", readline.kill_line)
-vim.keymap.set("!", "<C-u>", readline.backward_kill_line)
-vim.keymap.set("!", "<M-d>", readline.kill_word)
-vim.keymap.set("!", "<M-BS>", readline.backward_kill_word)
-vim.keymap.set("!", "<C-w>", readline.unix_word_rubout)
-vim.keymap.set("!", "<C-d>", "<Delete>") -- delete-char
-vim.keymap.set("!", "<C-h>", "<BS>") -- backward-delete-char
-vim.keymap.set("!", "<C-a>", readline.beginning_of_line)
-vim.keymap.set("!", "<C-e>", readline.end_of_line)
-vim.keymap.set("!", "<M-f>", readline.forward_word)
-vim.keymap.set("!", "<M-b>", readline.backward_word)
-vim.keymap.set("!", "<C-f>", "<Right>") -- forward-char
-vim.keymap.set("!", "<C-b>", "<Left>") -- backward-char
-vim.keymap.set("!", "<C-n>", "<Down>") -- next-line
-vim.keymap.set("!", "<C-p>", "<Up>") -- previous-line
+map("!", "<C-k>", readline.kill_line)
+map("!", "<C-u>", readline.backward_kill_line)
+map("!", "<M-d>", readline.kill_word)
+map("!", "<M-BS>", readline.backward_kill_word)
+map("!", "<C-w>", readline.unix_word_rubout)
+map("!", "<C-d>", "<Delete>") -- delete-char
+map("!", "<C-h>", "<BS>") -- backward-delete-char
+map("!", "<C-a>", readline.beginning_of_line)
+map("!", "<C-e>", readline.end_of_line)
+map("!", "<M-f>", readline.forward_word)
+map("!", "<M-b>", readline.backward_word)
+map("!", "<C-f>", "<Right>") -- forward-char
+map("!", "<C-b>", "<Left>") -- backward-char
+map("!", "<C-n>", "<Down>") -- next-line
+map("!", "<C-p>", "<Up>") -- previous-line
 
 -- map alt + ; to c-y to confirm completions
 vim.keymap.set("i", "<M-;>", "<C-y>", { desc = "Confirm completion", remap = true })
+
+-- Buffer navigation
+map("n", "<M-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
+map("n", "<M-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
+map("n", "<M-q>", "<cmd>BufferLinePickClose<cr>", { desc = "Pick buffer to close" })
+map("n", "<M-w>", "<cmd>bd<cr>", { desc = "Pick buffer to go to" })
+
+-- Open current file in Xcode at current line and column
+map("n", "<M-x>", function()
+  local file_path = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  local col = vim.fn.col(".")
+
+  if file_path ~= "" then
+    vim.fn.system({ "xed", "-l", tostring(line), tostring(col), file_path })
+  else
+    vim.notify("No file to open", vim.log.levels.WARN)
+  end
+end, { desc = "Open current file in Xcode" })

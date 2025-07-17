@@ -4,7 +4,9 @@
       "WebFetch(domain:github.com)",
       "Bash(nvim:*)",
       "Bash(rg:*)",
-      "WebFetch(domain:ricoberger.de)"
+      "WebFetch(domain:ricoberger.de)",
+      "WebFetch(domain:lazyvim.github.io)",
+      "WebFetch(domain:www.lazyvim.org)"
     ],
     "deny": []
   }
