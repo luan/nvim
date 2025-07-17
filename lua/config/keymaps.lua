@@ -41,6 +41,21 @@ map("n", "<M-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
 map("n", "<M-q>", "<cmd>BufferLinePickClose<cr>", { desc = "Pick buffer to close" })
 map("n", "<M-w>", "<cmd>bd<cr>", { desc = "Pick buffer to go to" })
 
+-- Snacks Explorer
+map("n", "<M-b>", function()
+  Snacks.explorer()
+end, { desc = "Toggle Snacks Explorer" })
+
+map("n", "<M-e>", function()
+  local existing = Snacks.picker.get({ source = "explorer" })[1]
+
+  if existing and not existing.closed then
+    existing:focus()
+  else
+    Snacks.explorer()
+  end
+end, { desc = "Open/Focus Snacks Explorer" })
+
 -- Open current file in Xcode at current line and column
 map("n", "<M-x>", function()
   local file_path = vim.fn.expand("%:p")
