@@ -6,7 +6,12 @@
       "Bash(rg:*)",
       "WebFetch(domain:ricoberger.de)",
       "WebFetch(domain:lazyvim.github.io)",
-      "WebFetch(domain:www.lazyvim.org)"
+      "WebFetch(domain:www.lazyvim.org)",
+      "Bash(/Users/luan.santos/.config/nvim/find-nvim-socket.sh:*)",
+      "Bash(/Users/luan.santos/.config/nvim/find-nvim-socket)",
+      "Bash(/Users/luan.santos/.config/nvim/find-nvim-socket --smart)",
+      "Bash(~/.config/nvim/find-nvim-socket --smart)",
+      "Bash(~/.config/nvim/find-nvim-socket)"
     ],
     "deny": []
   }

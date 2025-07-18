@@ -35,12 +35,27 @@ local function get_harpoon_files()
   return table.concat(file_paths, " ")
 end
 
+-- Helper function to get the socket prompt
+local function get_socket_prompt()
+  local socket_path = vim.g.nvim_socket_path or vim.v.servername
+  if socket_path and socket_path ~= "" then
+    return "NVIM_SOCKET=" .. socket_path
+  else
+    return "No socket available - start neovim with --listen flag"
+  end
+end
+
 return {
   "greggh/claude-code.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim", -- Required for git operations
   },
   config = function()
+    -- Ensure socket path is stored
+    if vim.v.servername and vim.v.servername ~= "" then
+      vim.g.nvim_socket_path = vim.v.servername
+    end
+    
     require("claude-code").setup({
       window = {
         position = "vertical",
@@ -92,8 +107,31 @@ return {
               vim.api.nvim_feedkeys(content, "n", false)
             end
           end, { buffer = ev.buf, desc = "Insert harpoon files" })
+
+          vim.keymap.set("t", ";;", function()
+            local content = get_socket_prompt()
+            vim.api.nvim_feedkeys(content, "n", false)
+          end, { buffer = ev.buf, desc = "Insert socket prompt" })
         end
       end,
     })
+
+    -- Command to show socket info
+    vim.api.nvim_create_user_command("ClaudeSocketPath", function()
+      local socket_path = vim.g.nvim_socket_path
+      if socket_path then
+        print("Socket path: " .. socket_path)
+        vim.fn.setreg("+", socket_path) -- Copy to clipboard
+      else
+        print("No socket server running")
+      end
+    end, { desc = "Show socket path" })
+
+    -- Debug command to check socket status
+    vim.api.nvim_create_user_command("ClaudeSocketDebug", function()
+      print("Socket path: " .. (vim.g.nvim_socket_path or "not set"))
+      print("Server name: " .. (vim.v.servername or "not set"))
+      print("Socket prompt: " .. get_socket_prompt())
+    end, { desc = "Debug socket status" })
   end,
 }
