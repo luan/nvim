@@ -54,8 +54,18 @@ return {
     -- Ensure socket path is stored
     if vim.v.servername and vim.v.servername ~= "" then
       vim.g.nvim_socket_path = vim.v.servername
+      
+      -- Write socket path to a project-specific file for hooks
+      local cwd = vim.fn.getcwd()
+      local project_hash = vim.fn.sha256(cwd):sub(1, 8)
+      local socket_file = "/tmp/nvim_socket_" .. project_hash
+      local file = io.open(socket_file, "w")
+      if file then
+        file:write(vim.v.servername .. "\n" .. cwd)
+        file:close()
+      end
     end
-    
+
     require("claude-code").setup({
       window = {
         position = "vertical",
@@ -76,17 +86,17 @@ return {
       },
       keymaps = {
         toggle = {
-          normal = "<M-i>", -- Normal mode keymap for toggling Claude Code, false to disable
-          terminal = "<M-i>", -- Terminal mode keymap for toggling Claude Code, false to disable
+          normal = "<D-i>", -- Normal mode keymap for toggling Claude Code, false to disable
+          terminal = "<D-i>", -- Terminal mode keymap for toggling Claude Code, false to disable
           variants = {
-            resume = "<M-S-i>", -- Normal mode keymap for Claude Code with continue flag
+            resume = "<D-S-i>", -- Normal mode keymap for Claude Code with continue flag
             verbose = "<leader>cV", -- Normal mode keymap for Claude Code with verbose flag
           },
         },
         window_navigation = true, -- Enable window navigation keymaps (<C-h/j/k/l>)
-        scrolling = true, -- Enable scrolling keymaps (<C-f/b>) for page up/down
+        scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
       },
-      scrolling = true, -- Enable scrolling keymaps (<C-f/b>) for page up/down
+      scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
     })
 
     -- Set up custom keymaps for Claude Code terminal

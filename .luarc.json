@@ -9,6 +9,7 @@
     ],
     "diagnostics.globals": [
         "vim",
-        "Snacks"
+        "Snacks",
+        "LazyVim"
     ]
 }
