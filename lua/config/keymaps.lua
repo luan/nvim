@@ -13,6 +13,9 @@ map("n", "<CR>", function()
   end
 end, { desc = "Save file (regular buffers only)" })
 map({ "n", "v" }, "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
+map({ "n", "v" }, "<D-/>", "gcc", { desc = "Toggle comment", remap = true })
+
+map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- readline
 local readline = require("readline")
@@ -32,21 +35,21 @@ map("!", "<C-b>", "<Left>") -- backward-char
 map("!", "<C-n>", "<Down>") -- next-line
 map("!", "<C-p>", "<Up>") -- previous-line
 
--- map alt + ; to c-y to confirm completions
-vim.keymap.set("i", "<M-;>", "<C-y>", { desc = "Confirm completion", remap = true })
-
 -- Buffer navigation
 map("n", "<M-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer left" })
 map("n", "<M-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer right" })
 map("n", "<M-q>", "<cmd>BufferLinePickClose<cr>", { desc = "Pick buffer to close" })
-map("n", "<M-w>", "<cmd>bd<cr>", { desc = "Pick buffer to go to" })
+map("n", "<M-w>", "<cmd>bd<cr>", { desc = "Close buffer" })
+
+-- Terminal
+map("n", "<D-.>", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 -- Snacks Explorer
-map("n", "<M-b>", function()
+map("n", "<D-b>", function()
   Snacks.explorer()
 end, { desc = "Toggle Snacks Explorer" })
 
-map("n", "<M-e>", function()
+map("n", "<D-e>", function()
   local existing = Snacks.picker.get({ source = "explorer" })[1]
 
   if existing and not existing.closed then
