@@ -35,6 +35,24 @@ local function get_harpoon_files()
   return table.concat(file_paths, " ")
 end
 
+-- Helper function to list all open buffers with @ prefix
+local function list_all_buffers()
+  local file_paths = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local bufname = vim.api.nvim_buf_get_name(buf)
+
+      -- Skip empty buffers, special buffers, and non-file buffers
+      if bufname ~= "" and vim.bo[buf].buftype == "" and vim.fn.filereadable(bufname) == 1 then
+        local relative_path = vim.fn.fnamemodify(bufname, ":.")
+        table.insert(file_paths, "@" .. relative_path)
+      end
+    end
+  end
+
+  return table.concat(file_paths, " ")
+end
+
 -- Helper function to get the socket prompt
 local function get_socket_prompt()
   local socket_path = vim.g.nvim_socket_path or vim.v.servername
@@ -54,7 +72,7 @@ return {
     -- Ensure socket path is stored
     if vim.v.servername and vim.v.servername ~= "" then
       vim.g.nvim_socket_path = vim.v.servername
-      
+
       -- Write socket path to a project-specific file for hooks
       local cwd = vim.fn.getcwd()
       local project_hash = vim.fn.sha256(cwd):sub(1, 8)
@@ -86,14 +104,14 @@ return {
       },
       keymaps = {
         toggle = {
-          normal = "<D-i>", -- Normal mode keymap for toggling Claude Code, false to disable
-          terminal = "<D-i>", -- Terminal mode keymap for toggling Claude Code, false to disable
+          normal = false, -- Disable built-in normal mode toggle - we'll use our own
+          terminal = false, -- Disable built-in terminal mode toggle - we'll use our own
           variants = {
             resume = "<D-S-i>", -- Normal mode keymap for Claude Code with continue flag
             verbose = "<leader>cV", -- Normal mode keymap for Claude Code with verbose flag
           },
         },
-        window_navigation = true, -- Enable window navigation keymaps (<C-h/j/k/l>)
+        window_navigation = false, -- Disable window navigation keymaps to allow readline
         scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
       },
       scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
@@ -105,11 +123,21 @@ return {
       callback = function(ev)
         -- Check if this is a terminal buffer
         if vim.bo[ev.buf].buftype == "terminal" then
+          -- Make claude-code buffers unlisted
+          local bufname = vim.api.nvim_buf_get_name(ev.buf)
+          if bufname:match("claude%-code") then
+            vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
+          end
           -- Set buffer-local keymaps for terminal mode
           vim.keymap.set("t", "@@", function()
             local content = list_window_paths()
             vim.api.nvim_feedkeys(content, "n", false)
           end, { buffer = ev.buf, desc = "Insert window paths" })
+
+          vim.keymap.set("t", ",,", function()
+            local content = list_all_buffers()
+            vim.api.nvim_feedkeys(content, "n", false)
+          end, { buffer = ev.buf, desc = "Insert all buffer paths" })
 
           vim.keymap.set("t", "hh", function()
             local content = get_harpoon_files()
@@ -123,6 +151,14 @@ return {
             vim.api.nvim_feedkeys(content, "n", false)
           end, { buffer = ev.buf, desc = "Insert socket prompt" })
         end
+      end,
+    })
+
+    -- Also handle BufFilePost which fires after :file command
+    vim.api.nvim_create_autocmd("BufFilePost", {
+      pattern = "*claude-code*",
+      callback = function(ev)
+        vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
       end,
     })
 
