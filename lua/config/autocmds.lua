@@ -14,7 +14,7 @@ local function ensure_socket()
     local socket_path = "/tmp/nvim_" .. vim.fn.getpid()
     vim.fn.serverstart(socket_path)
   end
-  
+
   -- Store the socket path
   if vim.v.servername and vim.v.servername ~= "" then
     vim.g.nvim_socket_path = vim.v.servername
@@ -35,3 +35,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Disable diagnostics UI for markdown files",
 })
+
+
+
+
