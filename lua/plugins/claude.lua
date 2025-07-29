@@ -86,7 +86,7 @@ return {
 
     require("claude-code").setup({
       window = {
-        position = "vertical",
+        position = "float",
         float = {
           width = "40%",
           height = "90%",
@@ -125,13 +125,26 @@ return {
         if vim.bo[ev.buf].buftype == "terminal" then
           -- Make claude-code buffers unlisted
           local bufname = vim.api.nvim_buf_get_name(ev.buf)
-          if bufname:match("claude%-code") then
+
+          if bufname:match("claude") and bufname:match("term://") then
             vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
-            
-            -- Setup special paste handling for Claude Code
-            require("config.paste-fix").setup_claude_code_paste(ev.buf)
+
+            -- Setup Ctrl+Shift+V paste for Claude Code
+            vim.keymap.set("t", "<C-S-v>", function()
+              local handle = io.popen("pbpaste")
+              if handle then
+                local content = handle:read("*a")
+                handle:close()
+                if content and content ~= "" then
+                  -- Clean escape sequences inline
+                  content = content:gsub("\027%[200~", "")
+                  content = content:gsub("\027%[201~", "")
+                  vim.api.nvim_feedkeys(content, "n", false)
+                end
+              end
+            end, { buffer = ev.buf, desc = "Paste cleaned - Ctrl+Shift+V" })
           end
-          
+
           -- Set buffer-local keymaps for terminal mode
           vim.keymap.set("t", "@@", function()
             local content = list_window_paths()
