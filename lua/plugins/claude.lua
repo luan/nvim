@@ -127,7 +127,11 @@ return {
           local bufname = vim.api.nvim_buf_get_name(ev.buf)
           if bufname:match("claude%-code") then
             vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
+            
+            -- Setup special paste handling for Claude Code
+            require("config.paste-fix").setup_claude_code_paste(ev.buf)
           end
+          
           -- Set buffer-local keymaps for terminal mode
           vim.keymap.set("t", "@@", function()
             local content = list_window_paths()
