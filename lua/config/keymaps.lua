@@ -156,7 +156,7 @@ local function find_claude_window()
 end
 
 map(
-  "n",
+  { "n", "i" },
   "<D-i>",
   focus_or_open(find_claude_window, function()
     require("claude-code").toggle()
@@ -297,4 +297,3 @@ map("n", "<S-r>", function()
   local inc_rename = require("inc_rename")
   return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "Rename (inc-rename.nvim)" })
-
