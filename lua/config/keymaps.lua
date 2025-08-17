@@ -26,20 +26,6 @@ local function toggle_with_restore(toggle_fn, _)
   end
 end
 
-local function focus_or_open(check_fn, open_fn, _)
-  return function()
-    local existing = check_fn()
-    if existing then
-      vim.api.nvim_set_current_win(existing)
-      if vim.bo.buftype == "terminal" then
-        vim.cmd("startinsert")
-      end
-    else
-      open_fn()
-    end
-  end
-end
-
 -- File operations
 map("n", "<CR>", function()
   if vim.bo.buftype == "" then
@@ -51,6 +37,24 @@ map("n", "<CR>", function()
 end, { desc = "Save file (regular buffers only)" })
 
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- Copy filepath with line number (relative)
+map("n", "<D-S-c>", function()
+  local filepath = vim.fn.expand("%:.")
+  local line = vim.fn.line(".")
+  local text = filepath .. ":" .. line
+  vim.fn.setreg("+", text)
+  vim.notify("Copied: " .. text)
+end, { desc = "Copy filepath with line number" })
+
+-- Copy filepath with line number (absolute)
+map("n", "<D-M-S-c>", function()
+  local filepath = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  local text = filepath .. ":" .. line
+  vim.fn.setreg("+", text)
+  vim.notify("Copied: " .. text)
+end, { desc = "Copy absolute filepath with line number" })
 
 -- Comments
 local comment_keys = { "<C-c>", "<D-/>" }
@@ -147,109 +151,49 @@ for _, key in ipairs(undo_keys) do
   map("t", key, key, { desc = "Pass to shell for undo" })
 end
 
--- Claude Code integration
-local function find_claude_window()
-  return vim.tbl_filter(function(win)
-    local buf = vim.api.nvim_win_get_buf(win)
-    return vim.api.nvim_buf_get_name(buf):match("claude%-code")
-  end, vim.api.nvim_list_wins())[1]
-end
-
-map(
-  { "n", "i" },
-  "<D-i>",
-  focus_or_open(find_claude_window, function()
-    require("claude-code").toggle()
-  end, "Focus Claude Code (open if not exists)")
-)
-
--- Claude Code toggle without focus
-map(
-  "n",
-  "<D-l>",
-  toggle_with_restore(function()
-    require("claude-code").toggle()
-  end, "Toggle Claude Code (no focus)")
-)
-
-map(
-  "i",
-  "<D-l>",
-  toggle_with_restore(function()
-    require("claude-code").toggle()
-  end, "Toggle Claude Code (no focus)")
-)
-
-map("t", "<D-l>", function()
-  local bufname = vim.api.nvim_buf_get_name(0)
-  local current_win = vim.api.nvim_get_current_win()
-  require("claude-code").toggle()
-
-  vim.schedule(function()
-    if vim.api.nvim_win_is_valid(current_win) then
-      vim.api.nvim_set_current_win(current_win)
-      if bufname:match("claude%-code") then
-        vim.cmd("stopinsert")
-      else
-        vim.cmd("startinsert")
-      end
-    end
-  end)
-end, { desc = "Toggle Claude Code (no focus)" })
-
 -- Terminal integration
 local function find_terminal_window()
   local wins = vim.tbl_filter(function(win)
     local buf = vim.api.nvim_win_get_buf(win)
-    return vim.bo[buf].buftype == "terminal" and not vim.api.nvim_buf_get_name(buf):match("claude%-code")
+    return vim.bo[buf].buftype == "terminal"
+      and not (vim.api.nvim_buf_get_name(buf):match("claude") or vim.api.nvim_buf_get_name(buf):match("opencode"))
   end, vim.api.nvim_list_wins())
   return wins[1]
 end
 
--- Terminal toggle without focus
-map(
-  "n",
-  "<D-j>",
-  toggle_with_restore(function()
-    Snacks.terminal.toggle()
-  end, "Toggle Terminal")
-)
+-- Terminal mode escape to normal mode
+map("t", "<C-]>", "<C-\\><C-n>", { desc = "Exit terminal mode to normal mode" })
 
-map(
-  "i",
-  "<D-j>",
-  toggle_with_restore(function()
-    Snacks.terminal.toggle()
-  end, "Toggle Terminal")
-)
+-- Terminal toggle with focus
+map({ "n", "i" }, "<D-j>", function()
+  local term_win = find_terminal_window()
+  if term_win then
+    if vim.api.nvim_get_current_win() == term_win then
+      -- If we're in the terminal, toggle it closed
+      Snacks.terminal.toggle()
+    else
+      -- If terminal exists but we're not in it, focus it
+      vim.api.nvim_set_current_win(term_win)
+      vim.cmd("startinsert")
+    end
+  else
+    -- No terminal exists, open and focus
+    Snacks.terminal()
+    vim.cmd("startinsert")
+  end
+end, { desc = "Toggle/Focus Terminal" })
 
 map("t", "<D-j>", function()
   local bufname = vim.api.nvim_buf_get_name(0)
-  local current_win = vim.api.nvim_get_current_win()
-
-  if bufname:match("claude%-code") then
-    Snacks.terminal()
-  else
-    Snacks.terminal.toggle()
-  end
-
-  vim.schedule(function()
-    if vim.api.nvim_win_is_valid(current_win) then
-      vim.api.nvim_set_current_win(current_win)
-      vim.cmd("startinsert")
-    end
-  end)
-end, { desc = "Toggle Terminal / Open regular terminal from Claude Code" })
-
--- Terminal focus
-map(
-  "n",
-  "<C-`>",
-  focus_or_open(find_terminal_window, function()
+  if bufname:match("claude%-code") or bufname:match("opencode") then
+    -- From Claude Code terminal, open regular terminal
     Snacks.terminal()
     vim.cmd("startinsert")
-  end, "Focus Terminal")
-)
+  else
+    -- From regular terminal, toggle it closed
+    Snacks.terminal.toggle()
+  end
+end, { desc = "Toggle Terminal / Open regular terminal from Claude Code" })
 
 -- Snacks Explorer
 map(

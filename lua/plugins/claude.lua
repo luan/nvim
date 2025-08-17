@@ -15,26 +15,6 @@ local function list_window_paths()
   return table.concat(file_paths, " ")
 end
 
--- Helper function to get harpoon files with @ prefix
-local function get_harpoon_files()
-  local ok, harpoon = pcall(require, "harpoon")
-  if not ok then
-    return ""
-  end
-
-  local list = harpoon:list()
-  local items = list.items
-
-  local file_paths = {}
-  for _, item in ipairs(items) do
-    if item.value and item.value ~= "" then
-      table.insert(file_paths, "@" .. item.value)
-    end
-  end
-
-  return table.concat(file_paths, " ")
-end
-
 -- Helper function to list all open buffers with @ prefix
 local function list_all_buffers()
   local file_paths = {}
@@ -62,139 +42,139 @@ local function get_socket_prompt()
     return "No socket available - start neovim with --listen flag"
   end
 end
+--
+if vim.v.servername and vim.v.servername ~= "" then
+  vim.g.nvim_socket_path = vim.v.servername
+
+  -- Write socket path to a project-specific file for hooks
+  local cwd = vim.fn.getcwd()
+  local project_hash = vim.fn.sha256(cwd):sub(1, 8)
+  local socket_file = "/tmp/nvim_socket_" .. project_hash
+  local file = io.open(socket_file, "w")
+  if file then
+    file:write(vim.v.servername .. "\n" .. cwd)
+    file:close()
+  end
+end
+
+local function insert_content(func)
+  return function()
+    vim.api.nvim_feedkeys(func(), "n", false)
+  end
+end
 
 return {
-  "greggh/claude-code.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim", -- Required for git operations
+  {
+    "pittcat/claude-fzf.nvim",
+    dependencies = {
+      "ibhagwan/fzf-lua",
+      "coder/claudecode.nvim",
+    },
+    opts = {
+      auto_context = true,
+      batch_size = 10,
+    },
+    cmd = {
+      "ClaudeFzf",
+      "ClaudeFzfFiles",
+      "ClaudeFzfGrep",
+      "ClaudeFzfBuffers",
+      "ClaudeFzfGitFiles",
+      "ClaudeFzfDirectory",
+    },
+    keys = {
+      { "<leader>cf", "<cmd>ClaudeFzfFiles<cr>", desc = "Claude: Add files" },
+      { "<leader>cg", "<cmd>ClaudeFzfGrep<cr>", desc = "Claude: Search and add" },
+      { "<leader>cb", "<cmd>ClaudeFzfBuffers<cr>", desc = "Claude: Add buffers" },
+      { "<leader>cgf", "<cmd>ClaudeFzfGitFiles<cr>", desc = "Claude: Add Git files" },
+      { "<leader>cd", "<cmd>ClaudeFzfDirectory<cr>", desc = "Claude: Add directory files" },
+    },
   },
-  config = function()
-    -- Ensure socket path is stored
-    if vim.v.servername and vim.v.servername ~= "" then
-      vim.g.nvim_socket_path = vim.v.servername
-
-      -- Write socket path to a project-specific file for hooks
-      local cwd = vim.fn.getcwd()
-      local project_hash = vim.fn.sha256(cwd):sub(1, 8)
-      local socket_file = "/tmp/nvim_socket_" .. project_hash
-      local file = io.open(socket_file, "w")
-      if file then
-        file:write(vim.v.servername .. "\n" .. cwd)
-        file:close()
-      end
-    end
-
-    require("claude-code").setup({
-      window = {
-        position = "float",
-        float = {
-          width = "40%",
-          height = "90%",
-          row = "center",
-          col = "60%",
-          relative = "editor",
-          border = "rounded",
-        },
+  {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    keys = {
+      { "<leader>a", nil, desc = "AI/Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<D-i>", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<D-l>", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
       },
-      refresh = {
-        enable = true, -- Enable file change detection
-        updatetime = 100, -- updatetime when Claude Code is active (milliseconds)
-        timer_interval = 1000, -- How often to check for file changes (milliseconds)
-        show_notifications = true, -- Show notification when files are reloaded
-      },
-      keymaps = {
-        toggle = {
-          normal = false, -- Disable built-in normal mode toggle - we'll use our own
-          terminal = false, -- Disable built-in terminal mode toggle - we'll use our own
-          variants = {
-            resume = "<D-S-i>", -- Normal mode keymap for Claude Code with continue flag
-            verbose = "<leader>cV", -- Normal mode keymap for Claude Code with verbose flag
+      -- Diff management
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+    },
+    opts = {
+      terminal = {
+        snacks_win_opts = {
+          keys = {
+            claude_hide = {
+              "<D-l>",
+              function(self)
+                self:hide()
+              end,
+              mode = { "t", "n" },
+              desc = "Hide (Cmd+l)",
+            },
+            claude_close = { "<M-q>", "close", desc = "Close" },
+            clean_paste = {
+              "<C-S-v>",
+              function()
+                local handle = io.popen("pbpaste")
+                if handle then
+                  local content = handle:read("*a")
+                  handle:close()
+                  if content and content ~= "" then
+                    -- Clean escape sequences inline
+                    content = content:gsub("\027%[200~", "")
+                    content = content:gsub("\027%[201~", "")
+                    vim.api.nvim_feedkeys(content, "n", false)
+                  end
+                end
+              end,
+              mode = "t",
+              desc = "Clean Paste",
+            },
+            nvim_socket = {
+              ";;",
+              insert_content(get_socket_prompt),
+              mode = "t",
+              desc = "Insert nvim socket",
+            },
+            current_file = {
+              "@.",
+              insert_content(list_window_paths),
+              mode = "t",
+              desc = "Insert window file paths",
+            },
+            open_buffers = {
+              "@,",
+              insert_content(list_all_buffers),
+              mode = "t",
+              desc = "Insert current open buffers",
+            },
+            fzf_files = {
+              "@@",
+              function()
+                require("claude-fzf").files()
+              end,
+              mode = "t",
+              desc = "Close",
+            },
           },
         },
-        window_navigation = false, -- Disable window navigation keymaps to allow readline
-        scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
       },
-      scrolling = false, -- Enable scrolling keymaps (<C-f/b>) for page up/down
-    })
-
-    -- Set up custom keymaps for Claude Code terminal
-    vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
-      pattern = "*",
-      callback = function(ev)
-        -- Check if this is a terminal buffer
-        if vim.bo[ev.buf].buftype == "terminal" then
-          -- Make claude-code buffers unlisted
-          local bufname = vim.api.nvim_buf_get_name(ev.buf)
-
-          if bufname:match("claude") and bufname:match("term://") then
-            vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
-
-            -- Setup Ctrl+Shift+V paste for Claude Code
-            vim.keymap.set("t", "<C-S-v>", function()
-              local handle = io.popen("pbpaste")
-              if handle then
-                local content = handle:read("*a")
-                handle:close()
-                if content and content ~= "" then
-                  -- Clean escape sequences inline
-                  content = content:gsub("\027%[200~", "")
-                  content = content:gsub("\027%[201~", "")
-                  vim.api.nvim_feedkeys(content, "n", false)
-                end
-              end
-            end, { buffer = ev.buf, desc = "Paste cleaned - Ctrl+Shift+V" })
-          end
-
-          -- Set buffer-local keymaps for terminal mode
-          vim.keymap.set("t", "@@", function()
-            local content = list_window_paths()
-            vim.api.nvim_feedkeys(content, "n", false)
-          end, { buffer = ev.buf, desc = "Insert window paths" })
-
-          vim.keymap.set("t", ",,", function()
-            local content = list_all_buffers()
-            vim.api.nvim_feedkeys(content, "n", false)
-          end, { buffer = ev.buf, desc = "Insert all buffer paths" })
-
-          vim.keymap.set("t", "hh", function()
-            local content = get_harpoon_files()
-            if content ~= "" then
-              vim.api.nvim_feedkeys(content, "n", false)
-            end
-          end, { buffer = ev.buf, desc = "Insert harpoon files" })
-
-          vim.keymap.set("t", ";;", function()
-            local content = get_socket_prompt()
-            vim.api.nvim_feedkeys(content, "n", false)
-          end, { buffer = ev.buf, desc = "Insert socket prompt" })
-        end
-      end,
-    })
-
-    -- Also handle BufFilePost which fires after :file command
-    vim.api.nvim_create_autocmd("BufFilePost", {
-      pattern = "*claude-code*",
-      callback = function(ev)
-        vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
-      end,
-    })
-
-    -- Command to show socket info
-    vim.api.nvim_create_user_command("ClaudeSocketPath", function()
-      local socket_path = vim.g.nvim_socket_path
-      if socket_path then
-        print("Socket path: " .. socket_path)
-        vim.fn.setreg("+", socket_path) -- Copy to clipboard
-      else
-        print("No socket server running")
-      end
-    end, { desc = "Show socket path" })
-
-    -- Debug command to check socket status
-    vim.api.nvim_create_user_command("ClaudeSocketDebug", function()
-      print("Socket path: " .. (vim.g.nvim_socket_path or "not set"))
-      print("Server name: " .. (vim.v.servername or "not set"))
-      print("Socket prompt: " .. get_socket_prompt())
-    end, { desc = "Debug socket status" })
-  end,
+    },
+  },
 }
