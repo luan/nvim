@@ -36,6 +36,15 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Disable diagnostics UI for markdown files",
 })
 
-
-
-
+-- Terminals should not have a title bar (winbar)
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter", "WinEnter" }, {
+  pattern = "*",
+  callback = function(ev)
+    local buf = ev.buf or vim.api.nvim_get_current_buf()
+    if vim.bo[buf].buftype == "terminal" then
+      vim.wo.winbar = ""
+      pcall(vim.api.nvim_set_option_value, "winbar", "", { scope = "local", win = vim.api.nvim_get_current_win() })
+    end
+  end,
+  desc = "Clear winbar for terminal windows",
+})
