@@ -82,13 +82,6 @@ return {
       "ClaudeFzfGitFiles",
       "ClaudeFzfDirectory",
     },
-    keys = {
-      { "<leader>cf", "<cmd>ClaudeFzfFiles<cr>", desc = "Claude: Add files" },
-      { "<leader>cg", "<cmd>ClaudeFzfGrep<cr>", desc = "Claude: Search and add" },
-      { "<leader>cb", "<cmd>ClaudeFzfBuffers<cr>", desc = "Claude: Add buffers" },
-      { "<leader>cgf", "<cmd>ClaudeFzfGitFiles<cr>", desc = "Claude: Add Git files" },
-      { "<leader>cd", "<cmd>ClaudeFzfDirectory<cr>", desc = "Claude: Add directory files" },
-    },
   },
   {
     "coder/claudecode.nvim",
@@ -119,6 +112,14 @@ return {
       terminal = {
         snacks_win_opts = {
           keys = {
+            claude_insert = {
+              "<D-i>",
+              function()
+                vim.cmd("startinsert")
+              end,
+              mode = { "t", "n" },
+              desc = "Insert",
+            },
             claude_hide = {
               "<D-l>",
               function(self)
