@@ -131,7 +131,13 @@ local buffer_mappings = {
   { "<M-h>", "<cmd>BufferLineMovePrev<cr>", "Move buffer left" },
   { "<M-l>", "<cmd>BufferLineMoveNext<cr>", "Move buffer right" },
   { "<M-q>", "<cmd>BufferLinePickClose<cr>", "Pick buffer to close" },
-  { "<M-w>", "<cmd>bd<cr>", "Close buffer" },
+  {
+    "<M-w>",
+    function()
+      Snacks.bufdelete()
+    end,
+    "Close buffer",
+  },
 }
 
 for _, mapping in ipairs(buffer_mappings) do
