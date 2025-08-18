@@ -1,3 +1,8 @@
+--diabled
+if true then
+  return {}
+end
+
 -- opencode.nvim configuration based on lua/plugins/claude.lua
 -- Uses: https://github.com/NickvanDyke/opencode.nvim
 
