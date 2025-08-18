@@ -102,7 +102,7 @@ local readline_mappings = {
   { "<C-u>", wrap_with_undo(readline.backward_kill_line) },
   { "<M-d>", wrap_with_undo(readline.kill_word) },
   { "<M-BS>", wrap_with_undo(readline.backward_kill_word) },
-  { "<C-w>", wrap_with_undo(readline.unix_word_rubout) },
+  { "<C-w>", wrap_with_undo(readline.backward_kill_word) },
   { "<C-d>", "<Delete>" },
   { "<C-h>", "<BS>" },
   { "<C-a>", readline.beginning_of_line },
