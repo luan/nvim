@@ -201,35 +201,6 @@ map("t", "<D-j>", function()
   end
 end, { desc = "Toggle Terminal / Open regular terminal from Claude Code" })
 
--- Snacks Explorer
-map(
-  "n",
-  "<D-b>",
-  toggle_with_restore(function()
-    Snacks.explorer()
-  end, "Toggle Snacks Explorer")
-)
-
-map("t", "<D-b>", function()
-  local current_win = vim.api.nvim_get_current_win()
-  Snacks.explorer()
-  vim.defer_fn(function()
-    if vim.api.nvim_win_is_valid(current_win) then
-      vim.api.nvim_set_current_win(current_win)
-      vim.cmd("startinsert")
-    end
-  end, 10)
-end, { desc = "Toggle Snacks Explorer" })
-
-map("n", "<D-e>", function()
-  local existing = Snacks.picker.get({ source = "explorer" })[1]
-  if existing and not existing.closed then
-    existing:focus()
-  else
-    Snacks.explorer()
-  end
-end, { desc = "Open/Focus Snacks Explorer" })
-
 -- External tools integration
 map("n", "<M-x>", function()
   local file_path = vim.fn.expand("%:p")
