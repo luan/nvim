@@ -5,18 +5,21 @@ return {
       style = "night",
     },
   },
-  -- {
-  --   "loctvl842/monokai-pro.nvim",
-  --   opts = {
-  --     devicons = true,
-  --     filter = "octagon",
-  --   },
-  -- },
+
+  {
+    "loctvl842/monokai-pro.nvim",
+    opts = {
+      devicons = true,
+      filter = "octagon",
+    },
+  },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      -- colorscheme = "tokyonight",
+      colorscheme = "catppuccin-mocha",
+      -- colorscheme = "monokai-pro",
     },
   },
 }
