@@ -43,6 +43,15 @@ return {
     -- Disable and enable cursors.
     set({ "n", "x" }, "<c-q>", mc.toggleCursor)
 
+    -- match new cursors within visual selections by regex.
+    set("x", "M", mc.matchCursors)
+
+    -- Split visual selections by regex.
+    set("x", "X", mc.splitCursors)
+
+    -- Pressing `gaip` will add a cursor on each line of a paragraph.
+    set("n", "ga", mc.addCursorOperator)
+
     -- Mappings defined in a keymap layer only apply when there are
     -- multiple cursors. This lets you have overlapping mappings.
     mc.addKeymapLayer(function(layerSet)
@@ -50,8 +59,14 @@ return {
       layerSet({ "n", "x" }, "<D-k>", mc.prevCursor)
       layerSet({ "n", "x" }, "<D-j>", mc.nextCursor)
 
+      -- Clone every cursor and disable the originals.
+      set({ "n", "x" }, "<leader><c-q>", mc.duplicateCursors)
+
       -- Delete the main cursor.
       layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
+
+      -- Align cursor columns.
+      set("n", "<leader>a", mc.alignCursors)
 
       -- Enable and clear cursors using escape.
       layerSet("n", "<esc>", function()
@@ -65,7 +80,7 @@ return {
 
     -- Customize how cursors look.
     local hl = vim.api.nvim_set_hl
-    hl(0, "MultiCursorCursor", { reverse = true })
+    hl(0, "MultiCursorCursor", { bg = "#7f849c" })
     hl(0, "MultiCursorVisual", { link = "Visual" })
     hl(0, "MultiCursorSign", { link = "SignColumn" })
     hl(0, "MultiCursorMatchPreview", { link = "Search" })
