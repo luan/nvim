@@ -4,6 +4,18 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              runtime = { version = "LuaJIT" },
+              workspace = {
+                checkThirdParty = false,
+                useGitIgnore = true,
+              },
+              telemetry = { enable = false },
+            },
+          },
+        },
         sourcekit = {
           cmd = { "sourcekit-lsp" },
           filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
