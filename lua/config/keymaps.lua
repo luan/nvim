@@ -4,28 +4,6 @@
 
 local map = vim.keymap.set
 
--- Helper functions to reduce duplication
-local function toggle_with_restore(toggle_fn, _)
-  return function()
-    local current_win = vim.api.nvim_get_current_win()
-    local current_mode = vim.fn.mode()
-    local in_insert = current_mode == "i"
-
-    toggle_fn()
-
-    vim.schedule(function()
-      if vim.api.nvim_win_is_valid(current_win) then
-        vim.api.nvim_set_current_win(current_win)
-        if in_insert then
-          vim.cmd("startinsert")
-        else
-          vim.cmd("stopinsert")
-        end
-      end
-    end)
-  end
-end
-
 -- File operations
 map("n", "<CR>", function()
   if vim.bo.buftype == "" then
@@ -213,8 +191,71 @@ map("n", "<M-x>", function()
   end
 end, { desc = "Open current file in Xcode" })
 
+-- Xcode workspace
+map("n", "<D-x>", function()
+  local cwd = vim.fn.getcwd()
+  local workspaces = {}
+
+  -- Find all .xcworkspace directories
+  for _, item in ipairs(vim.fn.readdir(cwd)) do
+    local path = cwd .. "/" .. item
+    if vim.fn.isdirectory(path) == 1 and item:match("%.xcworkspace$") then
+      table.insert(workspaces, path)
+    end
+  end
+
+  if #workspaces == 0 then
+    vim.notify("No .xcworkspace directories found in current directory", vim.log.levels.WARN)
+    return
+  elseif #workspaces == 1 then
+    vim.fn.system({ "open", workspaces[1] })
+    vim.notify("Opened " .. vim.fn.fnamemodify(workspaces[1], ":t"))
+  else
+    local items = {}
+    for i, workspace in ipairs(workspaces) do
+      table.insert(items, {
+        idx = i,
+        text = vim.fn.fnamemodify(workspace, ":t"),
+        path = workspace,
+      })
+    end
+
+    Snacks.picker({
+      title = "Select Xcode Workspace",
+      layout = {
+        preview = false,
+        width = 0.4,
+        height = 0.3,
+      },
+      items = items,
+      format = function(item, _)
+        return {
+          { item.text, "String" },
+        }
+      end,
+      confirm = function(picker, item)
+        picker:close()
+        vim.fn.system({ "open", item.path })
+        vim.notify("Opened " .. item.text)
+      end,
+    })
+  end
+end, { desc = "Open Xcode workspace" })
+
 -- LSP
 map("n", "<S-r>", function()
   local inc_rename = require("inc_rename")
   return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "Rename (inc-rename.nvim)" })
+
+if vim.fn.executable("lazygit") == 1 then
+  map("n", "<C-g>", function()
+    Snacks.lazygit()
+  end, { desc = "Lazygit (cwd)" })
+  map("n", "<leader>GG", function()
+    Snacks.lazygit()
+  end, { desc = "Lazygit (cwd)" })
+  map("n", "<leader>gG", function()
+    Snacks.lazygit({ cwd = LazyVim.root.git() })
+  end, { desc = "Lazygit (Root Dir)" })
+end
