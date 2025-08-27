@@ -27,14 +27,69 @@ local regex_toggle = {
   },
 }
 
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    local term_title = vim.b.term_title
+    if term_title and term_title:match("lazygit") then
+      -- Create lazygit specific mappings
+      vim.keymap.set("t", "<C-g>", "<cmd>close<cr>", { buffer = true })
+      vim.keymap.set("t", "<C-c>", "<cmd>close<cr>", { buffer = true })
+    end
+  end,
+})
+
 return {
   "folke/snacks.nvim",
   opts = {
+    -- dashboard = { enabled = false },
+
+    indent = {
+      indent = {
+        char = "┊",
+      },
+
+      scope = {
+        underline = false,
+        char = "┊",
+        hl = "NonText",
+      },
+
+      chunk = {
+        enabled = false,
+        hl = "NonText",
+        char = {
+          -- corner_top = "┌",
+          -- corner_bottom = "└",
+          corner_top = "╭",
+          corner_bottom = "╰",
+          horizontal = "┄",
+          vertical = "┊",
+          arrow = "╼",
+        },
+      },
+    },
+
     -- Always enforce: no title bar for terminals (splits or floats)
     terminal = {
       win = {
         wo = {
           winbar = "",
+        },
+        keys = {
+          ["<esc><esc>"] = false,
+        },
+      },
+    },
+
+    lazygit = {
+      config = {
+        confirmOnQuit = true,
+
+        keybinding = {
+          universal = {
+            quit = "Q",
+          },
         },
       },
     },

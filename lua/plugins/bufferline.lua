@@ -4,6 +4,12 @@ local bg_active = "#313244"
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
+  init = function()
+    local bufline = require("catppuccin.groups.integrations.bufferline")
+    function bufline.get()
+      return bufline.get_theme()
+    end
+  end,
   opts = {
     options = {
       groups = {

@@ -110,6 +110,8 @@ return {
     },
     opts = {
       terminal = {
+        split_width_percentage = 0.30,
+
         snacks_win_opts = {
           keys = {
             claude_insert = {
