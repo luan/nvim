@@ -37,7 +37,8 @@ end, { desc = "Copy absolute filepath with line number" })
 -- Comments
 local comment_keys = { "<C-c>", "<D-/>" }
 for _, key in ipairs(comment_keys) do
-  map({ "n", "v" }, key, "gcc", { desc = "Toggle comment", remap = true })
+  map({ "n" }, key, "gcc", { desc = "Toggle comment", remap = true })
+  map({ "v" }, key, "gc", { desc = "Toggle comment", remap = true })
 end
 
 -- Readline setup

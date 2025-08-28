@@ -3,6 +3,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- Configure diagnostics display
+      diagnostics = {
+        virtual_text = false, -- Disable virtual text
+      },
       servers = {
         lua_ls = {
           settings = {
@@ -16,6 +20,7 @@ return {
             },
           },
         },
+
         sourcekit = {
           cmd = { "sourcekit-lsp" },
           filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },

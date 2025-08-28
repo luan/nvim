@@ -10,3 +10,7 @@ vim.opt.mousemoveevent = true
 
 -- Clipboard configuration
 vim.opt.clipboard = "unnamedplus"
+
+-- Window splitting behavior
+vim.opt.splitright = true  -- Open vertical splits to the right
+vim.opt.splitbelow = true  -- Open horizontal splits below
