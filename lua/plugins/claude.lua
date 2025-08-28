@@ -1,18 +1,16 @@
 -- Helper function to list all window paths with @ prefix
 local function list_window_paths()
-  local file_paths = {}
-  for _, w in ipairs(vim.api.nvim_list_wins()) do
-    local buf = vim.api.nvim_win_get_buf(w)
-    local bufname = vim.api.nvim_buf_get_name(buf)
+  local current_win = vim.api.nvim_get_current_win()
+  local buf = vim.api.nvim_win_get_buf(current_win)
+  local bufname = vim.api.nvim_buf_get_name(buf)
 
-    -- Skip empty buffers, special buffers, and non-file buffers
-    if bufname ~= "" and vim.bo[buf].buftype == "" and vim.fn.filereadable(bufname) == 1 then
-      local relative_path = vim.fn.fnamemodify(bufname, ":.")
-      table.insert(file_paths, "@" .. relative_path)
-    end
+  -- Skip empty buffers, special buffers, and non-file buffers
+  if bufname ~= "" and vim.bo[buf].buftype == "" and vim.fn.filereadable(bufname) == 1 then
+    local relative_path = vim.fn.fnamemodify(bufname, ":.")
+    return "@" .. relative_path
   end
 
-  return table.concat(file_paths, " ")
+  return ""
 end
 
 -- Helper function to list all open buffers with @ prefix
@@ -92,18 +90,14 @@ return {
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
       { "<D-i>", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
       { "<D-l>", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<D-I>", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<D-k>", "<cmd>ClaudeCodeAdd %<cr>", desc = "Send to Claude" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      {
-        "<leader>as",
-        "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
-      },
+      { "<D-k>", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
