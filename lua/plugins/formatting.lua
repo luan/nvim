@@ -7,8 +7,8 @@ return {
         fish = { "fish_indent" },
         sh = { "shfmt" },
         swift = { "swiftformat" },
+        cmake = { "cmake_format" },
       },
     },
   },
 }
-
