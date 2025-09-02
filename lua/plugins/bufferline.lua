@@ -17,9 +17,13 @@ return {
           toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
         },
         items = {
+          require("bufferline.groups").builtin.pinned:with({
+            icon = "󰐃 ",
+            highlight = { sp = "#4a66af" },
+          }),
           {
             name = " Generated",
-            highlight = { underline = true, sp = "#313244" },
+            highlight = { sp = "#313244" },
             autoclose = true,
             priority = 1,
             matcher = function(buf)
@@ -40,7 +44,7 @@ return {
           },
           {
             name = " Ignored",
-            highlight = { underline = true, sp = "#45475a" },
+            highlight = { sp = "#45475a" },
             priority = 1,
             matcher = function(buf)
               local filepath = buf.path
@@ -91,6 +95,7 @@ return {
       separator_style = { "█", "█" },
       always_show_bufferline = true,
       diagnostics = "nvim_lsp",
+      pinned_icon = "󰐃",
       modified_icon = "",
       indicator = {
         style = "none",
