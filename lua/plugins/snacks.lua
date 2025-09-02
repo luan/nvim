@@ -86,6 +86,13 @@ return {
       config = {
         confirmOnQuit = true,
 
+        os = {
+          edit = 'bash -c \'[[ -z "$NVIM" ]] && { nvim {{filename}} &>/dev/tty; true; } || { nvim -u NONE --server $NVIM --remote-expr "execute(\\"close\\")" && nvim -u NONE --server $NVIM --remote {{filename}}; }\'',
+          editAtLine = 'bash -c \'[[ -z "$NVIM" ]] && { nvim +{{line}} {{filename}} &>/dev/tty; true; } || { nvim -u NONE --server $NVIM --remote-expr "execute(\\"close\\")" && nvim -u NONE --server $NVIM --remote {{filename}} && nvim -u NONE --server $NVIM --remote-expr "execute(\\"normal {{line}}gg\\")"; }\'',
+          openDirInEditor = 'bash -c \'[[ -z "$NVIM" ]] && { nvim {{filename}} &>/dev/tty; true; } || { nvim -u NONE --server $NVIM --remote-expr "execute(\\"close\\")" && nvim -u NONE --server $NVIM --remote {{dir}}; }\'',
+          suspend = false,
+        },
+
         keybinding = {
           universal = {
             quit = "Q",
