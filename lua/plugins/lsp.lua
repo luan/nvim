@@ -74,7 +74,7 @@ return {
               enable = false,
             },
             lint = {
-              enable = true,
+              enable = false,
             },
             scan_cmake_in_package = true, -- default is true
           },
@@ -107,6 +107,7 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "swift",
+        "cpp",
       })
     end,
   },
