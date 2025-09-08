@@ -14,7 +14,7 @@ map("n", "<CR>", function()
   end
 end, { desc = "Save file (regular buffers only)" })
 
-map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
 
 -- Copy filepath with line number (relative)
 map("n", "<D-S-c>", function()
