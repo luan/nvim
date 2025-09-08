@@ -12,5 +12,10 @@ vim.opt.mousemoveevent = true
 vim.opt.clipboard = "unnamedplus"
 
 -- Window splitting behavior
-vim.opt.splitright = true  -- Open vertical splits to the right
-vim.opt.splitbelow = true  -- Open horizontal splits below
+vim.opt.splitright = true -- Open vertical splits to the right
+vim.opt.splitbelow = true -- Open horizontal splits below
+
+-- HACK: this semantic token is overriding the custom sql injection highlight
+vim.api.nvim_set_hl(0, "@lsp.type.string.rust", {})
+
+vim.g.lazyvim_rust_diagnostics = "bacon-ls"

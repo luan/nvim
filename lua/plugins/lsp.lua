@@ -80,9 +80,27 @@ return {
           },
         },
 
+        rust_analyzer = {
+          procMacro = {
+            enable = true,
+            attributes = {
+              enable = true,
+            },
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+            features = "all",
+          },
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+
         sourcekit = {
           cmd = { "sourcekit-lsp" },
-          filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
+          filetypes = { "swift" },
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern("buildServer.json")(fname)
               or require("lspconfig.util").root_pattern("*.xcodeproj", "*.xcworkspace")(fname)

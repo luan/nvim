@@ -27,10 +27,11 @@ local function check()
     map("n", "<leader>cb", "<cmd>CMakeBuild<cr>", { desc = "Run CMake build" })
     map("n", "<leader>cB", "<cmd>CMakeBuild!<cr>", { desc = "Run CMake build (clean)" })
     map("n", "<leader>cC", "<cmd>CMakeClean<cr>", { desc = "Run CMake clean" })
-    map("n", "<leader>cP", "<cmd>CMakeSelectConfigurePreset<cr>", { desc = "Select CMake configure preset" })
+    map("n", "<leader>cpc", "<cmd>CMakeSelectConfigurePreset<cr>", { desc = "Select CMake configure preset" })
+    map("n", "<leader>cpb", "<cmd>CMakeSelectConfigurePreset<cr>", { desc = "Select CMake build preset" })
     map("n", "<leader>dd", "<cmd>CMakeDebug<cr>", { desc = "Run CMake debug" })
     map("n", "<leader>dD", "<cmd>CMakeRun<cr>", { desc = "Run CMake run" })
-    map("n", "<leader>dD", "<cmd>CMakeRun<cr>", { desc = "Run CMake run" })
+    map("n", "<leader>dT", "<cmd>CMakeSelectLaunchTarget<cr>", { desc = "Select CMake debug target" })
     loaded = true
   end
 end
@@ -61,48 +62,14 @@ return {
       },
 
       cmake_dap_configuration = {
-        cwd = vim.fn.getcwd(),
+        name = "cpp",
+        type = "codelldb",
+        request = "launch",
       },
+      cmake_dap_open_command = require("dap").repl.open,
 
       cmake_executor = { name = "quickfix" },
       cmake_runner = conf,
     },
-  },
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "orjangj/neotest-ctest",
-    },
-    config = function()
-      require("neotest-ctest").setup({
-        frameworks = { "boostut" },
-        filter_dir = function(name, rel_path, root)
-          return name ~= "vcpkg_installed"
-            and name ~= "build"
-            and name ~= "out"
-            and name ~= ".git"
-            and name ~= "node_modules"
-            and name ~= ".vscode"
-            and not name:match("^%.")
-        end,
-      })
-
-      require("neotest").setup({
-        adapters = {
-          require("neotest-ctest"),
-        },
-        status = { virtual_text = true },
-        output = {
-          open_on_run = true,
-          enabled = true,
-        },
-        log_level = vim.log.levels.DEBUG,
-        discovery = {
-          enabled = true,
-          concurrent = 1,
-        },
-      })
-    end,
   },
 }

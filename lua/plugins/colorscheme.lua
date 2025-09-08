@@ -1,9 +1,12 @@
 return {
   {
+    "Shatur/neovim-ayu",
+    name = "ayu",
+  },
+
+  {
     "folke/tokyonight.nvim",
-    opts = {
-      style = "night",
-    },
+    opts = { style = "night" },
   },
 
   {
@@ -17,9 +20,10 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "tokyonight",
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "tokyonight",
+      -- colorscheme = "catppuccin-mocha",
       -- colorscheme = "monokai-pro",
+      -- colorscheme = "ayu",
     },
   },
 }
