@@ -17,5 +17,6 @@ vim.opt.splitbelow = true -- Open horizontal splits below
 
 -- HACK: this semantic token is overriding the custom sql injection highlight
 vim.api.nvim_set_hl(0, "@lsp.type.string.rust", {})
+vim.api.nvim_set_hl(0, "@lsp.type.string.swift", {})
 
 vim.g.lazyvim_rust_diagnostics = "bacon-ls"
