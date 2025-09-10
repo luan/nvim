@@ -80,24 +80,6 @@ return {
           },
         },
 
-        rust_analyzer = {
-          procMacro = {
-            enable = true,
-            attributes = {
-              enable = true,
-            },
-          },
-          cargo = {
-            buildScripts = {
-              enable = true,
-            },
-            features = "all",
-          },
-          checkOnSave = {
-            command = "clippy",
-          },
-        },
-
         sourcekit = {
           cmd = { "sourcekit-lsp" },
           filetypes = { "swift" },
