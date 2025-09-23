@@ -1,7 +1,6 @@
---diabled
-if true then
-  return {}
-end
+-- if true then
+--   return {}
+-- end
 
 -- opencode.nvim configuration based on lua/plugins/claude.lua
 -- Uses: https://github.com/NickvanDyke/opencode.nvim
@@ -62,29 +61,16 @@ local function list_all_buffers()
   return table.concat(file_paths, " ")
 end
 
--- Helper function to get the socket prompt
-local function get_socket_prompt()
-  local socket_path = vim.g.nvim_socket_path or vim.v.servername
-  if socket_path and socket_path ~= "" then
-    return "NVIM_SOCKET=" .. socket_path
-  else
-    return "No socket available - start neovim with --listen flag"
-  end
-end
-
 return {
   "NickvanDyke/opencode.nvim",
-  dependencies = {
-    "folke/snacks.nvim",
-  },
+  dependencies = { "folke/snacks.nvim" },
   -- stylua: ignore
   keys = {
-    { '<leader>it', function() require('opencode').toggle() end,                     desc = 'Toggle embedded opencode' },
+    { '<D-i>', function() require('opencode').toggle() end,                     desc = 'Toggle embedded opencode' },
+    { '<D-l>', function() require('opencode').toggle() end,                     desc = 'Toggle embedded opencode' },
 
-    { '<leader>ia', function() require('opencode').ask() end,                        desc = 'Ask opencode', mode = 'n' },
-    { '<leader>ia', function() require('opencode').ask('@selection: ') end,          desc = 'Ask opencode about selection', mode = 'v' },
-
-    { '<leader>ip', function() require('opencode').select_prompt() end,              desc = 'Select prompt', mode = { 'n', 'v' } },
+    { '<D-k>', function() require('opencode').ask('@cursor: ') end,                        desc = 'Ask opencode', mode = 'n' },
+    { '<D-k>', function() require('opencode').ask('@selection: ') end,          desc = 'Ask opencode about selection', mode = 'v' },
 
     { '<leader>in', function() require('opencode').command('session_new') end,       desc = 'New session' },
     { '<leader>iy', function() require('opencode').command('messages_copy') end,     desc = 'Copy last message' },
@@ -92,39 +78,9 @@ return {
     { '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end,   desc = 'Scroll messages up' },
     { '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, desc = 'Scroll messages down' },
   },
-  opts = function(_, opts)
-    -- Ensure socket path is stored (mirrors claude.lua behavior)
-    if vim.v.servername and vim.v.servername ~= "" then
-      vim.g.nvim_socket_path = vim.v.servername
-      -- Write socket path to a project-specific file for hooks
-      local cwd = vim.fn.getcwd()
-      local project_hash = vim.fn.sha256(cwd):sub(1, 8)
-      local socket_file = "/tmp/nvim_socket_" .. project_hash
-      local file = io.open(socket_file, "w")
-      if file then
-        file:write(vim.v.servername .. "\n" .. cwd)
-        file:close()
-      end
-    end
-
-    -- Augment default options with a custom @harpoon context
-    opts = opts or {}
-    opts.contexts = vim.tbl_deep_extend("force", opts.contexts or {}, {
-      ["@harpoon"] = {
-        description = "Files tagged by harpoon",
-        value = function()
-          local paths = harpoon_paths({ prefix_at = false, sep = ", " })
-          if paths == "" then
-            return nil
-          end
-          return paths
-        end,
-      },
-    })
-
-    -- Prefer default terminal/input options from plugin; nothing else to override here
-    return opts
-  end,
+  opts = {
+    terminal = { win = { enter = true } },
+  },
   config = function(_, _)
     -- Register terminal autocmds for embedded opencode terminal: unlist, paste, helpers
     vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
@@ -160,18 +116,6 @@ return {
             local content = list_all_buffers()
             vim.api.nvim_feedkeys(content, "n", false)
           end, { buffer = ev.buf, desc = "Insert all buffer paths" })
-
-          vim.keymap.set("t", "hh", function()
-            local content = harpoon_paths({ prefix_at = true, sep = " " })
-            if content ~= "" then
-              vim.api.nvim_feedkeys(content, "n", false)
-            end
-          end, { buffer = ev.buf, desc = "Insert harpoon files" })
-
-          vim.keymap.set("t", ";;", function()
-            local content = get_socket_prompt()
-            vim.api.nvim_feedkeys(content, "n", false)
-          end, { buffer = ev.buf, desc = "Insert socket prompt" })
         end
       end,
     })
@@ -183,22 +127,5 @@ return {
         vim.api.nvim_set_option_value("buflisted", false, { buf = ev.buf })
       end,
     })
-
-    -- Commands to show/debug socket info
-    vim.api.nvim_create_user_command("OpencodeSocketPath", function()
-      local socket_path = vim.g.nvim_socket_path
-      if socket_path then
-        print("Socket path: " .. socket_path)
-        vim.fn.setreg("+", socket_path)
-      else
-        print("No socket server running")
-      end
-    end, { desc = "Show socket path" })
-
-    vim.api.nvim_create_user_command("OpencodeSocketDebug", function()
-      print("Socket path: " .. (vim.g.nvim_socket_path or "not set"))
-      print("Server name: " .. (vim.v.servername or "not set"))
-      print("Socket prompt: " .. get_socket_prompt())
-    end, { desc = "Debug socket status" })
   end,
 }
