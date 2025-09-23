@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 -- Helper function to list all window paths with @ prefix
 local function list_window_paths()
   local current_win = vim.api.nvim_get_current_win()
