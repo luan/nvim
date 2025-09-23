@@ -1,6 +1,3 @@
-local bg_inactive = "#11111b"
-local bg_active = "#313244"
-
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
@@ -12,81 +9,6 @@ return {
   end,
   opts = {
     options = {
-      groups = {
-        options = {
-          toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
-        },
-        items = {
-          require("bufferline.groups").builtin.pinned:with({
-            icon = "󰐃 ",
-            highlight = { sp = "#4a66af" },
-          }),
-          {
-            name = " Generated",
-            highlight = { sp = "#313244" },
-            autoclose = true,
-            priority = 1,
-            matcher = function(buf)
-              -- Check filename patterns
-              local filename_match = buf.name:match("%.lock") or buf.name:match("%-lock") or buf.name:match("%_lock")
-
-              -- Check if first line contains "generated"
-              local first_line_match = false
-              if buf.path then
-                local success, lines = pcall(vim.fn.readfile, buf.path, "", 1)
-                if success and lines and #lines > 0 then
-                  first_line_match = lines[1]:lower():match("generated")
-                end
-              end
-
-              return filename_match or first_line_match
-            end,
-          },
-          {
-            name = " Ignored",
-            highlight = { sp = "#45475a" },
-            priority = 1,
-            matcher = function(buf)
-              local filepath = buf.path
-              if not filepath then
-                return false
-              end
-
-              -- Cache git ignore status to avoid repeated system calls
-              if not _G.git_ignore_cache then
-                _G.git_ignore_cache = {}
-              end
-
-              if _G.git_ignore_cache[filepath] ~= nil then
-                return _G.git_ignore_cache[filepath]
-              end
-
-              -- Check if file is ignored by git
-              local cmd = string.format("git check-ignore %s", vim.fn.shellescape(filepath))
-              vim.fn.system(cmd)
-              local is_ignored = vim.v.shell_error == 0
-              _G.git_ignore_cache[filepath] = is_ignored
-              return is_ignored
-            end,
-          },
-          {
-            name = " Docs",
-            highlight = { sp = "#74c7ec" },
-            priority = 2,
-            matcher = function(buf)
-              return buf.name:match("%.md") or buf.name:match("%.txt")
-            end,
-          },
-          {
-            name = " Tests",
-            highlight = { underline = true, sp = "#a6e3a1" },
-            priority = 3,
-            matcher = function(buf)
-              return buf.name:match("%_test") or buf.name:match("%_spec") or buf.name:match("%Test")
-            end,
-          },
-        },
-      },
       mode = "buffers",
       show_buffer_close_icons = false,
       show_close_icon = false,

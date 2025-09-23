@@ -43,6 +43,7 @@ return {
   "folke/snacks.nvim",
   opts = {
     -- dashboard = { enabled = false },
+    input = { enabled = true },
 
     indent = {
       indent = {

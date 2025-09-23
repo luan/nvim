@@ -110,6 +110,40 @@
   )
   (#set! injection.language "sql"))
 
+; Highlight SQL in non-macro `sqlx::query()`, `sqlx::query_scalar()`, and `sqlx::query_scalar_unchecked()`
+(call_expression
+  function: (scoped_identifier
+    path: (identifier) @_sqlx (#eq? @_sqlx "sqlx")
+    name: (identifier) @_query (#match? @_query "^query(_scalar|_scalar_unchecked)?$"))
+  arguments:
+    (arguments
+      ; Only the first argument is SQL
+      .
+      [
+        (string_literal (string_content) @injection.content)
+        (raw_string_literal (string_content) @injection.content)
+      ]
+    )
+  (#set! injection.language "sql"))
+
+; Highlight SQL in non-macro `sqlx::query_as()` and `sqlx::query_as_unchecked()`
+(call_expression
+  function: (scoped_identifier
+    path: (identifier) @_sqlx (#eq? @_sqlx "sqlx")
+    name: (identifier) @_query_as (#match? @_query_as "^query_as(_unchecked)?$"))
+  arguments:
+    (arguments
+      ; Only the second argument is SQL
+      .
+      ; Allow anything as the first argument (type parameter)
+      (_)
+      [
+        (string_literal (string_content) @injection.content)
+        (raw_string_literal (string_content) @injection.content)
+      ]
+    )
+  (#set! injection.language "sql"))
+
 ; Special language `tree-sitter-rust-format-args` for Rust macros,
 ; which use `format_args!` under the hood and therefore have
 ; the `format_args!` syntax.

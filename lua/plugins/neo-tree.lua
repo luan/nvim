@@ -37,27 +37,14 @@ return {
       {
         "<leader>e",
         function()
-          require("neo-tree.command").execute({ reveal = false, dir = LazyVim.root() })
-        end,
-        desc = "Focus Neo-tree",
-      },
-      {
-        "<leader>E",
-        function()
           require("neo-tree.command").execute({ reveal = true, dir = LazyVim.root() })
         end,
-        desc = "Focus Neo-tree (current_file)",
+        desc = "Focus Neo-tree",
       },
       {
         "<D-e>",
         "<leader>e",
         desc = "Focus Neo-tree",
-        remap = true,
-      },
-      {
-        "<D-S-e>",
-        "<leader>E",
-        desc = "Focus Neo-tree (current_file)",
         remap = true,
       },
       {

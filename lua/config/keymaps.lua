@@ -105,11 +105,14 @@ for _, key in ipairs(undo_keys) do
   map("c", key, "<C-u>", { desc = "Clear command line" })
 end
 
+map("n", "<M-S-q>", "<cmd>qall<cr>", { desc = "Quit all" })
+
 -- Buffer navigation
 local buffer_mappings = {
   { "<M-h>", "<cmd>BufferLineMovePrev<cr>", "Move buffer left" },
   { "<M-l>", "<cmd>BufferLineMoveNext<cr>", "Move buffer right" },
   { "<M-q>", "<cmd>BufferLinePickClose<cr>", "Pick buffer to close" },
+  { "<M-S-w>", "<cmd>BufferLineCloseOthers<cr>", "Close all other buffers" },
   {
     "<M-w>",
     function()
@@ -251,9 +254,6 @@ end, { expr = true, desc = "Rename (inc-rename.nvim)" })
 
 if vim.fn.executable("lazygit") == 1 then
   map("n", "<C-g>", function()
-    Snacks.lazygit()
-  end, { desc = "Lazygit (cwd)" })
-  map("n", "<leader>GG", function()
     Snacks.lazygit()
   end, { desc = "Lazygit (cwd)" })
   map("n", "<leader>gG", function()

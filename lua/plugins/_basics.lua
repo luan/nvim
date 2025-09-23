@@ -1,9 +1,5 @@
 return {
   { "tpope/vim-eunuch" },
+  { "tpope/vim-sleuth" },
   { "wsdjeg/vim-fetch" },
-  {
-    "alex-popov-tech/store.nvim",
-    dependencies = { "OXY2DEV/markview.nvim" },
-    cmd = "Store",
-  },
 }
