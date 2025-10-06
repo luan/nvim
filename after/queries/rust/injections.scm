@@ -144,6 +144,24 @@
     )
   (#set! injection.language "sql"))
 
+; Highlight SQL in non-macro `sqlx::query_as()` and `sqlx::query_as_unchecked()` with turbofish syntax
+(call_expression
+  function: (generic_function
+    function: (scoped_identifier
+      path: (identifier) @_sqlx (#eq? @_sqlx "sqlx")
+      name: (identifier) @_query_as (#match? @_query_as "^query_as(_unchecked)?$"))
+    type_arguments: (type_arguments))
+  arguments:
+    (arguments
+      ; With turbofish syntax, the first argument is SQL (type is in turbofish)
+      .
+      [
+        (string_literal (string_content) @injection.content)
+        (raw_string_literal (string_content) @injection.content)
+      ]
+    )
+  (#set! injection.language "sql"))
+
 ; Special language `tree-sitter-rust-format-args` for Rust macros,
 ; which use `format_args!` under the hood and therefore have
 ; the `format_args!` syntax.
