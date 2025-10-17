@@ -46,6 +46,19 @@ return {
           },
         },
 
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = false,
+                unusedwrite = false,
+                shadow = false,
+              },
+              staticcheck = false,
+            },
+          },
+        },
+
         sourcekit = {
           mason = false,
           cmd = { "sourcekit-lsp" },

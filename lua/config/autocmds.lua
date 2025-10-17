@@ -27,15 +27,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   desc = "Ensure socket for Claude Code",
 })
 
--- Disable diagnostics UI for markdown files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.diagnostic.disable(0)
-  end,
-  desc = "Disable diagnostics UI for markdown files",
-})
-
 -- Terminals should not have a title bar (winbar)
 vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter", "WinEnter" }, {
   pattern = "*",
