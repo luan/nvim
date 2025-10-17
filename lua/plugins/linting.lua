@@ -8,6 +8,7 @@ return {
       -- Configure linters by filetype
       lint.linters_by_ft = {
         swift = { "swiftlint" },
+        go = { "golangcilint" },
       }
 
       lint.linters.swiftlint = function()
