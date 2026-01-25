@@ -44,6 +44,7 @@ return {
   opts = {
     -- dashboard = { enabled = false },
     input = { enabled = true },
+    -- notifier = { enabled = false },
 
     indent = {
       indent = {
