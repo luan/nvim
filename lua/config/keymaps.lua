@@ -18,10 +18,10 @@ map("n", "<CR>", function()
   end
 end, { desc = "Save file (regular buffers only)" })
 
-map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
+map({ "i", "x", "n", "s" }, "<M-[>90;2", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
 
 -- Copy filepath with line number (relative)
-map("n", "<D-S-c>", function()
+map("n", "<M-[>90;3", function()
   local filepath = vim.fn.expand("%:.")
   local line = vim.fn.line(".")
   local text = filepath .. ":" .. line
@@ -30,7 +30,7 @@ map("n", "<D-S-c>", function()
 end, { desc = "Copy filepath with line number" })
 
 -- Copy filepath with line number (absolute)
-map("n", "<D-M-S-c>", function()
+map("n", "<M-[>90;4", function()
   local filepath = vim.fn.expand("%:p")
   local line = vim.fn.line(".")
   local text = filepath .. ":" .. line
@@ -39,7 +39,7 @@ map("n", "<D-M-S-c>", function()
 end, { desc = "Copy absolute filepath with line number" })
 
 -- Comments
-local comment_keys = { "<C-c>", "<D-/>" }
+local comment_keys = { "<C-c>", "<M-/>" }
 for _, key in ipairs(comment_keys) do
   map({ "n" }, key, "gcc", { desc = "Toggle comment", remap = true })
   map({ "v" }, key, "gc", { desc = "Toggle comment", remap = true })
@@ -67,8 +67,8 @@ for _, mapping in ipairs(buffer_mappings) do
 end
 
 -- Window cycling
-map("n", "<D-o>", "<C-w><C-w>", { desc = "Cycle windows" })
-map("t", "<D-o>", "<C-\\><C-n><C-w><C-w>", { desc = "Cycle windows from terminal" })
+map("n", "<M-[>90;5", "<C-w><C-w>", { desc = "Cycle windows" })
+map("t", "<M-[>90;5", "<C-\\><C-n><C-w><C-w>", { desc = "Cycle windows from terminal" })
 
 -- Terminal integration
 local function find_terminal_window()
@@ -84,7 +84,7 @@ end
 map("t", "<C-]>", "<C-\\><C-n>", { desc = "Exit terminal mode to normal mode" })
 
 -- Terminal toggle with focus
-map({ "n", "i" }, "<D-j>", function()
+map({ "n", "i" }, "<M-[>90;1", function()
   local term_win = find_terminal_window()
   if term_win then
     if vim.api.nvim_get_current_win() == term_win then
@@ -114,7 +114,7 @@ map("t", "<D-j>", function()
   end
 end, { desc = "Toggle Terminal / Open regular terminal from Claude Code" })
 
-map("n", "<D-.>", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<M-[>90;6", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 map("n", "<S-r>", function()
   local inc_rename = require("inc_rename")

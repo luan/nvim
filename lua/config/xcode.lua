@@ -11,7 +11,7 @@ map("n", "<M-x>", function()
   end
 end, { desc = "Open current file in Xcode" })
 
-map("n", "<D-x>", function()
+map("n", "<leader><M-x>", function()
   local cwd = vim.fn.getcwd()
   local workspaces = {}
 

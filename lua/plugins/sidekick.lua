@@ -4,10 +4,13 @@ return {
     cli = {
       mux = {
         backend = "zellij",
-        enabled = false,
+        enabled = true,
       },
       tools = {
-        zai = { cmd = { "zai" }, url = "https://github.com/anthropics/claude-code" },
+        opencode = {
+          cmd = { "opencode" },
+          url = "https://github.com/sst/opencode",
+        },
       },
       win = {
         layout = "right",
@@ -26,7 +29,7 @@ return {
   },
   keys = {
     {
-      "<D-i>",
+      "<M-[>90;9",
       function()
         require("sidekick.cli").toggle()
       end,

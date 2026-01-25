@@ -42,13 +42,13 @@ return {
         desc = "Focus Neo-tree",
       },
       {
-        "<D-e>",
+        "<M-[>90;7",
         "<leader>e",
         desc = "Focus Neo-tree",
         remap = true,
       },
       {
-        "<D-b>",
+        "<M-[>90;8",
         function()
           require("neo-tree.command").execute({ action = "show", toggle = true, reveal = false, dir = LazyVim.root() })
         end,

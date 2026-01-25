@@ -11,6 +11,7 @@ return {
     end,
   },
 
+  { "tpope/vim-abolish" },
   { "tpope/vim-eunuch" },
   { "tpope/vim-sleuth" },
   { "wsdjeg/vim-fetch" },
