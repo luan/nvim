@@ -102,7 +102,7 @@ map({ "n", "i" }, "<M-[>90;1", function()
   end
 end, { desc = "Toggle/Focus Terminal" })
 
-map("t", "<D-j>", function()
+map("t", "<M-[>90;1", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   if bufname:match("claude%-code") or bufname:match("opencode") then
     -- From Claude Code terminal, open regular terminal

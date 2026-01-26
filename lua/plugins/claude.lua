@@ -1,6 +1,6 @@
-if true then
-  return {}
-end
+-- if true then
+--   return {}
+-- end
 
 -- Helper function to list all window paths with @ prefix
 local function list_window_paths()
@@ -33,30 +33,6 @@ local function list_all_buffers()
   end
 
   return table.concat(file_paths, " ")
-end
-
--- Helper function to get the socket prompt
-local function get_socket_prompt()
-  local socket_path = vim.g.nvim_socket_path or vim.v.servername
-  if socket_path and socket_path ~= "" then
-    return "NVIM_SOCKET=" .. socket_path
-  else
-    return "No socket available - start neovim with --listen flag"
-  end
-end
---
-if vim.v.servername and vim.v.servername ~= "" then
-  vim.g.nvim_socket_path = vim.v.servername
-
-  -- Write socket path to a project-specific file for hooks
-  local cwd = vim.fn.getcwd()
-  local project_hash = vim.fn.sha256(cwd):sub(1, 8)
-  local socket_file = "/tmp/nvim_socket_" .. project_hash
-  local file = io.open(socket_file, "w")
-  if file then
-    file:write(vim.v.servername .. "\n" .. cwd)
-    file:close()
-  end
 end
 
 local function insert_content(func)
@@ -92,16 +68,16 @@ return {
     keys = {
       { "<leader>a", nil, desc = "AI/Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<D-i>", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<D-l>", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
+      { "<M-[>90;9", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<M-[>90;10", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<D-I>", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<M-[>90;11", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
       { "<leader>as", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<D-k>", "<cmd>ClaudeCodeAdd %<cr>", desc = "Send to Claude" },
+      { "<M-[>90;12", "<cmd>ClaudeCodeAdd %<cr>", desc = "Send to Claude" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      { "<D-k>", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      { "<M-[>90;12", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
@@ -113,7 +89,7 @@ return {
         snacks_win_opts = {
           keys = {
             claude_insert = {
-              "<D-i>",
+              "<M-[>90;9",
               function()
                 vim.cmd("startinsert")
               end,
@@ -121,7 +97,7 @@ return {
               desc = "Insert",
             },
             claude_hide = {
-              "<D-l>",
+              "<M-[>90;10",
               function(self)
                 self:hide()
               end,
@@ -130,7 +106,7 @@ return {
             },
             claude_close = { "<M-q>", "close", desc = "Close" },
             clean_paste = {
-              "<C-S-v>",
+              "<M-[>90;13",
               function()
                 local handle = io.popen("pbpaste")
                 if handle then
@@ -146,12 +122,6 @@ return {
               end,
               mode = "t",
               desc = "Clean Paste",
-            },
-            nvim_socket = {
-              ";;",
-              insert_content(get_socket_prompt),
-              mode = "t",
-              desc = "Insert nvim socket",
             },
             current_file = {
               "@.",
