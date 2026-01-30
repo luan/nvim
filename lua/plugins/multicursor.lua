@@ -8,30 +8,30 @@ return {
     local set = vim.keymap.set
 
     -- Add or skip cursor above/below the main cursor.
-    set({ "n", "x" }, "<D-M-k>", function()
+    set({ "n", "x" }, "<M-[>90;18", function()
       mc.lineAddCursor(-1)
     end)
-    set({ "n", "x" }, "<D-M-j>", function()
+    set({ "n", "x" }, "<M-[>90;19", function()
       mc.lineAddCursor(1)
     end)
-    set({ "n", "x" }, "<D-M-S-k>", function()
+    set({ "n", "x" }, "<M-[>90;20", function()
       mc.lineSkipCursor(-1)
     end)
-    set({ "n", "x" }, "<D-M-S-j>", function()
+    set({ "n", "x" }, "<M-[>90;21", function()
       mc.lineSkipCursor(1)
     end)
 
     -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "x" }, "<D-d>", function()
+    set({ "n", "x" }, "<M-[>90;14", function()
       mc.matchAddCursor(1)
     end)
-    set({ "n", "x" }, "<D-S-d>", function()
+    set({ "n", "x" }, "<M-[>90;15", function()
       mc.matchSkipCursor(1)
     end)
-    set({ "n", "x" }, "<D-u>", function()
+    set({ "n", "x" }, "<M-[>90;16", function()
       mc.matchAddCursor(-1)
     end)
-    set({ "n", "x" }, "<D-S-u>", function()
+    set({ "n", "x" }, "<M-[>90;17", function()
       mc.matchSkipCursor(-1)
     end)
 
@@ -56,8 +56,8 @@ return {
     -- multiple cursors. This lets you have overlapping mappings.
     mc.addKeymapLayer(function(layerSet)
       -- Select a different cursor as the main one.
-      layerSet({ "n", "x" }, "<D-k>", mc.prevCursor)
-      layerSet({ "n", "x" }, "<D-j>", mc.nextCursor)
+      layerSet({ "n", "x" }, "<M-[>90;12", mc.prevCursor)
+      layerSet({ "n", "x" }, "<M-[>90;1", mc.nextCursor)
 
       -- Clone every cursor and disable the originals.
       set({ "n", "x" }, "<leader><c-q>", mc.duplicateCursors)
