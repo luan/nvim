@@ -20,23 +20,53 @@ end, { desc = "Save file (regular buffers only)" })
 
 map({ "i", "x", "n", "s" }, "<M-[>90;2", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
 
--- Copy filepath with line number (relative)
+-- Copy filepath (normal) or filepath with line range (visual)
 map("n", "<M-[>90;3", function()
   local filepath = vim.fn.expand("%:.")
-  local line = vim.fn.line(".")
-  local text = filepath .. ":" .. line
+  vim.fn.setreg("+", filepath)
+  vim.notify("Copied: " .. filepath)
+end, { desc = "Copy filepath" })
+
+map("v", "<M-[>90;3", function()
+  local filepath = vim.fn.expand("%:.")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  local text
+  if start_line == end_line then
+    text = filepath .. ":" .. start_line
+  else
+    text = filepath .. ":" .. start_line .. "-" .. end_line
+  end
   vim.fn.setreg("+", text)
   vim.notify("Copied: " .. text)
-end, { desc = "Copy filepath with line number" })
+end, { desc = "Copy filepath with line range" })
 
--- Copy filepath with line number (absolute)
+-- Copy absolute filepath (normal) or with line range (visual)
 map("n", "<M-[>90;4", function()
   local filepath = vim.fn.expand("%:p")
-  local line = vim.fn.line(".")
-  local text = filepath .. ":" .. line
+  vim.fn.setreg("+", filepath)
+  vim.notify("Copied: " .. filepath)
+end, { desc = "Copy absolute filepath" })
+
+map("v", "<M-[>90;4", function()
+  local filepath = vim.fn.expand("%:p")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  local text
+  if start_line == end_line then
+    text = filepath .. ":" .. start_line
+  else
+    text = filepath .. ":" .. start_line .. "-" .. end_line
+  end
   vim.fn.setreg("+", text)
   vim.notify("Copied: " .. text)
-end, { desc = "Copy absolute filepath with line number" })
+end, { desc = "Copy absolute filepath with line range" })
 
 -- Comments
 local comment_keys = { "<C-c>", "<M-/>" }
