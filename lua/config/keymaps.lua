@@ -162,3 +162,31 @@ end
 
 map("n", "<leader>cd", "<cmd>RustLsp openCargo<cr>", { desc = "Open package's Cargo.toml" })
 map("n", "<leader>cD", "<cmd>e Cargo.toml<cr>", { desc = "Open workspace's Cargo.toml" })
+
+map("n", "+", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local image = require("image")
+  local images = image.get_images({ buffer = bufnr })
+  if #images ~= 1 then
+    return
+  end
+  local preview_image = images[1]
+  preview_image.global_state.options.scale_factor = preview_image.global_state.options.scale_factor * 1.25
+  preview_image:render()
+end, {
+  desc = "Zoom in image",
+})
+
+map("n", "_", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local image = require("image")
+  local images = image.get_images({ buffer = bufnr })
+  if #images ~= 1 then
+    return
+  end
+  local preview_image = images[1]
+  preview_image.global_state.options.scale_factor = preview_image.global_state.options.scale_factor / 1.25
+  preview_image:render()
+end, {
+  desc = "Zoom out image",
+})
