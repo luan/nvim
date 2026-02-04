@@ -1,14 +1,11 @@
-if true then
-  return {}
-end
-
 return {
   "folke/sidekick.nvim",
   opts = {
     cli = {
       mux = {
-        backend = "zellij",
         enabled = true,
+        backend = "tmux",
+        create = "split",
       },
       tools = {
         opencode = {
@@ -35,7 +32,7 @@ return {
     {
       "<M-[>90;9",
       function()
-        require("sidekick.cli").toggle()
+        require("sidekick.cli").show({ name = "claude" })
       end,
       desc = "Sidekick Toggle CLI",
       mode = { "n", "v", "i", "t" },
