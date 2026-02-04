@@ -1,6 +1,6 @@
--- if true then
---   return {}
--- end
+if true then
+  return {}
+end
 
 -- Helper function to list all window paths with @ prefix
 local function list_window_paths()
