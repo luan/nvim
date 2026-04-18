@@ -18,7 +18,7 @@ map("n", "<CR>", function()
   end
 end, { desc = "Save file (regular buffers only)" })
 
-map({ "i", "x", "n", "s" }, "<M-[>90;2", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
+map({ "i", "x", "n", "s" }, "<M-[>90;2~", "<cmd>noau w<cr><esc>", { desc = "Save File (without formatting)" })
 
 -- Copy filepath (normal) or filepath with line range (visual)
 map("n", "<M-[>90;3~", function()
@@ -45,13 +45,13 @@ map("v", "<M-[>90;3~", function()
 end, { desc = "Copy filepath with line range" })
 
 -- Copy absolute filepath (normal) or with line range (visual)
-map("n", "<M-[>90;4", function()
+map("n", "<M-[>90;4~", function()
   local filepath = vim.fn.expand("%:p")
   vim.fn.setreg("+", filepath)
   vim.notify("Copied: " .. filepath)
 end, { desc = "Copy absolute filepath" })
 
-map("v", "<M-[>90;4", function()
+map("v", "<M-[>90;4~", function()
   local filepath = vim.fn.expand("%:p")
   local start_line = vim.fn.line("v")
   local end_line = vim.fn.line(".")
@@ -97,8 +97,8 @@ for _, mapping in ipairs(buffer_mappings) do
 end
 
 -- Window cycling
-map("n", "<M-[>90;5", "<C-w><C-w>", { desc = "Cycle windows" })
-map("t", "<M-[>90;5", "<C-\\><C-n><C-w><C-w>", { desc = "Cycle windows from terminal" })
+map("n", "<M-[>90;5~", "<C-w><C-w>", { desc = "Cycle windows" })
+map("t", "<M-[>90;5~", "<C-\\><C-n><C-w><C-w>", { desc = "Cycle windows from terminal" })
 
 -- Terminal integration
 local function find_terminal_window()
@@ -114,7 +114,7 @@ end
 map("t", "<C-]>", "<C-\\><C-n>", { desc = "Exit terminal mode to normal mode" })
 
 -- Terminal toggle with focus
-map({ "n", "i" }, "<M-[>90;1", function()
+map({ "n", "i" }, "<M-[>90;1~", function()
   local term_win = find_terminal_window()
   if term_win then
     if vim.api.nvim_get_current_win() == term_win then
@@ -132,7 +132,7 @@ map({ "n", "i" }, "<M-[>90;1", function()
   end
 end, { desc = "Toggle/Focus Terminal" })
 
-map("t", "<M-[>90;1", function()
+map("t", "<M-[>90;1~", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   if bufname:match("claude%-code") or bufname:match("opencode") then
     -- From Claude Code terminal, open regular terminal
@@ -144,7 +144,7 @@ map("t", "<M-[>90;1", function()
   end
 end, { desc = "Toggle Terminal / Open regular terminal from Claude Code" })
 
-map("n", "<M-[>90;6", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<M-[>90;6~", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 map("n", "<S-r>", function()
   local inc_rename = require("inc_rename")

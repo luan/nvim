@@ -30,7 +30,7 @@ return {
   },
   keys = {
     {
-      "<M-[>90;9",
+      "<M-[>90;9~",
       function()
         require("sidekick.cli").show({ name = "claude" })
       end,

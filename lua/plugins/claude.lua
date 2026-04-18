@@ -68,16 +68,16 @@ return {
     keys = {
       { "<leader>a", nil, desc = "AI/Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<M-[>90;9", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<M-[>90;10", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
+      { "<M-[>90;9~", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<M-[>90;10~", "<cmd>ClaudeCode<cr>", desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<M-[>90;11", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<M-[>90;11~", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
       { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
       { "<leader>as", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<M-[>90;12", "<cmd>ClaudeCodeAdd %<cr>", desc = "Send to Claude" },
+      { "<M-[>90;12~", "<cmd>ClaudeCodeAdd %<cr>", desc = "Send to Claude" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      { "<M-[>90;12", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      { "<M-[>90;12~", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
@@ -89,7 +89,7 @@ return {
         snacks_win_opts = {
           keys = {
             claude_insert = {
-              "<M-[>90;9",
+              "<M-[>90;9~",
               function()
                 vim.cmd("startinsert")
               end,
@@ -97,7 +97,7 @@ return {
               desc = "Insert",
             },
             claude_hide = {
-              "<M-[>90;10",
+              "<M-[>90;10~",
               function(self)
                 self:hide()
               end,
@@ -106,7 +106,7 @@ return {
             },
             claude_close = { "<M-q>", "close", desc = "Close" },
             clean_paste = {
-              "<M-[>90;13",
+              "<M-[>90;13~",
               function()
                 local handle = io.popen("pbpaste")
                 if handle then
