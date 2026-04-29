@@ -18,6 +18,7 @@ return {
         },
       },
       window = {
+        position = "right",
         width = 50,
         mappings = {
           ["/"] = false,
@@ -37,7 +38,7 @@ return {
       {
         "<leader>e",
         function()
-          require("neo-tree.command").execute({ reveal = true, dir = LazyVim.root() })
+          require("neo-tree.command").execute({ position = "right", reveal = true, dir = LazyVim.root() })
         end,
         desc = "Focus Neo-tree",
       },
@@ -50,7 +51,13 @@ return {
       {
         "<M-[>90;8~",
         function()
-          require("neo-tree.command").execute({ action = "show", toggle = true, reveal = false, dir = LazyVim.root() })
+          require("neo-tree.command").execute({
+            action = "show",
+            position = "right",
+            toggle = true,
+            reveal = false,
+            dir = LazyVim.root(),
+          })
         end,
         desc = "Toggle Neo-tree",
       },
