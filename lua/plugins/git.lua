@@ -2,7 +2,25 @@ return {
   { "tpope/vim-fugitive" },
   { "tpope/vim-rhubarb" },
   {
-    "luan/review.nvim",
+    "esmuellert/codediff.nvim",
+    opts = {
+      diff = {
+        focus_on_select = false,
+        cycle_next_hunk = false,
+        cycle_next_file = true,
+      },
+      keymaps = {
+        view = {
+          next_hunk = "<C-n>",
+          prev_hunk = "<C-p>",
+          stage_hunk = "<C-s>",
+          unstage_hunk = "<C-S-s>",
+        },
+      },
+    },
+  },
+  {
+    "georgeguimaraes/review.nvim",
     dependencies = {
       "esmuellert/codediff.nvim",
       "MunifTanjim/nui.nvim",
@@ -15,9 +33,7 @@ return {
       { "<leader>gS", "<cmd>Review sidekick<cr>", desc = "Send review to sidekick" },
     },
     opts = {
-      keymaps = {
-        popup_submit = "<C-j>",
-      },
+      keymaps = {},
     },
   },
 }
